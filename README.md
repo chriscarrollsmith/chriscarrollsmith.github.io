@@ -6,7 +6,7 @@ This is a template for an attractive freelance bookings website built with Vite 
 
 ## Example
 
-See the site live [here](https://chriscarrollsmith.github.io/react-booking-website-template/).
+See the site live [here](https://chriscarrollsmith.github.io/).
 
 ## Prerequisites
 
@@ -14,7 +14,7 @@ You will need to have `npm` installed in your development environment. You will 
 
 ## Cloning the repo
 
-Clone and rename the repo with `git clone https://github.com/facebook/create-react-app.git {YOUR-GITHUB-USERNAME}.github.io`, obviously replacing '{YOUR-GITHUB-USERNAME}' without the braces. Enter the cloned directory with `cd {YOUR-GITHUB-USERNAME}.github.io`.
+Clone and rename the repo with `git clone https://github.com/chriscarrollsmith/chriscarrollsmith.github.io.git {YOUR-GITHUB-USERNAME}.github.io`, obviously replacing '{YOUR-GITHUB-USERNAME}' without the braces. Enter the cloned directory with `cd {YOUR-GITHUB-USERNAME}.github.io`.
 
 Log in to your Github account and create an empty repository named `{YOUR-GITHUB-USERNAME}.github.io`, replacing '{YOUR-GITHUB-USERNAME}' without the braces. Under 'Quick setup — if you’ve done this kind of thing before', copy the link that looks like 'https://github.com/yourname/yourproject.git'. 
 
