@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { InlineWidget } from "react-calendly";
+import "./Book.css";
 
 const Book = () => {
   const [height, setHeight] = useState(getIframeHeight());
@@ -36,12 +37,14 @@ const Book = () => {
   }, []);
 
   return (
-    <div id="book" className="Book">
-      <InlineWidget 
-        url={calendlyUrl}  // use the state here
-        styles={{ height }} 
-      />
-    </div>
+    <section className="dark">
+      <div id="book" className="Book">
+        <InlineWidget 
+          url={calendlyUrl}  // use the state here
+          styles={{ height }} 
+        />
+      </div>
+    </section>
   );
 };
 
