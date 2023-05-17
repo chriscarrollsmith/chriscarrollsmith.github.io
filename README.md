@@ -6,6 +6,8 @@ This is a template for an attractive freelance bookings website built with Vite 
 
 ## Example
 
+![Site preview](site-preview.gif "Site preview")
+
 See the site live [here](https://chriscarrollsmith.github.io/).
 
 ## Prerequisites
