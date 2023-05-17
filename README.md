@@ -12,23 +12,23 @@ See the site live [here](https://chriscarrollsmith.github.io/).
 
 You will need to have `npm` installed in your development environment. You will also need a [Calendly](https://calendly.com/) account.
 
-## Cloning the repo
+## Creating a repo from the template
 
-Clone and rename the repo with `git clone https://github.com/chriscarrollsmith/chriscarrollsmith.github.io.git {YOUR-GITHUB-USERNAME}.github.io`, obviously replacing '{YOUR-GITHUB-USERNAME}' without the braces. Enter the cloned directory with `cd {YOUR-GITHUB-USERNAME}.github.io`.
-
-Log in to your Github account and create an empty repository named `{YOUR-GITHUB-USERNAME}.github.io`, replacing '{YOUR-GITHUB-USERNAME}' without the braces. Under 'Quick setup — if you’ve done this kind of thing before', copy the link that looks like 'https://github.com/yourname/yourproject.git'. 
-
-Go back to the command line and use `git remote add origin {COPIED-LINK-ADDRESS}`, replacing '{COPIED-LINK-ADDRESS}' without the braces. Push your branch to github with `git push -u origin main`.
+Clone the template with the "Use this template button." Assuming you plan to deploy as your homepage on Github pages, make sure to name your cloned repo `{YOUR-GITHUB-USERNAME}.github.io`.
 
 ## Customization
 
-Change the 'homepage' attribute in `package.json` to 'https://{YOUR-GITHUB-USERNAME}.github.io', replacing {YOUR-GITHUB-USERNAME} without the braces. Change the 'name' attribute to any site name you want.
+To edit the template, you can use Github Codespaces or clone the repo locally to work in the editor of your choice. Preview the site during development with `npm run dev`.
 
-Edit the data, images, and documents in the public folder to customize the site content. Edit the `meta` tags in `index.html` in the root folder.
+Make sure to:
 
-Preview site during development with `npm run dev`.
+- Change the 'homepage' attribute in `package.json` to 'https://{YOUR-GITHUB-USERNAME}.github.io'.
 
-If you want to deploy somewhere other than Github Pages, you will need to change the 'deploy' command in `package.json`.
+- Edit the JSON files, images, and documents in the public folder to customize the site content. 
+
+- Edit the `meta` tags in `index.html` in the root folder.
+
+If you want to deploy somewhere other than Github Pages, you'll also need to change the 'deploy' command in `package.json`.
 
 ## Deployment
 
