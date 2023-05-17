@@ -1,0 +1,168 @@
+/**
+* CSS file to hold styles that apply across the application
+*/
+
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Montserrat:wght@200;400;600;800&display=swap");
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  font-family: "Montserrat", sans-serif;
+}
+
+div#main {
+  display: flex;
+  flex-direction: column;
+}
+
+section {
+  position: relative;
+}
+
+section.dark {
+  min-height: 100vh;
+  color: white;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+section.light {
+  color: black;
+  background: rgba(255, 255, 255, 0.35);
+  padding: 8rem 0;
+}
+
+section img.background {
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  pointer-events: none;
+  object-fit: cover;
+  object-position: center;
+}
+
+h1 {
+  font-weight: 300;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 3.5rem;
+  margin: 0;
+}
+
+h2 {
+  font-weight: 400;
+  font-size: 1.5rem;
+  margin: 0;
+  text-align: center;
+}
+
+@media screen and (min-width: 377px) {
+  h1 {
+    font-size: 4rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+}
+
+@media screen and (min-width: 422px) {
+  h1 {
+    font-size: 5rem;
+  }
+
+  h2 {
+    font-size: 2.5rem;
+  }
+}
+
+@media screen and (min-width: 821px) {
+  h1 {
+    font-size: 6rem;
+  }
+
+  h2 {
+    font-size: 2.5rem;
+  }
+}
+
+@media screen and (min-width: 1282px) {
+  h1 {
+    font-size: 7rem;
+  }
+
+  h2 {
+    font-size: 3rem;
+  }
+}
+
+h3 {
+  font-weight: 400;
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+p {
+  font-size: 1.125rem; 
+  line-height: 1.5;
+  margin-bottom: 0;
+  font-weight: 300;
+}
+
+p.large {
+  font-size: 1.5rem; 
+}
+
+p.small {
+  font-size: 1.25rem; 
+}
+
+hr {
+  margin: 2.5rem;
+}
+
+li {
+  line-height: 1.7;
+}
+
+li::marker {
+  color: #4e567e;
+}
+
+a {
+  text-decoration: underline;
+  color: #4e567e;
+}
+
+a:hover {
+  color: rgba(0, 0, 0, 0.25);
+}
+
+.container {
+  margin: 20px auto;
+  display: grid;
+  grid-template-columns: 330px 300px;
+  grid-gap: 20px;
+}
+
+@media screen and (max-width: 420px) {
+  .container {
+    margin: 20px auto;
+    display: inline;
+    grid-template-columns: 330px 300px;
+    grid-gap: 20px;
+  }
+}
+
+.container .box {
+  border-radius: 10px;
+  padding: 24px 16px;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  border: 1px solid rgb(204, 204, 204);
+  text-align: center;
+}

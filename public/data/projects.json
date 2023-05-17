@@ -1,0 +1,38 @@
+[
+  {
+    "title": "A Knowledge Workers' Guide to the Singularity",
+    "description": "A Substack newsletter on staying employed in knowledge work amid major technological disruption by AI",
+    "buttonText": "Substack",
+    "buttonLink": "https://knowledgeworkersguide.substack.com/"
+  },
+  {
+    "title": "Modeling Markets",
+    "description": "A Substack newsletter on economic modeling and quantitative finance",
+    "buttonText": "Substack",
+    "buttonLink": "https://modelingmarkets.substack.com/"
+  },
+  {
+    "title": "Dreams from My Brain",
+    "description": "An experimental podcast narrating actual dreams from my actual brain",
+    "buttonText": "Podbean",
+    "buttonLink": "https://dreamsfrommybrain.podbean.com/"
+  },
+  {
+    "title": "imfp",
+    "description": "The first well-documented Python library for comprehensive access to the International Monetary Fund API",
+    "buttonText": "Github",
+    "buttonLink": "https://github.com/chriscarrollsmith/imfp"
+  },
+  {
+    "title": "imfr v2",
+    "description": "A dramatic overhaul of the standard R library for comprehensive access to the International Monetary Fund API",
+    "buttonText": "Github",
+    "buttonLink": "https://github.com/christophergandrud/imfr"
+  },
+  {
+    "title": "Academic CV",
+    "description": "Peer-reviewed publications and other academic work",
+    "buttonText": "PDF",
+    "buttonLink": "documents/CurriculumVitae.pdf"
+  }
+]

@@ -1,0 +1,23 @@
+#header {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    gap: 2rem;
+    background: rgba(255,255,255,0.75);
+    padding: 1rem;
+    top: 0;
+    width: 100vw;
+    z-index: 10;
+  }
+
+  #header a {
+    text-decoration: none;
+    color: black;
+  }
+  
+  #header a:hover {
+    color: #4e567e;
+  }
+  
