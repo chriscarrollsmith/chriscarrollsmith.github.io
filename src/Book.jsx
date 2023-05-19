@@ -50,7 +50,7 @@ const Book = () => {
   }, []);
 
   return (
-    <section className="dark">
+    <section className="light" id="book-section">
       {hero && (
         <>
           <img
