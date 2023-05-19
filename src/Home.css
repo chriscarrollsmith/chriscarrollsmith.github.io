@@ -1,0 +1,14 @@
+#down-arrow {
+    position: absolute;
+    bottom: 4rem;
+    left: 50%;
+}
+
+.clickable-icon {
+    height: 3rem;
+    width: 3rem;
+}
+
+.clickable-icon:hover {
+    transform: scale(1.1);
+}
