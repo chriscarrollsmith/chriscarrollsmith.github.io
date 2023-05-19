@@ -4,6 +4,7 @@ import "./Book.css";
 
 const Book = () => {
   const [height, setHeight] = useState(getIframeHeight());
+  const [hero, setHero] = useState(null);
   const [calendlyUrl, setCalendlyUrl] = useState("");
 
   function getIframeHeight() {
@@ -34,16 +35,37 @@ const Book = () => {
       .then(response => response.json())
       .then(data => setCalendlyUrl(data.calendly))
       .catch(error => console.error(error));
+
+    // Fetch the hero images data when the component mounts
+    fetch('data/heroimages.json')
+      .then(response => response.json())
+      .then(data => {
+        // Find the hero image for the home page
+        const bookHero = data.find(hero => hero.name === 'book');
+        setHero(bookHero);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
   }, []);
 
   return (
     <section className="dark">
-      <div id="book" className="Book">
-        <InlineWidget 
-          url={calendlyUrl}  // use the state here
-          styles={{ height }} 
-        />
-      </div>
+      {hero && (
+        <>
+          <img
+            className="background"
+            src={hero.src}
+            alt={hero.alt}
+          />
+          <div id="book" className="Book">
+            <InlineWidget 
+              url={calendlyUrl}
+              styles={{ height }} 
+            />
+          </div>
+        </>
+      )}
     </section>
   );
 };

@@ -27,18 +27,20 @@ const Footer = ({ foregroundColor = 'white', backgroundColor = '#4e567e' }) => {
     );
   } else {
     return (
-      <div id="footer" style={{backgroundColor: backgroundColor}}>
-        <div className="center-flex">
-          {Object.entries(property.socialProfiles).map(([key, value]) => {
-            return icons[key] ? (
-              <a href={value} target="_blank" rel="noopener noreferrer" key={key}>
-                <img src={icons[key]} alt={key} className="social-icon" />
-              </a>
-            ) : null;
-          })}
+      <section>
+        <div id="footer" style={{backgroundColor: backgroundColor}}>
+          <div className="center-flex">
+            {Object.entries(property.socialProfiles).map(([key, value]) => {
+              return icons[key] ? (
+                <a href={value} target="_blank" rel="noopener noreferrer" key={key}>
+                  <img src={icons[key]} alt={key} className="social-icon" />
+                </a>
+              ) : null;
+            })}
+          </div>
+          <p className="small" style={{color: foregroundColor}}>Created by {property.name}</p>
         </div>
-        <p className="small" style={{color: foregroundColor}}>Created by {property.name}</p>
-      </div>
+      </section>
     );
   }
 }

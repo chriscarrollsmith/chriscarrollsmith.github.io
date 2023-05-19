@@ -12,7 +12,12 @@
   },
   {
     "name": "projects",
-    "src": "images/AlbanyNY.png",
-    "alt": "Albany, NY skyline at night, purple line art"
+    "src": "images/violetflowers1.png",
+    "alt": "Violet flowers against a black backdrop"
+  },
+  {
+    "name": "book",
+    "src": "images/putty.png",
+    "alt": "Light gray putty applied to a wall with artful wavy strokes"
   }
 ]

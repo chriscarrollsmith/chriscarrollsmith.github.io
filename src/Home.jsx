@@ -45,7 +45,7 @@ function Home() {
             <h2>{property.title}</h2>
           </div>
           <div style={{ position: 'absolute', bottom: '4rem', left: '50%' }}>
-            <img src="images/down-arrow.svg" style={{ height: '3rem', width: '3rem' }} alt="scroll down" />
+            <a href="#about"><img src="images/down-arrow.svg" style={{ height: '3rem', width: '3rem' }} alt="scroll down" /></a>
           </div>
         </>
       )}

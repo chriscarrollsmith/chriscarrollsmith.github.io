@@ -27,6 +27,12 @@ section.dark {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+.card:hover {
+  transform: scale(1.03);
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
 .title-section {
   background-color: rgba(0, 0, 0, 0.05);
   margin: -1rem;
@@ -42,9 +48,12 @@ section.dark {
   margin: 1rem auto 0;
   border-radius: 5px;
   transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  border: none;
 }
 
 .button:hover {
-  text-decoration: underline;
+  background-color: #3c415c;
+  text-decoration: none;
   color: white;
 }

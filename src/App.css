@@ -13,9 +13,12 @@ body {
   font-family: "Montserrat", sans-serif;
 }
 
-div#main {
+#App {
+  min-height: 200vh;
+  width: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
 section {
@@ -29,9 +32,9 @@ section.dark {
 }
 
 section.light {
+  min-height: 100vh;
   color: black;
   background: rgba(255, 255, 255, 0.35);
-  padding: 8rem 0;
 }
 
 section img.background {
