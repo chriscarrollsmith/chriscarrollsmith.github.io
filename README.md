@@ -16,7 +16,7 @@ You will need to have `npm` installed in your development environment. You will 
 
 ## Creating a repo from the template
 
-Clone the template with the "Use this template button." Assuming you plan to deploy as your homepage on Github pages, make sure to name your cloned repo `{YOUR-GITHUB-USERNAME}.github.io`.
+Clone the template with the "Use this template button." Assuming you plan to deploy as your homepage on Github pages, make sure to name your cloned repo `{YOUR-GITHUB-USERNAME}.github.io` and install dependencies in your repo folder from the command line with `npm install`.
 
 ## Customization
 
@@ -26,7 +26,7 @@ Make sure to:
 
 - Change the 'homepage' attribute in `package.json` to 'https://{YOUR-GITHUB-USERNAME}.github.io'.
 
-- Edit the JSON files, images, and documents in the public folder to customize the site content. 
+- Edit the JSON files, images, and documents in the public folder to customize site appearance. 
 
 - Edit the `meta` tags in `index.html` in the root folder.
 
@@ -34,6 +34,6 @@ If you want to deploy somewhere other than Github Pages, you'll also need to cha
 
 ## Deployment
 
-Deploy site to Github pages with `npm run deploy`. 
+Deploy site to Github Pages with `npm run deploy`. 
 
-Under `Settings > Pages` for your repo, make sure `Source` is set to `Deploy from a branch` and `Branch` is set to `gh-pages`.
+Under `Settings > Pages` for your repo on Github, make sure `Source` is set to `Deploy from a branch` and `Branch` is set to `gh-pages`.
