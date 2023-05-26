@@ -1,5 +1,5 @@
 {
-  "homepage": "https://chriscarrollsmith.github.io",
+  "homepage": "https://christophercarrollsmith.com",
   "name": "bookings-site",
   "private": false,
   "version": "0.0.1",
@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "vite",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist",
+    "deploy": "echo christophercarrollsmith.com > ./dist/CNAME && gh-pages -d dist",
     "build": "vite build",
     "preview": "vite preview"
   },
