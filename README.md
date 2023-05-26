@@ -56,8 +56,9 @@ If you want to use a custom domain instead of the default 'https://{YOUR-GITHUB-
 5. Go back to your domain manager and edit the DNS records:
    - Delete all existing "CNAME" records and any "A" records named "@". (You should leave all other "A" records alone. Only delete the ones named "@".)
    - Create four new records of type "A", named "@". Each record's value/content should be one of the four Github Pages IP addresses: "185.199.108.153", "185.199.109.153", "185.199.110.153", "185.199.111.153". Set "Time to Live" to half an hour. You should have an "A" record for each IP address. 
-   - Create one record of type "CNAME", named "www", with your custom domain (e.g., "christophercarrollsmith.com") as its value/content. Set "Time to Live" to half an hour.
+   - Create one record of type "CNAME", named "www", with your custom domain ("{your-domain}.com") as its value/content. (Obviously, replace the curly braces with your custom domain name.) Set "Time to Live" to half an hour.
 6. Wait a couple more hours for your DNS changes to propagate, then head back to "Settings > Pages" for your Github repo. If you've done everything correctly, You should see "DNS check successful" under the custom domain field.
 7. Click the check box to "Enforce HTTPS". If the DNS check passed, but the box isn't clickable, you may have to remove and re-add your domain. (Or Github may not have issued your site an SSL certificate yet. If you've removed and re-added your site and still can't click the checkbox, take and break for a few hours and then come back and try again.)
+8. In your site's `package.json` file, change the "deploy" command from "gh-pages -d dist" to "echo '{your-domain}.com' > ./dist/CNAME && gh-pages -d dist". (Obviously, replace the curly braces with your custom domain name.)
 
 It's a super tedious process with a lot of wait time built in, but hopefully these instructions will help you get it done.
