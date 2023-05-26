@@ -37,3 +37,27 @@ If you want to deploy somewhere other than Github Pages, you'll also need to cha
 Deploy site to Github Pages with `npm run deploy`. 
 
 Under `Settings > Pages` for your repo on Github, make sure `Source` is set to `Deploy from a branch` and `Branch` is set to `gh-pages`.
+
+## Using a custom domain
+
+If you want to use a custom domain instead of the default 'https://{YOUR-GITHUB-USERNAME}.github.io' link, it's a bit complicated, and Github's documentation is atrocious. Here's what you need to do:
+
+1. Register a domain name with a domain manager like Godaddy or Domain.com. If you already have a domain you've been using for another website, restore the default DNS settings.
+2. Add the domain under your user "Settings > Pages" on Github.
+3. Follow Github's instructions to verify your domain. This will involve going back to your domain manager and creating a DNS record. Here's how I did that on the domain management service I used, Domain.com:
+   - Click to "Manage" the domain.
+   - Go to "Advanced > DNS & Nameservers" on the menu bar.
+   - Go to "DNS Records" tab.
+   - Click "Add DNS Record".
+   - Set "Type" to "TXT", "Time to Live" to half an hour, and "Name" and "Content" to the values provided by Github.
+   - Click "Add DNS".
+   - Wait a couple hours for the DNS changes to propagate, then go back to Github "Settings > Pages" and click to finish verification.
+4. In your 'https://{YOUR-GITHUB-USERNAME}.github.io' repo on Github, go to the repo "Settings > Pages" (which is different from your user settings) and add your domain.
+5. Go back to your domain manager and edit the DNS records:
+   - Delete all existing "CNAME" records and any "A" records named "@". (You should leave all other "A" records alone. Only delete the ones named "@".)
+   - Create four new records of type "A", named "@". Each record's value/content should be one of the four Github Pages IP addresses: "185.199.108.153", "185.199.109.153", "185.199.110.153", "185.199.111.153". Set "Time to Live" to half an hour. You should have an "A" record for each IP address. 
+   - Create one record of type "CNAME", named "www", with your custom domain (e.g., "christophercarrollsmith.com") as its value/content. Set "Time to Live" to half an hour.
+6. Wait a couple more hours for your DNS changes to propagate, then head back to "Settings > Pages" for your Github repo. If you've done everything correctly, You should see "DNS check successful" under the custom domain field.
+7. Click the check box to "Enforce HTTPS". If the DNS check passed, but the box isn't clickable, you may have to remove and re-add your domain. (Or Github may not have issued your site an SSL certificate yet. If you've removed and re-added your site and still can't click the checkbox, take and break for a few hours and then come back and try again.)
+
+It's a super tedious process with a lot of wait time built in, but hopefully these instructions will help you get it done.
