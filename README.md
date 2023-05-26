@@ -34,13 +34,13 @@ If you want to deploy somewhere other than Github Pages, you'll also need to cha
 
 ## Deployment
 
-Deploy site to Github Pages with `npm run deploy`. 
+To build and deploy the site, run `npm run build`, and then `npm run deploy`.)
 
 Under `Settings > Pages` for your repo on Github, make sure `Source` is set to `Deploy from a branch` and `Branch` is set to `gh-pages`.
 
 ## Using a custom domain
 
-If you want to use a custom domain instead of the default 'https://{YOUR-GITHUB-USERNAME}.github.io' link, it's a bit complicated, and Github's documentation is atrocious. Here's what you need to do:
+If you want to use a custom domain instead of the default 'https://{YOUR-GITHUB-USERNAME}.github.io' link, it's a bit complicated, and Github's documentation is atrocious. Here's the rundown on what you need to do:
 
 1. Register a domain name with a domain manager like Godaddy or Domain.com. If you already have a domain you've been using for another website, restore the default DNS settings.
 2. Add the domain under your user "Settings > Pages" on Github.
@@ -59,6 +59,10 @@ If you want to use a custom domain instead of the default 'https://{YOUR-GITHUB-
    - Create one record of type "CNAME", named "www", with your custom domain ("{your-domain}.com") as its value/content. (Obviously, replace the curly braces with your custom domain name.) Set "Time to Live" to half an hour.
 6. Wait a couple more hours for your DNS changes to propagate, then head back to "Settings > Pages" for your Github repo. If you've done everything correctly, You should see "DNS check successful" under the custom domain field.
 7. Click the check box to "Enforce HTTPS". If the DNS check passed, but the box isn't clickable, you may have to remove and re-add your domain. (Or Github may not have issued your site an SSL certificate yet. If you've removed and re-added your site and still can't click the checkbox, take and break for a few hours and then come back and try again.)
-8. In your site's `package.json` file, change the "deploy" command from "gh-pages -d dist" to "echo '{your-domain}.com' > ./dist/CNAME && gh-pages -d dist". (Obviously, replace the curly braces with your custom domain name.)
 
-It's a super tedious process with a lot of wait time built in, but hopefully these instructions will help you get it done.
+This is a super tedious process with a lot of wait time built in, but hopefully these instructions will help you get it done.
+
+Additionally, to use a custom domain, you will need to make a couple changes to your repo's `package.json` file:
+
+1. Change the "homepage" attribute to your custom domain (e.g., "https://{your-domain}.com).
+2. Change the "deploy" command in `package.json` from "gh-pages -d dist" to "echo {your-domain}.com > ./dist/CNAME && gh-pages -d dist". (Obviously, replace the curly braces with your custom domain name.)
