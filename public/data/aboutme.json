@@ -1,14 +1,12 @@
 {
-  "description": "Software architect, data storyteller, religion PhD, and president of Promptly Technologies, LLC.",
+  "description": "PhD educator and president of Promptly Technologies, LLC.",
   "skills": [
-    "Writing and public speaking",
-    "Academic research support",
-    "Product management",
-    "R and Python development",
     "Supervised machine learning",
-    "AI autonomous agents",
+    "LLM software integrations",
     "AI business applications consulting",
-    "AI-powered graphic design"
+    "Academic research support",
+    "Audiovisual production",
+    "AI-assisted graphic design"
   ],
   "detailOrQuote": "<a href='#book'>Book</a> a meeting today for scheduling a speaking engagement, solving an automation problem, or consulting on an AI use case."
 }
