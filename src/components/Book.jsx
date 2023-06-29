@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { InlineWidget } from "react-calendly";
 import "./Book.css";
+import useFetchContent from "../hooks/useFetchContent";
+import useFetchHero from "../hooks/useFetchHero";
 
 const Book = () => {
   const [height, setHeight] = useState(getIframeHeight());
-  const [hero, setHero] = useState(null);
-  const [calendlyUrl, setCalendlyUrl] = useState("");
+  const hero = useFetchHero('book');
+  const calendlyUrl = useFetchContent('data/siteproperties.json','calendlyURL');
 
   function getIframeHeight() {
     const windowWidth = window.innerWidth;
@@ -27,26 +29,6 @@ const Book = () => {
     return () => {
       window.removeEventListener('resize', handleResize);
     }
-  }, []);
-
-  useEffect(() => {
-    // Fetch data from the JSON file
-    fetch('data/siteproperties.json')
-      .then(response => response.json())
-      .then(data => setCalendlyUrl(data.calendly))
-      .catch(error => console.error(error));
-
-    // Fetch the hero images data when the component mounts
-    fetch('data/heroimages.json')
-      .then(response => response.json())
-      .then(data => {
-        // Find the hero image for the home page
-        const bookHero = data.find(hero => hero.name === 'book');
-        setHero(bookHero);
-      })
-      .catch(error => {
-        console.error('Error:', error);
-      });
   }, []);
 
   return (

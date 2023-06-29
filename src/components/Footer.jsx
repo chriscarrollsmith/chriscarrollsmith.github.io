@@ -1,23 +1,11 @@
-import React, { useState, useEffect } from "react";
 import './Footer.css';
+import useFetchContent from '../hooks/useFetchContent';
 
 const Footer = ({ foregroundColor = 'white', backgroundColor = '#4e567e' }) => {
-  const [property, setProperty] = useState(null);
-  const [icons, setIcons] = useState(null);
+  const properties = useFetchContent('data/siteproperties.json') || {};
+  const icons = useFetchContent('data/socialicons.json') || {};
 
-  useEffect(() => {
-    fetch('data/siteproperties.json')
-      .then(response => response.json())
-      .then(data => setProperty(data))
-      .catch(error => console.log(error));
-
-    fetch('data/socialicons.json')
-      .then(response => response.json())
-      .then(data => setIcons(data))
-      .catch(error => console.log(error));
-  }, []);
-
-  if (property === null || icons === null) {
+  if (Object.keys(properties).length === 0 || Object.keys(icons).length === 0) {
     return (
       <div id="footer" style={{backgroundColor: backgroundColor}}>
         <div>
@@ -30,7 +18,7 @@ const Footer = ({ foregroundColor = 'white', backgroundColor = '#4e567e' }) => {
       <section>
         <div id="footer" style={{backgroundColor: backgroundColor}}>
           <div className="center-flex">
-            {Object.entries(property.socialProfiles).map(([key, value]) => {
+            {Object.entries(properties.socialProfiles).map(([key, value]) => {
               return icons[key] ? (
                 <a href={value} target="_blank" rel="noopener noreferrer" key={key}>
                   <img src={icons[key]} alt={key} className="social-icon" />
@@ -38,7 +26,7 @@ const Footer = ({ foregroundColor = 'white', backgroundColor = '#4e567e' }) => {
               ) : null;
             })}
           </div>
-          <p className="small" style={{color: foregroundColor}}>Created by {property.name}</p>
+          <p className="small" style={{color: foregroundColor}}>Created by {properties.name}</p>
         </div>
       </section>
     );

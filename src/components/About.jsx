@@ -1,26 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import './About.css';
+import useFetchContent from '../hooks/useFetchContent';
+import useFetchHero from '../hooks/useFetchHero';
 
 const About = () => {
-  const [aboutme, setAboutme] = useState(null);
-  const [hero, setHero] = useState(null);
-
-  useEffect(() => {
-    const fetchAboutme = async () => {
-      const response = await axios.get('data/aboutme.json');
-      setAboutme(response.data);
-    };
-
-    const fetchHero = async () => {
-      const response = await axios.get('data/heroimages.json');
-      const aboutHero = response.data.find((img) => img.name === 'about');
-      setHero(aboutHero);
-    };
-
-    fetchAboutme();
-    fetchHero();
-  }, []);
+  const hero = useFetchHero('about');
+  const aboutme = useFetchContent('data/aboutme.json');
 
   const renderHtml = (html) => {
     return { __html: html };

@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import Home from './Home';
-import About from './About';
-import Projects from './Projects';
-import Book from './Book';
-import Footer from './Footer';
-import Header from './Header';
+import Header from './components/Header';
+import Home from './components/Home';
+import About from './components/About';
+import Projects from './components/Projects';
+import Book from './components/Book';
+import Footer from './components/Footer';
 
 function App() {
   return (
