@@ -7,7 +7,7 @@ function Home() {
   const hero = useFetchHero('home') || {};
   const windowWidth = window.innerWidth;
 
-  if (properties === null || hero === null) {
+  if (Object.keys(properties).length === 0 || Object.keys(hero).length === 0) {
     return <p>Loading...</p>;
   }
 

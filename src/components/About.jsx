@@ -3,12 +3,16 @@ import useFetchContent from '../hooks/useFetchContent';
 import useFetchHero from '../hooks/useFetchHero';
 
 const About = () => {
-  const hero = useFetchHero('about');
-  const aboutme = useFetchContent('data/aboutme.json');
+  const hero = useFetchHero('about') || {};
+  const aboutme = useFetchContent('data/aboutme.json') || {};
 
   const renderHtml = (html) => {
     return { __html: html };
   };
+
+  if (Object.keys(hero).length === 0 || Object.keys(aboutme).length === 0) {
+    return <p>Loading...</p>;
+  }
 
   return (
     <section className="light" id="about">

@@ -7,7 +7,7 @@ import useFetchHero from "../hooks/useFetchHero";
 const Book = () => {
   const [height, setHeight] = useState(getIframeHeight());
   const hero = useFetchHero('book');
-  const calendlyUrl = useFetchContent('data/siteproperties.json','calendlyURL');
+  const calendlyUrl = useFetchContent('data/siteproperties.json','calendlyURL') || {};
 
   function getIframeHeight() {
     const windowWidth = window.innerWidth;
@@ -30,6 +30,10 @@ const Book = () => {
       window.removeEventListener('resize', handleResize);
     }
   }, []);
+
+  if (Object.keys(calendlyUrl).length === 0) {
+    return <p>Loading...</p>;
+  }
 
   return (
     <section className="light" id="book-section">
