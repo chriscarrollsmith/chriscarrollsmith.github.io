@@ -12,7 +12,7 @@ const Book = () => {
   function getIframeHeight() {
     const windowWidth = window.innerWidth;
     if (windowWidth >= 999) {
-      return '680px';
+      return '690px';
     } else {
       return '900px';
     }
