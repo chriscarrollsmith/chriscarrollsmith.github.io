@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { InlineWidget } from "react-calendly";
 import "./Book.css";
-import useFetchContent from "../hooks/useFetchContent";
-import useFetchHero from "../hooks/useFetchHero";
+import siteProperties from "../data/siteproperties.json";
+import heroData from '../data/heroimages.json';
 
 const Book = () => {
   const [height, setHeight] = useState(getIframeHeight());
-  const hero = useFetchHero('book');
-  const calendlyUrl = useFetchContent('data/siteproperties.json','calendlyURL') || {};
+  const hero = heroData.find(h => h.name === 'book');
+  const calendlyUrl = siteProperties.calendlyUrl;
 
   function getIframeHeight() {
     const windowWidth = window.innerWidth;
@@ -31,12 +31,8 @@ const Book = () => {
     }
   }, []);
 
-  if (Object.keys(calendlyUrl).length === 0) {
-    return <p>Loading...</p>;
-  }
-
   return (
-    <section className="light" id="book-section">
+    <section className={hero ? "dark" : "black"} id="book-section">
       {hero && (
         <>
           <img

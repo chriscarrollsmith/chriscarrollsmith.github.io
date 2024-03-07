@@ -12,7 +12,7 @@ See the site live [here](https://chriscarrollsmith.github.io/).
 
 ## Prerequisites
 
-You will need to have `npm` installed in your development environment. You will also need a [Calendly](https://calendly.com/) account.
+You will need to have `npm` installed in your development environment. You will also need a [Calendly](https://calendly.com/) account to use the `Book` component.
 
 ## Creating a repo from the template
 
@@ -26,7 +26,7 @@ Make sure to:
 
 - Change the 'homepage' attribute in `package.json` to 'https://{YOUR-GITHUB-USERNAME}.github.io'.
 
-- Edit the JSON files, images, and documents in the public folder to customize site appearance. 
+- Edit the JSON files in `src/data` and the images and documents in `public` to customize site appearance. 
 
 - Edit the `meta` tags in `index.html` in the root folder.
 

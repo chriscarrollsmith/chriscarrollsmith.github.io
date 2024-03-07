@@ -39,6 +39,18 @@ section.light {
   background: rgba(255, 255, 255, 0.35);
 }
 
+section.black {
+  color: white;
+  background: black;
+  min-height: 100vh;
+}
+
+section.white {
+  color: black;
+  background: white;
+  min-height: 100vh;
+}
+
 section img.background {
   width: 100%;
   height: 100%;
@@ -125,23 +137,46 @@ p.small {
   font-size: 1.25rem; 
 }
 
+p.bold {
+  font-weight: 600;
+}
+
 hr {
   margin: 2.5rem;
 }
 
-li {
-  line-height: 1.7;
-}
-
-li::marker {
-  color: #4e567e;
-}
-
 a {
   text-decoration: underline;
-  color: #4e567e;
+  color: #242d57;
 }
 
 a:hover {
   color: rgba(0, 0, 0, 0.25);
+}
+
+div.center-flex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.button {
+  background-color: #4e567e;
+  color: white;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  margin: 1rem auto 0;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  border: none;
+}
+
+.button:hover {
+  background-color: #3c415c;
+  text-decoration: none;
+  color: white;
 }

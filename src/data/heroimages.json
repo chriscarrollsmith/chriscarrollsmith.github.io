@@ -16,8 +16,13 @@
     "alt": "Violet flowers against a black backdrop"
   },
   {
-    "name": "book",
+    "name": "writing",
     "src": "images/putty.png",
     "alt": "Light gray putty applied to a wall with artful wavy strokes"
+  },
+  {
+    "name": "book",
+    "src": "images/cityscape.png",
+    "alt": "Cityscape seen from above through a purple haze"
   }
 ]

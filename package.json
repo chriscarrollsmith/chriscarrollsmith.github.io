@@ -1,17 +1,18 @@
 {
   "homepage": "https://christophercarrollsmith.com",
-  "name": "bookings-site",
+  "author": "Christopher Carroll Smith <christopher.smith@promptlytechnologies.com>",
+  "name": "christophercarrollsmith-bookings-site",
   "private": false,
-  "version": "0.1.0",
+  "version": "0.2.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "predeploy": "npm run build",
-    "deploy": "echo christophercarrollsmith.com > ./dist/CNAME && gh-pages -d dist",
     "build": "vite build",
+    "deploy": "echo christophercarrollsmith.com > ./dist/CNAME && gh-pages -d dist",
     "preview": "vite preview"
   },
   "dependencies": {
+    "convertkit-react": "^1.5.5",
     "react": "^18.2.0",
     "react-calendly": "^4.1.1",
     "react-dom": "^18.2.0"

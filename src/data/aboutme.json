@@ -1,0 +1,18 @@
+{
+  "description": "President of <a href='https://promptlytechnologies.com'>Promptly Technologies</a> and creator of <a href='https://scribert.com'>Scribert</a>, your AI text-to-speech companion.",
+  "icons": [
+    {"alt": "Javascript", "src": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"},
+    {"alt": "Typescript", "src": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg"},
+    {"alt": "Python", "src": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg"},
+    {"alt": "R", "src": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/r/r-original.svg"},
+    {"alt": "React", "src": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg"},
+    {"alt": "Next.js", "src": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg"},
+    {"alt": "Supabase", "src": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/supabase/supabase-original.svg"}
+  ],
+  "skills": [
+    "Websites",
+    "AI applications",
+    "Research support"
+  ],
+  "callToAction": "Hire me to solve your automation problem or build your application. <a href='#book'>Book</a> a meeting today to get a quote!"
+}

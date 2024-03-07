@@ -13,15 +13,6 @@
     text-align: center;
 }
 
-div.center-flex {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-}
-
 img.social-icon {
     width: 30px;
     height: 30px;

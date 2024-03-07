@@ -1,0 +1,99 @@
+.project-feature-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  gap: 20px;
+  padding: 2rem;
+  margin: auto;
+  width: 75%;
+  text-align: center;
+  align-items: start;
+}
+
+.portrait-container {
+  grid-column: 2; /* Place portrait in the first column */
+  grid-row: 1 / span 2; /* Span two rows */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.portrait-image {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  max-height: 70vh;
+}
+
+.landscape-container {
+  grid-column: 1; /* Adjust to reflect desired column placement */
+  grid-row: 1; /* Adjust to reflect desired row placement */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.landscape-image {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.callout {
+  grid-column: 1; /* Adjust to reflect desired column placement */
+  grid-row: 2; /* Adjust to reflect desired row placement */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+  max-width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.callout a {
+  color: #007bff;
+}
+
+.callout button {
+  padding: 10px 20px;
+  margin: 10px 0;
+  width: fit-content;
+  font-size: 1rem;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 1282px) {
+  .project-feature-section {
+    width: 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  .project-feature-section {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, auto);
+  }
+
+  .portrait-container, .landscape-container, .callout {
+    grid-column: 1;
+  }
+
+  .portrait-container {
+    grid-row: 1;
+  }
+
+  .callout {
+    grid-row: 2;
+  }
+
+  .landscape-container {
+    grid-row: 3;
+  }
+}

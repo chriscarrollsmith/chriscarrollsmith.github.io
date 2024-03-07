@@ -1,11 +1,9 @@
 import './Footer.css';
-import useFetchContent from '../hooks/useFetchContent';
+import siteProperties from '../data/siteproperties.json';
+import socialIcons from '../data/socialicons.json';
 
 const Footer = ({ foregroundColor = 'white', backgroundColor = '#4e567e' }) => {
-  const properties = useFetchContent('data/siteproperties.json') || {};
-  const icons = useFetchContent('data/socialicons.json') || {};
-
-  if (Object.keys(properties).length === 0 || Object.keys(icons).length === 0) {
+  if (Object.keys(siteProperties).length === 0 || Object.keys(socialIcons).length === 0) {
     return (
       <div id="footer" style={{backgroundColor: backgroundColor}}>
         <div>
@@ -18,15 +16,15 @@ const Footer = ({ foregroundColor = 'white', backgroundColor = '#4e567e' }) => {
       <section>
         <div id="footer" style={{backgroundColor: backgroundColor}}>
           <div className="center-flex">
-            {Object.entries(properties.socialProfiles).map(([key, value]) => {
-              return icons[key] ? (
+            {Object.entries(siteProperties.socialProfiles).map(([key, value]) => {
+              return socialIcons[key] ? (
                 <a href={value} target="_blank" rel="noopener noreferrer" key={key}>
-                  <img src={icons[key]} alt={key} className="social-icon" />
+                  <img src={socialIcons[key]} alt={key} className="social-icon" />
                 </a>
               ) : null;
             })}
           </div>
-          <p className="small" style={{color: foregroundColor}}>Created by {properties.name}</p>
+          <p className="small" style={{color: foregroundColor}}>Copyright © {siteProperties.name} 2024</p>
         </div>
       </section>
     );

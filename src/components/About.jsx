@@ -1,40 +1,32 @@
 import './About.css';
-import useFetchContent from '../hooks/useFetchContent';
-import useFetchHero from '../hooks/useFetchHero';
+import aboutMe from '../data/aboutme.json';
+import heroData from '../data/heroimages.json';
 
 const About = () => {
-  const hero = useFetchHero('about') || {};
-  const aboutme = useFetchContent('data/aboutme.json') || {};
+  const hero = heroData.find(h => h.name === 'about');
 
   const renderHtml = (html) => {
     return { __html: html };
   };
 
-  if (Object.keys(hero).length === 0 || Object.keys(aboutme).length === 0) {
-    return <p>Loading...</p>;
-  }
-
   return (
-    <section className="light" id="about">
+    <section className={hero ? "light" : "white"} id="about">
       {hero && <img className="background" src={hero.src} alt={hero.alt} />}
       <div className="about-section">
-        {!aboutme ? (
-          <p>
-            <em>Loading...</em>
-          </p>
-        ) : (
-          <>
-            <p className="large" dangerouslySetInnerHTML={renderHtml(aboutme.description)} />
-            <hr />
-            <ul className="skills-list">
-              {aboutme.skills.map((skill) => (
-                <li key={skill}>{skill}</li>
-              ))}
-            </ul>
-            <hr />
-            <p className="small" dangerouslySetInnerHTML={renderHtml(aboutme.detailOrQuote)} />
-          </>
-        )}
+        <p className="large" dangerouslySetInnerHTML={renderHtml(aboutMe.description)} />
+        <hr />
+        <div className="center-flex padded">
+          {aboutMe.icons.map((icon) => (
+            <img className="skills-icon" src={icon.src} alt={icon.alt} title={icon.alt} key={icon.alt} />
+          ))}
+        </div>
+        <ul className="skills-list">
+          {aboutMe.skills.map((skill) => (
+            <li key={skill}>{skill}</li>
+          ))}
+        </ul>
+        <hr />
+        <p className="small" dangerouslySetInnerHTML={renderHtml(aboutMe.callToAction)} />
       </div>
     </section>
   );

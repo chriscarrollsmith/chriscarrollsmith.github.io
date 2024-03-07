@@ -1,22 +1,30 @@
-import ProjectCard from './ProjectCard';
 import './Projects.css';
-import useFetchHero from '../hooks/useFetchHero';
-import useFetchContent from '../hooks/useFetchContent';
+import heroData from '../data/heroimages.json';
+import projectsData from '../data/projects.json';
+import Card from './Card';
 
 const Projects = () => {
-  const hero = useFetchHero('projects') || {};
-  const projects = useFetchContent('data/projects.json') || [];
+  const hero = heroData.find(h => h.name === 'projects');
 
   return (
-    <section className="dark" id="projects">
+    <section className={hero ? "dark" : "black"} id="projects">
       {hero && (
         <img className="background" src={hero.src} alt={hero.alt} />
       )}
-      <div className="projects-grid">
-        {projects.map((project, index) => (
-          <ProjectCard key={index} project={project} />
+        {projectsData.map((category, categoryIndex) => (
+          <div className="category-container" key={categoryIndex}>
+            <h2>{category.category}</h2>
+            <div className="projects-grid">
+              {category.projects.map((project, projectIndex) => (
+                <Card
+                  key={projectIndex}
+                  project={project}
+                  featured={category.category === 'Hackathon winners'}
+                />
+              ))}
+            </div>
+          </div>
         ))}
-      </div>
     </section>
   );
 };

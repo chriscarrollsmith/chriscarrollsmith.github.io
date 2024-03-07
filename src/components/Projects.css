@@ -1,6 +1,7 @@
-section.dark {
+#projects {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: center; /* Align items centrally in the cross axis */
 }
 
 .projects-grid {
@@ -12,42 +13,6 @@ section.dark {
   gap: 2rem;
 }
 
-.card {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  border: 1px solid #ccc;
-  padding: 1rem;
-  text-align: center;
-  background-color: white;
-  color: black;
-  flex: 1 0 200px;
-  margin: 0.5rem;
-  border-radius: 15px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.title-section {
-  background-color: rgba(0, 0, 0, 0.05);
-  margin: -1rem;
-  padding: 1rem;
-  border-bottom: 1px solid #ccc;
-}
-
-.button {
-  background-color: #4e567e;
-  color: white;
-  padding: 0.5rem 1rem;
-  text-decoration: none;
-  margin: 1rem auto 0;
-  border-radius: 5px;
-  transition: all 0.3s ease-in-out;
-  cursor: pointer;
-  border: none;
-}
-
-.button:hover {
-  background-color: #3c415c;
-  text-decoration: none;
-  color: white;
+.category-container {
+  width: 100%;
 }
