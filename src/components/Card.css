@@ -128,7 +128,7 @@
 /* Always show the button for touch devices */
 @media (hover: none) {
   .with-image .button {
-    visibility: visible;
-    opacity: 1;
+    visibility: hidden;
+    opacity: 0;
   }
 }
