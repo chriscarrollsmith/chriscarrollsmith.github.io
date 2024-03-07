@@ -54,8 +54,8 @@
 
 .icon-overlay {
   position: absolute;
-  top: 2rem; /* Adjust this value as needed */
-  right: -2.5rem; /* Adjust this value as needed */
+  top: -1rem; /* Adjust this value as needed */
+  right: -1rem; /* Adjust this value as needed */
   max-width: 8rem;
   max-height: 8rem;
   z-index: 10; /* Ensure the icon is above all other content */

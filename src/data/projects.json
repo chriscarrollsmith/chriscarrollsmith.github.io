@@ -3,17 +3,17 @@
     "category": "Hackathon winners",
     "projects": [
       {
+        "title": "Furn-E",
+        "url": "https://github.com/TeamZombies/furne_frontend",
+        "description": "Interior design image generator with product image search",
+        "img": "furne-desktop.jpg",
+        "icon-overlay": "AECTech-ribbon-optimized.svg"
+      },
+      {
         "title": "SessionScribe",
         "url": "https://github.com/chriscarrollsmith/session-scribe",
         "description": "Transcribe-to-print pipeline",
         "img": "sessionscribe-desktop.png",
-        "icon-overlay": "AECTech-ribbon-optimized.svg"
-      },
-      {
-        "title": "Furn-E",
-        "url": "https://github.com/TeamZombies/furne_frontend",
-        "description": "Interior design tool with image generation and reverse product image search",
-        "img": "furne-desktop.jpg",
         "icon-overlay": "Epson-ribbon-optimized.svg"
       }
     ]
