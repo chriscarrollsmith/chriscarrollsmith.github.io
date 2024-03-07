@@ -39,17 +39,30 @@
 }
 
 .with-image {
-  position: absolute; /* Overlay the text on the image */
-  bottom: 0; /* Align it at the bottom of the card */
+  position: absolute;
+  bottom: 0;
   left: 0;
   right: 0;
-  background-color: rgba(0, 0, 0, 0.7); /* Increased opacity for better readability */
-  color: white; /* Adjust text color for better readability */
+  background-color: rgba(0, 0, 0, 0);
+  color: white;
   padding: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  z-index: 5; /* Below the icon overlay but above the image */
+  z-index: 5;
+  transition: background-color 0.3s ease;
+}
+
+@media (hover: hover) {
+    .project-card:hover .with-image {
+    background-color: rgba(0, 0, 0, 0.7); /* Show the overlay on hover */
+  }
+}
+
+@media (hover: none) {
+  .with-image {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
 }
 
 .icon-overlay {
