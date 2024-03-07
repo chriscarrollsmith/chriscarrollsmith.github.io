@@ -106,13 +106,29 @@
   text-decoration: none;
   margin: 1rem auto 0;
   border-radius: 5px;
-  transition: all 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
   cursor: pointer;
   border: none;
+  opacity: 0;
+  visibility: hidden;
 }
 
 .button:hover {
   background-color: #3c415c;
-  text-decoration: none;
-  color: white;
+}
+
+/* Hover effect for non-touch devices */
+@media (hover: hover) {
+  .project-card:hover .with-image .button {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+/* Always show the button for touch devices */
+@media (hover: none) {
+  .with-image .button {
+    visibility: visible;
+    opacity: 1;
+  }
 }
