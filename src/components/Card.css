@@ -44,23 +44,34 @@
   left: 0;
   right: 0;
   background-color: rgba(0, 0, 0, 0);
-  color: white;
+  background-color: rgba(0, 0, 0, 0); /* Start with a transparent background */
+  color: transparent; /* Make text transparent by default */
   padding: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   z-index: 5;
+  transition: background-color 0.3s ease, color 0.3s ease; /* Animate the background color and text color change */
+}
+
+/* Hover effect for non-touch devices */
+@media (hover: hover) {
+  .project-card:hover .with-image {
   transition: background-color 0.3s ease;
 }
 
 @media (hover: hover) {
     .project-card:hover .with-image {
     background-color: rgba(0, 0, 0, 0.7); /* Show the overlay on hover */
+    color: white; /* Make text visible on hover */
   }
 }
 
+/* Always show the overlay for touch devices */
 @media (hover: none) {
   .with-image {
+    background-color: rgba(0, 0, 0, 0.7); /* Always show the overlay */
+    color: white; /* Make text always visible for touch devices */
     background-color: rgba(0, 0, 0, 0.7);
   }
 }
