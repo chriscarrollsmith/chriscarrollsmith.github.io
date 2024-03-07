@@ -43,7 +43,7 @@
   bottom: 0; /* Align it at the bottom of the card */
   left: 0;
   right: 0;
-  background-color: rgba(0, 0, 0, 0.5); /* Partially transparent gray background */
+  background-color: rgba(0, 0, 0, 0.7); /* Increased opacity for better readability */
   color: white; /* Adjust text color for better readability */
   padding: 1rem;
   display: flex;
