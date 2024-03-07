@@ -109,8 +109,8 @@
   transition: background-color 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
   cursor: pointer;
   border: none;
-  opacity: 0;
-  visibility: hidden;
+  opacity: 1;
+  visibility: visible;
 }
 
 .button:hover {
@@ -120,15 +120,15 @@
 /* Hover effect for non-touch devices */
 @media (hover: hover) {
   .project-card:hover .with-image .button {
-    visibility: visible;
-    opacity: 1;
+    visibility: hidden;
+    opacity: 0;
   }
 }
 
 /* Always show the button for touch devices */
 @media (hover: none) {
   .with-image .button {
-    visibility: visible;
-    opacity: 1;
+    visibility: hidden;
+    opacity: 0;
   }
 }
