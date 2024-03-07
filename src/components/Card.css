@@ -120,15 +120,15 @@
 /* Hover effect for non-touch devices */
 @media (hover: hover) {
   .project-card:hover .with-image .button {
-    visibility: hidden;
-    opacity: 0;
+    visibility: visible;
+    opacity: 1;
   }
 }
 
 /* Always show the button for touch devices */
 @media (hover: none) {
   .with-image .button {
-    visibility: hidden;
-    opacity: 0;
+    visibility: visible;
+    opacity: 1;
   }
 }
