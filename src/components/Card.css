@@ -134,3 +134,7 @@
     opacity: 0;
   }
 }
+.image-section {
+  display: flex;
+  flex: 1;
+}
