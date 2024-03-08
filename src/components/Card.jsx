@@ -4,7 +4,9 @@ const Card = ({ project }) => (
   <div className={`project-card ${project['icon-overlay'] ? 'featured' : ''}`}>
     <div className="content-wrapper">
       <div className="title-section">
-        <h3>{project.title}</h3>
+        <div className="title-container">
+          <h3>{project.title}</h3>
+        </div>
       </div>
       {project.img && (
         <div className="image-section">
