@@ -2,7 +2,7 @@ import Card from './Card';
 import './Writing.css';
 import heroData from '../data/heroimages.json';
 import writingData from '../data/writing.json';
-import ConvertKitForm from './ConvertKitForm';
+import SubscribeForm from './SubscribeForm';
 
 const Writing = () => {
   const hero = heroData.find(h => h.name === 'writing');
@@ -16,7 +16,7 @@ const Writing = () => {
         {writingData.map((writing, index) => (
           <Card key={index} project={writing} />
         ))}
-        <ConvertKitForm />
+        <SubscribeForm />
       </div>
     </section>
   );

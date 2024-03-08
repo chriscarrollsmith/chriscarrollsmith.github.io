@@ -12,7 +12,7 @@ See the site live [here](https://chriscarrollsmith.github.io/).
 
 ## Prerequisites
 
-You will need to have `npm` installed in your development environment. You will also need a [Calendly](https://calendly.com/) account to use the `Book` component.
+You will need to have `npm` installed in your development environment. You will also need a [Calendly](https://calendly.com/) account to use the `Book` component and a [ConvertKit](https://convertkit.com/) account to use the `Subscribe` component.
 
 ## Creating a repo from the template
 
