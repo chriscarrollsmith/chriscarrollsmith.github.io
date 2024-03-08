@@ -21,7 +21,7 @@ const ConvertKitForm = () => {
             <div className="formkit-field">
               <input className="formkit-input" name="email_address" aria-label="Email Address" placeholder="Email Address" required type="email" style={{ borderColor: 'rgb(68, 68, 68)', color: 'rgb(0, 0, 0)', borderRadius: '4px', fontWeight: '400' }} />
             </div>
-            <button data-element="submit" className="formkit-submit" style={{ backgroundColor: '#4e567e', color: 'rgb(255, 255, 255)', borderRadius: '4px', fontWeight: '400' }}>
+            <button data-element="submit" className="formkit-submit">
               <div className="formkit-spinner">
                 <div></div>
                 <div></div>

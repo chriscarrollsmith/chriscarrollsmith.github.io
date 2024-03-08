@@ -563,4 +563,13 @@
   -webkit-flex: 1 1 auto;
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
+}.formkit-submit {
+  background-color: #4e567e;
+  color: #fff;
+  border-radius: 4px;
+  font-weight: 400;
+}
+
+.formkit-submit:hover {
+  background-color: #3c415c;
 }
