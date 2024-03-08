@@ -1,3 +1,18 @@
+.convertkit-form {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    text-align: center;
+    background-color: white;
+    color: black;
+    flex: 1 0 200px;
+    margin: 0.5rem;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: visible; /* Ensures icon overflow is visible */
+}
+
 .formkit-form[data-uid="6d27e157de"] * {
   box-sizing: border-box;
 }

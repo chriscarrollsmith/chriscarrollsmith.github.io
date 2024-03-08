@@ -7,7 +7,7 @@ const Projects = () => {
   const hero = heroData.find(h => h.name === 'projects');
 
   return (
-    <section className={hero ? "dark" : "black"} id="projects">
+    <section className={hero.src ? hero.shade : hero.shade === "dark" ? "black" : "white"} id="projects">
       {hero && (
         <img className="background" src={hero.src} alt={hero.alt} />
       )}

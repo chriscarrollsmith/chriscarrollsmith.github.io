@@ -32,7 +32,7 @@ const Book = () => {
   }, []);
 
   return (
-    <section className={hero ? "dark" : "black"} id="book-section">
+    <section className={hero.src ? hero.shade : hero.shade === "dark" ? "black" : "white"} id="book-section">
       {hero && (
         <>
           <img

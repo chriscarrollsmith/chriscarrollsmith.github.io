@@ -112,6 +112,7 @@
   padding: 1rem;
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: space-between;
 }
 
@@ -135,7 +136,8 @@
 }
 
 .with-image .button {
-  visibility: hidden;
+  /* Change to hidden and 0 opacity to hide button until hover */
+  visibility: hidden;;
   opacity: 0;
 }
 

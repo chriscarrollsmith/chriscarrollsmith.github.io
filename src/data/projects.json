@@ -33,7 +33,7 @@
         "description": "Javascript client library for working with the Epson Connect API"
       },
       {
-        "title": "IMFP / IMFR",
+        "title": "imfp / imfr",
         "url": "https://github.com/chriscarrollsmith/imfp",
         "description": "Python and R client libraries for working with the International Monetary Fund Data API"
       },

@@ -10,7 +10,7 @@ const About = () => {
   };
 
   return (
-    <section className={hero ? "light" : "white"} id="about">
+    <section className={hero.src ? hero.shade : hero.shade === "dark" ? "black" : "white"} id="about">
       {hero && <img className="background" src={hero.src} alt={hero.alt} />}
       <div className="about-section">
         <p className="large" dangerouslySetInnerHTML={renderHtml(aboutMe.description)} />

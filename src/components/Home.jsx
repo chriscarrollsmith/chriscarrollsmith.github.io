@@ -11,7 +11,7 @@ function Home() {
   }
 
   return (
-    <section className={hero ? "dark" : "black"} id="home">
+    <section className={hero.src ? hero.shade : hero.shade === "dark" ? "black" : "white"} id="home">
       {hero && (
         <>
           <img

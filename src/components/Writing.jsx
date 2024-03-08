@@ -2,12 +2,13 @@ import Card from './Card';
 import './Writing.css';
 import heroData from '../data/heroimages.json';
 import writingData from '../data/writing.json';
+import ConvertKitForm from './ConvertKitForm';
 
 const Writing = () => {
   const hero = heroData.find(h => h.name === 'writing');
 
   return (
-    <section className={hero ? "light" : "white"} id="writing">
+    <section className={hero.src ? hero.shade : hero.shade === "dark" ? "black" : "white"} id="writing">
       {hero && (
         <img className="background" src={hero.src} alt={hero.alt} />
       )}
@@ -15,6 +16,7 @@ const Writing = () => {
         {writingData.map((writing, index) => (
           <Card key={index} project={writing} />
         ))}
+        <ConvertKitForm />
       </div>
     </section>
   );

@@ -7,7 +7,7 @@ const ProjectFeature = () => {
   const hero = heroData.find(h => h.name === 'project-feature');
   
   return (
-    <section className={hero ? "dark" : "black"} id="project-feature">
+    <section className={hero?.src ? hero?.shade : hero?.shade === "dark" ? "black" : "white"} id="project-feature">
       <div className="project-feature-section">
         <div className="callout">
           <p dangerouslySetInnerHTML={{ __html: callToAction }} />
