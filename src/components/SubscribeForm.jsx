@@ -15,11 +15,9 @@ const SubscribeForm = () => {
       setMessage('There was an issue with your subscription. Please try again.');
     }
   }, []);
-
   
   return(
     <div className='convertkit-form'>
-      {message && <div className="formkit-message">{message}</div>}
       <div className="title-section">
         <h3>Subscribe for email updates</h3>
       </div>
@@ -29,6 +27,7 @@ const SubscribeForm = () => {
         <div data-style="clean">
           <ul className="formkit-alert formkit-alert-error" data-element="errors" data-group="alert">
           </ul>
+          {message && <div>{message}</div>}
           <div data-element="fields" data-stacked="false" className="seva-fields formkit-fields">
             <div className="formkit-field">
               <input className="formkit-input" name="fields[name]" aria-label="Name" placeholder="Name" type="text" />
@@ -52,5 +51,4 @@ const SubscribeForm = () => {
   );
 };
 
-export default SubscribeForm;
 export default SubscribeForm;
