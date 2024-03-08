@@ -11,6 +11,13 @@ const Writing = () => {
       {hero && (
         <img className="background" src={hero.src} alt={hero.alt} />
       )}
+      <div className="cards-wrapper">
+        <div className="writing-grid">
+          {writingData.map((writing, index) => (
+            <Card key={index} project={writing} />
+          ))}
+        </div>
+      </div>
       <div className="writing-grid">
         {writingData.map((writing, index) => (
           <Card key={index} project={writing} />
