@@ -1,7 +1,7 @@
 import './Card.css';
 
-const Card = ({ project, featured }) => (
-  <div className={`project-card ${featured ? 'featured' : ''}`}>
+const Card = ({ project }) => (
+  <div className={`project-card ${project['icon-overlay'] ? 'featured' : ''}`}>
     <div className="content-wrapper">
       <div className="title-section">
         <h3>{project.title}</h3>
@@ -18,7 +18,7 @@ const Card = ({ project, featured }) => (
         </a>
       </div>
     </div>
-    {featured && project['icon-overlay'] && (
+    {project['icon-overlay'] && (
       <img
         src={`/images/${project['icon-overlay']}`}
         alt="Icon Overlay"

@@ -1,6 +1,6 @@
 [
   {
-    "category": "Hackathon winners",
+    "category": "Web applications",
     "projects": [
       {
         "title": "Furn-E",
@@ -15,26 +15,17 @@
         "description": "Transcribe-to-print pipeline",
         "img": "sessionscribe-desktop.png",
         "icon-overlay": "Epson-ribbon-optimized.svg"
-      }
-    ]
-  },
-  {
-    "category": "Open-source contributions",
-    "projects": [
-      {
-        "title": "Next.js Subscription Payments SaaS Starter v2",
-        "url": "https://github.com/vercel/nextjs-subscription-payments",
-        "description": "Popular ecommerce template built on Next.js, Supabase, and Stripe"
       },
       {
-        "title": "IMFR v2",
-        "url": "https://github.com/christophergandrud/imfr",
-        "description": "R client library for working with the International Monetary Fund Data API"
+        "title": "Promptly Technologies, LLC website",
+        "url": "https://promptlytechnologies.com",
+        "description": "Comic book-style Typescript React website with Zazzle product syndication",
+        "img": "promptly-desktop.png"
       }
     ]
   },
   {
-    "category": "SDKs",
+    "category": "Utilities",
     "projects": [
       {
         "title": "epson-connect-js",
@@ -42,34 +33,14 @@
         "description": "Javascript client library for working with the Epson Connect API"
       },
       {
-        "title": "IMFP",
+        "title": "IMFP / IMFR",
         "url": "https://github.com/chriscarrollsmith/imfp",
-        "description": "Python client library for working with the International Monetary Fund Data API"
-      }
-    ]
-  },
-  {
-    "category": "Websites",
-    "projects": [
-      {
-        "title": "Promptly Technologies, LLC website",
-        "url": "https://promptlytechnologies.com",
-        "description": "Comic book-style Typescript React website with Zazzle product syndication"
+        "description": "Python and R client libraries for working with the International Monetary Fund Data API"
       },
-      {
-        "title": "Baba Faqir Chand website",
-        "url": "https://babafaqirchand.com",
-        "description": "Educational Javascript website with Archive.org books and Github Actions blog syndication"
-      }
-    ]
-  },
-  {
-    "category": "Github Actions",
-    "projects": [
       {
         "title": "RSS Fetch Action",
         "url": "https://github.com/Promptly-Technologies-LLC/rss-fetch-action",
-        "description": "Javascript action for Github Pages RSS and Atom blog feed syndication"
+        "description": "Javascript Github action for RSS and Atom blog feed syndication"
       }
     ]
   }

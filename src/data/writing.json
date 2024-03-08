@@ -18,18 +18,6 @@
     "buttonLink": "https://dreamsfrommybrain.podbean.com/"
   },
   {
-    "title": "imfp",
-    "description": "The first well-documented Python library for comprehensive access to the International Monetary Fund API",
-    "buttonText": "Github",
-    "buttonLink": "https://github.com/chriscarrollsmith/imfp"
-  },
-  {
-    "title": "imfr v2",
-    "description": "A dramatic overhaul of the standard R library for comprehensive access to the International Monetary Fund API",
-    "buttonText": "Github",
-    "buttonLink": "https://github.com/christophergandrud/imfr"
-  },
-  {
     "title": "Academic CV",
     "description": "Peer-reviewed publications and other academic work",
     "buttonText": "PDF",

@@ -13,13 +13,14 @@ const Projects = () => {
       )}
         {projectsData.map((category, categoryIndex) => (
           <div className="category-container" key={categoryIndex}>
-            <h2>{category.category}</h2>
             <div className="projects-grid">
+              <div className="title-container">
+                <h2 className="category-title">{category.category}</h2>
+              </div>
               {category.projects.map((project, projectIndex) => (
                 <Card
                   key={projectIndex}
                   project={project}
-                  featured={category.category === 'Hackathon winners'}
                 />
               ))}
             </div>

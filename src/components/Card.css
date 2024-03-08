@@ -22,6 +22,11 @@
   flex-direction: column;
 }
 
+.image-section {
+  display: flex;
+  flex: 1;
+}
+
 .image-section img {
   display: block;
   width: 100%;
@@ -81,8 +86,8 @@
 
 .icon-overlay {
   position: absolute;
-  top: -1rem; /* Adjust this value as needed */
-  right: -1rem; /* Adjust this value as needed */
+  top: -1.5rem; /* Adjust this value as needed */
+  right: -1.5rem; /* Adjust this value as needed */
   max-width: 8rem;
   max-height: 8rem;
   z-index: 10; /* Ensure the icon is above all other content */
@@ -133,8 +138,4 @@
     visibility: hidden;
     opacity: 0;
   }
-}
-.image-section {
-  display: flex;
-  flex: 1;
 }

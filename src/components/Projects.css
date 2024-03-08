@@ -1,7 +1,8 @@
 #projects {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Align items centrally in the cross axis */
+  align-items: center;
+  padding: 2rem 0;
 }
 
 .projects-grid {
@@ -15,4 +16,20 @@
 
 .category-container {
   width: 100%;
+}
+
+.title-container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  flex: 1 0 200px;
+  margin: 0.5rem;
+  position: relative;
+  overflow: visible;
+}
+
+.category-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
 }
