@@ -1,6 +1,7 @@
-section.dark {
+#writing {
+  /* Center content vertically */
   display: flex;
-  align-items: center;
+  flex-direction: column;
 }
 
 .writing-grid {
@@ -10,8 +11,6 @@ section.dark {
   max-width: 75%;
   margin: 2rem auto;
   gap: 2rem;
-}
-
-.cards-wrapper {
-  /* Add any specific styles here to control the height or other properties of the card wrapper */
+  /* height sized to content */
+  height: fit-content;
 }

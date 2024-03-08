@@ -3,24 +3,24 @@
     "title": "A Knowledge Workers' Guide to the Singularity",
     "description": "A Substack newsletter on staying employed in knowledge work amid major technological disruption by AI",
     "buttonText": "Substack",
-    "buttonLink": "https://knowledgeworkersguide.substack.com/"
+    "url": "https://knowledgeworkersguide.substack.com/"
   },
   {
     "title": "Modeling Markets",
     "description": "A Substack newsletter on economic modeling and quantitative finance",
     "buttonText": "Substack",
-    "buttonLink": "https://modelingmarkets.substack.com/"
+    "url": "https://modelingmarkets.substack.com/"
   },
   {
     "title": "Dreams from My Brain",
     "description": "An experimental podcast narrating actual dreams from my actual brain",
     "buttonText": "Podbean",
-    "buttonLink": "https://dreamsfrommybrain.podbean.com/"
+    "url": "https://dreamsfrommybrain.podbean.com/"
   },
   {
     "title": "Academic CV",
     "description": "Peer-reviewed publications and other academic work",
     "buttonText": "PDF",
-    "buttonLink": "documents/CurriculumVitae.pdf"
+    "url": "documents/CurriculumVitae.pdf"
   }
 ]
