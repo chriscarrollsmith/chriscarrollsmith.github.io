@@ -7,7 +7,7 @@ const SubscribeForm = () => {
   const [message, setMessage] = useState('');
 
   useEffect(() => {
-    const searchParams = new URLSearchParams(window.location.search);
+    const searchParams = new URLSearchParams(window.location.search.substring(1));
     const status = searchParams.get('status');
     if (status === 'success') {
       setMessage('Success! Now check your email to confirm your subscription.');
@@ -15,6 +15,9 @@ const SubscribeForm = () => {
       setMessage('There was an issue with your subscription. Please try again.');
     }
   }, []);
+
+  // ... rest of the component
+};
   
   return(
     <div className='convertkit-form'>
