@@ -1,11 +1,25 @@
 import './SubscribeForm.css';
 import siteProperties from '../data/siteproperties.json';
+import { useEffect, useState } from 'react';
 
 const SubscribeForm = () => {
   const FORM_ID = siteProperties.convertKitFormId;
+  const [message, setMessage] = useState('');
+
+  useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search);
+    const status = searchParams.get('status');
+    if (status === 'success') {
+      setMessage('Success! Now check your email to confirm your subscription.');
+    } else if (status === 'failure') {
+      setMessage('There was an issue with your subscription. Please try again.');
+    }
+  }, []);
+
   
   return(
     <div className='convertkit-form'>
+      {message && <div className="formkit-message">{message}</div>}
       <div className="title-section">
         <h3>Subscribe for email updates</h3>
       </div>
@@ -38,4 +52,5 @@ const SubscribeForm = () => {
   );
 };
 
+export default SubscribeForm;
 export default SubscribeForm;
