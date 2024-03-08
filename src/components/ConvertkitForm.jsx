@@ -1,12 +1,13 @@
 import './ConvertkitForm.css';
+import siteProperties from '../data/siteproperties.json';
 
 const ConvertKitForm = () => {
-  const FORM_ID = '6196695';
+  const FORM_ID = siteProperties.convertkitFormId;
   
   return(
     <div className='convertkit-form'>
       <div className="title-section">
-        <h3>Subscribe to my newsletter</h3>
+        <h3>Subscribe for email updates</h3>
       </div>
       <div className="body-section">
       <script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
@@ -16,10 +17,10 @@ const ConvertKitForm = () => {
           </ul>
           <div data-element="fields" data-stacked="false" className="seva-fields formkit-fields">
             <div className="formkit-field">
-              <input className="formkit-input" name="fields[name]" aria-label="Name" placeholder="Name" type="text" style={{ borderColor: 'rgb(68, 68, 68)', color: 'rgb(0, 0, 0)', borderRadius: '4px', fontWeight: '400' }} />
+              <input className="formkit-input" name="fields[name]" aria-label="Name" placeholder="Name" type="text" />
             </div>
             <div className="formkit-field">
-              <input className="formkit-input" name="email_address" aria-label="Email Address" placeholder="Email Address" required type="email" style={{ borderColor: 'rgb(68, 68, 68)', color: 'rgb(0, 0, 0)', borderRadius: '4px', fontWeight: '400' }} />
+              <input className="formkit-input" name="email_address" aria-label="Email Address" placeholder="Email Address" required type="email" />
             </div>
             <button data-element="submit" className="formkit-submit">
               <div className="formkit-spinner">

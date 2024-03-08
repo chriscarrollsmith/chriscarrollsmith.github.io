@@ -57,6 +57,11 @@
   color: #007bff;
 }
 
+.callout a:hover {
+  text-decoration: none;
+  color: #0056b3;
+}
+
 .callout button {
   padding: 10px 20px;
   margin: 10px 0;
@@ -67,6 +72,10 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.callout button:hover {
+  background-color: #0056b3;
 }
 
 @media screen and (min-width: 1282px) {

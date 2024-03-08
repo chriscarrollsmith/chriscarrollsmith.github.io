@@ -18,18 +18,17 @@
   width: 100%;
 }
 
-.title-container {
+.category-title-container {
   display: flex;
   flex-direction: column;
+  align-items: center;
   text-align: center;
+  justify-content: center;
+  width: 100%;
   flex: 1 0 200px;
   margin: 0.5rem;
   position: relative;
   overflow: visible;
-}
-
-.category-title {
-  font-size: 2.5rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 15px;
 }

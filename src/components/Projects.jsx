@@ -14,7 +14,7 @@ const Projects = () => {
         {projectsData.map((category, categoryIndex) => (
           <div className="category-container" key={categoryIndex}>
             <div className="projects-grid">
-              <div className="title-container">
+              <div className="category-title-container">
                 <h2 className="category-title">{category.category}</h2>
               </div>
               {category.projects.map((project, projectIndex) => (
