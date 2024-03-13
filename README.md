@@ -43,7 +43,7 @@ Under `Settings > Pages` for your repo on Github, make sure `Source` is set to `
 If you want to use a custom domain instead of the default 'https://{YOUR-GITHUB-USERNAME}.github.io' link, it's a bit complicated, and Github's documentation is atrocious. Here's the rundown on what you need to do:
 
 1. Register a domain name with a domain manager like Godaddy or Domain.com. If you already have a domain you've been using for another website, restore the default DNS settings.
-2. Add the domain under your user "Settings > Pages" on Github.
+2. Add the domain under your **user** (or **organization**, if the repo belongs to one) "Settings > Pages" on Github. (Not to be confused with the **repo** "Settings > Pages"!)
 3. Follow Github's instructions to verify your domain. This will involve going back to your domain manager and creating a DNS record. Here's how I did that on the domain management service I used, Domain.com:
    - Click to "Manage" the domain.
    - Go to "Advanced > DNS & Nameservers" on the menu bar.
