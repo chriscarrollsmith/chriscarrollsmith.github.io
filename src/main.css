@@ -1,0 +1,12 @@
+body {
+  margin: 0;
+  font-family: "Cormorant Garamond", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 1rem;
+}
+
+div#root {
+  width: 100%;
+  min-width: 100vw;
+}

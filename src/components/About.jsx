@@ -1,6 +1,7 @@
 import './About.css';
 import aboutMe from '../data/aboutme.json';
 import heroData from '../data/heroimages.json';
+import ContactForm from './ContactForm';
 
 const About = () => {
   const hero = heroData.find(h => h.name === 'about');
@@ -27,6 +28,7 @@ const About = () => {
         </ul>
         <hr />
         <p className="small" dangerouslySetInnerHTML={renderHtml(aboutMe.callToAction)} />
+        <ContactForm />
       </div>
     </section>
   );

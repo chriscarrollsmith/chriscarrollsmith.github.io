@@ -3,7 +3,7 @@
   "author": "Christopher Carroll Smith <christopher.smith@promptlytechnologies.com>",
   "name": "christophercarrollsmith-bookings-site",
   "private": false,
-  "version": "0.2.0",
+  "version": "0.3.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -12,6 +12,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@formspree/react": "^2.5.1",
     "convertkit-react": "^1.5.5",
     "react": "^18.2.0",
     "react-calendly": "^4.1.1",

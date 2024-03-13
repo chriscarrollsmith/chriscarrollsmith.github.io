@@ -25,6 +25,8 @@
 .image-section {
   display: flex;
   flex: 1;
+  color: black;
+  position: relative;
 }
 
 .image-section img {
@@ -79,7 +81,6 @@
   .with-image {
     background-color: rgba(0, 0, 0, 0.7);
     color: white;
-    background-color: rgba(0, 0, 0, 0.7);
   }
 }
 
@@ -116,20 +117,6 @@
   justify-content: space-between;
 }
 
-.button {
-  background-color: #4e567e;
-  color: white;
-  padding: 0.5rem 1rem;
-  text-decoration: none;
-  margin: 1rem auto 0;
-  border-radius: 5px;
-  transition: background-color 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
-  cursor: pointer;
-  border: none;
-  opacity: 1;
-  visibility: visible;
-}
-
 .with-image p {
   visibility: hidden;
   opacity: 0;
@@ -141,32 +128,25 @@
   opacity: 0;
 }
 
-.button:hover {
-  background-color: #3c415c;
+.button,
+.with-image p {
+  transition: visibility 0.3s ease, opacity 0.3s ease;
 }
 
 /* Hover effect for non-touch devices */
 @media (hover: hover) {
-  .project-card:hover .with-image .button {
-    visibility: visible;
-    opacity: 1;
-  }
-
+  .project-card:hover .with-image .button,
   .project-card:hover .with-image p {
     visibility: visible;
     opacity: 1;
   }
 }
 
-/* Always show the button for touch devices */
+/* Always show the button and text for touch devices */
 @media (hover: none) {
-  .with-image .button {
-    visibility: hidden;
-    opacity: 0;
-  }
-
+  .with-image .button,
   .with-image p {
-    visibility: hidden;
-    opacity: 0;
+    visibility: visible;
+    opacity: 1;
   }
 }

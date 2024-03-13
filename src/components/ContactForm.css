@@ -1,0 +1,60 @@
+.formspree-form {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  color: black;
+  margin: 1rem;
+  gap: 1rem;
+}
+
+.formspree-form input, textarea {
+  background: #ffffff;
+  padding: 12px;
+  border: 1px solid #e3e3e3;
+  width: 100%;
+  box-sizing: border-box; /* Add this line */
+  -webkit-transition: border-color ease-out 300ms;
+  transition: border-color ease-out 300ms;
+  font-family: "Garamond Cormorant", sans-serif;
+}
+
+.formspree-form input:focus, textarea:focus {
+  outline: none;
+  border-color: #1677be;
+  -webkit-transition: border-color ease 300ms;
+  transition: border-color ease 300ms;
+}
+
+.formspree-form textarea::placeholder {
+  font-family: "Garamond Cormorant", sans-serif;
+  font-style: inherit;
+  color: inherit;
+  font-weight: inherit;
+  opacity: 0.7;
+}
+
+.formspree-field {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.submit-container {
+  display: flex;
+  align-items: end;
+}
+
+@media only screen and (min-width: 768px) {
+  .formspree-field {
+    align-items: start;
+    gap: 1rem;
+  }
+
+  .formspree-textarea {
+    flex: 1;
+  }
+
+  .submit-container {
+    justify-content: flex-start;
+  }
+}

@@ -170,9 +170,12 @@ div.center-flex {
   text-decoration: none;
   margin: 1rem auto 0;
   border-radius: 5px;
-  transition: all 0.3s ease-in-out;
+  transition: background-color 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
   cursor: pointer;
   border: none;
+  opacity: 1;
+  visibility: visible;
+  font-weight: 400;
 }
 
 .button:hover {

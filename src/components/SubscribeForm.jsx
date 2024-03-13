@@ -7,7 +7,7 @@ const SubscribeForm = () => {
   const [message, setMessage] = useState('');
 
   useEffect(() => {
-    const searchParams = new URLSearchParams(window.location.search.substring(1));
+    const searchParams = new URLSearchParams(window.location.search);
     const status = searchParams.get('status');
     if (status === 'success') {
       setMessage('Success! Now check your email to confirm your subscription.');
@@ -15,12 +15,9 @@ const SubscribeForm = () => {
       setMessage('There was an issue with your subscription. Please try again.');
     }
   }, []);
-
-  // ... rest of the component
-};
   
   return(
-    <div className='convertkit-form'>
+    <div className='convertkit-form' id="subscribe">
       <div className="title-section">
         <h3>Subscribe for email updates</h3>
       </div>
@@ -30,7 +27,6 @@ const SubscribeForm = () => {
         <div data-style="clean">
           <ul className="formkit-alert formkit-alert-error" data-element="errors" data-group="alert">
           </ul>
-          {message && <div>{message}</div>}
           <div data-element="fields" data-stacked="false" className="seva-fields formkit-fields">
             <div className="formkit-field">
               <input className="formkit-input" name="fields[name]" aria-label="Name" placeholder="Name" type="text" />
@@ -46,6 +42,7 @@ const SubscribeForm = () => {
               </div>
               <span>Subscribe</span>
             </button>
+            {message && <div>{message}</div>}
           </div>
         </div>
       </form>
