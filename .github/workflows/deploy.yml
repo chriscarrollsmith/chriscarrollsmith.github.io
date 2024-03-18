@@ -5,20 +5,21 @@ on:
     branches:
       - main
 
-permissions: write-all
+permissions:
+  contents: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v2
+      - uses: actions/checkout@v4
         with:
-          node-version: 'lts/*'
+          ref: main
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 'latest'
 
       - name: Install dependencies
         run: npm ci
@@ -26,25 +27,26 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Check and prepare homepage URL
-        id: check
+      - name: Commit and push changes to repository
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: 'Automated build'
+
+      - name: Get domain
+        id: get-domain
+        uses: notiz-dev/github-action-json-property@release
+        with: 
+          path: 'package.json'
+          prop_path: 'homepage'
+
+      - name: Add CNAME to dist
         run: |
-          HOMEPAGE=$(node -p "require('./package.json').homepage")
-          STRIPPED_HOMEPAGE=${HOMEPAGE#http://}
-          STRIPPED_HOMEPAGE=${STRIPPED_HOMEPAGE#https://}
-          echo "::set-output name=stripped_homepage::$STRIPPED_HOMEPAGE"
-          if [[ ${HOMEPAGE: -10} != ".github.io" ]]; then
-            echo "::set-output name=run_cname::true"
-          else
-            echo "::set-output name=run_cname::false"
+          if [[ "${{ steps.get-domain.outputs.prop }}" != *.github.io ]]; then
+            echo ${{ steps.get-domain.outputs.prop }} > ./dist/CNAME
           fi
 
-      - name: Set CNAME
-        if: steps.check.outputs.run_cname == 'true'
-        run: echo ${{ steps.check.outputs.stripped_homepage }} > ./dist/CNAME
-
-      - name: Deploy
-        run: |
-          git config --global user.name 'GitHub Action'
-          git config --global user.email 'action@github.com'
-          npm run deploy
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist
+          branch: gh-pages
