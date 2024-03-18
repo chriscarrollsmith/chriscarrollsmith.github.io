@@ -43,8 +43,8 @@ jobs:
         if: steps.check.outputs.run_cname == 'true'
         run: echo ${{ steps.check.outputs.stripped_homepage }} > ./dist/CNAME
 
-      - name: Set git user
-        uses: fregante/setup-git-user@v2
-
       - name: Deploy
-        run: npm run deploy
+        run: 
+          git config --global user.name 'GitHub Action'
+          git config --global user.email 'action@github.com'
+          npm run deploy
