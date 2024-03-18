@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 
 const SubscribeForm = () => {
   const FORM_ID = siteProperties.convertKitFormId;
-  const DATA_UID = properties.convertKitDataUid;
+  const DATA_UID = siteProperties.convertKitDataUid;
   const [message, setMessage] = useState('');
 
   useEffect(() => {

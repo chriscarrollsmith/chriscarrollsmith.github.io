@@ -86,8 +86,8 @@
 
 .icon-overlay {
   position: absolute;
-  top: -1.5rem;
-  right: -1.5rem;
+  top: -2rem;
+  right: -2rem;
   max-width: 8rem;
   max-height: 8rem;
   z-index: 10;

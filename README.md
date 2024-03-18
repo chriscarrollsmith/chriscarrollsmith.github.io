@@ -34,7 +34,7 @@ If you want to deploy somewhere other than Github Pages, you'll also need to cha
 
 ## Deployment
 
-To build and deploy the site, run `npm run build`, and then `npm run deploy`.)
+To build and deploy the site, run `npm run build`, and then `npm run deploy`.
 
 Under `Settings > Pages` for your repo on Github, make sure `Source` is set to `Deploy from a branch` and `Branch` is set to `gh-pages`.
 
