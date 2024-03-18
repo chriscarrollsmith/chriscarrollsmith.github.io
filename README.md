@@ -65,4 +65,4 @@ This is a super tedious process with a lot of wait time built in, but hopefully 
 Additionally, to use a custom domain, you will need to make a couple changes to your repo's `package.json` file:
 
 1. Change the "homepage" attribute to your custom domain (e.g., "https://{your-domain}.com).
-2. Change the "deploy" command in `package.json` from "gh-pages -d dist" to "echo {your-domain}.com > ./dist/CNAME && gh-pages -d dist". (Obviously, replace the curly braces with your custom domain name.)
+2. Update the "cname" command in `package.json` with your custom domain name, and make sure to run this before deploying from a local machine.

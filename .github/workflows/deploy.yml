@@ -1,0 +1,53 @@
+name: Build and deploy via gh-pages branch
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2
+        with:
+          node-version: 'lts/*'
+
+      - name: Cache node modules
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Check and prepare homepage URL
+        id: check
+        run: |
+          HOMEPAGE=$(node -p "require('./package.json').homepage")
+          STRIPPED_HOMEPAGE=${HOMEPAGE#http://}
+          STRIPPED_HOMEPAGE=${STRIPPED_HOMEPAGE#https://}
+          echo "::set-output name=stripped_homepage::$STRIPPED_HOMEPAGE"
+          if [[ ${HOMEPAGE: -10} != ".github.io" ]]; then
+            echo "::set-output name=run_cname::true"
+          else
+            echo "::set-output name=run_cname::false"
+          fi
+
+      - name: Set CNAME
+        if: steps.check.outputs.run_cname == 'true'
+        run: echo ${{ steps.check.outputs.stripped_homepage }} > ./dist/CNAME
+
+      - name: Deploy
+        run: npm run deploy
