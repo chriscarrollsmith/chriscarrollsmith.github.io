@@ -20,14 +20,6 @@ jobs:
         with:
           node-version: 'lts/*'
 
-      - name: Cache node modules
-        uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
       - name: Install dependencies
         run: npm ci
 
@@ -50,6 +42,9 @@ jobs:
       - name: Set CNAME
         if: steps.check.outputs.run_cname == 'true'
         run: echo ${{ steps.check.outputs.stripped_homepage }} > ./dist/CNAME
+
+      - name: Set git user
+        uses: fregante/setup-git-user@v2
 
       - name: Deploy
         run: npm run deploy
