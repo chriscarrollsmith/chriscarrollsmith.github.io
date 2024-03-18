@@ -2,7 +2,7 @@
 // For more help visit https://formspr.ee/react-help
 import React from 'react';
 import { useForm, ValidationError } from '@formspree/react';
-import siteProperties from '../data/siteProperties.json';
+import siteProperties from '../data/siteproperties.json';
 import './ContactForm.css';
 
 export default function ContactForm() {
