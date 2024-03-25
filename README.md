@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This is a template for an attractive freelance booking website built with Vite + React, integrating Calendly + ConvertKit + Formspree, and configured for deployment to Github Pages. One exciting thing about modern web development is that there are so many great third-party services available for making even a static website interactive. A static website allow us to take advantage of free hosting, and third-party services allow us to add features like booking, contact forms, and email marketing without having to write any server-side code. This template shows how to use Calendly to book appointments, Formspree to handle contact form submissions, and ConvertKit to capture newsletter subscriptions, all in a free-hosted website.
+This is a template for an attractive freelance booking website built with Vite + React, integrating Calendly + ConvertKit + Formspree, and configured for deployment to Github Pages. One exciting thing about modern web development is that there are so many great third-party services available for making even a static website interactive. A static website allows us to take advantage of free hosting, and third-party services allow us to add features like booking, contact forms, and email marketing without having to write any server-side code. This template shows how to use Calendly to book appointments, Formspree to handle contact form submissions, and ConvertKit to capture newsletter subscriptions, all in a free-hosted website.
 
 ## Example
 
