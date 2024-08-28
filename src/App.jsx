@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header';
 import Home from './components/Home';
@@ -12,25 +12,23 @@ import Blog from './components/Blog';
 
 function App() {
   return (
-    <Router>
-      <div className="App">
-        <Header />
-        <Routes>
-          <Route path="/" element={
-            <>
-              <Home />
-              <About />
-              <Projects />
-              <ProjectFeature />
-              <Writing />
-              <Book />
-            </>
-          } />
-          <Route path="/blog" element={<Blog />} />
-        </Routes>
-        <Footer />
-      </div>
-    </Router>
+    <div className="App">
+      <Header />
+      <Routes>
+        <Route path="/" element={
+          <>
+            <Home />
+            <About />
+            <Projects />
+            <ProjectFeature />
+            <Writing />
+            <Book />
+          </>
+        } />
+        <Route path="/blog" element={<Blog />} />
+      </Routes>
+      <Footer />
+    </div>
   );
 }
 
