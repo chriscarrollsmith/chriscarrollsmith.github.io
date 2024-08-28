@@ -1,14 +1,42 @@
-import React from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 import './Header.css';
 
-const Header = () => (
-  <div id="header">
-    <a href="#home" target="_top">Home</a>
-    <a href="#about" target="_top">About</a>
-    <a href="#projects" target="_top">Projects</a>
-    <a href="#writing" target="_top">Writing</a>
-    <a href="#book" target="_top">Book a Meeting</a>
-  </div>
-);
+const Header = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.substring(1); // remove the '#' character
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 0);
+    }
+  }, [location]);
+
+  const handleAnchorClick = (e, hash) => {
+    e.preventDefault();
+    if (location.pathname !== '/') {
+      navigate(`/${hash}`);
+    } else {
+      navigate(hash);
+    }
+  };
+
+  return (
+    <div id="header">
+      <a href="/#home" onClick={(e) => handleAnchorClick(e, '#home')}>Home</a>
+      <a href="/#about" onClick={(e) => handleAnchorClick(e, '#about')}>About</a>
+      <a href="/#projects" onClick={(e) => handleAnchorClick(e, '#projects')}>Projects</a>
+      <a href="/#writing" onClick={(e) => handleAnchorClick(e, '#writing')}>Writing</a>
+      <a href="/#book" onClick={(e) => handleAnchorClick(e, '#book')}>Book a Meeting</a>
+      <Link to="/blog">Blog</Link>
+    </div>
+  );
+};
 
 export default Header;

@@ -1,15 +1,12 @@
-// Make sure to run npm install @formspree/react
-// For more help visit https://formspr.ee/react-help
-import React from 'react';
 import { useForm, ValidationError } from '@formspree/react';
 import siteProperties from '../data/siteproperties.json';
 import './ContactForm.css';
 
-export default function ContactForm() {
+const ContactForm = () => {
   const formId = siteProperties.formspreeFormId;
   const [state, handleSubmit] = useForm(formId);
   if (state.succeeded) {
-      return <p>Thank you for your email. I'll be in touch with you shortly!</p>;
+      return <p>Thank you for your email. I&apos;ll be in touch with you shortly!</p>;
   }
 
   return (
@@ -49,3 +46,5 @@ export default function ContactForm() {
     </form>
   );
 };
+
+export default ContactForm;

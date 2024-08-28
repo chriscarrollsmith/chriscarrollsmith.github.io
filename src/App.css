@@ -10,7 +10,7 @@ body {
   padding: 0;
   height: 100%;
   width: 100%;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Cormorant Garamond", serif;
 }
 
 #App {
@@ -64,7 +64,6 @@ section img.background {
 
 h1 {
   font-weight: 300;
-  font-family: "Cormorant Garamond", serif;
   font-size: 3.5rem;
   margin: 0;
 }

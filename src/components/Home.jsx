@@ -2,7 +2,7 @@ import './Home.css';
 import siteProperties from '../data/siteproperties.json';
 import heroData from '../data/heroimages.json';
 
-function Home() {
+const Home = () => {
   const hero = heroData.find(h => h.name === 'home');
   const windowWidth = window.innerWidth;
 

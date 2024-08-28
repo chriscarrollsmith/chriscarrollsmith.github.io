@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { InlineWidget } from "react-calendly";
 import "./Book.css";
 import siteProperties from "../data/siteproperties.json";

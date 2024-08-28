@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import './Footer.css';
 import siteProperties from '../data/siteproperties.json';
 import socialIcons from '../data/socialicons.json';
@@ -30,5 +31,10 @@ const Footer = ({ foregroundColor = 'white', backgroundColor = '#4e567e' }) => {
     );
   }
 }
+
+Footer.propTypes = {
+  foregroundColor: PropTypes.string,
+  backgroundColor: PropTypes.string,
+};
 
 export default Footer;
