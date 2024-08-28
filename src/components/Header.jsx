@@ -1,4 +1,4 @@
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import './Header.css';
 
@@ -34,7 +34,7 @@ const Header = () => {
       <a href="/#projects" onClick={(e) => handleAnchorClick(e, '#projects')}>Projects</a>
       <a href="/#writing" onClick={(e) => handleAnchorClick(e, '#writing')}>Writing</a>
       <a href="/#book" onClick={(e) => handleAnchorClick(e, '#book')}>Book a Meeting</a>
-      <Link to="/blog">Blog</Link>
+      <NavLink to="/blog">Blog</NavLink>
     </div>
   );
 };
