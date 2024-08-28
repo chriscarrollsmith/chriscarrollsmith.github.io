@@ -6,5 +6,5 @@ export default defineConfig({
   server: {
     historyApiFallback: true,
   },
-  base: 'https://christophercarrollsmith.com/'
+  base: 'https://chriscarrollsmith.github.io/'
 });
