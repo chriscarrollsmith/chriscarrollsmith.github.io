@@ -38,7 +38,7 @@ const Blog = () => {
     <div className="blog-container">
       <h1>Blog</h1>
       {blogData.map((post) => (
-        <article key={post.id} className="blog-post">
+        <article id={post.id} key={post.id} className="blog-post">
           <h2>{post.title}</h2>
           <time dateTime={post.date}>{new Date(post.date).toLocaleDateString()}</time>
           <DangerousElement markup={post.content} script={post.script} />
