@@ -1,15 +1,17 @@
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+import Seo from './Seo';
 import blogData from '../data/blogs.json';
 import './Blog.css';
 
 const Blog = () => {
   return (
     <>
-      <Helmet>
-        <title>Christopher Carroll Smith | Blog</title>
-        <meta name="description" content="Website of Christopher Carroll Smith, software architect, data storyteller, and president of Promptly Technologies, LLC." />
-      </Helmet>
+      <Seo 
+        title="Christopher Carroll Smith | Blog"
+        description="Blog posts by Christopher Carroll Smith, software architect, data storyteller, and president of Promptly Technologies, LLC."
+        type="website"
+        name="Christopher Carroll Smith"
+      />
       <div className="blog-container">
         <h1>Blog</h1>
         {blogData.map((post) => (

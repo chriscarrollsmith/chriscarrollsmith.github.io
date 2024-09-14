@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+import Seo from './Seo';
 import blogData from '../data/blogs.json';
 import DangerousElement from './DangerousElement';
 import './Blog.css';
@@ -13,25 +13,17 @@ const BlogPost = () => {
     return <p>Post not found.</p>;
   }
 
-  const pageTitle = `${post.title} | Christopher Carroll Smith`;
-  const pageDescription = post.excerpt;
-  const pageUrl = `${window.location.origin}${window.location.pathname}#/blog/${post.id}`;
-  const imageUrl = post.image || 'images/Chris_landscape.jpg';
+  const pageTitle = `${post.title.slice(0, 60)}` + ' | Christopher Carroll Smith';
+  const pageDescription = post.excerpt.slice(0, 155) + '...';
 
   return (
     <>
-      <Helmet>
-        <title>{pageTitle}</title>
-        <meta name="description" content={pageDescription} />
-        <meta property="og:title" content={pageTitle} />
-        <meta property="og:description" content={pageDescription} />
-        <meta property="og:url" content={pageUrl} />
-        <meta property="og:image" content={imageUrl} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={pageTitle} />
-        <meta name="twitter:description" content={pageDescription} />
-        <meta name="twitter:image" content={imageUrl} />
-      </Helmet>
+      <Seo 
+        title={pageTitle}
+        description={pageDescription}
+        type="article"
+        name="Christopher Carroll Smith"
+      />
       <div className="blog-container">
         <article className="blog-post">
           <h1>{post.title}</h1>
