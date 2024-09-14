@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import { Helmet, HelmetProvider } from 'react-helmet-async';
+import { Helmet } from 'react-helmet-async';
 import './App.css';
 import Header from './components/Header';
 import Home from './components/Home';
@@ -14,7 +14,6 @@ import BlogPost from './components/BlogPost';
 
 function App() {
   return (
-    <HelmetProvider>
       <div className="App">
         <Header />
         <Routes>
@@ -37,7 +36,6 @@ function App() {
         </Routes>
         <Footer />
       </div>
-    </HelmetProvider>
   );
 }
 
