@@ -7,6 +7,29 @@
     <meta property="og:image" content="images/Chris_landscape.jpg" />
     <title>Christopher Carroll Smith</title>
     <meta name="description" content="Website of Christopher Carroll Smith, software architect, data storyteller, and president of Promptly Technologies, LLC." />
+
+    <!-- GitHub Pages SPA redirect handler -->
+    <script>
+      // Decode the URL encoded by 404.html and restore proper routing
+      (function() {
+        var redirect = sessionStorage.redirect;
+        delete sessionStorage.redirect;
+        if (redirect && redirect != location.href) {
+          history.replaceState(null, null, redirect);
+        }
+      })();
+
+      // Store the redirect path for the script above
+      (function() {
+        var l = window.location;
+        if (l.search[1] === '/' ) {
+          var decoded = l.search.slice(1).split('&').map(function(s) {
+            return s.replace(/~and~/g, '&')
+          }).join('?');
+          sessionStorage.redirect = l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') + decoded;
+        }
+      })();
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
