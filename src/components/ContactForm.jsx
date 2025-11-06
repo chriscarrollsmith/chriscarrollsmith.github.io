@@ -15,13 +15,14 @@ const ContactForm = () => {
         <input
           className="formspree-input"
           id="email"
-          type="email" 
+          type="email"
           name="email"
           placeholder="Email Address"
+          autocomplete="email"
         />
       </div>
-      <ValidationError 
-        prefix="Email" 
+      <ValidationError
+        prefix="Email"
         field="email"
         errors={state.errors}
       />
@@ -31,6 +32,7 @@ const ContactForm = () => {
           id="message"
           name="message"
           placeholder="Project description"
+          autocomplete="off"
         />
         <div className="submit-container">
           <button className="button formspree-submit" type="submit" disabled={state.submitting}>

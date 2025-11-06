@@ -1,12 +1,12 @@
 {
-  "email": "images/social/envelope.svg",
-  "devDotTo": "images/social/devdotto.svg",
-  "gitHub": "images/social/github.svg",
-  "instagram": "images/social/instagram.svg",
-  "linkedIn": "images/social/linkedin.svg",
-  "medium": "images/social/medium.svg",
-  "twitter": "images/social/twitter.svg",
-  "facebook": "images/social/facebook.svg",
-  "youTube": "images/social/youtube.svg",
-  "mastodon": "images/social/mastodon.svg"
+  "email": "/images/social/envelope.svg",
+  "devDotTo": "/images/social/devdotto.svg",
+  "gitHub": "/images/social/github.svg",
+  "instagram": "/images/social/instagram.svg",
+  "linkedIn": "/images/social/linkedin.svg",
+  "medium": "/images/social/medium.svg",
+  "twitter": "/images/social/twitter.svg",
+  "facebook": "/images/social/facebook.svg",
+  "youTube": "/images/social/youtube.svg",
+  "mastodon": "/images/social/mastodon.svg"
 }

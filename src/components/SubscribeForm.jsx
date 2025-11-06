@@ -30,10 +30,10 @@ const SubscribeForm = () => {
           </ul>
           <div data-element="fields" data-stacked="false" className="seva-fields formkit-fields">
             <div className="formkit-field">
-              <input className="formkit-input" name="fields[name]" aria-label="Name" placeholder="Name" type="text" />
+              <input className="formkit-input" name="fields[name]" aria-label="Name" placeholder="Name" type="text" autocomplete="name" />
             </div>
             <div className="formkit-field">
-              <input className="formkit-input" name="email_address" aria-label="Email Address" placeholder="Email Address" required type="email" />
+              <input className="formkit-input" name="email_address" aria-label="Email Address" placeholder="Email Address" required type="email" autocomplete="email" />
             </div>
             <button data-element="submit" className="formkit-submit">
               <div className="formkit-spinner">

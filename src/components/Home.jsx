@@ -27,7 +27,7 @@ const Home = () => {
             <h2>{siteProperties.title}</h2>
           </div>
           <div id="down-arrow">
-            <a href="#about"><img className="clickable-icon" src="images/down-arrow.svg" alt="scroll down" /></a>
+            <a href="#about"><img className="clickable-icon" src="/images/down-arrow.svg" alt="scroll down" /></a>
           </div>
         </>
       )}
