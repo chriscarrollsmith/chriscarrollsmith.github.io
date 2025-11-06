@@ -1,4 +1,5 @@
-import PropTypes from 'prop-types';
+import pkg from 'prop-types';
+const { PropTypes } = pkg;
 import { Helmet } from 'react-helmet-async';
 
 const Seo = ({ title, description, type, name, image }) => {

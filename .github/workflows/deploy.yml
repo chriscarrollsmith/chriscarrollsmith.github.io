@@ -1,52 +1,35 @@
-name: Build and deploy via gh-pages branch
+name: Deploy to GitHub Pages
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
+  workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: main
+      - name: Checkout your repository using git
+        uses: actions/checkout@v5
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 'latest'
+      - name: Add CNAME file
+        run: echo "christophercarrollsmith.com" > ./public/CNAME
 
-      - name: Install dependencies
-        run: npm ci
+      - name: Install, build, and upload your site
+        uses: withastro/action@v5
 
-      - name: Build
-        run: npm run build
-
-      - name: Commit and push changes to repository
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: 'Automated build'
-
-      - name: Get domain
-        id: get-domain
-        uses: notiz-dev/github-action-json-property@release
-        with: 
-          path: 'package.json'
-          prop_path: 'homepage'
-
-      - name: Add CNAME to dist
-        run: |
-          if [[ "${{ steps.get-domain.outputs.prop }}" != *.github.io ]]; then
-            echo ${{ steps.get-domain.outputs.prop }} > ./dist/CNAME
-          fi
-
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          folder: dist
-          branch: gh-pages
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

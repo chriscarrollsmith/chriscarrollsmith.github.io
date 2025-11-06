@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeaderAstro from '../components/HeaderAstro.astro';
+import HomeClient from '../components/HomeClient.jsx';
+import About from '../components/About.jsx';
+import Projects from '../components/Projects.jsx';
+import ProjectFeature from '../components/ProjectFeature.jsx';
+import Writing from '../components/Writing.jsx';
+import Book from '../components/Book.jsx';
+import Footer from '../components/Footer.jsx';
+import '../App.css';
+---
+
+<BaseLayout
+  title="Christopher Carroll Smith"
+  description="Website of Christopher Carroll Smith, software architect, data storyteller, and president of Promptly Technologies, LLC."
+  type="website"
+>
+  <div class="App">
+    <HeaderAstro />
+    <HomeClient client:load />
+    <About client:load />
+    <Projects client:load />
+    <ProjectFeature client:load />
+    <Writing client:load />
+    <Book client:only="react" />
+    <Footer client:load />
+  </div>
+</BaseLayout>

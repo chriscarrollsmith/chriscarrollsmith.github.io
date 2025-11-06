@@ -2,67 +2,193 @@
 
 ## Introduction
 
-This is a template for an attractive freelance booking website built with Vite + React, integrating Calendly + ConvertKit + Formspree, and configured for deployment to Github Pages. One exciting thing about modern web development is that there are so many great third-party services available for making even a static website interactive. A static website allows us to take advantage of free hosting, and third-party services allow us to add features like booking, contact forms, and email marketing without having to write any server-side code. This template shows how to use Calendly to book appointments, Formspree to handle contact form submissions, and ConvertKit to capture newsletter subscriptions, all in a free-hosted website.
+This is a personal website and blog built with Astro and React, integrating Calendly + ConvertKit + Formspree, and configured for automatic deployment to GitHub Pages. The site uses Astro's static site generation (SSG) to create SEO-optimized pages with clean URLs, while maintaining React components for interactive features.
+
+One exciting thing about modern web development is that there are so many great third-party services available for making even a static website interactive. A static website allows us to take advantage of free hosting, and third-party services allow us to add features like booking, contact forms, and email marketing without having to write any server-side code. This site uses Calendly to book appointments, Formspree to handle contact form submissions, and ConvertKit to capture newsletter subscriptions, all in a free-hosted website.
 
 ## Example
 
 ![Site preview](site-preview.gif "Site preview")
 
-See the site live [here](https://chriscarrollsmith.github.io/).
+See the site live [here](https://christophercarrollsmith.com).
+
+## Tech Stack
+
+- **Astro** - Static site generator with file-based routing
+- **React** - UI components (integrated via @astrojs/react)
+- **Vite** - Build tool (used internally by Astro)
+- **GitHub Actions** - Automated deployment
+- **GitHub Pages** - Free hosting
+
+## Key Features
+
+- ✅ Static site generation for optimal performance
+- ✅ SEO-optimized with embedded meta tags for social media previews
+- ✅ Clean URLs (e.g., `/blog/1` instead of `/#/blog/1`)
+- ✅ React components with selective hydration for interactivity
+- ✅ Automatic deployment via GitHub Actions
+- ✅ Custom domain support
 
 ## Prerequisites
 
-You will need to have `npm` installed in your development environment. You will also need a [Calendly](https://calendly.com/) account to use the `Book` component, a [Formspree](https://formspree.io/) account to use the `ContactForm` component, and a [ConvertKit](https://convertkit.com/?lmref=R3jWSQ) account to use the `SubscribeForm` component.
+You will need to have `npm` installed in your development environment. You will also need:
+- A [Calendly](https://calendly.com/) account to use the `Book` component
+- A [Formspree](https://formspree.io/) account to use the `ContactForm` component
+- A [ConvertKit](https://convertkit.com/?lmref=R3jWSQ) account to use the `SubscribeForm` component
 
 ## Creating a repo from the template
 
-Clone the template with the "Use this template button." Assuming you plan to deploy as your homepage on Github pages, make sure to name your cloned repo `{YOUR-GITHUB-USERNAME}.github.io` and install dependencies in your repo folder from the command line with `npm install`.
+Clone the template with the "Use this template" button. If you plan to deploy as your homepage on GitHub Pages, name your cloned repo `{YOUR-GITHUB-USERNAME}.github.io` and install dependencies in your repo folder from the command line with `npm install`.
+
+## Development
+
+To preview the site during development:
+
+```bash
+npm run dev
+```
+
+This starts the Astro dev server with hot module replacement (HMR).
 
 ## Customization
 
-To edit the template, you can use Github Codespaces or clone the repo locally to work in the editor of your choice. Preview the site during development with `npm run dev`.
+To edit the site, you can use GitHub Codespaces or clone the repo locally to work in the editor of your choice.
 
 Make sure to:
 
-- Change the 'homepage' attribute in `package.json` to 'https://{YOUR-GITHUB-USERNAME}.github.io'.
+- Change the `site` property in `astro.config.mjs` to `'https://{YOUR-GITHUB-USERNAME}.github.io'`
 
-- Edit the JSON files in `src/data` and the images and documents in `public` to customize site appearance. 
+- Edit the JSON files in `src/data` and the images and documents in `public` to customize site appearance
 
-- Edit the `meta` tags in `index.html` in the root folder.
+- Edit blog posts in `src/data/blogs.json` or migrate to Markdown files if preferred
 
-If you want to deploy somewhere other than Github Pages, you'll also need to change the 'deploy' command in `package.json`.
+- Customize meta tags in `src/layouts/BaseLayout.astro` for default SEO settings
+
+## Project Structure
+
+```
+/
+├── public/              # Static assets (images, documents, CNAME)
+├── src/
+│   ├── components/      # React components (.jsx) and Astro components (.astro)
+│   ├── data/           # JSON data files for content
+│   ├── layouts/        # Astro layouts with SEO meta tags
+│   └── pages/          # File-based routing (generates URLs)
+│       ├── index.astro # Home page
+│       └── blog/
+│           ├── index.astro    # Blog list
+│           └── [id].astro     # Dynamic blog posts
+├── astro.config.mjs    # Astro configuration
+└── package.json
+```
 
 ## Deployment
 
-To build and deploy the site, run `npm run build`, and then `npm run deploy`.
+Deployment is **automatic** via GitHub Actions. When you push to the `main` branch:
 
-Under `Settings > Pages` for your repo on Github, make sure `Source` is set to `Deploy from a branch` and `Branch` is set to `gh-pages`.
+1. GitHub Actions builds the site using `astro build`
+2. The static files are deployed to GitHub Pages
+3. Your site is live at `https://{YOUR-GITHUB-USERNAME}.github.io`
 
-## Using a custom domain
+### Manual Build
 
-If you want to use a custom domain instead of the default 'https://{YOUR-GITHUB-USERNAME}.github.io' link, it's a bit complicated, and Github's documentation is atrocious. Here's the rundown on what you need to do:
+To build locally for testing:
 
-1. Register a domain name with a domain manager like Godaddy or Domain.com. If you already have a domain you've been using for another website, restore the default DNS settings.
-2. Add the domain under your **user** (or **organization**, if the repo belongs to one) "Settings > Pages" on Github. (Not to be confused with the **repo** "Settings > Pages"!)
-3. Follow Github's instructions to verify your domain. This will involve going back to your domain manager and creating a DNS record. Here's how I did that on the domain management service I used, Domain.com:
-   - Click to "Manage" the domain.
-   - Go to "Advanced > DNS & Nameservers" on the menu bar.
-   - Go to "DNS Records" tab.
-   - Click "Add DNS Record".
-   - Set "Type" to "TXT", "Time to Live" to half an hour, and "Name" and "Content" to the values provided by Github.
-   - Click "Add DNS".
-   - Wait a couple hours for the DNS changes to propagate, then go back to Github "Settings > Pages" and click to finish verification.
-4. In your 'https://{YOUR-GITHUB-USERNAME}.github.io' repo on Github, go to the repo "Settings > Pages" (which is different from your user settings) and add your domain.
-5. Go back to your domain manager and edit the DNS records:
-   - Delete all existing "CNAME" records and any "A" records named "@". (You should leave all other "A" records alone. Only delete the ones named "@".)
-   - Create four new records of type "A", named "@". Each record's value/content should be one of the four Github Pages IP addresses: "185.199.108.153", "185.199.109.153", "185.199.110.153", "185.199.111.153". Set "Time to Live" to half an hour. You should have an "A" record for each IP address. 
-   - Create one record of type "CNAME", named "www", with your custom domain ("{your-domain}.com") as its value/content. (Obviously, replace the curly braces with your custom domain name.) Set "Time to Live" to half an hour.
-6. Wait a couple more hours for your DNS changes to propagate, then head back to "Settings > Pages" for your Github repo. If you've done everything correctly, You should see "DNS check successful" under the custom domain field.
-7. Click the check box to "Enforce HTTPS". If the DNS check passed, but the box isn't clickable, you may have to remove and re-add your domain. (Or Github may not have issued your site an SSL certificate yet. If you've removed and re-added your site and still can't click the checkbox, take and break for a few hours and then come back and try again.)
+```bash
+npm run build
+```
 
-This is a super tedious process with a lot of wait time built in, but hopefully these instructions will help you get it done.
+Built files appear in the `dist/` directory.
 
-Additionally, to use a custom domain, you will need to make a couple changes to your repo's `package.json` file:
+To preview the production build:
 
-1. Change the "homepage" attribute to your custom domain (e.g., "https://{your-domain}.com).
-2. Update the "cname" command in `package.json` with your custom domain name, and make sure to run this before deploying from a local machine.
+```bash
+npm run preview
+```
+
+### GitHub Pages Setup
+
+1. Go to your repository's **Settings > Pages**
+2. Under **Source**, select **GitHub Actions** (not "Deploy from a branch")
+3. Push to `main` branch - deployment happens automatically!
+
+## Using a Custom Domain
+
+If you want to use a custom domain instead of the default `https://{YOUR-GITHUB-USERNAME}.github.io` link:
+
+### 1. Register and configure your domain
+
+1. Register a domain name with a domain manager like GoDaddy or Domain.com. If you already have a domain you've been using for another website, restore the default DNS settings.
+
+2. Add the domain under your **user** (or **organization**, if the repo belongs to one) "Settings > Pages" on GitHub. (Not to be confused with the **repo** "Settings > Pages"!)
+
+3. Follow GitHub's instructions to verify your domain. This will involve going back to your domain manager and creating a DNS record. Here's how to do that on most domain managers:
+   - Go to DNS management for your domain
+   - Add a **TXT** record with the name and value provided by GitHub
+   - Wait a couple hours for DNS changes to propagate
+   - Return to GitHub "Settings > Pages" and verify
+
+4. In your repo's **Settings > Pages**, add your custom domain
+
+5. Configure DNS records in your domain manager:
+   - Delete all existing **CNAME** records and any **A** records named "@"
+   - Create four new **A** records, each named "@" with these IP addresses:
+     - `185.199.108.153`
+     - `185.199.109.153`
+     - `185.199.110.153`
+     - `185.199.111.153`
+   - Create one **CNAME** record named "www" pointing to `{YOUR-GITHUB-USERNAME}.github.io`
+   - Set TTL (Time to Live) to 30 minutes for all records
+
+6. Wait a few hours for DNS propagation, then check **Settings > Pages** for "DNS check successful"
+
+7. Enable **Enforce HTTPS** (if the option isn't available, wait a bit longer for SSL certificate issuance)
+
+### 2. Update site configuration
+
+1. Edit `astro.config.mjs`:
+   ```js
+   export default defineConfig({
+     site: 'https://yourdomain.com',
+     // ...
+   });
+   ```
+
+2. Update `public/CNAME` with your domain name (one line):
+   ```
+   yourdomain.com
+   ```
+
+The GitHub Actions workflow will automatically include the CNAME file in deployments.
+
+## Blog Posts
+
+Blog posts are currently stored as JSON in `src/data/blogs.json`. Each post contains:
+- `id` - Unique identifier (used in URL)
+- `title` - Post title
+- `date` - Publication date
+- `excerpt` - Short description (used in meta tags for social previews)
+- `content` - HTML content
+- `image` - Preview image for social media
+- `script` - Optional JavaScript for interactive elements
+
+### Adding a New Blog Post
+
+Add a new object to the `blogs.json` array:
+
+```json
+{
+  "id": 4,
+  "title": "Your Post Title",
+  "date": "2025-01-15",
+  "excerpt": "A compelling description for social media previews...",
+  "content": "<p>Your HTML content here...</p>",
+  "image": "images/your-preview-image.png"
+}
+```
+
+The build process will automatically generate a static page at `/blog/4` with embedded SEO meta tags.
+
+## License
+
+This is a personal website template. Feel free to fork and customize for your own use!

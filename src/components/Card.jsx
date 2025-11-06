@@ -1,4 +1,5 @@
-import { PropTypes } from 'prop-types';
+import pkg from 'prop-types';
+const { PropTypes } = pkg;
 import './Card.css';
 
 const Card = ({ project }) => (

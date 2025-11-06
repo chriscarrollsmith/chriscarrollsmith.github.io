@@ -3,15 +3,15 @@ import projectData from '../data/projectfeature.json';
 import heroData from '../data/heroimages.json';
 
 const ProjectFeature = () => {
-  const { portraitImage, landscapeImage, callToAction, buttonText } = projectData;
+  const { portraitImage, landscapeImage, callToAction, buttonText, buttonUrl } = projectData;
   const hero = heroData.find(h => h.name === 'project-feature');
-  
+
   return (
     <section className={hero?.src ? hero?.shade : hero?.shade === "dark" ? "black" : "white"} id="project-feature">
       <div className="project-feature-section">
         <div className="callout">
           <p dangerouslySetInnerHTML={{ __html: callToAction }} />
-          <button>{buttonText}</button>
+          <a href={buttonUrl} target="_blank" rel="noopener noreferrer" className="button">{buttonText}</a>
         </div>
         {landscapeImage?.src &&
         <div className="landscape-container">
