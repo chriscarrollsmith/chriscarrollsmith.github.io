@@ -27,3 +27,6 @@ dist-ssr
 
 Pipfile
 Pipfile.lock
+
+# AI stuff
+CLAUDE.md
