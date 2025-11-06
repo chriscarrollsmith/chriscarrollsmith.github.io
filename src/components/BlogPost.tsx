@@ -4,10 +4,13 @@ import blogData from '../data/blogs.json';
 import DangerousElement from './DangerousElement';
 import './Blog.css';
 import './BlogPost.css';
+import type { BlogPost as BlogPostType } from '../types/data';
 
-const BlogPost = () => {
-  const { id } = useParams();
-  const post = blogData.find(p => p.id === parseInt(id));
+const typedBlogData = blogData as BlogPostType[];
+
+const BlogPost: React.FC = () => {
+  const { id } = useParams<{ id: string }>();
+  const post = typedBlogData.find(p => p.id === parseInt(id || '0'));
 
   if (!post) {
     return <p>Post not found.</p>;

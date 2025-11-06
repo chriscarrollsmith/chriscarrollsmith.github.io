@@ -1,9 +1,12 @@
 import { useForm, ValidationError } from '@formspree/react';
 import siteProperties from '../data/siteproperties.json';
 import './ContactForm.css';
+import type { SiteProperties } from '../types/data';
 
-const ContactForm = () => {
-  const formId = siteProperties.formspreeFormId;
+const typedSiteProperties = siteProperties as SiteProperties;
+
+const ContactForm: React.FC = () => {
+  const formId = typedSiteProperties.formspreeFormId;
   const [state, handleSubmit] = useForm(formId);
   if (state.succeeded) {
       return <p>Thank you for your email. I&apos;ll be in touch with you shortly!</p>;

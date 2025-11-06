@@ -1,19 +1,21 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import HeaderAstro from '../../components/HeaderAstro.astro';
-import Footer from '../../components/Footer.jsx';
+import Footer from '../../components/Footer.tsx';
 import blogData from '../../data/blogs.json';
+import type { BlogPost } from '../../types/data';
 import '../../components/Blog.css';
 import '../../components/BlogPost.css';
 
 export async function getStaticPaths() {
-  return blogData.map(post => ({
+  const typedBlogData = blogData as BlogPost[];
+  return typedBlogData.map(post => ({
     params: { id: String(post.id) },
     props: { post }
   }));
 }
 
-const { post } = Astro.props;
+const { post }: { post: BlogPost } = Astro.props;
 
 const pageTitle = `${post.title.slice(0, 60)} | Christopher Carroll Smith`;
 const pageDescription = post.excerpt.slice(0, 155) + '...';

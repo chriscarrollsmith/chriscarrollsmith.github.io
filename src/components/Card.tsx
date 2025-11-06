@@ -1,8 +1,11 @@
-import pkg from 'prop-types';
-const { PropTypes } = pkg;
 import './Card.css';
+import type { Project } from '../types/data';
 
-const Card = ({ project }) => (
+interface CardProps {
+  project: Project;
+}
+
+const Card: React.FC<CardProps> = ({ project }) => (
   <div className={`project-card ${project['icon-overlay'] ? 'featured' : ''}`}>
     <div className="content-wrapper">
       <div className="title-section">
@@ -31,9 +34,5 @@ const Card = ({ project }) => (
     )}
   </div>
 );
-
-Card.propTypes = {
-  project: PropTypes.object.isRequired,
-};
 
 export default Card;

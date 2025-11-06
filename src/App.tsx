@@ -12,7 +12,7 @@ import Blog from './components/Blog';
 import BlogPost from './components/BlogPost';
 import Seo from './components/Seo';
 
-function App() {
+const App: React.FC = () => {
   return (
       <div className="App">
         <Header />

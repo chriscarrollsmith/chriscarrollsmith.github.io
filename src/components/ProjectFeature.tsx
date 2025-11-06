@@ -1,10 +1,14 @@
 import './ProjectFeature.css';
 import projectData from '../data/projectfeature.json';
 import heroData from '../data/heroimages.json';
+import type { ProjectFeature as ProjectFeatureType, HeroImage } from '../types/data';
 
-const ProjectFeature = () => {
-  const { portraitImage, landscapeImage, callToAction, buttonText, buttonUrl } = projectData;
-  const hero = heroData.find(h => h.name === 'project-feature');
+const typedProjectData = projectData as ProjectFeatureType;
+const typedHeroData = heroData as HeroImage[];
+
+const ProjectFeature: React.FC = () => {
+  const { portraitImage, landscapeImage, callToAction, buttonText, buttonUrl } = typedProjectData;
+  const hero = typedHeroData.find(h => h.name === 'project-feature');
 
   return (
     <section className={hero?.src ? hero?.shade : hero?.shade === "dark" ? "black" : "white"} id="project-feature">

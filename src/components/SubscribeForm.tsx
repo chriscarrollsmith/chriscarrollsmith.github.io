@@ -1,10 +1,13 @@
 import './SubscribeForm.css';
 import siteProperties from '../data/siteproperties.json';
 import { useEffect, useState } from 'react';
+import type { SiteProperties } from '../types/data';
 
-const SubscribeForm = () => {
-  const FORM_ID = siteProperties.convertKitFormId;
-  const DATA_UID = siteProperties.convertKitDataUid;
+const typedSiteProperties = siteProperties as SiteProperties;
+
+const SubscribeForm: React.FC = () => {
+  const FORM_ID = typedSiteProperties.convertKitFormId;
+  const DATA_UID = typedSiteProperties.convertKitDataUid;
   const [message, setMessage] = useState('');
 
   useEffect(() => {

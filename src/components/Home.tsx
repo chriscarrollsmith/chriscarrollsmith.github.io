@@ -1,12 +1,16 @@
 import './Home.css';
 import siteProperties from '../data/siteproperties.json';
 import heroData from '../data/heroimages.json';
+import type { SiteProperties, HeroImage } from '../types/data';
 
-const Home = () => {
-  const hero = heroData.find(h => h.name === 'home');
+const typedSiteProperties = siteProperties as SiteProperties;
+const typedHeroData = heroData as HeroImage[];
+
+const Home: React.FC = () => {
+  const hero = typedHeroData.find(h => h.name === 'home');
   const windowWidth = window.innerWidth;
 
-  if (Object.keys(siteProperties).length === 0 || Object.keys(hero).length === 0) {
+  if (Object.keys(typedSiteProperties).length === 0 || !hero || Object.keys(hero).length === 0) {
     return <p>Loading...</p>;
   }
 
@@ -23,8 +27,8 @@ const Home = () => {
             }}
           />
           <div style={{ position: 'absolute', top: '30%', left: '2rem', right: '2rem'}}>
-            <h1>{siteProperties.name}</h1>
-            <h2>{siteProperties.title}</h2>
+            <h1>{typedSiteProperties.name}</h1>
+            <h2>{typedSiteProperties.title}</h2>
           </div>
           <div id="down-arrow">
             <a href="#about"><img className="clickable-icon" src="/images/down-arrow.svg" alt="scroll down" /></a>

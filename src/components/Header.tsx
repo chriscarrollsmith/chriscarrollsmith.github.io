@@ -2,7 +2,7 @@ import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import './Header.css';
 
-const Header = () => {
+const Header: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -18,7 +18,7 @@ const Header = () => {
     }
   }, [location]);
 
-  const handleAnchorClick = (e, hash) => {
+  const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, hash: string) => {
     e.preventDefault();
     if (location.pathname !== '/') {
       navigate(`/${hash}`);

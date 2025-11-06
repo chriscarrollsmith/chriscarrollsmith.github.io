@@ -1,8 +1,14 @@
-import pkg from 'prop-types';
-const { PropTypes } = pkg;
 import { Helmet } from 'react-helmet-async';
 
-const Seo = ({ title, description, type, name, image }) => {
+interface SeoProps {
+  title: string;
+  description: string;
+  type: string;
+  name: string;
+  image?: string;
+}
+
+const Seo: React.FC<SeoProps> = ({ title, description, type, name, image }) => {
   return (
     <Helmet>
       <title>{title}</title>
@@ -18,13 +24,5 @@ const Seo = ({ title, description, type, name, image }) => {
     </Helmet>
   );
 };
-
-Seo.propTypes = {
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  image: PropTypes.string,
-}
 
 export default Seo;

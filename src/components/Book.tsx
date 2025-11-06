@@ -3,13 +3,17 @@ import { InlineWidget } from "react-calendly";
 import "./Book.css";
 import siteProperties from "../data/siteproperties.json";
 import heroData from '../data/heroimages.json';
+import type { HeroImage, SiteProperties } from '../types/data';
 
-const Book = () => {
+const typedSiteProperties = siteProperties as SiteProperties;
+const typedHeroData = heroData as HeroImage[];
+
+const Book: React.FC = () => {
   const [height, setHeight] = useState(getIframeHeight());
-  const hero = heroData.find(h => h.name === 'book');
-  const calendlyUrl = siteProperties.calendlyUrl;
+  const hero = typedHeroData.find(h => h.name === 'book');
+  const calendlyUrl = typedSiteProperties.calendlyUrl;
 
-  function getIframeHeight() {
+  function getIframeHeight(): string {
     const windowWidth = window.innerWidth;
     if (windowWidth >= 999) {
       return '690px';
@@ -32,7 +36,7 @@ const Book = () => {
   }, []);
 
   return (
-    <section className={hero.src ? hero.shade : hero.shade === "dark" ? "black" : "white"} id="book-section">
+    <section className={hero?.src ? hero.shade : hero?.shade === "dark" ? "black" : "white"} id="book-section">
       {hero && (
         <>
           <img
