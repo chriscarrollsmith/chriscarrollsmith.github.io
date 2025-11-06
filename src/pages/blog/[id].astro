@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import HeaderAstro from '../../components/HeaderAstro.astro';
+import Footer from '../../components/Footer.jsx';
+import blogData from '../../data/blogs.json';
+import '../../components/Blog.css';
+import '../../components/BlogPost.css';
+
+export async function getStaticPaths() {
+  return blogData.map(post => ({
+    params: { id: String(post.id) },
+    props: { post }
+  }));
+}
+
+const { post } = Astro.props;
+
+const pageTitle = `${post.title.slice(0, 60)} | Christopher Carroll Smith`;
+const pageDescription = post.excerpt.slice(0, 155) + '...';
+const pageImage = post.image || '/images/Chris_landscape.jpg';
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  image={pageImage}
+  type="article"
+>
+  <div class="App">
+    <HeaderAstro />
+    <div class="blog-container">
+      <article class="blog-post">
+        <h1>{post.title}</h1>
+        <time datetime={post.date}>{new Date(post.date).toLocaleDateString()}</time>
+        <div set:html={post.content} />
+        {post.script && (
+          <script is:inline set:html={post.script} />
+        )}
+      </article>
+    </div>
+    <Footer client:load />
+  </div>
+</BaseLayout>

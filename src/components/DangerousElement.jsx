@@ -1,5 +1,6 @@
 import { useRef, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import pkg from 'prop-types';
+const { PropTypes } = pkg;
 
 const DangerousElement = ({ markup, script }) => {
   const ref = useRef();

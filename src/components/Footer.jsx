@@ -1,4 +1,5 @@
-import PropTypes from 'prop-types';
+import pkg from 'prop-types';
+const { PropTypes } = pkg;
 import './Footer.css';
 import siteProperties from '../data/siteproperties.json';
 import socialIcons from '../data/socialicons.json';
