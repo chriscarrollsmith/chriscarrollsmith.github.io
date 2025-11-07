@@ -43,18 +43,27 @@ const postsWithAspectRatio = typedBlogData.map(post => {
     <HeaderAstro />
     <div class="blog-container">
       <h1>Blog</h1>
-      {postsWithAspectRatio.map((post) => {
+      {postsWithAspectRatio.map((post, index) => {
         const isWideBanner = post.aspectRatio && post.aspectRatio > 2;
         const hasImage = post.image && post.aspectRatio;
+        const hasThumbnail = hasImage && !isWideBanner;
+
+        // Alternate thumbnail position (even indices = right, odd = left)
+        const thumbnailPosition = index % 2 === 0 ? 'right' : 'left';
 
         return (
-          <article id={String(post.id)} key={post.id} class={`blog-post-summary ${isWideBanner ? 'blog-post-banner' : ''}`}>
+          <article id={String(post.id)} key={post.id} class={`blog-post-summary ${isWideBanner ? 'blog-post-banner' : ''} ${hasThumbnail ? `thumbnail-${thumbnailPosition}` : ''}`}>
             {hasImage && isWideBanner && (
               <a href={`/blog/${post.id}`} class="blog-banner-link">
                 <img src={`/${post.image}`} alt={post.title} class="blog-banner" />
               </a>
             )}
             <div class="blog-post-content">
+              {hasThumbnail && thumbnailPosition === 'left' && (
+                <a href={`/blog/${post.id}`} class="blog-thumbnail-link">
+                  <img src={`/${post.image}`} alt={post.title} class="blog-thumbnail" />
+                </a>
+              )}
               <div class="blog-post-text">
                 <h2>
                   <a href={`/blog/${post.id}`}>{post.title}</a>
@@ -62,7 +71,7 @@ const postsWithAspectRatio = typedBlogData.map(post => {
                 <time datetime={post.date}>{new Date(post.date).toLocaleDateString()}</time>
                 <p>{post.excerpt}</p>
               </div>
-              {hasImage && !isWideBanner && (
+              {hasThumbnail && thumbnailPosition === 'right' && (
                 <a href={`/blog/${post.id}`} class="blog-thumbnail-link">
                   <img src={`/${post.image}`} alt={post.title} class="blog-thumbnail" />
                 </a>

@@ -11,6 +11,7 @@
   padding-bottom: 0.625rem;
   margin-top: 1.5rem;
   margin-bottom: 1.875rem;
+  text-align: left;
 }
 
 .blog-post-summary {
@@ -45,7 +46,7 @@
 .blog-post-content {
   display: flex;
   gap: 1.5rem;
-  align-items: flex-start;
+  align-items: flex-end;
 }
 
 .blog-thumbnail-link {
@@ -79,6 +80,7 @@
   margin-bottom: 0.625rem;
   line-height: 1.3;
   color: black;
+  text-align: left;
 }
 
 .blog-post-summary h2 a {
