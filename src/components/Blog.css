@@ -1,7 +1,7 @@
 .blog-container {
   max-width: 50rem;
   margin: 0 auto;
-  padding: 1.25rem;
+  padding: 3rem 1.25rem;
   font-family: "Montserrat", sans-serif;
 }
 
@@ -13,9 +13,69 @@
   margin-bottom: 1.875rem;
 }
 
+.blog-post-summary {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.blog-post-summary:last-child {
+  border-bottom: none;
+}
+
+/* Banner layout for wide images (>2:1 aspect ratio) */
+.blog-post-banner .blog-banner-link {
+  display: block;
+  margin-bottom: 1.5rem;
+}
+
+.blog-banner {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.2s ease;
+}
+
+.blog-banner:hover {
+  transform: scale(1.02);
+}
+
+/* Thumbnail layout for non-wide images */
+.blog-post-content {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.blog-thumbnail-link {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.blog-thumbnail {
+  max-width: 200px;
+  max-height: 150px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  transition: transform 0.2s ease;
+}
+
+.blog-thumbnail:hover {
+  transform: scale(1.05);
+}
+
+.blog-post-text {
+  flex: 1;
+  min-width: 0;
+}
+
 .blog-post-summary h2 {
   font-size: 1.8rem;
-  padding-top: 3rem;
+  margin-top: 0;
   margin-bottom: 0.625rem;
   line-height: 1.3;
   color: black;
@@ -37,7 +97,7 @@
 
 @media screen and (max-width: 37.5rem) {
   .blog-container {
-    padding: 0.625rem;
+    padding: 2rem 0.625rem;
   }
 
   .blog-container h1 {
@@ -47,5 +107,20 @@
   /* Responsive Styles for .blog-post-summary h2 */
   .blog-post-summary h2 {
     font-size: 1.5rem;
+  }
+
+  /* Hide thumbnails on mobile (but keep banners) */
+  .blog-thumbnail-link {
+    display: none;
+  }
+
+  /* Stack content vertically on mobile */
+  .blog-post-content {
+    flex-direction: column;
+  }
+
+  /* Keep banners visible but adjust height */
+  .blog-banner {
+    max-height: 150px;
   }
 }

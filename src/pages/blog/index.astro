@@ -5,8 +5,33 @@ import Footer from '../../components/Footer.tsx';
 import blogData from '../../data/blogs.json';
 import type { BlogPost } from '../../types/data';
 import '../../components/Blog.css';
+import sizeOf from 'image-size';
+import { readFileSync } from 'fs';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const typedBlogData = blogData as BlogPost[];
+
+// Calculate aspect ratios for images
+const postsWithAspectRatio = typedBlogData.map(post => {
+  if (!post.image) return { ...post, aspectRatio: null };
+
+  try {
+    const imagePath = join(__dirname, '../../../public', post.image);
+    const buffer = readFileSync(imagePath);
+    const dimensions = sizeOf(buffer);
+    const aspectRatio = dimensions.width && dimensions.height
+      ? dimensions.width / dimensions.height
+      : null;
+    return { ...post, aspectRatio };
+  } catch (error) {
+    console.error(`Failed to read image dimensions for ${post.image}:`, error);
+    return { ...post, aspectRatio: null };
+  }
+});
 ---
 
 <BaseLayout
@@ -18,15 +43,34 @@ const typedBlogData = blogData as BlogPost[];
     <HeaderAstro />
     <div class="blog-container">
       <h1>Blog</h1>
-      {typedBlogData.map((post) => (
-        <article id={String(post.id)} key={post.id} class="blog-post-summary">
-          <h2>
-            <a href={`/blog/${post.id}`}>{post.title}</a>
-          </h2>
-          <time datetime={post.date}>{new Date(post.date).toLocaleDateString()}</time>
-          <p>{post.excerpt}</p>
-        </article>
-      ))}
+      {postsWithAspectRatio.map((post) => {
+        const isWideBanner = post.aspectRatio && post.aspectRatio > 2;
+        const hasImage = post.image && post.aspectRatio;
+
+        return (
+          <article id={String(post.id)} key={post.id} class={`blog-post-summary ${isWideBanner ? 'blog-post-banner' : ''}`}>
+            {hasImage && isWideBanner && (
+              <a href={`/blog/${post.id}`} class="blog-banner-link">
+                <img src={`/${post.image}`} alt={post.title} class="blog-banner" />
+              </a>
+            )}
+            <div class="blog-post-content">
+              <div class="blog-post-text">
+                <h2>
+                  <a href={`/blog/${post.id}`}>{post.title}</a>
+                </h2>
+                <time datetime={post.date}>{new Date(post.date).toLocaleDateString()}</time>
+                <p>{post.excerpt}</p>
+              </div>
+              {hasImage && !isWideBanner && (
+                <a href={`/blog/${post.id}`} class="blog-thumbnail-link">
+                  <img src={`/${post.image}`} alt={post.title} class="blog-thumbnail" />
+                </a>
+              )}
+            </div>
+          </article>
+        );
+      })}
     </div>
     <Footer client:load />
   </div>

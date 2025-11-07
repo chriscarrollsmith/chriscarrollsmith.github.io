@@ -21,7 +21,7 @@ const ContactForm: React.FC = () => {
           type="email"
           name="email"
           placeholder="Email Address"
-          autocomplete="email"
+          autoComplete="email"
         />
       </div>
       <ValidationError
@@ -35,7 +35,7 @@ const ContactForm: React.FC = () => {
           id="message"
           name="message"
           placeholder="Project description"
-          autocomplete="off"
+          autoComplete="off"
         />
         <div className="submit-container">
           <button className="button formspree-submit" type="submit" disabled={state.submitting}>
