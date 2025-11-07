@@ -53,13 +53,13 @@
   flex-shrink: 0;
   display: flex;
   align-items: center;
+  align-self: stretch;
 }
 
 .blog-thumbnail {
   max-width: 200px;
-  max-height: 150px;
   width: auto;
-  height: auto;
+  height: 100%;
   object-fit: contain;
   border-radius: 8px;
   transition: transform 0.2s ease;
