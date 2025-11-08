@@ -15,8 +15,13 @@ const __dirname = dirname(__filename);
 
 const typedBlogData = blogData as BlogPost[];
 
+// Sort posts by date, most recent first
+const sortedBlogData = [...typedBlogData].sort((a, b) => {
+  return new Date(b.date).getTime() - new Date(a.date).getTime();
+});
+
 // Calculate aspect ratios for images
-const postsWithAspectRatio = typedBlogData.map(post => {
+const postsWithAspectRatio = sortedBlogData.map(post => {
   if (!post.image) return { ...post, aspectRatio: null };
 
   try {
@@ -68,7 +73,10 @@ const postsWithAspectRatio = typedBlogData.map(post => {
                 <h2>
                   <a href={`/blog/${post.id}`}>{post.title}</a>
                 </h2>
-                <time datetime={post.date}>{new Date(post.date).toLocaleDateString()}</time>
+                <div class="post-meta">
+                  <time datetime={post.date}>{new Date(post.date).toLocaleDateString()}</time>
+                  <span class="author-byline">By Christopher Carroll Smith</span>
+                </div>
                 <p>{post.excerpt}</p>
               </div>
               {hasThumbnail && thumbnailPosition === 'right' && (

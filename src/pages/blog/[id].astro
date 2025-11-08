@@ -6,6 +6,7 @@ import blogData from '../../data/blogs.json';
 import type { BlogPost } from '../../types/data';
 import '../../components/Blog.css';
 import '../../components/BlogPost.css';
+import 'prismjs/themes/prism-tomorrow.css';
 
 export async function getStaticPaths() {
   const typedBlogData = blogData as BlogPost[];
@@ -72,7 +73,11 @@ const structuredData = {
     <div class="blog-container">
       <article class="blog-post">
         <h1>{post.title}</h1>
-        <time datetime={post.date}>{new Date(post.date).toLocaleDateString()}</time>
+        <div class="post-meta">
+          <time datetime={post.date}>{new Date(post.date).toLocaleDateString()}</time>
+          <span class="author-byline">By Christopher Carroll Smith</span>
+        </div>
+        <p class="post-abstract">{post.excerpt}</p>
         <div set:html={post.content} />
         {post.script && (
           <script is:inline set:html={post.script} />
@@ -81,4 +86,12 @@ const structuredData = {
     </div>
     <Footer client:load />
   </div>
+
+  <script>
+    import Prism from 'prismjs';
+    import 'prismjs/components/prism-python';
+
+    // Highlight all code blocks
+    Prism.highlightAll();
+  </script>
 </BaseLayout>

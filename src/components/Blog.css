@@ -93,6 +93,23 @@
   font-weight: 400;
 }
 
+.blog-post-summary .post-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  color: #666;
+}
+
+.blog-post-summary time {
+  font-style: italic;
+}
+
+.blog-post-summary .author-byline {
+  font-style: italic;
+}
+
 .blog-post-summary h2 a:hover {
   text-decoration: underline;
 }
