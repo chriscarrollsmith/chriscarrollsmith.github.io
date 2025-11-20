@@ -1,20 +1,24 @@
 import './ProjectFeature.css';
-import projectData from '../data/projectfeature.json';
 import heroData from '../data/heroimages.json';
-import type { ProjectFeature as ProjectFeatureType, HeroImage } from '../types/data';
+import type { HeroImage } from '../types/data';
 
-const typedProjectData = projectData as ProjectFeatureType;
 const typedHeroData = heroData as HeroImage[];
 
 const ProjectFeature: React.FC = () => {
-  const { portraitImage, landscapeImage, callToAction, buttonText, buttonUrl } = typedProjectData;
   const hero = typedHeroData.find(h => h.name === 'project-feature');
+
+  const portraitImage = { alt: "Mockup of Scribert app on a mobile device", src: "images/mobile-mockup2.png" };
+  const landscapeImage = { alt: "", src: "" };
+  const buttonText = "Sign up";
+  const buttonUrl = "https://www.scribert.com/signin/signup";
 
   return (
     <section className={hero?.src ? hero?.shade : hero?.shade === "dark" ? "black" : "white"} id="project-feature">
       <div className="project-feature-section">
         <div className="callout">
-          <p dangerouslySetInnerHTML={{ __html: callToAction }} />
+          <p>
+            Your AI text-to-speech companion, created by Christopher Smith: try <a href='https://scribert.com'>Scribert</a> today with promo code 'NEWALPHAUSER' and get 100% off your first month!
+          </p>
           <a href={buttonUrl} target="_blank" rel="noopener noreferrer" className="button">{buttonText}</a>
         </div>
         {landscapeImage?.src &&

@@ -12,20 +12,9 @@ export interface Project {
   title: string;
   url: string;
   description: string;
-  img: string;
+  img?: string;
   'icon-overlay'?: string;
-}
-
-export interface ProjectCategory {
-  category: string;
-  projects: Project[];
-}
-
-export interface Writing {
-  title: string;
-  description: string;
-  buttonText: string;
-  url: string;
+  buttonText?: string;
 }
 
 export interface SocialProfiles {
@@ -61,35 +50,10 @@ export interface SocialIcons {
   mastodon: string;
 }
 
-export interface TechIcon {
-  alt: string;
-  src: string;
-}
-
-export interface AboutMe {
-  description: string;
-  icons: TechIcon[];
-  skills: string[];
-  callToAction: string;
-}
-
 export interface HeroImage {
   name: string;
   src: string;
   shade: 'light' | 'dark';
   adjustment?: string;
   alt: string;
-}
-
-export interface ImageData {
-  alt: string;
-  src: string;
-}
-
-export interface ProjectFeature {
-  portraitImage: ImageData;
-  landscapeImage: ImageData;
-  callToAction: string;
-  buttonText: string;
-  buttonUrl: string;
 }
