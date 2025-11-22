@@ -1,1 +1,46 @@
-[]
+[
+    { 
+        "title": "Free Hands-on Workshop: Agentic AI Workflows with Tool Calling",
+        "start": "2024-10-24T18:00:00",
+        "end": "2024-10-24T20:00:00",
+        "url": "https://www.meetup.com/albany-science-meetup-group/events/303918806/?utm_medium=referral&utm_campaign=share-btn_savedevents_share_modal&utm_source=link" 
+    },
+    {
+        "title": "Jam session: Prototyping AI Workflows",
+        "start": "2025-02-22T13:00:00",
+        "end": "2025-02-22T15:00:00",
+        "url": "https://www.meetup.com/coders-colaboratory/events/306102104/?utm_medium=referral&utm_campaign=share-btn_savedevents_share_modal&utm_source=link" 
+    },
+    {
+        "title": "Reproducible Science Writing with Quarto, an Open-source Technical Publishing System",
+        "start": "2025-11-22T18:00:00",
+        "end": "2025-11-22T19:00:00",
+        "url": "https://github.com/chriscarrollsmith/quarto-workshop/"
+    },
+    {
+        "title": "LLMs from the command line: A mini-hackathon!",
+        "start": "2025-07-05T13:00:00",
+        "end": "2025-07-05T16:00:00",
+        "url": "https://www.meetup.com/coders-colaboratory/events/308582779/?utm_medium=referral&utm_campaign=share-btn_savedevents_share_modal&utm_source=link&utm_version=v2&member_id=87201072"
+    },
+    {
+        "title": "LLMs from the Command Line: A Simple, Ugly, Overpowered Tool — DevFest Troy",
+        "start": "2025-11-01",
+        "url": "https://gdg.community.dev/events/details/google-gdg-hudson-presents-devfest-troy-25/cohost-gdg-hudson"
+    },
+    {
+        "title": "AI-Assisted Coordination: Solving Incentive Misalignment in Real Time — AI for Collective Sensemaking Unconference",
+        "start": "2025-10-26",
+        "url": "https://open.substack.com/pub/xiqo/p/the-unconference-on-ai-for-collective?r=1mypmc&utm_campaign=post&utm_medium=web&showWelcomeOnShare=false"
+    },
+    {
+        "title": "Humanizing AI Application Design — Hudson Valley's Tech Community Meetup",
+        "start": "2025-09-10",
+        "url": "https://gdg.community.dev/events/details/google-gdg-hudson-presents-hudson-valleys-tech-community-meet-up-in-troy/"
+    },
+    {
+        "title": "Enterprise-Grade Evals in 15 minutes with Open-Source Tools — Google DevFest Troy",
+        "start": "2024-11-16",
+        "url": "https://gdg.community.dev/events/details/google-gdg-hudson-presents-devfest-2024-troy-ny/"
+    }
+]
