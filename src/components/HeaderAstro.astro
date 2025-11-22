@@ -12,39 +12,3 @@ const currentPath = Astro.url.pathname;
   <a href="/#events-section">Events</a>
   <a href="/blog" class:list={[{ active: currentPath.startsWith('/blog') }]}>Blog</a>
 </div>
-
-<script>
-  // Handle smooth scrolling for anchor links
-  document.addEventListener('DOMContentLoaded', () => {
-    // Handle hash on page load
-    if (window.location.hash) {
-      const element = document.querySelector(window.location.hash);
-      if (element) {
-        setTimeout(() => {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }, 0);
-      }
-    }
-
-    // Handle clicks on anchor links
-    document.querySelectorAll('a[href^="/#"]').forEach(anchor => {
-      anchor.addEventListener('click', (e) => {
-        const href = anchor.getAttribute('href');
-        const hash = href.substring(1); // remove the leading '/'
-
-        // If we're not on the home page, navigate there
-        if (window.location.pathname !== '/') {
-          window.location.href = href;
-        } else {
-          // We're on home page, just scroll
-          e.preventDefault();
-          const element = document.querySelector(hash);
-          if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
-            history.pushState(null, '', href);
-          }
-        }
-      });
-    });
-  });
-</script>
