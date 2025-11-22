@@ -3,7 +3,6 @@ import { Calendar } from '@fullcalendar/core';
 import listPlugin from '@fullcalendar/list';
 import eventsJSON from '../data/events.json';
 import heroData from '../data/heroimages.json';
-import SubscribeForm from '../components/SubscribeForm';
 import type { HeroImage } from '../types/data';
 import './Events.css';
 
@@ -25,6 +24,7 @@ const Events: React.FC = () => {
         plugins: [listPlugin],
         initialView: 'listMonth',
         events: eventsJSON,
+        height: 'auto',
         headerToolbar: {
           right: 'prev,next'
         },
@@ -45,12 +45,9 @@ const Events: React.FC = () => {
             src={hero.src}
             alt={hero.alt}
           />
-          <div id="events" className="Events">
-            <div className="headercontainer">
-              <h1 className="pt-12 pb-8">Events</h1>
-            </div>
-            <div className="w-full p-0 h-64" ref={calendarRef} id='calendar'></div>
-            <SubscribeForm />
+          <div className="events-content">
+            <h1>Events</h1>
+            <div ref={calendarRef} id='calendar'></div>
           </div>
         </>
       )}
