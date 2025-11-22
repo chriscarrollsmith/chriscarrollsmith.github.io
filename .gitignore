@@ -28,9 +28,6 @@ dist-ssr
 Pipfile
 Pipfile.lock
 
-# AI stuff
-CLAUDE.md
-
 # Test artifacts
 lighthouse-report.json
 playwright-report/
