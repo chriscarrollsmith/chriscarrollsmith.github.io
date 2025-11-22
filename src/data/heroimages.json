@@ -14,7 +14,7 @@
   },
   {
     "name": "projects",
-    "src": "images/violetflowers1.png",
+    "src": "images/violetflowers1-q80.webp",
     "shade": "dark",
     "alt": "Violet flowers against a black backdrop"
   },
@@ -26,13 +26,13 @@
   },
   {
     "name": "writing",
-    "src": "images/cityscape.png",
+    "src": "images/cityscape-q95.webp",
     "shade": "dark",
     "alt": "Cityscape seen from above through a purple haze"
   },
   {
     "name": "events",
-    "src": "images/putty.png",
+    "src": "images/putty-q95.webp",
     "shade": "light",
     "alt": "Light gray putty applied to a wall with artful wavy strokes"
   }

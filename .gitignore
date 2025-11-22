@@ -30,3 +30,10 @@ Pipfile.lock
 
 # AI stuff
 CLAUDE.md
+
+# Test artifacts
+lighthouse-report.json
+playwright-report/
+test-results/
+tests/screenshots/
+tests/temp-optimized/
