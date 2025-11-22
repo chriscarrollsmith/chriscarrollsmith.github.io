@@ -2,9 +2,9 @@
 
 ## Introduction
 
-This is a personal website and blog built with Astro and React, integrating Calendly + ConvertKit + Formspree, and configured for automatic deployment to GitHub Pages. The site uses Astro's static site generation (SSG) to create SEO-optimized pages with clean URLs, while maintaining React components for interactive features.
+This is a personal website and blog built with Astro and React, integrating FullCalendar + ConvertKit + Formspree, and configured for automatic deployment to GitHub Pages. The site uses Astro's static site generation (SSG) to create SEO-optimized pages with clean URLs, while maintaining React components for interactive features.
 
-One exciting thing about modern web development is that there are so many great third-party services available for making even a static website interactive. A static website allows us to take advantage of free hosting, and third-party services allow us to add features like booking, contact forms, and email marketing without having to write any server-side code. This site uses Calendly to book appointments, Formspree to handle contact form submissions, and ConvertKit to capture newsletter subscriptions, all in a free-hosted website.
+One exciting thing about modern web development is that there are so many great third-party services available for making even a static website interactive. A static website allows us to take advantage of free hosting, and third-party services allow us to add features like event displays, contact forms, and email marketing without having to write any server-side code. This site uses FullCalendar to display upcoming events, Formspree to handle contact form submissions, and ConvertKit to capture newsletter subscriptions, all in a free-hosted website.
 
 ## Example
 
@@ -32,7 +32,6 @@ See the site live [here](https://christophercarrollsmith.com).
 ## Prerequisites
 
 You will need to have `npm` installed in your development environment. You will also need:
-- A [Calendly](https://calendly.com/) account to use the `Book` component
 - A [Formspree](https://formspree.io/) account to use the `ContactForm` component
 - A [ConvertKit](https://convertkit.com/?lmref=R3jWSQ) account to use the `SubscribeForm` component
 

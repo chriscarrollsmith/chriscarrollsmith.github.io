@@ -1,0 +1,28 @@
+#events-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.events-content {
+    background-color: white;
+    width: 75%;
+    padding: 2rem;
+    margin: 2rem auto;
+    text-align: center;
+}
+
+@media screen and (min-width: 1282px) {
+    .events-content {
+        width: 50%;
+    }
+}
+
+.events-content h1 {
+    margin-bottom: 2rem;
+}
+
+#calendar {
+    width: 100%;
+}

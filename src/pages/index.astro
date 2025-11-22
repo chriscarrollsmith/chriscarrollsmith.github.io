@@ -6,7 +6,7 @@ import About from '../components/About.tsx';
 import Projects from '../components/Projects.tsx';
 import ProjectFeature from '../components/ProjectFeature.tsx';
 import Writing from '../components/Writing.tsx';
-import Book from '../components/Book.tsx';
+import Events from '../components/Events.tsx';
 import Footer from '../components/Footer.tsx';
 import '../App.css';
 ---
@@ -22,8 +22,8 @@ import '../App.css';
     <About client:load />
     <Projects client:load />
     <ProjectFeature client:load />
-    <Writing client:load />
-    <Book client:only="react" />
+    <Writing client:only="react" />
+    <Events client:only="react" />
     <Footer client:load />
   </div>
 </BaseLayout>
