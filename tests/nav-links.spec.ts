@@ -160,7 +160,9 @@ test.describe('Navigation Links', () => {
 
   test('should navigate to sections from blog page', async ({ page }) => {
     // Test navigation from a different page (blog) back to home sections
-    const hashNavItems = expectedNavItems.filter(item => item.targetHash);
+    const hashNavItems = expectedNavItems.filter(
+      (item): item is NavItem & { targetHash: string } => item.targetHash !== null
+    );
 
     for (const navItem of hashNavItems) {
       // Start from blog page
@@ -213,7 +215,6 @@ test.describe('Navigation Links', () => {
       const headerLinks = await header.locator('a').all();
       for (const link of headerLinks) {
         // Each link should be keyboard accessible
-        const role = await link.getAttribute('role');
         const href = await link.getAttribute('href');
         expect(href).toBeTruthy();
         // Links should be focusable (no tabindex=-1)

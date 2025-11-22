@@ -2,3 +2,6 @@
 alwaysApply: true
 ---
 This project uses the bun package manager and runtime.
+
+Lighthouse / LHCI:
+- `bun run lighthouse` invokes `lhci autorun` and will fail with “Unable to connect to Chrome” when run in this environment under WSL2, due to known LHCI/Chrome limitations. LHCI will still run correctly in CI.

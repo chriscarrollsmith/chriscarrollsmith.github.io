@@ -18,7 +18,7 @@ const Blog: React.FC = () => {
       <div className="blog-container">
         <h1>Blog</h1>
         {typedBlogData.map((post) => (
-          <article id={post.id} key={post.id} className="blog-post-summary">
+          <article id={String(post.id)} key={post.id} className="blog-post-summary">
             <h2>
               <Link to={`/blog/${post.id}`}>{post.title}</Link>
             </h2>

@@ -14,9 +14,11 @@
     "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx,.astro --fix",
     "test": "playwright test",
     "test:headed": "playwright test --headed",
-    "test:ui": "playwright test --ui"
+    "test:ui": "playwright test --ui",
+    "lighthouse": "bun run build && lhci autorun --config=./lighthouserc.json"
   },
   "dependencies": {
+    "@astrojs/check": "^0.9.5",
     "@astrojs/sitemap": "^3.6.0",
     "@formspree/react": "^2.5.1",
     "@fullcalendar/core": "^6.1.19",
@@ -31,6 +33,7 @@
   },
   "devDependencies": {
     "@astrojs/react": "^4.4.1",
+    "@lhci/cli": "^0.14.0",
     "@playwright/test": "^1.56.1",
     "@types/node": "^24.10.0",
     "@types/react": "^18.0.28",
