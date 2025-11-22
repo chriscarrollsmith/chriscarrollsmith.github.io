@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import type { Page } from '@playwright/test';
 
 /**
  * Navigation Link Tests
@@ -9,9 +10,17 @@ import { test, expect } from '@playwright/test';
  * 3. Verifying correct navigation using URL, content, and ARIA attributes
  */
 
+interface NavItem {
+  text: string;
+  href: string;
+  targetUrl: string;
+  targetHash: string | null;
+  verifyContent: (page: Page) => Promise<void>;
+}
+
 test.describe('Navigation Links', () => {
   // Expected navigation structure with verification signals
-  const expectedNavItems = [
+  const expectedNavItems: NavItem[] = [
     {
       text: 'Home',
       href: '/#home',
