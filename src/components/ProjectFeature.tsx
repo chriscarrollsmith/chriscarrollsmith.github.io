@@ -17,7 +17,7 @@ const ProjectFeature: React.FC = () => {
       <div className="project-feature-section">
         <div className="callout">
           <p>
-            Your AI text-to-speech companion, created by Christopher Smith: try <a href='https://scribert.com'>Scribert</a> today with promo code 'NEWALPHAUSER' and get 100% off your first month!
+            Your AI text-to-speech companion, created by Christopher Smith: try <a href='https://scribert.com'>Scribert</a> today with promo code &lsquo;NEWALPHAUSER&rsquo; and get 100% off your first month!
           </p>
           <a href={buttonUrl} target="_blank" rel="noopener noreferrer" className="button">{buttonText}</a>
         </div>
