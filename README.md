@@ -29,7 +29,7 @@ See the site live [here](https://christophercarrollsmith.com).
 
 ## Prerequisites
 
-You will need to have `npm` installed in your development environment. You will also need:
+You will need to have `bun` installed in your development environment. You will also need:
 - A [Formspree](https://formspree.io/) account to use the `ContactForm` component
 - A [Kit](https://convertkit.com/?lmref=R3jWSQ) account to use the `SubscribeForm` component
 
@@ -38,7 +38,7 @@ You will need to have `npm` installed in your development environment. You will 
 To preview the site during development:
 
 ```bash
-npm run dev
+bun run dev
 ```
 
 This starts the Astro dev server with hot module replacement (HMR).
@@ -52,7 +52,7 @@ git clone https://github.com/chriscarrollsmith/chriscarrollsmith.github.io.git
 
 To install dependencies:
 ```bash
-npm install
+bun install
 ```
 
 To edit the site, you can use GitHub Codespaces or clone the repo locally to work in the editor of your choice.
@@ -98,7 +98,7 @@ Deployment is **automatic** via GitHub Actions. When you push to the `main` bran
 To build locally for testing:
 
 ```bash
-npm run build
+bun run build
 ```
 
 Built files appear in the `dist/` directory.
@@ -106,7 +106,7 @@ Built files appear in the `dist/` directory.
 To preview the production build:
 
 ```bash
-npm run preview
+bun run preview
 ```
 
 ### GitHub Pages Setup
