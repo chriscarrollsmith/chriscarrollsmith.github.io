@@ -67,14 +67,26 @@ test.describe('Navigation Links', () => {
     },
     {
       text: 'Events',
-      href: '/#events-section',
+      href: '/#events',
       targetUrl: '/',
-      targetHash: '#events-section',
+      targetHash: '#events',
       verifyContent: async (page) => {
-        await expect(page.locator('#events-section')).toBeVisible();
+        await expect(page.locator('#events')).toBeVisible();
         // Events section has h1 with "Events" and calendar
-        await expect(page.locator('#events-section h1')).toContainText(/events/i);
+        await expect(page.locator('#events h1')).toContainText(/events/i);
         await expect(page.locator('#calendar')).toBeVisible();
+      }
+    },
+    {
+      text: 'CV',
+      href: '/cv',
+      targetUrl: '/cv',
+      targetHash: null,
+      verifyContent: async (page) => {
+        await expect(page.locator('.cv-container h1')).toContainText(/curriculum vitae/i);
+        // CV page should have education, publications, presentations, and awards sections
+        await expect(page.locator('.education-list')).toBeVisible();
+        await expect(page.locator('.publications-list')).toBeVisible();
       }
     },
     {
@@ -83,7 +95,7 @@ test.describe('Navigation Links', () => {
       targetUrl: '/blog',
       targetHash: null,
       verifyContent: async (page) => {
-        await expect(page.locator('h1')).toContainText(/blog/i);
+        await expect(page.locator('.blog-container h1')).toContainText(/blog/i);
         // Blog page should have blog posts or a "no posts" message
         const hasContent = await page.locator('body').textContent();
         expect(hasContent).toBeTruthy();

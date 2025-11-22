@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeaderAstro from '../components/HeaderAstro.astro';
+import EducationList from '../components/EducationList.tsx';
+import PublicationsList from '../components/PublicationsList.tsx';
+import PresentationsList from '../components/PresentationsList.tsx';
+import AwardsList from '../components/AwardsList.tsx';
+import Footer from '../components/Footer.tsx';
+import '../App.css';
+import '../pages/_cv.css';
+---
+
+<BaseLayout
+  title="Christopher Carroll Smith - CV"
+  description="Curriculum Vitae of Christopher Carroll Smith: Education, Publications, Presentations, and Awards"
+  type="profile"
+>
+  <Fragment slot="head">
+    <!-- Schema.org markup for Person -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Christopher Carroll Smith",
+        "url": "https://christophercarrollsmith.com",
+        "sameAs": [
+          "https://orcid.org/0009-0008-1756-612X",
+          "https://scholar.google.com/citations?user=IY53lNkAAAAJ&hl=en"
+        ],
+        "jobTitle": "Software Architect",
+        "description": "Software architect, data storyteller, and president of Promptly Technologies, LLC"
+      }
+    </script>
+  </Fragment>
+
+  <div class="App">
+    <HeaderAstro />
+    <main class="cv-container">
+      <div class="cv-header">
+        <h1>Curriculum Vitae</h1>
+        <div class="cv-links">
+          <a href="https://orcid.org/0009-0008-1756-612X" target="_blank" rel="noopener noreferrer" class="button">
+            ORCID Profile
+          </a>
+          <a href="https://scholar.google.com/citations?user=IY53lNkAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" class="button">
+            Google Scholar
+          </a>
+        </div>
+      </div>
+
+      <EducationList client:load />
+      <PublicationsList client:load />
+      <PresentationsList client:load />
+      <AwardsList client:load />
+    </main>
+    <Footer client:load />
+  </div>
+</BaseLayout>

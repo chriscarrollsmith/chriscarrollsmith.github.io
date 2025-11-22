@@ -1,0 +1,95 @@
+.presentations-list {
+  margin-bottom: 3rem;
+}
+
+.presentations-list h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--color-border, #e0e0e0);
+  padding-bottom: 0.5rem;
+  text-align: left;
+}
+
+.presentation-section {
+  margin-bottom: 2rem;
+}
+
+.presentation-section h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--color-heading, #333);
+  text-align: left;
+}
+
+.presentation-entries {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.presentation-entry {
+  padding: 1.5rem;
+  background-color: var(--color-bg-light, #f9f9f9);
+  border-radius: 8px;
+  transition: box-shadow 0.3s;
+}
+
+.presentation-entry:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.presentation-entry.featured {
+  background-color: #fff3cd;
+  border-left: 4px solid #ffc107;
+}
+
+.presentation-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+  gap: 1rem;
+}
+
+.presentation-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-heading, #333);
+  flex: 1;
+}
+
+.featured-badge {
+  background-color: #ffc107;
+  color: #000;
+  padding: 0.25rem 0.75rem;
+  border-radius: 15px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.presentation-event {
+  font-style: italic;
+  margin-bottom: 0.25rem;
+  color: var(--color-text, #444);
+}
+
+.presentation-date {
+  font-size: 0.9rem;
+  color: var(--color-text-muted, #666);
+}
+
+@media (max-width: 768px) {
+  .presentation-entry {
+    padding: 1rem;
+  }
+
+  .presentation-header {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .featured-badge {
+    align-self: flex-start;
+  }
+}

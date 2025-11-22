@@ -57,3 +57,38 @@ export interface HeroImage {
   adjustment?: string;
   alt: string;
 }
+
+export interface Education {
+  'School Name': string;
+  'Start Date': number;
+  'End Date': number;
+  Notes: string;
+  'Degree Name': string;
+  'Verification URL': string | null;
+}
+
+export interface Publication {
+  title: string;
+  authors: string;
+  journal: string;
+  volume: string;
+  issue: string;
+  citations: string;
+  year: string;
+  full_text?: string;
+  [key: string]: string | undefined; // Allow additional fields
+}
+
+export interface Presentation {
+  section: string;
+  year: number;
+  title: string;
+  event: string;
+  date: string;
+}
+
+export interface Award {
+  year: number;
+  award: string;
+  organization: string;
+}

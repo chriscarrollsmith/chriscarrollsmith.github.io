@@ -31,8 +31,8 @@ const Writing: React.FC = () => {
     {
       title: "Academic CV",
       description: "Peer-reviewed publications and other academic work",
-      buttonText: "PDF",
-      url: "documents/CurriculumVitae.pdf"
+      buttonText: "View",
+      url: "/cv"
     }
   ];
 

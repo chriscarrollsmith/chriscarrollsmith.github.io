@@ -120,7 +120,7 @@ test.describe('Console Errors and Warnings', () => {
     await page.waitForLoadState('networkidle');
 
     // Click through various sections
-    const sections = ['#about', '#projects', '#writing', '#events-section'];
+    const sections = ['#about', '#projects', '#writing', '#events'];
 
     for (const section of sections) {
       const link = page.locator(`#header a[href="${section}"]`);
