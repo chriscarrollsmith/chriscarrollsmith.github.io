@@ -12,20 +12,19 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v5
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
         with:
-          node-version: '24'
-          cache: 'npm'
+          bun-version: latest
 
       - name: Add CNAME file
         run: echo "christophercarrollsmith.com" > ./public/CNAME
 
       - name: Install dependencies
-        run: npm ci
+        run: bun install
 
       - name: Build site
-        run: npm run build
+        run: bun run build
 
       - name: Run Lighthouse CI
         uses: treosh/lighthouse-ci-action@v12
