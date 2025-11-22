@@ -34,7 +34,17 @@ const About: React.FC = () => {
         <hr />
         <div className="center-flex padded">
           {techIcons.map((icon) => (
-            <img className="skills-icon" src={icon.src} alt={icon.alt} title={icon.alt} key={icon.alt} />
+            <img
+              className="skills-icon"
+              src={icon.src}
+              alt={icon.alt}
+              title={icon.alt}
+              key={icon.alt}
+              width={32}
+              height={32}
+              loading="lazy"
+              decoding="async"
+            />
           ))}
         </div>
         <ul className="skills-list">

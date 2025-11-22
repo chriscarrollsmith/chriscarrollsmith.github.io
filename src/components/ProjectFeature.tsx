@@ -27,7 +27,15 @@ const ProjectFeature: React.FC = () => {
         </div>
         }
         <div className="portrait-container">
-          <img className="portrait-image" src={portraitImage.src} alt="Portrait" />
+          <img
+            className="portrait-image"
+            src={portraitImage.src}
+            alt={portraitImage.alt}
+            width={400}
+            height={800}
+            loading="lazy"
+            decoding="async"
+          />
         </div>
       </div>
     </section>
