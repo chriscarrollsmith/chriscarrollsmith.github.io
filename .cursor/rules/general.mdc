@@ -1,0 +1,4 @@
+---
+alwaysApply: true
+---
+This project uses the bun package manager and runtime.
