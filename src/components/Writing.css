@@ -14,3 +14,10 @@
   /* height sized to content */
   height: fit-content;
 }
+
+/* Force subscribe form to take full row at bottom */
+.writing-grid .convertkit-form {
+  flex-basis: 100%;
+  width: 100%;
+  max-width: 100%;
+}
