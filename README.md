@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This is a personal website and blog built with Astro and React, integrating FullCalendar + ConvertKit + Formspree, and configured for automatic deployment to GitHub Pages. The site uses Astro's static site generation (SSG) to create SEO-optimized pages with clean URLs, while maintaining React components for interactive features.
+This is a personal website and blog built with Astro and React, integrating FullCalendar + Kit + Formspree, and configured for automatic deployment to GitHub Pages. The site uses Astro's static site generation (SSG) to create SEO-optimized pages with clean URLs, while maintaining React components for interactive features.
 
 One exciting thing about modern web development is that there are so many great third-party services available for making even a static website interactive. A static website allows us to take advantage of free hosting, and third-party services allow us to add features like event displays, contact forms, and email marketing without having to write any server-side code. This site uses FullCalendar to display upcoming events, Formspree to handle contact form submissions, and ConvertKit to capture newsletter subscriptions, all in a free-hosted website.
 
@@ -14,30 +14,24 @@ See the site live [here](https://christophercarrollsmith.com).
 
 ## Tech Stack
 
+- **Typescript** - Type-safe, performant programming language
 - **Astro** - Static site generator with file-based routing
 - **React** - UI components (integrated via @astrojs/react)
-- **Vite** - Build tool (used internally by Astro)
 - **GitHub Actions** - Automated deployment
 - **GitHub Pages** - Free hosting
 
 ## Key Features
 
 - ✅ Static site generation for optimal performance
-- ✅ SEO-optimized with embedded meta tags for social media previews
-- ✅ Clean URLs (e.g., `/blog/1` instead of `/#/blog/1`)
 - ✅ React components with selective hydration for interactivity
-- ✅ Automatic deployment via GitHub Actions
-- ✅ Custom domain support
+- ✅ Automatic deployment to GitHub Pages via GitHub Actions
+- ✅ Lighthouse CI for accessibility, SEO, and performance audits
 
 ## Prerequisites
 
 You will need to have `npm` installed in your development environment. You will also need:
 - A [Formspree](https://formspree.io/) account to use the `ContactForm` component
-- A [ConvertKit](https://convertkit.com/?lmref=R3jWSQ) account to use the `SubscribeForm` component
-
-## Creating a repo from the template
-
-Clone the template with the "Use this template" button. If you plan to deploy as your homepage on GitHub Pages, name your cloned repo `{YOUR-GITHUB-USERNAME}.github.io` and install dependencies in your repo folder from the command line with `npm install`.
+- A [Kit](https://convertkit.com/?lmref=R3jWSQ) account to use the `SubscribeForm` component
 
 ## Development
 
@@ -51,16 +45,26 @@ This starts the Astro dev server with hot module replacement (HMR).
 
 ## Customization
 
+To clone the repo:
+```bash
+git clone https://github.com/chriscarrollsmith/chriscarrollsmith.github.io.git
+```
+
+To install dependencies:
+```bash
+npm install
+```
+
 To edit the site, you can use GitHub Codespaces or clone the repo locally to work in the editor of your choice.
 
 Make sure to:
 
+- Update the site metadata fields in `package.json` to your own information
 - Change the `site` property in `astro.config.mjs` to `'https://{YOUR-GITHUB-USERNAME}.github.io'`
-
-- Edit the JSON files in `src/data` and the images and documents in `public` to customize site appearance
-
-- Edit blog posts in `src/data/blogs.json` or migrate to Markdown files if preferred
-
+- Edit the JSON files in `src/data` and the images and documents in `public` to customize site content and appearance
+- Customize `src/components/About.tsx` to add your own information
+- Customize `src/components/Projects.tsx` to display your own projects
+- Customize `src/components/ProjectFeature.tsx` to feature your own project
 - Customize meta tags in `src/layouts/BaseLayout.astro` for default SEO settings
 
 ## Project Structure
@@ -108,7 +112,7 @@ npm run preview
 ### GitHub Pages Setup
 
 1. Go to your repository's **Settings > Pages**
-2. Under **Source**, select **GitHub Actions** (not "Deploy from a branch")
+2. Under **Source**, select **GitHub Actions**
 3. Push to `main` branch - deployment happens automatically!
 
 ## Using a Custom Domain
@@ -118,17 +122,13 @@ If you want to use a custom domain instead of the default `https://{YOUR-GITHUB-
 ### 1. Register and configure your domain
 
 1. Register a domain name with a domain manager like GoDaddy or Domain.com. If you already have a domain you've been using for another website, restore the default DNS settings.
-
 2. Add the domain under your **user** (or **organization**, if the repo belongs to one) "Settings > Pages" on GitHub. (Not to be confused with the **repo** "Settings > Pages"!)
-
 3. Follow GitHub's instructions to verify your domain. This will involve going back to your domain manager and creating a DNS record. Here's how to do that on most domain managers:
    - Go to DNS management for your domain
    - Add a **TXT** record with the name and value provided by GitHub
    - Wait a couple hours for DNS changes to propagate
    - Return to GitHub "Settings > Pages" and verify
-
 4. In your repo's **Settings > Pages**, add your custom domain
-
 5. Configure DNS records in your domain manager:
    - Delete all existing **CNAME** records and any **A** records named "@"
    - Create four new **A** records, each named "@" with these IP addresses:
@@ -138,9 +138,7 @@ If you want to use a custom domain instead of the default `https://{YOUR-GITHUB-
      - `185.199.111.153`
    - Create one **CNAME** record named "www" pointing to `{YOUR-GITHUB-USERNAME}.github.io`
    - Set TTL (Time to Live) to 30 minutes for all records
-
 6. Wait a few hours for DNS propagation, then check **Settings > Pages** for "DNS check successful"
-
 7. Enable **Enforce HTTPS** (if the option isn't available, wait a bit longer for SSL certificate issuance)
 
 ### 2. Update site configuration
@@ -152,7 +150,6 @@ If you want to use a custom domain instead of the default `https://{YOUR-GITHUB-
      // ...
    });
    ```
-
 2. Update `public/CNAME` with your domain name (one line):
    ```
    yourdomain.com
