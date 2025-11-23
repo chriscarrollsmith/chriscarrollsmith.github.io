@@ -13,7 +13,7 @@
     text-align: center;
 }
 
-@media screen and (min-width: 1282px) {
+@media screen and (min-width: 1280px) {
     .events-content {
         width: 50%;
     }

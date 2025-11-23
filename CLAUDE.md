@@ -9,6 +9,19 @@
 - **Tooling**: Vite, ESLint + `@typescript-eslint`, Playwright (`playwright.config.js`), Lighthouse CI (`lighthouserc.json`).
 - **Hosting & deploy**: GitHub Actions build to static files in `dist/`, deployed to GitHub Pages.
 
+### Responsive breakpoints
+
+The site uses a **Tailwind CSS-inspired** breakpoint scale for responsive design:
+
+| Name | Min-Width | Use Case | Media Query |
+|------|-----------|----------|-------------|
+| **xs** | 0px | Mobile (default) | _Base styles_ |
+| **sm** | 640px | Large mobile | `@media (min-width: 640px)` |
+| **md** | 768px | Tablet | `@media (min-width: 768px)` |
+| **lg** | 1024px | Small desktop | `@media (min-width: 1024px)` |
+| **xl** | 1280px | Large desktop | `@media (min-width: 1280px)` |
+
+
 ### High‑likelihood failure cases (rules)
 
 - **Asset paths**

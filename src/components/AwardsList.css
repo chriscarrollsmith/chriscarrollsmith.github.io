@@ -53,7 +53,7 @@
   font-style: italic;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .award-entry {
     padding: 1rem;
   }

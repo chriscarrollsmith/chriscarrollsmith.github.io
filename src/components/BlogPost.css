@@ -167,7 +167,7 @@
   z-index: 1;
 }
 
-@media screen and (max-width: 37.5rem) {
+@media screen and (max-width: 767px) {
   .blog-post {
     margin-bottom: 1.875rem;
   }

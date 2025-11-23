@@ -20,9 +20,10 @@ import { chromium } from 'playwright';
 import { spawn } from 'child_process';
 
 const BREAKPOINTS = [
-  { name: 'mobile', width: 430, height: 932 },   // tall phone
-  { name: 'tablet', width: 768, height: 1024 },  // portrait tablet
-  { name: 'desktop', width: 1440, height: 900 }, // typical laptop
+  { name: 'xs', width: 320, height: 568 },  // small mobile
+  { name: 'sm', width: 640, height: 932 },   // large mobile (canonical sm breakpoint)
+  { name: 'md', width: 768, height: 1024 },  // tablet (canonical md breakpoint)
+  { name: 'xl', width: 1280, height: 900 },  // large desktop (canonical xl breakpoint)
 ];
 
 function parseArgs(argv) {

@@ -79,17 +79,7 @@ h2 {
   text-align: center;
 }
 
-@media screen and (min-width: 377px) {
-  h1 {
-    font-size: 4rem;
-  }
-
-  h2 {
-    font-size: 2rem;
-  }
-}
-
-@media screen and (min-width: 422px) {
+@media screen and (min-width: 640px) {
   h1 {
     font-size: 5rem;
   }
@@ -99,7 +89,7 @@ h2 {
   }
 }
 
-@media screen and (min-width: 821px) {
+@media screen and (min-width: 1024px) {
   h1 {
     font-size: 6rem;
   }
@@ -109,7 +99,7 @@ h2 {
   }
 }
 
-@media screen and (min-width: 1282px) {
+@media screen and (min-width: 1280px) {
   h1 {
     font-size: 7rem;
   }

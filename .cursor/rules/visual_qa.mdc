@@ -5,9 +5,19 @@ alwaysApply: false
 
 Simon Willison's `llm` tool is installed in this environment, and you can use it to interact with a vision model.
 
+## Canonical breakpoints tested by visual QA
+
+The visual QA workflow captures screenshots at these canonical responsive breakpoints:
+
+- **sm** (640px): Large mobile
+- **md** (768px): Tablet
+- **xl** (1280px): Large desktop
+
+These align with the site's standardized breakpoint scale (see CLAUDE.md for full details).
+
 ## Workflow (high-level)
 
-1. Capture **baseline screenshots** for each viewport-height pane at the relevant breakpoints (e.g., desktop, mobile).
+1. Capture **baseline screenshots** for each viewport-height pane at key sizes (xs, sm, md, xl).
 2. Capture **candidate screenshots** for the same panes and breakpoints after a visual change.
 3. Run a **rubric-based comparison** in `llm` between baseline and candidate screenshots.
 4. Adjust the frontend based on the feedback and re-run the comparison, aiming for strictly better scores on the affected panes and no regressions elsewhere.

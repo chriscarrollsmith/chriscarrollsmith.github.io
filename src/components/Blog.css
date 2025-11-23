@@ -114,7 +114,7 @@
   text-decoration: underline;
 }
 
-@media screen and (max-width: 37.5rem) {
+@media screen and (max-width: 767px) {
   .blog-container {
     padding: 2rem 0.625rem;
   }

@@ -83,13 +83,13 @@
   text-decoration: none;
 }
 
-@media screen and (min-width: 1282px) {
+@media screen and (min-width: 1280px) {
   .project-feature-section {
     width: 50%;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .project-feature-section {
     grid-template-columns: 1fr;
     grid-template-rows: repeat(3, auto);

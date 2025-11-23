@@ -79,7 +79,7 @@
   color: var(--color-text-muted, #666);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .presentation-entry {
     padding: 1rem;
   }
