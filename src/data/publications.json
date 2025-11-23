@@ -1,243 +1,564 @@
 {
   "items": [
     {
+      "type": "article-journal",
       "title": "Anti-Islamic Sentiment and Media Framing during the 9/11 Decade",
-      "authors": "C Smith",
-      "journal": "Journal of Religion and Society",
+      "author": [
+        {
+          "family": "Smith",
+          "given": "C"
+        }
+      ],
+      "issued": {
+        "date-parts": [
+          [
+            2013
+          ]
+        ]
+      },
+      "container-title": "Journal of Religion and Society",
       "volume": "15",
-      "issue": "",
-      "citations": "84",
-      "year": "2013",
-      "full_text": "https://www.academia.edu/2526672/Anti_Islamic_Sentiment_and_Media_Framing_during_the_9_11_Decade"
+      "URL": "http://moses.creighton.edu/JRS/2013/2013-3.pdf",
+      "custom": {
+        "citations": "84"
+      }
     },
     {
+      "type": "article-journal",
       "title": "Playing Lamanite: Ecstatic Performance of American Indian Roles in Early Mormon Ohio",
-      "authors": "CC Smith",
-      "journal": "Journal of Mormon History",
+      "author": [
+        {
+          "family": "Smith",
+          "given": "CC"
+        }
+      ],
+      "issued": {
+        "date-parts": [
+          [
+            2015
+          ]
+        ]
+      },
+      "container-title": "Journal of Mormon History",
       "volume": "41",
       "issue": "3",
-      "citations": "13",
-      "year": "2015",
-      "full_text": "https://www.academia.edu/20126260/Playing_Lamanite_Ecstatic_Performance_of_American_Indian_Identity_in_Early_Mormon_Ohio"
+      "URL": "https://www.jstor.org/stable/10.5406/jmormhist.41.3.131",
+      "custom": {
+        "citations": "13"
+      }
     },
     {
+      "type": "article-journal",
       "title": "Joseph Smith in Hermeneutical Crisis.",
-      "authors": "CC Smith",
-      "journal": "Dialogue: A Journal of Mormon Thought",
+      "author": [
+        {
+          "family": "Smith",
+          "given": "CC"
+        }
+      ],
+      "issued": {
+        "date-parts": [
+          [
+            2010
+          ]
+        ]
+      },
+      "container-title": "Dialogue: A Journal of Mormon Thought",
       "volume": "43",
       "issue": "2",
-      "citations": "7",
-      "year": "2010",
-      "full_text": "https://www.academia.edu/2357305/Joseph_Smith_in_Hermeneutical_Crisis"
+      "URL": "https://www.dialoguejournal.com/articles/joseph-smith-in-hermeneutical-crisis/",
+      "custom": {
+        "citations": "7"
+      }
     },
     {
+      "type": "thesis",
       "title": "Mormon conquest: Whites and natives in the intermountain West, 1847–1851",
-      "authors": "CC Smith",
-      "journal": "The Claremont Graduate University",
-      "volume": "",
-      "issue": "",
-      "citations": "6",
-      "year": "2016"
+      "author": [
+        {
+          "family": "Smith",
+          "given": "CC"
+        }
+      ],
+      "issued": {
+        "date-parts": [
+          [
+            2016
+          ]
+        ]
+      },
+      "container-title": "The Claremont Graduate University",
+      "URL": "https://www.proquest.com/openview/e7c9ce4cf7a4ffda39fbc7e7d6e70573/1?pq-origsite=gscholar&cbl=18750",
+      "custom": {
+        "citations": "6"
+      }
     },
     {
+      "type": "article-journal",
       "title": "The Original Length of the Scroll of Hôr",
-      "authors": "AW Cook, CC Smith",
-      "journal": "Dialogue: A Journal of Mormon Thought",
+      "author": [
+        {
+          "family": "Cook",
+          "given": "AW"
+        },
+        {
+          "family": "Smith",
+          "given": "CC"
+        }
+      ],
+      "issued": {
+        "date-parts": [
+          [
+            2010
+          ]
+        ]
+      },
+      "container-title": "Dialogue: A Journal of Mormon Thought",
       "volume": "43",
       "issue": "4",
-      "citations": "6",
-      "year": "2010",
-      "full_text": "https://www.academia.edu/2357336/The_Original_Length_of_the_Scroll_of_H%C3%B4r"
+      "URL": "https://www.dialoguejournal.com/articles/the-original-length-of-the-scroll-of-hor/",
+      "custom": {
+        "citations": "6"
+      }
     },
     {
+      "type": "article-journal",
+      "title": "Is 'Suspensive' Historiography the Only Legitimate Kind?",
+      "author": [
+        {
+          "family": "Smith",
+          "given": "CC"
+        }
+      ],
+      "issued": {
+        "date-parts": [
+          [
+            2010
+          ]
+        ]
+      },
+      "container-title": "BCC Papers",
+      "volume": "5",
+      "issue": "2",
+      "URL": "http://bycommonconsent.com/2010/05/25/bcc-papers-5-2-smith-suspensive-historiography/",
+      "custom": {
+        "exclude": true
+      }
+    },
+    {
+      "type": "article-journal",
       "title": "The Inspired Fictionalization of the 1835 United Firm Revelations",
-      "authors": "CC Smith",
-      "journal": "Claremont Journal of Mormon Studies",
+      "author": [
+        {
+          "family": "Smith",
+          "given": "CC"
+        }
+      ],
+      "issued": {
+        "date-parts": [
+          [
+            2011
+          ]
+        ]
+      },
+      "container-title": "Claremont Journal of Mormon Studies",
       "volume": "1",
       "issue": "1",
-      "citations": "5",
-      "year": "2011",
-      "full_text": "https://www.academia.edu/2357317/The_Inspired_Fictionalization_of_the_1835_United_Firm_Revelations"
+      "URL": "https://www.academia.edu/2357317/The_Inspired_Fictionalization_of_the_1835_United_Firm_Revelations",
+      "custom": {
+        "citations": "5"
+      }
     },
     {
+      "type": "article-journal",
       "title": "The Dependence of Abraham 1:1-3 on the Egyptian Alphabet and Grammar",
-      "authors": "CC Smith",
-      "journal": "The John Whitmer Historical Association Journal",
+      "author": [
+        {
+          "family": "Smith",
+          "given": "CC"
+        }
+      ],
+      "issued": {
+        "date-parts": [
+          [
+            2009
+          ]
+        ]
+      },
+      "container-title": "The John Whitmer Historical Association Journal",
       "volume": "29",
-      "issue": "",
-      "citations": "4",
-      "year": "2009",
-      "full_text": "https://www.academia.edu/2357346/The_Dependence_of_Abraham_1_1_3_on_the_Egyptian_Alphabet_and_Grammar"
+      "URL": "https://www.academia.edu/2357346/The_Dependence_of_Abraham_1_1_3_on_the_Egyptian_Alphabet_and_Grammar",
+      "custom": {
+        "citations": "4"
+      }
     },
     {
+      "type": "chapter",
       "title": "Of Generations and Genders: Fanny Alger and the Adoptive Origins of Ritual Sealing",
-      "authors": "D Bradley, CC Smith",
-      "journal": "Secret Covenants: New Insights on Early Mormon Polygamy",
-      "volume": "",
-      "issue": "",
-      "citations": "",
-      "year": "2024"
+      "author": [
+        {
+          "family": "Bradley",
+          "given": "D"
+        },
+        {
+          "family": "Smith",
+          "given": "CC"
+        }
+      ],
+      "issued": {
+        "date-parts": [
+          [
+            2024
+          ]
+        ]
+      },
+      "container-title": "Secret Covenants: New Insights on Early Mormon Polygamy",
+      "publisher-place": "Salt Lake City"
     },
     {
+      "type": "chapter",
       "title": "A Revelation to Get Him a Wife: Joseph Smith’s Marriage Proposals to Emma Hale and to Prospective Plural Wives",
-      "authors": "CC Smith",
-      "journal": "Secret Covenants: New Insights on Early Mormon Polygamy",
-      "volume": "",
-      "issue": "",
-      "citations": "",
-      "year": "2024"
+      "author": [
+        {
+          "family": "Smith",
+          "given": "CC"
+        }
+      ],
+      "issued": {
+        "date-parts": [
+          [
+            2024
+          ]
+        ]
+      },
+      "container-title": "Secret Covenants: New Insights on Early Mormon Polygamy",
+      "publisher-place": "Salt Lake City"
     },
     {
+      "type": "article-journal",
       "title": "A People's History of Book of Mormon Archaeology: Excavating The Role of \"Folk\" Practitioners in the Emergence of a Field",
-      "authors": "CC Smith",
-      "journal": "Dialogue: A Journal of Mormon Thought",
+      "author": [
+        {
+          "family": "Smith",
+          "given": "CC"
+        }
+      ],
+      "issued": {
+        "date-parts": [
+          [
+            2023
+          ]
+        ]
+      },
+      "container-title": "Dialogue: A Journal of Mormon Thought",
       "volume": "56",
       "issue": "3",
-      "citations": "",
-      "year": "2023",
-      "full_text": "https://www.academia.edu/107029234/A_Peoples_History_of_Book_of_Mormon_Archaeology_Excavating_the_Role_of_Folk_Practitioners_in_the_Emergence_of_a_Field"
+      "URL": "https://www.dialoguejournal.com/articles/a-peoples-history-of-book-of-mormon-archeology-excavating-the-role-of-folk-practitioners-in-the-emergence-of-a-field/"
     },
     {
+      "type": "chapter",
       "title": "The Hidden Records of Central Utah and the Contestation of Religious Authority",
-      "authors": "CC Smith",
-      "journal": "Open Canon: Scriptures of the Latter-day Saint Tradition",
-      "volume": "",
-      "issue": "",
-      "citations": "",
-      "year": "2022"
+      "author": [
+        {
+          "family": "Smith",
+          "given": "CC"
+        }
+      ],
+      "issued": {
+        "date-parts": [
+          [
+            2022
+          ]
+        ]
+      },
+      "container-title": "Open Canon: Scriptures of the Latter-day Saint Tradition",
+      "publisher-place": "Salt Lake City"
     },
     {
+      "type": "article-journal",
       "title": "Frontier Religion: Mormons and America, 1857–1907",
-      "authors": "CC Smith",
-      "journal": "Utah Historical Quarterly",
+      "author": [
+        {
+          "family": "Smith",
+          "given": "CC"
+        }
+      ],
+      "issued": {
+        "date-parts": [
+          [
+            2022
+          ]
+        ]
+      },
+      "container-title": "Utah Historical Quarterly",
       "volume": "90",
-      "issue": "1",
-      "citations": "",
-      "year": "2022"
+      "issue": "1"
     },
     {
+      "type": "article-journal",
       "title": "Delightful Futuristic Mormon Morality Tale Offers Teaching Tool for Progressive Parents",
-      "authors": "CC Smith",
-      "journal": "Dialogue: A Journal of Mormon Thought",
+      "author": [
+        {
+          "family": "Smith",
+          "given": "CC"
+        }
+      ],
+      "issued": {
+        "date-parts": [
+          [
+            2021
+          ]
+        ]
+      },
+      "container-title": "Dialogue: A Journal of Mormon Thought",
       "volume": "54",
       "issue": "2",
-      "citations": "",
-      "year": "2021"
+      "URL": "https://www.dialoguejournal.com/articles/review-delightful-futuristic-mormon-morality-tale-offers-teaching-tool-for-progressive-parents-matt-page-future-day-saints-welcome-to-the-new-zion/"
     },
     {
+      "type": "article-journal",
       "title": "The Whites Want Every Thing: Indian-Mormon Relations, 1847–1877",
-      "authors": "CC Smith",
-      "journal": "Utah Historical Quarterly",
+      "author": [
+        {
+          "family": "Smith",
+          "given": "CC"
+        }
+      ],
+      "issued": {
+        "date-parts": [
+          [
+            2021
+          ]
+        ]
+      },
+      "container-title": "Utah Historical Quarterly",
       "volume": "89",
-      "issue": "2",
-      "citations": "",
-      "year": "2021"
+      "issue": "2"
     },
     {
+      "type": "article-journal",
       "title": "Worthy of Their Hire? Mormon Leaders' Relationship with Wealth",
-      "authors": "CC Smith",
-      "journal": "Dialogue: A Journal of Mormon Thought",
+      "author": [
+        {
+          "family": "Smith",
+          "given": "CC"
+        }
+      ],
+      "issued": {
+        "date-parts": [
+          [
+            2019
+          ]
+        ]
+      },
+      "container-title": "Dialogue: A Journal of Mormon Thought",
       "volume": "52",
       "issue": "4",
-      "citations": "",
-      "year": "2019",
-      "full_text": "https://www.academia.edu/41725660/Worthy_of_Their_Hire_Mormon_Leaders_Relationship_with_Wealth"
+      "URL": "https://www.dialoguejournal.com/articles/worthy-of-their-hire-mormon-leaders-relationship-with-wealth-d-michael-quinn-the-mormon-hierarchy-wealth-and-corporate-power/"
     },
     {
+      "type": "article-journal",
       "title": "Review of Jonathan A. Stapley, The Power of Godliness: Mormon Liturgy and Cosmology",
-      "authors": "CC Smith",
-      "journal": "Magic, Ritual, and Witchcraft",
+      "author": [
+        {
+          "family": "Smith",
+          "given": "CC"
+        }
+      ],
+      "issued": {
+        "date-parts": [
+          [
+            2020
+          ]
+        ]
+      },
+      "container-title": "Magic, Ritual, and Witchcraft",
       "volume": "15",
       "issue": "1",
-      "citations": "",
-      "year": "2020",
-      "full_text": "https://www.academia.edu/41725824/Review_of_Jonathan_A_Stapley_The_Power_of_Godliness_Mormon_Liturgy_and_Cosmology"
+      "URL": "https://www.academia.edu/41725824/Review_of_Jonathan_A_Stapley_The_Power_of_Godliness_Mormon_Liturgy_and_Cosmology"
     },
     {
+      "type": "article-journal",
       "title": "Moroni and the Swastika: Mormons in Nazi Germany",
-      "authors": "CC Smith",
-      "journal": "The John Whitmer Historical Association Journal",
+      "author": [
+        {
+          "family": "Smith",
+          "given": "CC"
+        }
+      ],
+      "issued": {
+        "date-parts": [
+          [
+            2017
+          ]
+        ]
+      },
+      "container-title": "The John Whitmer Historical Association Journal",
       "volume": "37",
-      "issue": "1",
-      "citations": "",
-      "year": "2017"
+      "issue": "1"
     },
     {
+      "type": "article-journal",
       "title": "\"That which Is Lost\": Assessing the State of Preservation of the Joseph Smith Papyri",
-      "authors": "CC Smith",
-      "journal": "The John Whitmer Historical Association Journal",
+      "author": [
+        {
+          "family": "Smith",
+          "given": "CC"
+        }
+      ],
+      "issued": {
+        "date-parts": [
+          [
+            2011
+          ]
+        ]
+      },
+      "container-title": "The John Whitmer Historical Association Journal",
       "volume": "31",
       "issue": "1",
-      "citations": "",
-      "year": "2011",
-      "full_text": "https://www.academia.edu/2357335/_That_Which_Is_Lost_Assessing_the_State_of_Preservation_of_the_Joseph_Smith_Papyri"
+      "URL": "https://www.academia.edu/2357335/_That_Which_Is_Lost_Assessing_the_State_of_Preservation_of_the_Joseph_Smith_Papyri"
     },
     {
+      "type": "article-journal",
       "title": "In Defense of a \"Christian\" Pluralism",
-      "authors": "CC Smith",
-      "journal": "Journal for the Renewal of Religion and Theology",
+      "author": [
+        {
+          "family": "Smith",
+          "given": "CC"
+        }
+      ],
+      "issued": {
+        "date-parts": [
+          [
+            2009
+          ]
+        ]
+      },
+      "container-title": "Journal for the Renewal of Religion and Theology",
       "volume": "5",
-      "issue": "",
-      "citations": "",
-      "year": "2009",
-      "full_text": "https://www.academia.edu/2357341/In_Defense_of_a_Christian_Pluralism"
+      "URL": "https://web.archive.org/web/20120306071542/http://renewtheology.org/paperCSmith0709"
     },
     {
-      "title": "The Libyan Revelation: Why Recent Events in Libya Should Revolutionize America’s Approach to the Muslim World",
-      "authors": "CC Smith",
-      "journal": "Claremont Journal of Religion",
+      "type": "article-journal",
+      "title": "The Libyan Revelation: Why Recent Events in Libya Should Revolutionize America's Approach to the Muslim World",
+      "author": [
+        {
+          "family": "Smith",
+          "given": "CC"
+        }
+      ],
+      "issued": {
+        "date-parts": [
+          [
+            2013
+          ]
+        ]
+      },
+      "container-title": "Claremont Journal of Religion",
       "volume": "2",
       "issue": "1",
-      "citations": "",
-      "year": "2013"
+      "URL": "http://claremontjournal.com/wp-content/uploads/2012/12/The-Libyan-Revelatin-Why-Recent-Events-in-Libya-Should-Revolutionize-Americas-Approach-to-the-Muslim-World-by-Christopher-C.-Smith.pdf"
     },
     {
+      "type": "article-journal",
       "title": "Review of Charles Randall Paul, Converting the Saints: A Study of Religious Rivalry in America",
-      "authors": "CC Smith",
-      "journal": "Church History",
+      "author": [
+        {
+          "family": "Smith",
+          "given": "CC"
+        }
+      ],
+      "issued": {
+        "date-parts": [
+          [
+            2019
+          ]
+        ]
+      },
+      "container-title": "Church History",
       "volume": "88",
-      "issue": "2",
-      "citations": "",
-      "year": "2019"
+      "issue": "2"
     },
     {
+      "type": "article-journal",
       "title": "The Book of Abraham Crisis: A History",
-      "authors": "CC Smith",
-      "journal": "Sunstone Magazine",
+      "author": [
+        {
+          "family": "Smith",
+          "given": "CC"
+        }
+      ],
+      "issued": {
+        "date-parts": [
+          [
+            2015
+          ]
+        ]
+      },
+      "container-title": "Sunstone Magazine",
       "volume": "179",
-      "issue": "",
-      "citations": "",
-      "year": "2015",
-      "full_text": "https://www.academia.edu/17563394/The_Book_of_Abraham_Crisis_A_History"
+      "URL": "https://www.academia.edu/17563394/The_Book_of_Abraham_Crisis_A_History"
     },
     {
+      "type": "article-journal",
       "title": "Sacred Sci-Fi: Orson Scott Card as Mormon Mythmaker",
-      "authors": "CC Smith",
-      "journal": "Sunstone Magazine",
+      "author": [
+        {
+          "family": "Smith",
+          "given": "CC"
+        }
+      ],
+      "issued": {
+        "date-parts": [
+          [
+            2011
+          ]
+        ]
+      },
+      "container-title": "Sunstone Magazine",
       "volume": "162",
-      "issue": "",
-      "citations": "",
-      "year": "2011",
-      "full_text": "https://www.academia.edu/2357323/Sacred_Sci_Fi_Orson_Scott_Card_as_Mormon_Mythmaker"
+      "URL": "https://www.academia.edu/2357323/Sacred_Sci_Fi_Orson_Scott_Card_as_Mormon_Mythmaker"
     },
     {
+      "type": "article-journal",
       "title": "Why Gay Marriage Is an Issue of Rights, Not of Morality",
-      "authors": "CC Smith",
-      "journal": "The Pub",
+      "author": [
+        {
+          "family": "Smith",
+          "given": "CC"
+        }
+      ],
+      "issued": {
+        "date-parts": [
+          [
+            2008
+          ]
+        ]
+      },
+      "container-title": "The Pub",
       "volume": "4",
-      "issue": "1",
-      "citations": "",
-      "year": "2008"
+      "issue": "1"
     },
     {
+      "type": "article-journal",
       "title": "Review of Jeremy M. Bergen, Paul G. Doerksen, and Karl Koop, eds., Creed and Conscience: Essays in Honour of A. James Reimer",
-      "authors": "CC Smith",
-      "journal": "Direction Journal",
+      "author": [
+        {
+          "family": "Smith",
+          "given": "CC"
+        }
+      ],
+      "issued": {
+        "date-parts": [
+          [
+            2008
+          ]
+        ]
+      },
+      "container-title": "Direction Journal",
       "volume": "37",
       "issue": "2",
-      "citations": "",
-      "year": "2008",
-      "full_text": "https://www.academia.edu/2357367/Review_of_Creed_and_Conscience_Essays_in_Honour_of_A_James_Reimer"
+      "URL": "https://www.academia.edu/2357367/Review_of_Creed_and_Conscience_Essays_in_Honour_of_A_James_Reimer"
     }
   ]
 }

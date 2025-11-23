@@ -1,0 +1,681 @@
+{
+  "items": [
+    {
+      "type": "broadcast",
+      "title": "YouTube Video",
+      "container-title": "YouTube",
+      "issued": {
+        "date-parts": [
+          [
+            2024
+          ]
+        ]
+      },
+      "URL": "https://www.youtube.com/watch?v=lBDBL-x14wo"
+    },
+    {
+      "type": "interview",
+      "title": "Re-Writing Mormon Polygamy Origins",
+      "container-title": "Gospel Tangents",
+      "issued": {
+        "date-parts": [
+          [
+            2024,
+            11,
+            18
+          ]
+        ]
+      },
+      "URL": "https://gospeltangents.com/2024/11/new-interpretation-fanny-alger/"
+    },
+    {
+      "type": "interview",
+      "title": "Joseph Smith's Plural Marriage Proposals",
+      "container-title": "Gospel Tangents",
+      "issued": {
+        "date-parts": [
+          [
+            2024
+          ]
+        ]
+      },
+      "URL": "https://gospeltangents.com/joseph-smiths-plural-marriage-proposals/"
+    },
+    {
+      "type": "interview",
+      "title": "A People's History of Book of Mormon Archeology: A Conversation with Christopher C. Smith",
+      "container-title": "Dialogue Journal",
+      "issued": {
+        "date-parts": [
+          [
+            2023,
+            10,
+            5
+          ]
+        ]
+      },
+      "URL": "https://www.dialoguejournal.com/podcasts/a-peoples-history-of-book-of-mormon-archeology-a-conversation-with-christopher-c-smith/"
+    },
+    {
+      "type": "interview",
+      "title": "Episode 3: The Smith Family",
+      "author": [
+        {
+          "family": "Buchanan",
+          "given": "Bryan"
+        },
+        {
+          "family": "Hansen Park",
+          "given": "Lindsay"
+        }
+      ],
+      "container-title": "Sunstone Mormon History Podcast",
+      "issued": {
+        "date-parts": [
+          [
+            2019,
+            3,
+            29
+          ]
+        ]
+      },
+      "URL": "https://sunstone.org/episode-three-the-smith-family/"
+    },
+    {
+      "type": "interview",
+      "title": "Episode 4: Magic and Mormonism",
+      "author": [
+        {
+          "family": "Buchanan",
+          "given": "Bryan"
+        },
+        {
+          "family": "Hansen Park",
+          "given": "Lindsay"
+        }
+      ],
+      "container-title": "Sunstone Mormon History Podcast",
+      "issued": {
+        "date-parts": [
+          [
+            2019,
+            4,
+            12
+          ]
+        ]
+      },
+      "URL": "https://sunstone.org/episode-4-magic-and-mormonism/"
+    },
+    {
+      "type": "interview",
+      "title": "Episode 5: History of the Scriptures",
+      "author": [
+        {
+          "family": "Buchanan",
+          "given": "Bryan"
+        },
+        {
+          "family": "Hansen Park",
+          "given": "Lindsay"
+        }
+      ],
+      "container-title": "Sunstone Mormon History Podcast",
+      "issued": {
+        "date-parts": [
+          [
+            2019,
+            4,
+            26
+          ]
+        ]
+      },
+      "URL": "https://sunstone.org/episode-5-history-of-the-scriptures/"
+    },
+    {
+      "type": "interview",
+      "title": "Episode 6: Bad Boys of Early Mormonism",
+      "author": [
+        {
+          "family": "Buchanan",
+          "given": "Bryan"
+        },
+        {
+          "family": "Hansen Park",
+          "given": "Lindsay"
+        }
+      ],
+      "container-title": "Sunstone Mormon History Podcast",
+      "issued": {
+        "date-parts": [
+          [
+            2019,
+            5,
+            10
+          ]
+        ]
+      },
+      "URL": "https://sunstone.org/episode-6-bad-boys-of-early-mormonism/"
+    },
+    {
+      "type": "interview",
+      "title": "Episode 7: The Bad Girls of Early Mormonism",
+      "author": [
+        {
+          "family": "Buchanan",
+          "given": "Bryan"
+        },
+        {
+          "family": "Hansen Park",
+          "given": "Lindsay"
+        }
+      ],
+      "container-title": "Sunstone Mormon History Podcast",
+      "issued": {
+        "date-parts": [
+          [
+            2019,
+            5,
+            24
+          ]
+        ]
+      },
+      "URL": "https://sunstone.org/episode-7-the-bad-girls-of-early-mormonism/"
+    },
+    {
+      "type": "interview",
+      "title": "Episode 8: How Was the Book of Mormon Translated",
+      "author": [
+        {
+          "family": "Buchanan",
+          "given": "Bryan"
+        },
+        {
+          "family": "Hansen Park",
+          "given": "Lindsay"
+        }
+      ],
+      "container-title": "Sunstone Mormon History Podcast",
+      "issued": {
+        "date-parts": [
+          [
+            2019,
+            6,
+            7
+          ]
+        ]
+      },
+      "URL": "https://sunstone.org/episode-8-how-was-the-book-of-mormon-translated/"
+    },
+    {
+      "type": "interview",
+      "title": "Episode 9: Straight Outta New York",
+      "author": [
+        {
+          "family": "Buchanan",
+          "given": "Bryan"
+        },
+        {
+          "family": "Hansen Park",
+          "given": "Lindsay"
+        }
+      ],
+      "container-title": "Sunstone Mormon History Podcast",
+      "issued": {
+        "date-parts": [
+          [
+            2019,
+            6,
+            21
+          ]
+        ]
+      },
+      "URL": "https://sunstone.org/episode-9-straight-outta-new-york/"
+    },
+    {
+      "type": "interview",
+      "title": "Episode 10: Restoring What Was Lost: Priesthood Restoration Narratives",
+      "author": [
+        {
+          "family": "Buchanan",
+          "given": "Bryan"
+        },
+        {
+          "family": "Hansen Park",
+          "given": "Lindsay"
+        }
+      ],
+      "container-title": "Sunstone Mormon History Podcast",
+      "issued": {
+        "date-parts": [
+          [
+            2019,
+            7,
+            5
+          ]
+        ]
+      },
+      "URL": "https://sunstone.org/episode-10-restoring-what-was-lost-priesthood-restoration-narratives/"
+    },
+    {
+      "type": "interview",
+      "title": "Episode 11: An Episode Full of Females",
+      "author": [
+        {
+          "family": "Buchanan",
+          "given": "Bryan"
+        },
+        {
+          "family": "Hansen Park",
+          "given": "Lindsay"
+        }
+      ],
+      "container-title": "Sunstone Mormon History Podcast",
+      "issued": {
+        "date-parts": [
+          [
+            2019,
+            7,
+            19
+          ]
+        ]
+      },
+      "URL": "https://sunstone.org/episode-11-an-episode-full-of-females/"
+    },
+    {
+      "type": "interview",
+      "title": "Episode 13: Early Black Mormons",
+      "author": [
+        {
+          "family": "Buchanan",
+          "given": "Bryan"
+        },
+        {
+          "family": "Hansen Park",
+          "given": "Lindsay"
+        }
+      ],
+      "container-title": "Sunstone Mormon History Podcast",
+      "issued": {
+        "date-parts": [
+          [
+            2019,
+            8,
+            16
+          ]
+        ]
+      },
+      "URL": "https://sunstone.org/episode-13-early-black-mormons/"
+    },
+    {
+      "type": "interview",
+      "title": "Episode 14: Translating the Joseph Smith Translation",
+      "author": [
+        {
+          "family": "Buchanan",
+          "given": "Bryan"
+        },
+        {
+          "family": "Hansen Park",
+          "given": "Lindsay"
+        }
+      ],
+      "container-title": "Sunstone Mormon History Podcast",
+      "issued": {
+        "date-parts": [
+          [
+            2019,
+            9,
+            13
+          ]
+        ]
+      },
+      "URL": "https://sunstone.org/episode-14-translating-the-joseph-smith-translation/"
+    },
+    {
+      "type": "interview",
+      "title": "Episode 15: Words on the Words of Wisdom",
+      "author": [
+        {
+          "family": "Buchanan",
+          "given": "Bryan"
+        },
+        {
+          "family": "Hansen Park",
+          "given": "Lindsay"
+        }
+      ],
+      "container-title": "Sunstone Mormon History Podcast",
+      "issued": {
+        "date-parts": [
+          [
+            2019,
+            9,
+            27
+          ]
+        ]
+      },
+      "URL": "https://sunstone.org/episode-15-words-on-the-words-of-wisdom/"
+    },
+    {
+      "type": "interview",
+      "title": "Episode 17: Boys and Bayonets",
+      "author": [
+        {
+          "family": "Buchanan",
+          "given": "Bryan"
+        },
+        {
+          "family": "Hansen Park",
+          "given": "Lindsay"
+        }
+      ],
+      "container-title": "Sunstone Mormon History Podcast",
+      "issued": {
+        "date-parts": [
+          [
+            2019,
+            10,
+            25
+          ]
+        ]
+      },
+      "URL": "https://sunstone.org/episode-17-boys-and-bayonets/"
+    },
+    {
+      "type": "interview",
+      "title": "Episode 18: Translate Like an Egyptian",
+      "author": [
+        {
+          "family": "Buchanan",
+          "given": "Bryan"
+        },
+        {
+          "family": "Hansen Park",
+          "given": "Lindsay"
+        }
+      ],
+      "container-title": "Sunstone Mormon History Podcast",
+      "issued": {
+        "date-parts": [
+          [
+            2019,
+            11,
+            8
+          ]
+        ]
+      },
+      "URL": "https://sunstone.org/episode-18-translate-like-an-egyptian/"
+    },
+    {
+      "type": "interview",
+      "title": "Episode 21: Oh Emma, Where Art Thou",
+      "author": [
+        {
+          "family": "Buchanan",
+          "given": "Bryan"
+        },
+        {
+          "family": "Hansen Park",
+          "given": "Lindsay"
+        }
+      ],
+      "container-title": "Sunstone Mormon History Podcast",
+      "issued": {
+        "date-parts": [
+          [
+            2020,
+            2,
+            24
+          ]
+        ]
+      },
+      "URL": "https://sunstone.org/episode-21-oh-emma-where-art-thou/"
+    },
+    {
+      "type": "article-magazine",
+      "title": "Who Was Fanny Alger?",
+      "author": [
+        {
+          "family": "Nielsen",
+          "given": "Chad"
+        }
+      ],
+      "container-title": "From the Desk",
+      "issued": {
+        "date-parts": [
+          [
+            2024
+          ]
+        ]
+      },
+      "URL": "https://www.fromthedesk.org/fanny-alger-joseph-smith-secret-covenants/"
+    },
+    {
+      "type": "interview",
+      "title": "Episode 38: Brigham Young's Utah Conquest with Historian Christopher C. Smith",
+      "author": [
+        {
+          "family": "Blankenagel",
+          "given": "Bryce"
+        }
+      ],
+      "container-title": "Naked Mormonism Podcast",
+      "issued": {
+        "date-parts": [
+          [
+            2017,
+            1,
+            27
+          ]
+        ]
+      },
+      "URL": "http://nakedmormonismpodcast.com/episodes.html"
+    },
+    {
+      "type": "interview",
+      "title": "The Book of Mormon as a 19th Century Political Commentary",
+      "author": [
+        {
+          "family": "Colvin",
+          "given": "Gina"
+        }
+      ],
+      "container-title": "A Thoughtful Faith Podcast",
+      "issued": {
+        "date-parts": [
+          [
+            2017,
+            3,
+            20
+          ]
+        ]
+      },
+      "URL": "https://www.athoughtfulfaith.org/the-book-of-mormon-as-a-19th-century-political-commentary-christopher-c-smith/"
+    },
+    {
+      "type": "interview",
+      "title": "OTOS014 – Faith Transitions: Leaving Pentecostalism with Chris Smith",
+      "author": [
+        {
+          "given": "Michelle"
+        }
+      ],
+      "container-title": "On the Other Side Podcast",
+      "issued": {
+        "date-parts": [
+          [
+            2018,
+            10,
+            18
+          ]
+        ]
+      },
+      "URL": "https://web.archive.org/web/20230129024219/http://www.otospodcast.com/podcast/otos014-faith-transitions-leaving-pentecostalism-with-chris-smith/"
+    },
+    {
+      "type": "broadcast",
+      "title": "What South Park Got Wrong about Mormons",
+      "container-title": "Things and Stuff",
+      "issued": {
+        "date-parts": [
+          [
+            2016,
+            5,
+            17
+          ]
+        ]
+      },
+      "URL": "http://thoughtsonthingsandstuff.com/what-south-park-got-wrong-about-mormons/"
+    },
+    {
+      "type": "interview",
+      "title": "Episode 7: The Lamanite Zeal",
+      "author": [
+        {
+          "family": "Hansen Park",
+          "given": "Lindsay"
+        }
+      ],
+      "container-title": "Color of Heaven Podcast",
+      "issued": {
+        "date-parts": [
+          [
+            2016,
+            2,
+            22
+          ]
+        ]
+      },
+      "URL": "https://castbox.fm/episode/007-Color-of-Heaven-Podcast%2C-Episode-Seven%3A-The-Lamanite-Zeal-id345753-id15943177?country=us"
+    },
+    {
+      "type": "article-magazine",
+      "title": "11 'Good News' Stories You May Have Missed in 2015",
+      "author": [
+        {
+          "family": "Smith",
+          "given": "CC"
+        }
+      ],
+      "container-title": "Meridian Magazine",
+      "issued": {
+        "date-parts": [
+          [
+            2015,
+            12,
+            28
+          ]
+        ]
+      },
+      "URL": "http://ldsmag.com/11-good-news-stories-you-may-have-missed-in-2015/"
+    },
+    {
+      "type": "interview",
+      "title": "Episode 147: Mormon Ecstatic Episodes: Kirtland, 1830–1831",
+      "author": [
+        {
+          "family": "Hale",
+          "given": "Van"
+        }
+      ],
+      "container-title": "Mormon Miscellaneous",
+      "publisher": "K-Talk Radio, 630 AM",
+      "publisher-place": "South Jordan, Utah",
+      "issued": {
+        "date-parts": [
+          [
+            2015,
+            8,
+            23
+          ]
+        ]
+      },
+      "URL": "http://mormonmisc.podbean.com/"
+    },
+    {
+      "type": "interview",
+      "title": "Joseph the Seer",
+      "author": [
+        {
+          "family": "Streeter",
+          "given": "Jonathan"
+        }
+      ],
+      "container-title": "Things and Stuff",
+      "issued": {
+        "date-parts": [
+          [
+            2015,
+            8,
+            16
+          ]
+        ]
+      },
+      "URL": "http://thoughtsonthingsandstuff.com/joseph-the-seer/"
+    },
+    {
+      "type": "interview",
+      "title": "Episode 4: An Introduction to Issues Surrounding the Book of Abraham",
+      "author": [
+        {
+          "family": "Larsen",
+          "given": "John"
+        }
+      ],
+      "container-title": "Mormon Expression",
+      "issued": {
+        "date-parts": [
+          [
+            2010,
+            7,
+            14
+          ]
+        ]
+      },
+      "URL": "http://mormonexpression.com/?p=118"
+    },
+    {
+      "type": "interview",
+      "title": "Episode 43: Outside Looking In",
+      "author": [
+        {
+          "family": "Larsen",
+          "given": "John"
+        }
+      ],
+      "container-title": "Mormon Expression",
+      "issued": {
+        "date-parts": [
+          [
+            2010,
+            2,
+            23
+          ]
+        ]
+      },
+      "URL": "http://mormonexpression.com/?p=485"
+    },
+    {
+      "type": "article-newspaper",
+      "title": "Sunstone: Hidden Mormonism in Orson Scott Card's Fiction",
+      "author": [
+        {
+          "family": "DeGroote",
+          "given": "Michael"
+        }
+      ],
+      "container-title": "Deseret News",
+      "issued": {
+        "date-parts": [
+          [
+            2009,
+            8,
+            15
+          ]
+        ]
+      },
+      "URL": "http://www.deseretnews.com/article/705378552/Sunstone-Hidden-Mormonism-in-Orson-Scott-Cards-fiction.html"
+    }
+  ]
+}
+

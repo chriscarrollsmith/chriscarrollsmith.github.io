@@ -27,32 +27,35 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.publication-title {
-  font-size: 1.1rem;
-  font-weight: 600;
+.publication-formatted {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text, #333);
   margin-bottom: 0.5rem;
-  color: var(--color-heading, #333);
 }
 
-.publication-authors {
+.publication-formatted :global(i) {
   font-style: italic;
-  margin-bottom: 0.5rem;
-  color: var(--color-text, #444);
-}
-
-.publication-details {
-  color: var(--color-text-muted, #666);
-  margin-bottom: 0.5rem;
-}
-
-.publication-journal {
-  font-weight: 500;
 }
 
 .publication-citations {
   font-size: 0.9rem;
   color: var(--color-text-muted, #666);
   margin-top: 0.5rem;
+}
+
+.publication-link {
+  margin-top: 0.5rem;
+}
+
+.publication-link a {
+  color: var(--color-link, #0066cc);
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.publication-link a:hover {
+  text-decoration: underline;
 }
 
 @media (max-width: 767px) {
