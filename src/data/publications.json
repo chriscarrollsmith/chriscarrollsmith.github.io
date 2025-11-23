@@ -42,6 +42,7 @@
       "container-title": "Journal of Mormon History",
       "volume": "41",
       "issue": "3",
+      "DOI": "10.5406/jmormhist.41.3.131",
       "URL": "https://www.jstor.org/stable/10.5406/jmormhist.41.3.131",
       "custom": {
         "citations": "13"
@@ -66,6 +67,7 @@
       "container-title": "Dialogue: A Journal of Mormon Thought",
       "volume": "43",
       "issue": "2",
+      "DOI": "10.5406/dialjmormthou.43.2.0086",
       "URL": "https://www.dialoguejournal.com/articles/joseph-smith-in-hermeneutical-crisis/",
       "custom": {
         "citations": "7"
@@ -116,6 +118,7 @@
       "container-title": "Dialogue: A Journal of Mormon Thought",
       "volume": "43",
       "issue": "4",
+      "DOI": "10.5406/dialjmormthou.43.4.0001",
       "URL": "https://www.dialoguejournal.com/articles/the-original-length-of-the-scroll-of-hor/",
       "custom": {
         "citations": "6"
@@ -292,7 +295,8 @@
       },
       "container-title": "Utah Historical Quarterly",
       "volume": "90",
-      "issue": "1"
+      "issue": "1",
+      "DOI": "10.5406/26428652.90.1.11"
     },
     {
       "type": "article-journal",
@@ -375,6 +379,7 @@
       "container-title": "Magic, Ritual, and Witchcraft",
       "volume": "15",
       "issue": "1",
+      "DOI": "10.1353/mrw.2019.0047",
       "URL": "https://www.academia.edu/41725824/Review_of_Jonathan_A_Stapley_The_Power_of_Godliness_Mormon_Liturgy_and_Cosmology"
     },
     {
