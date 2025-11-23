@@ -27,10 +27,9 @@ test.describe('Console Errors and Warnings', () => {
 
   // Filter function to ignore known acceptable console messages
   const shouldIgnoreMessage = (msg: ConsoleMessage): boolean => {
-    const text = msg.text();
-
-    // Ignore certain known/acceptable messages here if needed
-    // Example: if (text.includes('Download the React DevTools')) return true;
+    // Example usage:
+    // const text = msg.text();
+    // if (text.includes('Download the React DevTools')) return true;
 
     return false;
   };
@@ -120,7 +119,7 @@ test.describe('Console Errors and Warnings', () => {
     await page.waitForLoadState('networkidle');
 
     // Click through various sections
-    const sections = ['#about', '#projects', '#writing', '#events-section'];
+    const sections = ['#about', '#projects', '#writing', '#events'];
 
     for (const section of sections) {
       const link = page.locator(`#header a[href="${section}"]`);

@@ -37,7 +37,7 @@ const Events: React.FC = () => {
   }, []); // Empty dependency array means this effect runs once after the initial render
 
   return (
-    <section className={hero?.src ? hero.shade : hero?.shade === "dark" ? "black" : "white"} id="events-section">
+    <section className={hero?.src ? hero.shade : hero?.shade === "dark" ? "black" : "white"} id="events">
       {hero && (
         <>
           <img

@@ -6,7 +6,6 @@ import About from './components/About';
 import ProjectFeature from './components/ProjectFeature';
 import Projects from './components/Projects';
 import Writing from './components/Writing';
-import Book from './components/Book';
 import Footer from './components/Footer';
 import Blog from './components/Blog';
 import BlogPost from './components/BlogPost';
@@ -30,7 +29,6 @@ const App: React.FC = () => {
               <Projects />
               <ProjectFeature />
               <Writing />
-              <Book />
             </>
           } />
           <Route path="/blog" element={<Blog />} />

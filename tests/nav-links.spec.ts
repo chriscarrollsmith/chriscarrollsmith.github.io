@@ -67,14 +67,26 @@ test.describe('Navigation Links', () => {
     },
     {
       text: 'Events',
-      href: '/#events-section',
+      href: '/#events',
       targetUrl: '/',
-      targetHash: '#events-section',
+      targetHash: '#events',
       verifyContent: async (page) => {
-        await expect(page.locator('#events-section')).toBeVisible();
+        await expect(page.locator('#events')).toBeVisible();
         // Events section has h1 with "Events" and calendar
-        await expect(page.locator('#events-section h1')).toContainText(/events/i);
+        await expect(page.locator('#events h1')).toContainText(/events/i);
         await expect(page.locator('#calendar')).toBeVisible();
+      }
+    },
+    {
+      text: 'CV',
+      href: '/cv',
+      targetUrl: '/cv',
+      targetHash: null,
+      verifyContent: async (page) => {
+        await expect(page.locator('.cv-container h1')).toContainText(/curriculum vitae/i);
+        // CV page should have education, publications, presentations, and awards sections
+        await expect(page.locator('.education-list')).toBeVisible();
+        await expect(page.locator('.publications-list')).toBeVisible();
       }
     },
     {
@@ -83,7 +95,7 @@ test.describe('Navigation Links', () => {
       targetUrl: '/blog',
       targetHash: null,
       verifyContent: async (page) => {
-        await expect(page.locator('h1')).toContainText(/blog/i);
+        await expect(page.locator('.blog-container h1')).toContainText(/blog/i);
         // Blog page should have blog posts or a "no posts" message
         const hasContent = await page.locator('body').textContent();
         expect(hasContent).toBeTruthy();
@@ -148,7 +160,9 @@ test.describe('Navigation Links', () => {
 
   test('should navigate to sections from blog page', async ({ page }) => {
     // Test navigation from a different page (blog) back to home sections
-    const hashNavItems = expectedNavItems.filter(item => item.targetHash);
+    const hashNavItems = expectedNavItems.filter(
+      (item): item is NavItem & { targetHash: string } => item.targetHash !== null
+    );
 
     for (const navItem of hashNavItems) {
       // Start from blog page
@@ -201,7 +215,6 @@ test.describe('Navigation Links', () => {
       const headerLinks = await header.locator('a').all();
       for (const link of headerLinks) {
         // Each link should be keyboard accessible
-        const role = await link.getAttribute('role');
         const href = await link.getAttribute('href');
         expect(href).toBeTruthy();
         // Links should be focusable (no tabindex=-1)

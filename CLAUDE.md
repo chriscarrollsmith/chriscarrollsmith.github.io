@@ -35,7 +35,7 @@
   - Blog posts live in `src/data/blogs.json` and must follow the existing schema (including `id`, `title`, `date`, `excerpt`, `content`, `image`, optional `script`).  
   - Avoid schema changes unless you also update all consumers; when adding posts, ensure required fields are present and consistent with existing entries.
 
-- **Running and testing**
+ - **Running and testing**
   - For local work, prefer:
     ```bash
     bun run dev
@@ -44,3 +44,7 @@
     ```
   - End‑to‑end tests use Playwright (see `playwright.config.js`); Lighthouse CI audits are configured in `lighthouserc.json`. For substantial UI or performance changes, prefer to run these checks or at least ensure build output remains Lighthouse‑friendly.
   - **Playwright test output**: Always access test results programmatically via the list reporter. The HTML report viewer is configured with `open: 'never'` to prevent automatic browser display. If needed, the HTML report can be manually viewed at `playwright-report/index.html`.
+
+### WSL2 and Lighthouse CI
+
+- `bun run lighthouse` invokes `lhci autorun` and will fail with “Unable to connect to Chrome” when run in this environment under WSL2, due to known LHCI/Chrome limitations. LHCI will still run correctly in CI.

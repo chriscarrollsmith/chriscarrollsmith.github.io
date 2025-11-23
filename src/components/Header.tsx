@@ -33,7 +33,7 @@ const Header: React.FC = () => {
       <a href="/#about" onClick={(e) => handleAnchorClick(e, '#about')}>About</a>
       <a href="/#projects" onClick={(e) => handleAnchorClick(e, '#projects')}>Projects</a>
       <a href="/#writing" onClick={(e) => handleAnchorClick(e, '#writing')}>Writing</a>
-      <a href="/#events-section" onClick={(e) => handleAnchorClick(e, '#events-section')}>Events</a>
+      <a href="/#events" onClick={(e) => handleAnchorClick(e, '#events')}>Events</a>
       <NavLink to="/blog">Blog</NavLink>
     </div>
   );
