@@ -1,11 +1,6 @@
-// Type definitions for @citation-js/core, scoped to CSL-JSON usage in this project
-import type { HttpsResourceCitationstylesOrgSchemaV10InputJsonCslDataJson } from './csl-generated';
-
-type CSLItem = HttpsResourceCitationstylesOrgSchemaV10InputJsonCslDataJson[number];
-
 declare module '@citation-js/core' {
   export class Cite {
-    constructor(data: CSLItem | CSLItem[]);
+    constructor(data: unknown | unknown[]);
     format(
       mode: 'bibliography' | 'citation' | string,
       options?: {

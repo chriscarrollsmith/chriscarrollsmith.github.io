@@ -1,8 +1,7 @@
 import './PresentationsList.css';
 import presentationsData from '../data/presentations.json';
 import type { CSLPresentation } from '../types/data';
-import { Cite } from '@citation-js/core';
-import '@citation-js/plugin-csl';
+import { Cite } from '../utils/citation';
 import { useEffect, useState } from 'react';
 import { getYearFromCSLDate } from '../utils/cslDate';
 
