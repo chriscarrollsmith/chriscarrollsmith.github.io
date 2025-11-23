@@ -8,6 +8,15 @@
  *
  * Usage:
  *   bun visual_qa/capture_anchors.mjs --base-url http://localhost:4321 --label baseline "#home" "#about"
+ *   bun visual_qa/capture_anchors.mjs --base-url http://localhost:4321 --label baseline --color-scheme dark "#cv"
+ *   bun visual_qa/capture_anchors.mjs --base-url http://localhost:4321 --label baseline --color-scheme both "#cv"
+ *
+ * Options:
+ *   --base-url <url>       Base URL of the site (required)
+ *   --label <label>        Label for screenshot folder (default: "run")
+ *   --color-scheme <mode>  Color scheme: "light", "dark", or "both" (default: "both")
+ *   --start-dev            Start dev server automatically
+ *   --dev-cmd <cmd>        Dev server command (default: "bun run dev")
  *
  * Requirements:
  *   - Dev or preview server must be running and reachable at --base-url
@@ -33,6 +42,7 @@ function parseArgs(argv) {
   const anchors = [];
   let startDev = false;
   let devCmd = 'bun run dev';
+  let colorScheme = 'both'; // 'light', 'dark', or 'both'
 
   for (let i = 0; i < args.length; i += 1) {
     const arg = args[i];
@@ -41,6 +51,14 @@ function parseArgs(argv) {
       i += 1;
     } else if (arg === '--label' && args[i + 1]) {
       label = args[i + 1];
+      i += 1;
+    } else if (arg === '--color-scheme' && args[i + 1]) {
+      const scheme = args[i + 1];
+      if (!['light', 'dark', 'both'].includes(scheme)) {
+        console.error('Error: --color-scheme must be "light", "dark", or "both"');
+        process.exit(1);
+      }
+      colorScheme = scheme;
       i += 1;
     } else if (arg === '--start-dev') {
       startDev = true;
@@ -71,6 +89,7 @@ function parseArgs(argv) {
     anchors,
     startDev,
     devCmd,
+    colorScheme,
   };
 }
 
@@ -82,48 +101,57 @@ async function ensureDir(dir) {
   await fs.promises.mkdir(dir, { recursive: true });
 }
 
-async function captureScreens({ baseUrl, label, anchors }) {
+async function captureScreens({ baseUrl, label, anchors, colorScheme }) {
   const outputRoot = path.resolve(process.cwd(), 'visual_qa', 'screenshots', label);
   await ensureDir(outputRoot);
 
   const browser = await chromium.launch();
 
+  // Determine which color schemes to capture
+  const schemes = colorScheme === 'both' ? ['light', 'dark'] : [colorScheme];
+
   try {
-    for (const bp of BREAKPOINTS) {
-      const context = await browser.newContext({
-        viewport: { width: bp.width, height: bp.height },
-      });
-      const page = await context.newPage();
+    for (const scheme of schemes) {
+      console.log(`\n=== Color Scheme: ${scheme} ===`);
 
-      console.log(`\n=== Breakpoint: ${bp.name} (${bp.width}x${bp.height}) ===`);
-      await page.goto(baseUrl, { waitUntil: 'networkidle' });
+      for (const bp of BREAKPOINTS) {
+        const context = await browser.newContext({
+          viewport: { width: bp.width, height: bp.height },
+          colorScheme: scheme,
+        });
+        const page = await context.newPage();
 
-      for (const anchor of anchors) {
-        const anchorSlug = sanitizeAnchorForFilename(anchor);
-        const fileName = `${bp.name}-${anchorSlug}.png`;
-        const filePath = path.join(outputRoot, fileName);
+        console.log(`\n=== Breakpoint: ${bp.name} (${bp.width}x${bp.height}) ===`);
+        await page.goto(baseUrl, { waitUntil: 'networkidle' });
 
-        console.log(`Capturing ${anchor} -> ${fileName}`);
+        for (const anchor of anchors) {
+          const anchorSlug = sanitizeAnchorForFilename(anchor);
+          const schemeSuffix = schemes.length > 1 ? `-${scheme}` : '';
+          const fileName = `${bp.name}-${anchorSlug}${schemeSuffix}.png`;
+          const filePath = path.join(outputRoot, fileName);
 
-        const locator = page.locator(anchor);
-        const count = await locator.count();
+          console.log(`Capturing ${anchor} -> ${fileName}`);
 
-        if (count === 0) {
-          console.warn(`  Warning: No element found for selector "${anchor}" at this breakpoint.`);
-          continue;
+          const locator = page.locator(anchor);
+          const count = await locator.count();
+
+          if (count === 0) {
+            console.warn(`  Warning: No element found for selector "${anchor}" at this breakpoint.`);
+            continue;
+          }
+
+          await locator.first().scrollIntoViewIfNeeded();
+          // Give layout a moment to settle after scrolling
+          await page.waitForTimeout(500);
+
+          await page.screenshot({
+            path: filePath,
+            fullPage: false,
+          });
         }
 
-        await locator.first().scrollIntoViewIfNeeded();
-        // Give layout a moment to settle after scrolling
-        await page.waitForTimeout(500);
-
-        await page.screenshot({
-          path: filePath,
-          fullPage: false,
-        });
+        await context.close();
       }
-
-      await context.close();
     }
 
     console.log(`\nScreenshots saved under: ${outputRoot}`);

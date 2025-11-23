@@ -45,8 +45,14 @@ The site uses a **Tailwind CSS-inspired** breakpoint scale for responsive design
   - Changes that remove labels, ARIA attributes, or autocomplete hints are likely to break Lighthouse CI thresholds in `lighthouserc.json`.
 
 - **Blog data shape**
-  - Blog posts live in `src/data/blogs.json` and must follow the existing schema (including `id`, `title`, `date`, `excerpt`, `content`, `image`, optional `script`).  
+  - Blog posts live in `src/data/blogs.json` and must follow the existing schema (including `id`, `title`, `date`, `excerpt`, `content`, `image`, optional `script`).
   - Avoid schema changes unless you also update all consumers; when adding posts, ensure required fields are present and consistent with existing entries.
+
+- **Dark mode support**
+  - The site supports OS-level dark mode via `@media (prefers-color-scheme: dark)`.
+  - All new components should use CSS custom properties defined in `src/App.css` (e.g., `var(--color-text)`, `var(--color-bg-light)`, `var(--color-link)`).
+  - When adding new colors, define both light and dark mode values in the `:root` selector and the `@media (prefers-color-scheme: dark)` block.
+  - Always test visual changes in both light and dark modes using the visual QA capture script with `--color-scheme both`.
 
  - **Running and testing**
   - For local work, prefer:
@@ -72,6 +78,29 @@ Simon Willison's `llm` tool is installed in this environment, and you can use it
 4. Adjust the frontend based on the feedback and re-run the comparison, aiming for strictly better scores on the affected panes and no regressions elsewhere.
 
 Vision models can be sensitive to **file format, compression level, and crop**. Always keep **file format, encoding, viewport, breakpoint, and crop** consistent when comparing before/after shots.
+
+### Dark Mode Testing
+
+The site supports OS-level dark mode via `@media (prefers-color-scheme: dark)`. The visual QA capture script supports capturing screenshots in both light and dark modes:
+
+**Capture light mode only:**
+```bash
+bun visual_qa/capture_anchors.mjs --base-url http://localhost:4321 --label baseline --color-scheme light "#home"
+```
+
+**Capture dark mode only:**
+```bash
+bun visual_qa/capture_anchors.mjs --base-url http://localhost:4321/cv --label baseline --color-scheme dark ".publications-list"
+```
+
+**Capture both modes (default):**
+```bash
+bun visual_qa/capture_anchors.mjs --base-url http://localhost:4321/cv --label baseline --color-scheme both ".publications-list"
+```
+
+When using `--color-scheme both`, screenshots are saved with `-light` and `-dark` suffixes (e.g., `xl-publications-list-light.png` and `xl-publications-list-dark.png`).
+
+**Testing citations in dark mode**: Pay special attention to the publications list component on the `/cv` page, as it contains formatted citations that should be readable in both light and dark modes. Use the `.publications-list` selector to capture this section.
 
 ## Basic usage of `llm`
 

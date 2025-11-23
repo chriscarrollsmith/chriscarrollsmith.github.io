@@ -4,6 +4,34 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Montserrat:wght@200;400;600;800&display=swap");
 
+:root {
+  /* Light mode colors (default) */
+  --color-text: #333;
+  --color-text-muted: #666;
+  --color-bg: #ffffff;
+  --color-bg-light: #f9f9f9;
+  --color-border: #e0e0e0;
+  --color-link: #242d57;
+  --color-link-hover: rgba(0, 0, 0, 0.25);
+  --color-button-bg: #4e567e;
+  --color-button-hover: #3c415c;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Dark mode colors */
+    --color-text: #e0e0e0;
+    --color-text-muted: #b0b0b0;
+    --color-bg: #1a1a1a;
+    --color-bg-light: #2a2a2a;
+    --color-border: #404040;
+    --color-link: #a0a8e0;
+    --color-link-hover: #d0d4ff;
+    --color-button-bg: #5a6391;
+    --color-button-hover: #6b74a3;
+  }
+}
+
 html,
 body {
   margin: 0;
@@ -11,6 +39,8 @@ body {
   height: 100%;
   width: 100%;
   font-family: "Cormorant Garamond", serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
 }
 
 html {
@@ -140,11 +170,11 @@ hr {
 
 a {
   text-decoration: underline;
-  color: #242d57;
+  color: var(--color-link);
 }
 
 a:hover {
-  color: rgba(0, 0, 0, 0.25);
+  color: var(--color-link-hover);
 }
 
 section.dark a,
@@ -167,7 +197,7 @@ div.center-flex {
 }
 
 .button {
-  background-color: #4e567e;
+  background-color: var(--color-button-bg);
   color: white;
   padding: 0.5rem 1rem;
   text-decoration: none;
@@ -182,7 +212,7 @@ div.center-flex {
 }
 
 .button:hover {
-  background-color: #3c415c;
+  background-color: var(--color-button-hover);
   text-decoration: none;
   color: white;
 }
