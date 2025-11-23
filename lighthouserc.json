@@ -5,7 +5,8 @@
       "numberOfRuns": 3,
       "url": [
         "http://localhost/index.html",
-        "http://localhost/blog/index.html"
+        "http://localhost/blog/index.html",
+        "http://localhost/cv/index.html"
       ]
     },
     "assert": {
