@@ -50,20 +50,16 @@
 
 Before making any code or content changes, you should *always* capture baseline screenshots.
 
-**Start dev server:**
-```bash
-bun run dev
-```
-
 **Capture baseline screenshots:**
 ```bash
 bun visual_qa/capture_anchors.mjs \
   --base-url http://localhost:4321 \
+  --start-dev \
   --label baseline \
   "#home" "#about" "#projects" "#writing" "#events"
 ```
 
-Kill the server when you're done.
+The screenshot workflow takes 40-50 seconds to complete. Set `run_in_background` to `false` with a 2 minute timeout.
 
 ---
 
@@ -91,9 +87,17 @@ bun run lint
 ```bash
 bun visual_qa/capture_anchors.mjs \
   --base-url http://localhost:4321 \
-  --label candidate \
+    --start-dev \
+    --label candidate \
   "#home" "#about" "#projects" "#writing" "#events"
 ```
+
+**The script will automatically compare candidate screenshots against baseline and report:**
+- ✅ Identical images (no review needed)
+- 🔶 Changed images with pixel diff percentage
+- ⚠️  New screenshots (no baseline exists)
+
+**Only review images that show differences.** For each changed image:
 
 **Option 1: Score baseline and candidate and compare:**
 Visual scoring works best when one image is graded at a time. Use the rubric to separately score the baseline and candidate for each affected component, then compare the scores to verify no regressions.

@@ -27,6 +27,7 @@ import fs from 'fs';
 import path from 'path';
 import { chromium } from 'playwright';
 import { spawn } from 'child_process';
+import { compareDirectories } from './compare_images.mjs';
 
 const BREAKPOINTS = [
   { name: 'xs', width: 320, height: 568 },  // small mobile
@@ -239,6 +240,20 @@ if (import.meta.url === `file://${process.argv[1]}`) {
       }
 
       await captureScreens(options);
+
+      // If we captured with label "candidate", automatically compare against baseline
+      if (options.label === 'candidate') {
+        const baselineDir = path.resolve(process.cwd(), 'visual_qa', 'screenshots', 'baseline');
+        const candidateDir = path.resolve(process.cwd(), 'visual_qa', 'screenshots', options.label);
+
+        if (fs.existsSync(baselineDir)) {
+          await compareDirectories(baselineDir, candidateDir);
+        } else {
+          console.log('\nℹ️  No baseline directory found. Skipping comparison.');
+          console.log('   Run with --label baseline first to create baseline screenshots.');
+        }
+      }
+
       handleExit();
     } catch (err) {
       console.error('Error during capture:', err);
