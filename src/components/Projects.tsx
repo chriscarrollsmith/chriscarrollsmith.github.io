@@ -57,10 +57,14 @@ const Projects: React.FC = () => {
   ];
 
   return (
-    <section className={hero?.src ? hero.shade : hero?.shade === "dark" ? "black" : "white"} id="projects">
+    <section className={`hero ${hero?.src ? hero.shade : hero?.shade === 'dark' ? 'black' : 'white'}`} id="projects">
       {hero && (
-        <img className="background" src={hero.src} alt={hero.alt} />
+        <>
+          <img className="hero-bg" src={hero.src} alt={hero.alt} />
+          <div className="hero-overlay" />
+        </>
       )}
+      <div className="hero-content">
         {projectsData.map((category, categoryIndex) => (
           <div className="category-container" key={categoryIndex}>
             <div className="projects-grid">
@@ -76,6 +80,7 @@ const Projects: React.FC = () => {
             </div>
           </div>
         ))}
+      </div>
     </section>
   );
 };

@@ -37,15 +37,20 @@ const Writing: React.FC = () => {
   ];
 
   return (
-    <section className={hero?.src ? hero.shade : hero?.shade === "dark" ? "black" : "white"} id="writing">
+    <section className={`hero ${hero?.src ? hero.shade : hero?.shade === 'dark' ? 'black' : 'white'}`} id="writing">
       {hero && (
-        <img className="background" src={hero.src} alt={hero.alt} />
+        <>
+          <img className="hero-bg" src={hero.src} alt={hero.alt} />
+          <div className="hero-overlay" />
+        </>
       )}
-      <div className="writing-grid">
-        {writingData.map((writing, index) => (
-          <Card key={index} project={writing} />
-        ))}
-        <SubscribeForm />
+      <div className="hero-content">
+        <div className="writing-grid">
+          {writingData.map((writing, index) => (
+            <Card key={index} project={writing} />
+          ))}
+          <SubscribeForm />
+        </div>
       </div>
     </section>
   );

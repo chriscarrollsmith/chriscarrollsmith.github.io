@@ -37,20 +37,23 @@ const Events: React.FC = () => {
   }, []); // Empty dependency array means this effect runs once after the initial render
 
   return (
-    <section className={hero?.src ? hero.shade : hero?.shade === "dark" ? "black" : "white"} id="events">
+    <section className={`hero ${hero?.src ? hero.shade : hero?.shade === 'dark' ? 'black' : 'white'}`} id="events">
       {hero && (
         <>
           <img
-            className="background"
+            className="hero-bg"
             src={hero.src}
             alt={hero.alt}
           />
-          <div className="events-content">
-            <h1>Events</h1>
-            <div ref={calendarRef} id='calendar'></div>
-          </div>
+          <div className="hero-overlay" />
         </>
       )}
+      <div className="hero-content">
+        <div className="events-content">
+          <h1>Events</h1>
+          <div ref={calendarRef} id='calendar'></div>
+        </div>
+      </div>
     </section>
   );
 };

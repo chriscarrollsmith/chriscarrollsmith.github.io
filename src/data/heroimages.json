@@ -1,20 +1,20 @@
 [
   {
     "name": "home",
-    "src": "images/Chris_landscape.jpg",
+    "src": "/images/Chris_landscape.jpg",
     "shade": "dark",
     "adjustment": "-20%",
     "alt": "Photograph of Christopher Smith in a plum suit outside a beautiful inn"
   },
   {
     "name": "about",
-    "src": "images/motion-background.jpg",
+    "src": "/images/motion-background.jpg",
     "shade": "light",
     "alt": "Gray abstract background"
   },
   {
     "name": "projects",
-    "src": "images/violetflowers1-q80.webp",
+    "src": "/images/violetflowers1-q80.webp",
     "shade": "dark",
     "alt": "Violet flowers against a black backdrop"
   },
@@ -26,13 +26,13 @@
   },
   {
     "name": "writing",
-    "src": "images/cityscape-q95.webp",
+    "src": "/images/cityscape-q95.webp",
     "shade": "dark",
     "alt": "Cityscape seen from above through a purple haze"
   },
   {
     "name": "events",
-    "src": "images/putty-q95.webp",
+    "src": "/images/putty-q95.webp",
     "shade": "light",
     "alt": "Light gray putty applied to a wall with artful wavy strokes"
   }

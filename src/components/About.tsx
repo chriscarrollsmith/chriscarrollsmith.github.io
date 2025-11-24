@@ -25,38 +25,45 @@ const About: React.FC = () => {
   ];
 
   return (
-    <section className={hero?.src ? hero.shade : hero?.shade === "dark" ? "black" : "white"} id="about">
-      {hero && <img className="background" src={hero.src} alt={hero.alt} />}
-      <div className="about-section">
-        <p className="large">
-          President of <a href='https://promptlytechnologies.com'>Promptly Technologies</a> and creator of <a href='https://scribert.com'>Scribert</a>, your AI text-to-speech companion.
-        </p>
-        <hr />
-        <div className="center-flex padded">
-          {techIcons.map((icon) => (
-            <img
-              className="skills-icon"
-              src={icon.src}
-              alt={icon.alt}
-              title={icon.alt}
-              key={icon.alt}
-              width={32}
-              height={32}
-              loading="lazy"
-              decoding="async"
-            />
-          ))}
+    <section className={`hero ${hero?.src ? hero.shade : hero?.shade === 'dark' ? 'black' : 'white'}`} id="about">
+      {hero && (
+        <>
+          <img className="hero-bg" src={hero.src} alt={hero.alt} />
+          <div className="hero-overlay" />
+        </>
+      )}
+      <div className="hero-content">
+        <div className="about-section">
+          <p className="large">
+            President of <a href='https://promptlytechnologies.com'>Promptly Technologies</a> and creator of <a href='https://scribert.com'>Scribert</a>, your AI text-to-speech companion.
+          </p>
+          <hr />
+          <div className="center-flex padded">
+            {techIcons.map((icon) => (
+              <img
+                className="skills-icon"
+                src={icon.src}
+                alt={icon.alt}
+                title={icon.alt}
+                key={icon.alt}
+                width={32}
+                height={32}
+                loading="lazy"
+                decoding="async"
+              />
+            ))}
+          </div>
+          <ul className="skills-list">
+            {skills.map((skill) => (
+              <li key={skill}>{skill}</li>
+            ))}
+          </ul>
+          <hr />
+          <p className="small">
+            Hire me to solve your automation problem or build your application. Reach out today to get a quote!
+          </p>
+          <ContactForm />
         </div>
-        <ul className="skills-list">
-          {skills.map((skill) => (
-            <li key={skill}>{skill}</li>
-          ))}
-        </ul>
-        <hr />
-        <p className="small">
-          Hire me to solve your automation problem or build your application. Reach out today to get a quote!
-        </p>
-        <ContactForm />
       </div>
     </section>
   );

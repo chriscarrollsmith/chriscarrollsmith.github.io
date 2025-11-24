@@ -27,23 +27,28 @@ const HomeClient: React.FC = () => {
   }
 
   return (
-    <section className={hero.src ? hero.shade : hero.shade === "dark" ? "black" : "white"} id="home">
+    <section className={`hero ${hero.src ? hero.shade : hero.shade === 'dark' ? 'black' : 'white'}`} id="home">
       {hero && (
         <>
           <img
-            className="background"
+            className="hero-bg"
             src={hero.src}
             alt={hero.alt}
             style={{
-              objectPosition: windowWidth < 1282 ? `calc(50% - ${hero.adjustment}) center` : `center`
+              objectPosition: windowWidth < 1282 ? `calc(50% - ${hero.adjustment}) center` : `center`,
             }}
           />
-          <div style={{ position: 'absolute', top: '30%', left: '2rem', right: '2rem'}}>
-            <h1>{typedSiteProperties.name}</h1>
-            <h2>{typedSiteProperties.title}</h2>
-          </div>
-          <div id="down-arrow">
-            <a href="#about"><img className="clickable-icon" src="/images/down-arrow.svg" alt="scroll down" /></a>
+          <div className="hero-overlay" />
+          <div className="hero-content">
+            <div className="hero-heading">
+              <h1>{typedSiteProperties.name}</h1>
+              <h2>{typedSiteProperties.title}</h2>
+            </div>
+            <div id="down-arrow">
+              <a href="#about">
+                <img className="clickable-icon" src="/images/down-arrow.svg" alt="scroll down" />
+              </a>
+            </div>
           </div>
         </>
       )}
