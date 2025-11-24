@@ -1,85 +1,12 @@
 ## CLAUDE.md
 
-## ⚠️ CRITICAL: Pre-Commit Checklist
-
-**Run these steps BEFORE every commit. No exceptions.**
-
-### 1. Visual QA (if ANY UI/styling changed)
-
-**Start dev server:**
-```bash
-bun run dev
-```
-
-**Capture baseline screenshots BEFORE making changes:**
-```bash
-bun visual_qa/capture_anchors.mjs \
-  --base-url http://localhost:4321 \
-  --label baseline \
-  --color-scheme both \
-  "#home" "#about" "#projects" "#writing" "#events"
-```
-
-**After making changes, capture candidate screenshots:**
-```bash
-bun visual_qa/capture_anchors.mjs \
-  --base-url http://localhost:4321 \
-  --label candidate \
-  --color-scheme both \
-  "#home" "#about" "#projects" "#writing" "#events"
-```
-
-**Compare and verify no regressions:**
-```bash
-# For each major section, compare light and dark modes
-llm -a visual_qa/screenshots/baseline/xl-home-light.png \
-    -a visual_qa/screenshots/candidate/xl-home-light.png \
-    "$(cat visual_qa/standard_rubric.md)
-
-Compare these screenshots and score both using the rubric above."
-```
-
-**Fix any regressions, re-capture, and repeat until scores are equal or better.**
-
-### 2. Build & Tests (ALWAYS required)
-
-```bash
-# Must succeed
-bun run build
-
-# Run tests if they exist
-bun run test:e2e
-```
-
-### 3. Lint (if code changed)
-
-```bash
-bun run lint
-```
-
-### 4. Stage changes for user review
-
-**After completing all checks above:**
-
-```bash
-git add -A
-git status  # Show what will be committed
-```
-
-**IMPORTANT: Do NOT create commits.** The user will review staged changes and commit manually with GPG signing. Your job is to:
-1. Complete all verification steps above
-2. Stage the changes with `git add`
-3. Inform the user that changes are ready for review
-
----
-
 ## Tech Stack
 
 - **Runtime**: Bun (use `bun run dev`, `bun run build`, `bun run preview`)
 - **Framework**: Astro 5 + React 18 (static site generation, file-based routing)
 - **Language**: TypeScript with ES6 imports
 - **Styling**: CSS with custom properties (no framework)
-- **Testing**: Playwright for e2e, Lighthouse CI for performance
+- **Testing**: Playwright for e2e, Axe-core for accessibility, Lighthouse in CI
 - **Deploy**: GitHub Actions → GitHub Pages
 
 ### Responsive Breakpoints
@@ -94,99 +21,116 @@ git status  # Show what will be committed
 
 ---
 
-## Critical Rules (High-Likelihood Failures)
+## Critical Rules
 
-### MUST: Use root-absolute asset paths
+### Use root-absolute asset paths
 - ✅ `/images/logo.svg`
 - ❌ `images/logo.svg` (breaks on nested routes like `/blog/1`)
 
-### MUST: Test dark mode for styling changes
-- Site supports `@media (prefers-color-scheme: dark)`
+### Accommodate dark mode
+- Blog and CV pages respect `@media (prefers-color-scheme: dark)`
 - Use CSS custom properties from `src/App.css`: `var(--color-text)`, `var(--color-bg-light)`, `var(--color-link)`
 - Define BOTH light and dark values in `:root` and `@media (prefers-color-scheme: dark)`
-- **Always capture screenshots with `--color-scheme both`**
+- Home page alternates between light and dark sections, so it mostly ignores dark mode
 
-### MUST: Use correct React hydration directives
+### Use client-side React hydration directives to avoid SSR errors
 - Use `client:load` for interactive components
 - Use `client:only="react"` for components using `window`/`document` or browser-only widgets
-- Incorrect directives cause SSR errors
 
-### MUST: Maintain accessibility for Lighthouse
+### Maintain accessibility features to pass Lighthouse/Axe-core checks
 - Forms need `autocomplete` attributes (`email`, `name`, or `off`)
 - Keep labels, ARIA attributes, and semantic HTML
-- Removing these breaks Lighthouse CI thresholds in `lighthouserc.json`
 
-### MUST: Keep site URLs in sync
+### Keep site URLs in sync
 - Canonical URL defined in: `astro.config.mjs` (`site` field) AND `src/layouts/BaseLayout.astro` (`siteURL` constant)
-- Update both when changing domain
-
-### MUST: Preserve blog data schema
-- Posts in `src/data/blogs.json` require: `id`, `title`, `date`, `excerpt`, `content`, `image`
-- Optional: `script`
-- Schema changes require updating all consumers
 
 ---
 
-## Testing & Verification Reference
+## Before You Start
 
-### Visual QA Workflow Detail
+Before making any code or content changes, you should *always* capture baseline screenshots.
 
-1. **Baseline**: Capture screenshots before changes
-2. **Candidate**: Capture screenshots after changes
-3. **Compare**: Use `llm` with standard rubric (see below)
-4. **Fix**: Address regressions and re-capture
-5. **Repeat**: Until no regressions remain
+**Start dev server:**
+```bash
+bun run dev
+```
 
-**Important**: Vision models are sensitive to file format and viewport. Always use:
-- Same format (PNG)
-- Same breakpoints
-- Same color scheme settings
-- Same anchor selectors
-
-### Dark Mode Capture Examples
-
-**Light mode only:**
+**Capture baseline screenshots:**
 ```bash
 bun visual_qa/capture_anchors.mjs \
   --base-url http://localhost:4321 \
   --label baseline \
-  --color-scheme light \
-  "#home"
+  "#home" "#about" "#projects" "#writing" "#events"
 ```
 
-**Dark mode only:**
+Kill the server when you're done.
+
+---
+
+## When You're Done
+
+### 1. Build & Tests (ALWAYS required)
+
 ```bash
-bun visual_qa/capture_anchors.mjs \
-  --base-url http://localhost:4321/cv \
-  --label baseline \
-  --color-scheme dark \
-  ".publications-list"
+# Must succeed
+bun run build
+
+# Run tests if they exist
+bun run test
 ```
 
-**Both modes (default, recommended):**
+### 2. Lint (if code changed)
+
+```bash
+bun run lint
+```
+
+### 3. Run visual QA (if any UI/styling changed)
+
+**After making changes, capture candidate screenshots:**
 ```bash
 bun visual_qa/capture_anchors.mjs \
   --base-url http://localhost:4321 \
-  --label baseline \
-  --color-scheme both \
-  "#home"
+  --label candidate \
+  "#home" "#about" "#projects" "#writing" "#events"
 ```
 
-Files saved as: `xl-home-light.png` and `xl-home-dark.png`
+**Option 1: Score baseline and candidate and compare:**
+Visual scoring works best when one image is graded at a time. Use the rubric to separately score the baseline and candidate for each affected component, then compare the scores to verify no regressions.
 
-**Special attention**: Citations on `/cv` page must be readable in both modes. Use `.publications-list` selector.
+```bash
+llm -a visual_qa/screenshots/baseline/xl-home-light.png \
+    "$(cat visual_qa/standard_rubric.md)
 
-### Playwright Tests
+Score the website screenshot using the rubric above."
+```
 
-- Config: `playwright.config.js`
-- Run: `bun run test:e2e`
-- Reports: `playwright-report/index.html` (never opens automatically; view manually)
+```bash
+llm -a visual_qa/screenshots/candidate/xl-home-light.png \
+    "$(cat visual_qa/standard_rubric.md)
 
-### Lighthouse CI
+Score the website screenshot using the rubric above."
+```
 
-- Config: `lighthouserc.json`
-- Run: `bun run lighthouse`
-- **Note**: Fails in WSL2 due to Chrome limitations; runs correctly in CI
+**Option 2: Describe intended change and ask the model to compare baseline and candidate to flag regressions:**
+```bash
+llm -a visual_qa/screenshots/baseline/xl-home-light.png \
+    visual_qa/screenshots/candidate/xl-home-light.png \
+    "I made a CSS change to the home page to apply a dark overlay to the first (Home) section to improve text readability. Here are the before and after screenshots. Compare them, judge whether the change is an improvement, and flag any regressions."
+```
+
+**Fix any regressions, re-capture, and repeat until scores are equal or better.**
+
+### 4. Stage changes for user review
+
+**After completing all checks above:**
+
+```bash
+git add -A
+git status  # Show what will be committed
+```
+
+The user will review staged changes and commit manually with GPG signing.
 
 ---
 
@@ -198,24 +142,28 @@ Simon Willison's `llm` tool is available for vision model analysis.
 
 **Attach images:**
 ```bash
-llm -a path/to/image.png "Question about image"
+llm -a path/to/image.png -a path/to/another/image.png "Compare these website screenshots"
 ```
+**Note**: Model sees images by sequence, not filename.
 
 **With schema:**
 ```bash
-llm -a image.png "Score this" --schema "score int: Score 0-10"
+llm -a image.png "Score the image" --schema "score int: Score 0-10"
 ```
 
-**Extract JSON:**
+**Extract JSON for programmatic usage:**
 ```bash
-llm -a image.png "Score this" --xl  # Extracts last fenced code block
+llm -a image.png "Score the image" --schema "score int: Score 0-10" --xl | jq .  # Extracts last fenced code block
 ```
 
-**Note**: Model sees images by sequence, not filename.
+Other uses include asking focused questions for visual understanding:
+- "Is the nav bar obscuring any page content?"
+- "Are the button colors consistent across sections?"
+- "Is the dark mode text sufficiently contrasted?"
 
 ### Standard Rubric (0–2 × 5 metrics = 0–10 composite)
 
-**Must be kept in sync with `visual_qa/standard_rubric.md`**
+**Keep this reference in sync with `visual_qa/standard_rubric.md`**
 
 Each metric scores **0, 1, or 2**:
 - **0** = Fails this metric; clear problems
@@ -268,10 +216,3 @@ llm -a baseline.png \
 Score on all six metrics (0-12 max)." \
     --schema "color_score int, text_readability_score int, layout_spacing_score int, responsiveness_hierarchy_score int, cohesion_wow_score int, embedded_image_quality_score int"
 ```
-
-### Other Uses for `llm`
-
-Ask focused questions:
-- "Is the nav bar obscuring any page content?"
-- "Are the button colors consistent across sections?"
-- "Is the dark mode text sufficiently contrasted?"

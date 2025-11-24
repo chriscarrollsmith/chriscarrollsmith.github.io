@@ -62,7 +62,7 @@
 .education-verify {
   display: inline-block;
   margin-top: 0.5rem;
-  color: var(--color-primary, #007bff);
+  color: var(--color-link);
   text-decoration: none;
   font-size: 0.9rem;
 }
