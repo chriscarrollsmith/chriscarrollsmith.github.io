@@ -16,6 +16,8 @@
     "test:a11y": "playwright test tests/cv-a11y.spec.ts",
     "test:headed": "playwright test --headed",
     "test:ui": "playwright test --ui",
+    "test:e2e": "bun run test && bun run test:a11y",
+    "check": "bun run lint && bun run test:e2e && astro check && astro build",
     "lighthouse": "bun run build && lhci autorun --config=./lighthouserc.json"
   },
   "dependencies": {

@@ -25,8 +25,8 @@ bun visual_qa/capture_anchors.mjs \
 # Must succeed
 bun run build
 
-# Run tests if they exist
-bun run test
+# Run tests
+bun run test:e2e
 ```
 
 ### 2. Lint (if code changed)
@@ -162,8 +162,7 @@ Add custom metrics by extending the base rubric. Max score increases by 2 per me
 
 **Example with 6th metric:**
 ```bash
-llm -m openrouter/qwen/qwen2.5-vl-32b-instruct \
-    -a baseline.png \
+llm -a baseline.png \
     "$(cat visual_qa/standard_rubric.md)
 
 6. Embedded image crispness and quality
