@@ -8,6 +8,7 @@
   /* Light mode colors (default) */
   --color-text: #333;
   --color-text-muted: #666;
+  --color-heading: #333;
   --color-bg: #ffffff;
   --color-bg-light: #f9f9f9;
   --color-border: #e0e0e0;
@@ -22,6 +23,7 @@
     /* Dark mode colors */
     --color-text: #e0e0e0;
     --color-text-muted: #b0b0b0;
+    --color-heading: #f0f0f0;
     --color-bg: #1a1a1a;
     --color-bg-light: #2a2a2a;
     --color-border: #404040;

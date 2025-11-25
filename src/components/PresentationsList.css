@@ -43,6 +43,13 @@
   border-left: 4px solid #ffc107;
 }
 
+@media (prefers-color-scheme: dark) {
+  .presentation-entry.featured {
+    background-color: #3d3419;
+    border-left: 4px solid #ffb700;
+  }
+}
+
 .presentation-header {
   display: flex;
   justify-content: space-between;

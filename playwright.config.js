@@ -20,6 +20,14 @@ export default defineConfig({
         viewport: { width: 1920, height: 1080 },
       },
     },
+    {
+      name: 'chromium-dark',
+      use: {
+        ...devices['Desktop Chrome'],
+        viewport: { width: 1920, height: 1080 },
+        colorScheme: 'dark',
+      },
+    },
   ],
   webServer: {
     command: 'bun run preview',

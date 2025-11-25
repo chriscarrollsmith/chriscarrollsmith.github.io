@@ -9,7 +9,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 0.125rem solid #333;
+  border-bottom: 0.125rem solid var(--color-border);
   padding-bottom: 0.625rem;
   margin-bottom: 1.875rem;
 }

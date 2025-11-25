@@ -3,18 +3,24 @@
 /**
  * Visual QA screenshot helper
  *
- * Captures viewport-height screenshots of specific anchored sections
- * (e.g., "#home", "#about") at a set of key breakpoint widths.
+ * Captures screenshots of page sections (anchors) or full pages (paths).
+ *
+ * Anchors (e.g., "#home", "#about"):
+ *   - Viewport-height screenshots at all breakpoints (xs, sm, md, xl)
+ *   - Saved to: visual_qa/screenshots/{label}/{breakpoint}-{section}-{scheme}.png
+ *
+ * Page paths (e.g., "/cv", "/blog"):
+ *   - Full-page screenshots at lg breakpoint (1024px) in both light and dark
+ *   - Saved to: visual_qa/screenshots/{label}/fullpage/{page}-{scheme}.png
  *
  * Usage:
  *   bun visual_qa/capture_anchors.mjs --base-url http://localhost:4321 --label baseline "#home" "#about"
- *   bun visual_qa/capture_anchors.mjs --base-url http://localhost:4321 --label baseline --color-scheme dark "#cv"
- *   bun visual_qa/capture_anchors.mjs --base-url http://localhost:4321 --label baseline --color-scheme both "#cv"
+ *   bun visual_qa/capture_anchors.mjs --base-url http://localhost:4321 --label baseline "/cv" "/blog" "/blog/1"
+ *   bun visual_qa/capture_anchors.mjs --base-url http://localhost:4321 --label baseline "#home" "/cv"
  *
  * Options:
  *   --base-url <url>       Base URL of the site (required)
  *   --label <label>        Label for screenshot folder (default: "run")
- *   --color-scheme <mode>  Color scheme: "light", "dark", or "both" (default: "both")
  *   --start-dev            Start dev server automatically
  *   --dev-cmd <cmd>        Dev server command (default: "bun run dev")
  *
@@ -36,14 +42,16 @@ const BREAKPOINTS = [
   { name: 'xl', width: 1280, height: 900 },  // large desktop (canonical xl breakpoint)
 ];
 
+// Breakpoint for full-page screenshots
+const FULLPAGE_BREAKPOINT = { name: 'lg', width: 1025, height: 1400 };
+
 function parseArgs(argv) {
   const args = argv.slice(2);
   let baseUrl = null;
   let label = 'run';
-  const anchors = [];
+  const targets = []; // can be anchors (#home) or paths (/cv)
   let startDev = false;
   let devCmd = 'bun run dev';
-  let colorScheme = 'both'; // 'light', 'dark', or 'both'
 
   for (let i = 0; i < args.length; i += 1) {
     const arg = args[i];
@@ -52,14 +60,6 @@ function parseArgs(argv) {
       i += 1;
     } else if (arg === '--label' && args[i + 1]) {
       label = args[i + 1];
-      i += 1;
-    } else if (arg === '--color-scheme' && args[i + 1]) {
-      const scheme = args[i + 1];
-      if (!['light', 'dark', 'both'].includes(scheme)) {
-        console.error('Error: --color-scheme must be "light", "dark", or "both"');
-        process.exit(1);
-      }
-      colorScheme = scheme;
       i += 1;
     } else if (arg === '--start-dev') {
       startDev = true;
@@ -70,7 +70,7 @@ function parseArgs(argv) {
       console.error(`Unknown option: ${arg}`);
       process.exit(1);
     } else {
-      anchors.push(arg);
+      targets.push(arg);
     }
   }
 
@@ -79,18 +79,17 @@ function parseArgs(argv) {
     process.exit(1);
   }
 
-  if (anchors.length === 0) {
-    console.error('Error: At least one anchor selector (e.g., "#home") is required.');
+  if (targets.length === 0) {
+    console.error('Error: At least one target (anchor like "#home" or path like "/cv") is required.');
     process.exit(1);
   }
 
   return {
     baseUrl,
     label,
-    anchors,
+    targets,
     startDev,
     devCmd,
-    colorScheme,
   };
 }
 
@@ -98,27 +97,35 @@ function sanitizeAnchorForFilename(anchor) {
   return anchor.replace(/^#+/, '').replace(/[^a-z0-9_-]+/gi, '-');
 }
 
+function sanitizePathForFilename(urlPath) {
+  // Convert /cv -> cv, /blog -> blog, /blog/1 -> blog-1
+  return urlPath.replace(/^\/+/, '').replace(/\/+/g, '-') || 'index';
+}
+
 async function ensureDir(dir) {
   await fs.promises.mkdir(dir, { recursive: true });
 }
 
-async function captureScreens({ baseUrl, label, anchors, colorScheme }) {
+async function captureScreens({ baseUrl, label, targets }) {
   const outputRoot = path.resolve(process.cwd(), 'visual_qa', 'screenshots', label);
   await ensureDir(outputRoot);
 
+  // Separate anchors from paths
+  const anchors = targets.filter(t => t.startsWith('#'));
+  const paths = targets.filter(t => t.startsWith('/'));
+
   const browser = await chromium.launch();
 
-  // Determine which color schemes to capture
-  const schemes = colorScheme === 'both' ? ['light', 'dark'] : [colorScheme];
-
   try {
-    for (const scheme of schemes) {
-      console.log(`\n=== Color Scheme: ${scheme} ===`);
+    // Capture anchor-based viewport screenshots (home page sections)
+    if (anchors.length > 0) {
+      console.log('\n=== Capturing viewport screenshots (anchors) ===');
 
+      // For home page anchors, we only need light mode since sections alternate
       for (const bp of BREAKPOINTS) {
         const context = await browser.newContext({
           viewport: { width: bp.width, height: bp.height },
-          colorScheme: scheme,
+          colorScheme: 'light',
         });
         const page = await context.newPage();
 
@@ -127,8 +134,7 @@ async function captureScreens({ baseUrl, label, anchors, colorScheme }) {
 
         for (const anchor of anchors) {
           const anchorSlug = sanitizeAnchorForFilename(anchor);
-          const schemeSuffix = schemes.length > 1 ? `-${scheme}` : '';
-          const fileName = `${bp.name}-${anchorSlug}${schemeSuffix}.png`;
+          const fileName = `${bp.name}-${anchorSlug}.png`;
           const filePath = path.join(outputRoot, fileName);
 
           console.log(`Capturing ${anchor} -> ${fileName}`);
@@ -148,6 +154,46 @@ async function captureScreens({ baseUrl, label, anchors, colorScheme }) {
           await page.screenshot({
             path: filePath,
             fullPage: false,
+          });
+        }
+
+        await context.close();
+      }
+    }
+
+    // Capture full-page screenshots (CV, blog, etc.)
+    if (paths.length > 0) {
+      console.log('\n=== Capturing full-page screenshots (paths) ===');
+
+      const fullpageDir = path.join(outputRoot, 'fullpage');
+      await ensureDir(fullpageDir);
+
+      // Capture in both light and dark modes
+      for (const scheme of ['light', 'dark']) {
+        console.log(`\n=== Color Scheme: ${scheme} ===`);
+
+        const context = await browser.newContext({
+          viewport: { width: FULLPAGE_BREAKPOINT.width, height: FULLPAGE_BREAKPOINT.height },
+          deviceScaleFactor: 1,
+          colorScheme: scheme,
+        });
+        const page = await context.newPage();
+
+        for (const urlPath of paths) {
+          const pathSlug = sanitizePathForFilename(urlPath);
+          const fileName = `${pathSlug}-${scheme}.png`;
+          const filePath = path.join(fullpageDir, fileName);
+          const fullUrl = `${baseUrl}${urlPath}`;
+
+          console.log(`Capturing ${fullUrl} -> ${fileName}`);
+
+          await page.goto(fullUrl, { waitUntil: 'networkidle' });
+          // Extra delay for full-page screenshots to ensure layout is settled
+          await page.waitForTimeout(600);
+
+          await page.screenshot({
+            path: filePath,
+            fullPage: true,
           });
         }
 

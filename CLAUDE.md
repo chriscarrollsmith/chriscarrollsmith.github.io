@@ -1,4 +1,4 @@
-## CLAUDE.md
+# CLAUDE.md
 
 ## Tech Stack
 
@@ -56,10 +56,11 @@ bun visual_qa/capture_anchors.mjs \
   --base-url http://localhost:4321 \
   --start-dev \
   --label baseline \
-  "#home" "#about" "#projects" "#writing" "#events"
+  "#home" "#about" "#projects" "#writing" "#events" \
+  "/cv" "/blog" "/blog/1"
 ```
 
-The screenshot workflow takes 40-50 seconds to complete. Set `run_in_background` to `false` with a 2 minute timeout.
+The screenshot workflow takes 60-70 seconds to complete. Set `run_in_background` to `false` with a 2 minute timeout.
 
 ---
 
@@ -87,9 +88,10 @@ bun run lint
 ```bash
 bun visual_qa/capture_anchors.mjs \
   --base-url http://localhost:4321 \
-    --start-dev \
-    --label candidate \
-  "#home" "#about" "#projects" "#writing" "#events"
+  --start-dev \
+  --label candidate \
+  "#home" "#about" "#projects" "#writing" "#events" \
+  "/cv" "/blog" "/blog/1"
 ```
 
 **The script will automatically compare candidate screenshots against baseline and report:**
@@ -103,14 +105,16 @@ bun visual_qa/capture_anchors.mjs \
 Visual scoring works best when one image is graded at a time. Use the rubric to separately score the baseline and candidate for each affected component, then compare the scores to verify no regressions.
 
 ```bash
-llm -a visual_qa/screenshots/baseline/xl-home-light.png \
+llm -m openrouter/qwen/qwen2.5-vl-32b-instruct \
+    -a visual_qa/screenshots/baseline/xl-home-light.png \
     "$(cat visual_qa/standard_rubric.md)
 
 Score the website screenshot using the rubric above."
 ```
 
 ```bash
-llm -a visual_qa/screenshots/candidate/xl-home-light.png \
+llm -m openrouter/qwen/qwen2.5-vl-32b-instruct \
+    -a visual_qa/screenshots/candidate/xl-home-light.png \
     "$(cat visual_qa/standard_rubric.md)
 
 Score the website screenshot using the rubric above."
@@ -118,8 +122,9 @@ Score the website screenshot using the rubric above."
 
 **Option 2: Describe intended change and ask the model to compare baseline and candidate to flag regressions:**
 ```bash
-llm -a visual_qa/screenshots/baseline/xl-home-light.png \
-    visual_qa/screenshots/candidate/xl-home-light.png \
+llm -m openrouter/qwen/qwen2.5-vl-32b-instruct \
+    -a visual_qa/screenshots/baseline/xl-home-light.png \
+    -a visual_qa/screenshots/candidate/xl-home-light.png \
     "I made a CSS change to the home page to apply a dark overlay to the first (Home) section to improve text readability. Here are the before and after screenshots. Compare them, judge whether the change is an improvement, and flag any regressions."
 ```
 
@@ -146,18 +151,25 @@ Simon Willison's `llm` tool is available for vision model analysis.
 
 **Attach images:**
 ```bash
-llm -a path/to/image.png -a path/to/another/image.png "Compare these website screenshots"
+llm -m openrouter/qwen/qwen2.5-vl-32b-instruct \
+    -a path/to/image.png \
+    -a path/to/another/image.png \
+    "Compare these website screenshots"
 ```
 **Note**: Model sees images by sequence, not filename.
 
 **With schema:**
 ```bash
-llm -a image.png "Score the image" --schema "score int: Score 0-10"
+llm -m openrouter/qwen/qwen2.5-vl-32b-instruct \
+    -a image.png \
+    "Score the image" --schema "score int: Score 0-10"
 ```
 
 **Extract JSON for programmatic usage:**
 ```bash
-llm -a image.png "Score the image" --schema "score int: Score 0-10" --xl | jq .  # Extracts last fenced code block
+llm -m openrouter/qwen/qwen2.5-vl-32b-instruct \
+    -a image.png \
+    "Score the image" --schema "score int: Score 0-10" --xl | jq .  # Extracts last fenced code block
 ```
 
 Other uses include asking focused questions for visual understanding:
@@ -209,7 +221,8 @@ Add custom metrics by extending the base rubric. Max score increases by 2 per me
 
 **Example with 6th metric:**
 ```bash
-llm -a baseline.png \
+llm -m openrouter/qwen/qwen2.5-vl-32b-instruct \
+    -a baseline.png \
     "$(cat visual_qa/standard_rubric.md)
 
 6. Embedded image crispness and quality
@@ -220,3 +233,9 @@ llm -a baseline.png \
 Score on all six metrics (0-12 max)." \
     --schema "color_score int, text_readability_score int, layout_spacing_score int, responsiveness_hierarchy_score int, cohesion_wow_score int, embedded_image_quality_score int"
 ```
+
+---
+
+## Updating CLAUDE.md
+
+Update minimalistically. Prioritize maintaining the integrity of the current rule set, and remember that brevity is the soul of wit.

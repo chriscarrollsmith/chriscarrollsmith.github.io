@@ -32,6 +32,9 @@
   line-height: 1.6;
   color: var(--color-text, #333);
   margin-bottom: 0.5rem;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
 }
 
 .publication-formatted :global(i) {

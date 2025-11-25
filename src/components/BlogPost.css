@@ -1,6 +1,6 @@
 .blog-post {
   margin-bottom: 2.5rem;
-  border-bottom: 0.0625rem solid #eee;
+  border-bottom: 0.0625rem solid var(--color-border);
   padding-bottom: 1.25rem;
 }
 
@@ -21,7 +21,7 @@
   gap: 1rem;
   margin-bottom: 0.9375rem;
   font-size: 0.95rem;
-  color: #666;
+  color: var(--color-text-muted);
 }
 
 .blog-post time {
@@ -39,11 +39,11 @@
 .blog-post .post-abstract {
   font-size: 1.125rem;
   font-style: italic;
-  color: #555;
+  color: var(--color-text-muted);
   margin-top: 1.5rem;
   margin-bottom: 2rem;
   padding-bottom: 1.5rem;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .blog-post p {
@@ -127,8 +127,8 @@
 .blog-post code.inline {
   display: inline;
   width: auto;
-  background-color: #f5f5f5;
-  color: purple;
+  background-color: var(--color-bg-light);
+  color: var(--color-link);
   padding: 0.15rem 0.4rem;
   border-radius: 0.2rem;
 }
@@ -165,6 +165,49 @@
   border-radius: 0.25rem;
   letter-spacing: 0.05em;
   z-index: 1;
+}
+
+/* Dark mode styling */
+@media (prefers-color-scheme: dark) {
+  .blog-post table {
+    color: var(--color-text);
+    background-color: var(--color-bg);
+  }
+
+  .blog-post th {
+    color: var(--color-text) !important;
+    background-color: var(--color-bg-light) !important;
+  }
+
+  .blog-post td {
+    color: var(--color-text) !important;
+    background-color: var(--color-bg) !important;
+  }
+
+  .blog-post .operator,
+  .blog-post .probability {
+    color: var(--color-text) !important;
+  }
+
+  /* Override inline styles for containers */
+  .blog-post .container,
+  .blog-post .balance-info {
+    background-color: var(--color-bg-light) !important;
+    color: var(--color-text) !important;
+  }
+
+  /* Override all child elements within these containers */
+  .blog-post .balance-info *,
+  .blog-post .container * {
+    color: var(--color-text) !important;
+  }
+
+  /* Operation buttons need higher contrast */
+  .blog-post .operation-btn,
+  .blog-post button[data-op] {
+    background-color: #5a5a5a !important;
+    color: #ffffff !important;
+  }
 }
 
 @media screen and (max-width: 767px) {
