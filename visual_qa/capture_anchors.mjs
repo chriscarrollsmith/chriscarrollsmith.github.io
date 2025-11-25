@@ -23,6 +23,7 @@
  *   --label <label>        Label for screenshot folder (default: "run")
  *   --start-dev            Start dev server automatically
  *   --dev-cmd <cmd>        Dev server command (default: "bun run dev")
+ *   --annotate             Add CSS selector labels to screenshots
  *
  * Requirements:
  *   - Dev or preview server must be running and reachable at --base-url
@@ -52,6 +53,7 @@ function parseArgs(argv) {
   const targets = []; // can be anchors (#home) or paths (/cv)
   let startDev = false;
   let devCmd = 'bun run dev';
+  let annotate = false;
 
   for (let i = 0; i < args.length; i += 1) {
     const arg = args[i];
@@ -66,6 +68,8 @@ function parseArgs(argv) {
     } else if (arg === '--dev-cmd' && args[i + 1]) {
       devCmd = args[i + 1];
       i += 1;
+    } else if (arg === '--annotate') {
+      annotate = true;
     } else if (arg.startsWith('-')) {
       console.error(`Unknown option: ${arg}`);
       process.exit(1);
@@ -90,6 +94,7 @@ function parseArgs(argv) {
     targets,
     startDev,
     devCmd,
+    annotate,
   };
 }
 
@@ -106,7 +111,23 @@ async function ensureDir(dir) {
   await fs.promises.mkdir(dir, { recursive: true });
 }
 
-async function captureScreens({ baseUrl, label, targets }) {
+async function annotatePage(page) {
+  await page.evaluate(() => {
+    document.querySelectorAll('*').forEach(el => {
+      // Skip non-visible elements
+      if (['SCRIPT', 'STYLE', 'NOSCRIPT', 'META', 'LINK', 'TITLE'].includes(el.tagName)) return;
+
+      const label = document.createElement('div');
+      const selector = `${el.tagName.toLowerCase()}${el.id ? '#'+el.id : ''}${el.className ? '.'+[...el.classList].join('.') : ''}`;
+      label.textContent = selector;
+      label.style.cssText = 'position:absolute;top:0;left:0;background:black;color:lime;font-size:10px;padding:2px;z-index:999999;pointer-events:none;';
+      el.style.position = 'relative';
+      el.appendChild(label);
+    });
+  });
+}
+
+async function captureScreens({ baseUrl, label, targets, annotate }) {
   const outputRoot = path.resolve(process.cwd(), 'visual_qa', 'screenshots', label);
   await ensureDir(outputRoot);
 
@@ -151,6 +172,10 @@ async function captureScreens({ baseUrl, label, targets }) {
           // Give layout a moment to settle after scrolling
           await page.waitForTimeout(500);
 
+          if (annotate) {
+            await annotatePage(page);
+          }
+
           await page.screenshot({
             path: filePath,
             fullPage: false,
@@ -190,6 +215,10 @@ async function captureScreens({ baseUrl, label, targets }) {
           await page.goto(fullUrl, { waitUntil: 'networkidle' });
           // Extra delay for full-page screenshots to ensure layout is settled
           await page.waitForTimeout(600);
+
+          if (annotate) {
+            await annotatePage(page);
+          }
 
           await page.screenshot({
             path: filePath,
