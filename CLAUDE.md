@@ -72,8 +72,8 @@ The screenshot workflow takes 60-70 seconds to complete. Set `run_in_background`
 # Must succeed
 bun run build
 
-# Run tests if they exist
-bun run test
+# Run tests
+bun run test:e2e
 ```
 
 ### 2. Lint (if code changed)

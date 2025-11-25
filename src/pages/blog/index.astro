@@ -55,6 +55,7 @@ const postsWithAspectRatio = sortedBlogData.map(post => {
         const thumbnailPosition = index % 2 === 0 ? 'right' : 'left';
 
         return (
+          // eslint-disable-next-line react/jsx-key
           <article id={String(post.id)} class={`blog-post-summary ${isWideBanner ? 'blog-post-banner' : ''} ${hasThumbnail ? `thumbnail-${thumbnailPosition}` : ''}`}>
             {hasImage && isWideBanner && (
               <a href={`/blog/${post.id}`} class="blog-banner-link">

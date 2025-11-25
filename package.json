@@ -16,6 +16,8 @@
     "test:a11y": "playwright test tests/cv-a11y.spec.ts",
     "test:headed": "playwright test --headed",
     "test:ui": "playwright test --ui",
+    "test:e2e": "bun run test && bun run test:a11y",
+    "check": "bun run lint && astro check && astro build && bun run test:e2e",
     "lighthouse": "bun run build && lhci autorun --config=./lighthouserc.json"
   },
   "dependencies": {
@@ -24,8 +26,7 @@
     "@citation-js/core": "^0.7.21",
     "@citation-js/plugin-csl": "^0.7.21",
     "@formspree/react": "^2.5.1",
-    "@fullcalendar/core": "^6.1.19",
-    "@fullcalendar/list": "^6.1.19",
+    "date-fns": "^4.1.0",
     "convertkit-react": "^1.5.5",
     "image-size": "^2.0.2",
     "prismjs": "^1.30.0",

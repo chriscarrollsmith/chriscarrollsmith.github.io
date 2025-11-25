@@ -72,9 +72,9 @@ test.describe('Navigation Links', () => {
       targetHash: '#events',
       verifyContent: async (page) => {
         await expect(page.locator('#events')).toBeVisible();
-        // Events section has h1 with "Events" and calendar
+        // Events section has h1 with "Events" and the visible list
         await expect(page.locator('#events h1')).toContainText(/events/i);
-        await expect(page.locator('#calendar')).toBeVisible();
+        await expect(page.locator('#events .events-list li').first()).toBeVisible();
       }
     },
     {
