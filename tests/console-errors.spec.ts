@@ -27,9 +27,13 @@ test.describe('Console Errors and Warnings', () => {
 
   // Filter function to ignore known acceptable console messages
   const shouldIgnoreMessage = (msg: ConsoleMessage): boolean => {
-    // Example usage:
-    // const text = msg.text();
-    // if (text.includes('Download the React DevTools')) return true;
+    const text = msg.text();
+    const type = msg.type();
+
+    // Ignore React DevTools prompts that appear in dev environments only
+    if (type === 'warning' && text.includes('Download the React DevTools')) {
+      return true;
+    }
 
     return false;
   };

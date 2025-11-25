@@ -58,6 +58,13 @@ export interface HeroImage {
   alt: string;
 }
 
+export interface EventItem {
+  title: string;
+  start: string;
+  end?: string;
+  url?: string;
+}
+
 export interface Education {
   'School Name': string;
   'Start Date': number;

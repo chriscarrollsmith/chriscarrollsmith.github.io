@@ -1,94 +1,113 @@
-import { useEffect, useRef } from 'react';
-import { Calendar } from '@fullcalendar/core';
-import type { ToolbarInput } from '@fullcalendar/core';
-import listPlugin from '@fullcalendar/list';
+import { useMemo, useState } from 'react';
 import eventsJSON from '../data/events.json';
 import heroData from '../data/heroimages.json';
-import type { HeroImage } from '../types/data';
+import type { EventItem, HeroImage } from '../types/data';
 import './Events.css';
+import { compareAsc, format, isBefore, isSameDay, parseISO } from 'date-fns';
 
 const typedHeroData = heroData as HeroImage[];
+const typedEvents = eventsJSON as EventItem[];
 
-const MOBILE_BREAKPOINT = 640;
+const PAGE_SIZE = 2;
 
-const getViewForWidth = (width: number) => (width < MOBILE_BREAKPOINT ? 'listWeek' : 'listMonth');
-
-type ToolbarConfig = {
-  headerToolbar: ToolbarInput;
-  footerToolbar: ToolbarInput | false;
+type BaseEvent = EventItem & {
+  startDate: Date;
+  endDate?: Date;
+  isAllDay: boolean;
 };
 
-const getToolbarConfig = (width: number): ToolbarConfig => {
-  if (width < MOBILE_BREAKPOINT) {
+type DisplayEvent = BaseEvent & {
+  status: 'past' | 'upcoming' | 'today';
+};
+
+const parsedEvents: BaseEvent[] = typedEvents
+  .map(event => {
+    const startDate = parseISO(event.start);
+    const endDate = event.end ? parseISO(event.end) : undefined;
+    const isAllDay = !event.start.includes('T');
+
     return {
-      headerToolbar: { start: 'title', center: '', end: '' },
-      footerToolbar: { start: 'prev,next', center: '', end: '' }
+      ...event,
+      startDate,
+      endDate,
+      isAllDay
     };
+  })
+  .sort((a, b) => compareAsc(a.startDate, b.startDate));
+
+const buildDisplayEvents = (now: Date): DisplayEvent[] =>
+  parsedEvents.map(event => ({
+    ...event,
+    status: isSameDay(event.startDate, now)
+      ? 'today'
+      : isBefore(event.startDate, now)
+        ? 'past'
+        : 'upcoming'
+  }));
+
+const getInitialIndex = (events: DisplayEvent[]) => {
+  if (events.length <= PAGE_SIZE) {
+    return 0;
   }
 
-  return {
-    headerToolbar: { start: 'title', center: '', end: 'prev,next' },
-    footerToolbar: false
-  };
+  const firstUpcomingIndex = events.findIndex(event => event.status !== 'past');
+
+  if (firstUpcomingIndex === -1) {
+    return Math.max(events.length - PAGE_SIZE, 0);
+  }
+
+  if (firstUpcomingIndex === events.length - 1) {
+    return Math.max(firstUpcomingIndex - (PAGE_SIZE - 1), 0);
+  }
+
+  return Math.min(firstUpcomingIndex, Math.max(events.length - PAGE_SIZE, 0));
 };
 
-// Put location information in the event's title
-// { title: 'Meeting at Jim's Deli',
-// start: '2024-03-16T10:30:00',
-// end: '2024-03-16T12:30:00',
-// url: 'http://zoom.com/roomxyz' }
+const formatTimeWindow = (event: BaseEvent) => {
+  if (event.isAllDay) {
+    if (event.endDate && !isSameDay(event.startDate, event.endDate)) {
+      return `Through ${format(event.endDate, 'EEE, MMM d')}`;
+    }
+    return 'All day';
+  }
+
+  if (event.endDate && isSameDay(event.startDate, event.endDate)) {
+    return `${format(event.startDate, 'p')} – ${format(event.endDate, 'p')}`;
+  }
+
+  if (event.endDate) {
+    return `${format(event.startDate, 'p')} → ${format(event.endDate, 'EEE, MMM d p')}`;
+  }
+
+  return format(event.startDate, 'p');
+};
 
 const Events: React.FC = () => {
-  const calendarRef = useRef<HTMLDivElement | null>(null);
   const hero = typedHeroData.find(h => h.name === 'events');
+  const [now] = useState(() => new Date());
+  const events = useMemo(() => buildDisplayEvents(now), [now]);
+  const [startIndex, setStartIndex] = useState(() => getInitialIndex(events));
 
-  useEffect(() => {
-    if (!calendarRef.current || typeof window === 'undefined') {
-      return;
+  const totalEvents = events.length;
+  const visibleEvents = events.slice(startIndex, startIndex + PAGE_SIZE);
+  const hasEvents = totalEvents > 0;
+  const canGoPrevious = startIndex > 0;
+  const canGoNext = startIndex + PAGE_SIZE < totalEvents;
+
+  const showingStart = Math.min(startIndex + 1, totalEvents);
+  const showingEnd = Math.min(startIndex + PAGE_SIZE, totalEvents);
+
+  const handlePrevious = () => {
+    if (canGoPrevious) {
+      setStartIndex(prev => Math.max(prev - PAGE_SIZE, 0));
     }
+  };
 
-    const width = window.innerWidth;
-    const { headerToolbar, footerToolbar } = getToolbarConfig(width);
-
-    const calendar = new Calendar(calendarRef.current, {
-      plugins: [listPlugin],
-      initialView: getViewForWidth(width),
-      events: eventsJSON,
-      height: 'auto',
-      contentHeight: 'auto',
-      expandRows: true,
-      progressiveEventRendering: true,
-      buttonText: {
-        today: 'Today'
-      },
-      headerToolbar,
-      footerToolbar,
-      views: {
-        listWeek: {
-          listDayFormat: { weekday: 'long', month: 'short', day: 'numeric' },
-          listDaySideFormat: false
-        },
-        listMonth: {
-          listDayFormat: { weekday: 'short' },
-          listDaySideFormat: { month: 'short', day: 'numeric' }
-        }
-      },
-      windowResize: arg => {
-        const nextWidth = window.innerWidth;
-        const nextView = getViewForWidth(nextWidth);
-        if (arg.view.type !== nextView) {
-          arg.view.calendar.changeView(nextView);
-        }
-
-        const toolbar = getToolbarConfig(nextWidth);
-        arg.view.calendar.setOption('headerToolbar', toolbar.headerToolbar);
-        arg.view.calendar.setOption('footerToolbar', toolbar.footerToolbar);
-      }
-    });
-
-    calendar.render();
-    return () => calendar.destroy();
-  }, []);
+  const handleNext = () => {
+    if (canGoNext) {
+      setStartIndex(prev => Math.min(prev + PAGE_SIZE, Math.max(totalEvents - PAGE_SIZE, 0)));
+    }
+  };
 
   return (
     <section className={`hero ${hero?.src ? hero.shade : hero?.shade === 'dark' ? 'black' : 'white'}`} id="events">
@@ -104,11 +123,83 @@ const Events: React.FC = () => {
       )}
       <div className="hero-content">
         <div className="events-content">
-          <h1>Events</h1>
-          <div ref={calendarRef} id='calendar'></div>
+          <header className="events-header">
+            <h1>Events</h1>
+            <p className="events-subhead">
+              Workshops, talks, and community sessions about AI workflows and tooling.
+            </p>
+          </header>
+
+          {!hasEvents && (
+            <p className="events-empty">
+              No events to show right now—check back soon or say hi on social media.
+            </p>
+          )}
+
+          {hasEvents && (
+            <>
+              <ul className="events-list">
+                {visibleEvents.map(event => (
+                  <EventRow key={`${event.title}-${event.start}`} event={event} />
+                ))}
+              </ul>
+              <div className="events-controls">
+                <button
+                  className="events-button"
+                  onClick={handlePrevious}
+                  disabled={!canGoPrevious}
+                  aria-label="Show earlier events"
+                >
+                  ← Earlier
+                </button>
+                <p className="events-count">
+                  Showing {showingStart}–{showingEnd} of {totalEvents}
+                </p>
+                <button
+                  className="events-button"
+                  onClick={handleNext}
+                  disabled={!canGoNext}
+                  aria-label="Show later events"
+                >
+                  Later →
+                </button>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </section>
+  );
+};
+
+type EventRowProps = {
+  event: DisplayEvent;
+};
+
+const EventRow: React.FC<EventRowProps> = ({ event }) => {
+  const badgeLabel = event.status === 'past' ? 'Past event' : event.status === 'today' ? 'Today' : 'Upcoming';
+  const badgeClass = `events-badge events-badge--${event.status}`;
+  const dateLabel = format(event.startDate, 'EEE, MMM d');
+  const timeLabel = formatTimeWindow(event);
+
+  return (
+    <li className={`events-item ${event.status === 'past' ? 'events-item--past' : ''}`}>
+      <div className="events-item-top">
+        <div>
+          <p className="events-item-date">{dateLabel}</p>
+          <p className="events-item-time">{timeLabel}</p>
+        </div>
+        <span className={badgeClass}>{badgeLabel}</span>
+      </div>
+      <p className="events-item-title">{event.title}</p>
+      {event.url && (
+        <div className="events-meta">
+          <a className="events-link" href={event.url} target="_blank" rel="noreferrer">
+            Event details
+          </a>
+        </div>
+      )}
+    </li>
   );
 };
 
