@@ -29,7 +29,7 @@
 
 @media screen and (max-width: 767px) {
   .cv-container {
-    padding: 2rem 0.625rem;
+    padding: 5rem 0.625rem 2rem;
   }
 
   .cv-header {
