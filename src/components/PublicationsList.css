@@ -42,7 +42,7 @@
 }
 
 .publication-citations {
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: var(--color-text-muted, #666);
   margin-top: 0.5rem;
 }
@@ -54,7 +54,7 @@
 .publication-link a {
   color: var(--color-link, #0066cc);
   text-decoration: none;
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 
 .publication-link a:hover {

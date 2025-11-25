@@ -43,6 +43,7 @@ body {
   font-family: "Cormorant Garamond", serif;
   background-color: var(--color-bg);
   color: var(--color-text);
+  font-size: 1rem;
 }
 
 html {
@@ -109,6 +110,50 @@ section {
   text-align: center;
 }
 
+/* Large hero text (home page) */
+.hero-heading h1 {
+  font-weight: 300;
+  font-size: 3.5rem;
+  margin: 0;
+}
+
+.hero-heading h2 {
+  font-weight: 400;
+  font-size: 1.5rem;
+  margin: 0;
+  text-align: center;
+}
+
+@media screen and (min-width: 640px) {
+  .hero-heading h1 {
+    font-size: 5rem;
+  }
+
+  .hero-heading h2 {
+    font-size: 2.5rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .hero-heading h1 {
+    font-size: 6rem;
+  }
+
+  .hero-heading h2 {
+    font-size: 2.5rem;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .hero-heading h1 {
+    font-size: 7rem;
+  }
+
+  .hero-heading h2 {
+    font-size: 3rem;
+  }
+}
+
 section.dark {
   min-height: 100vh;
   color: white;
@@ -133,46 +178,37 @@ section.white {
   min-height: 100vh;
 }
 
+/* Reasonable defaults for headings site-wide */
 h1 {
   font-weight: 300;
-  font-size: 3.5rem;
+  font-size: 2.5rem;
   margin: 0;
 }
 
 h2 {
   font-weight: 400;
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   margin: 0;
   text-align: center;
 }
 
 @media screen and (min-width: 640px) {
   h1 {
-    font-size: 5rem;
+    font-size: 3rem;
   }
 
   h2 {
-    font-size: 2.5rem;
-  }
-}
-
-@media screen and (min-width: 1024px) {
-  h1 {
-    font-size: 6rem;
-  }
-
-  h2 {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
 }
 
 @media screen and (min-width: 1280px) {
   h1 {
-    font-size: 7rem;
+    font-size: 3.5rem;
   }
 
   h2 {
-    font-size: 3rem;
+    font-size: 2.25rem;
   }
 }
 
@@ -183,18 +219,18 @@ h3 {
 }
 
 p {
-  font-size: 1.125rem; 
+  font-size: 1.125rem;
   line-height: 1.5;
   margin-bottom: 0;
   font-weight: 300;
 }
 
 p.large {
-  font-size: 1.5rem; 
+  font-size: 1.375rem;
 }
 
 p.small {
-  font-size: 1.25rem; 
+  font-size: 1rem;
 }
 
 p.bold {
