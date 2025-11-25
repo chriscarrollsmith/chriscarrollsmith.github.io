@@ -149,6 +149,8 @@ The user will review staged changes and commit manually with GPG signing.
 
 Simon Willison's `llm` tool is available for vision model analysis.
 
+**CSS selector labels:** Add `--annotate` flag to screenshots to overlay element selectors for vision model communication.
+
 **Attach images:**
 ```bash
 llm -m openrouter/qwen/qwen2.5-vl-32b-instruct \
