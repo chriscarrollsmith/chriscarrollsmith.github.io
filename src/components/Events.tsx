@@ -118,7 +118,6 @@ const Events: React.FC = () => {
             src={hero.src}
             alt={hero.alt}
           />
-          <div className="hero-overlay" />
         </>
       )}
       <div className="hero-content">

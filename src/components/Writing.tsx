@@ -41,7 +41,6 @@ const Writing: React.FC = () => {
       {hero && (
         <>
           <img className="hero-bg" src={hero.src} alt={hero.alt} />
-          <div className="hero-overlay" />
         </>
       )}
       <div className="hero-content">

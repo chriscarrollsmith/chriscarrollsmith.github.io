@@ -15,7 +15,7 @@ const Home: React.FC = () => {
   }
 
   return (
-    <section className={hero.src ? hero.shade : hero.shade === "dark" ? "black" : "white"} id="home">
+    <section id="home" className="home-section">
       {hero && (
         <>
           <img
@@ -26,7 +26,8 @@ const Home: React.FC = () => {
               objectPosition: windowWidth < 1282 ? `calc(50% - ${hero.adjustment}) center` : `center`
             }}
           />
-          <div style={{ position: 'absolute', top: '30%', left: '2rem', right: '2rem'}}>
+          <div className="home-overlay"></div>
+          <div className="home-content">
             <h1>{typedSiteProperties.name}</h1>
             <h2>{typedSiteProperties.title}</h2>
           </div>

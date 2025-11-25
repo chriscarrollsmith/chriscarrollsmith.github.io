@@ -1,7 +1,77 @@
+.home-section {
+    min-height: 100vh;
+    position: relative;
+}
+
+.home-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40vh;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+    z-index: 1;
+    pointer-events: none;
+}
+
+.home-content {
+    position: absolute;
+    bottom: 8rem;
+    left: 2rem;
+    right: 2rem;
+    z-index: 2;
+    color: white;
+}
+
+.home-content h1 {
+    font-weight: 300;
+    font-size: 3.5rem;
+    margin: 0;
+    text-align: center;
+}
+
+.home-content h2 {
+    font-weight: 400;
+    font-size: 1.5rem;
+    margin: 0;
+    text-align: center;
+}
+
+@media screen and (min-width: 640px) {
+    .home-content h1 {
+        font-size: 5rem;
+    }
+
+    .home-content h2 {
+        font-size: 2.5rem;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .home-content h1 {
+        font-size: 6rem;
+    }
+
+    .home-content h2 {
+        font-size: 2.5rem;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .home-content h1 {
+        font-size: 7rem;
+    }
+
+    .home-content h2 {
+        font-size: 3rem;
+    }
+}
+
 #down-arrow {
     position: absolute;
     bottom: 4rem;
     left: 50%;
+    z-index: 2;
 }
 
 .clickable-icon {
