@@ -3,19 +3,47 @@
     justify-content: center;
     align-items: center;
     position: relative;
+    padding: 2rem 1rem;
 }
 
 .events-content {
-    background-color: white;
-    width: 75%;
-    padding: 2rem;
-    margin: 2rem auto;
+    background-color: var(--color-bg-light);
+    color: var(--color-text);
+    width: 100%;
+    max-width: 640px;
+    padding: 1.5rem;
+    margin: 0 auto;
     text-align: center;
+    border: 1px solid var(--color-border);
+    border-radius: 1rem;
+}
+
+@media screen and (min-width: 640px) {
+    #events {
+        padding: 3rem 2rem;
+    }
+
+    .events-content {
+        padding: 2rem;
+        max-width: 720px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .events-content {
+        max-width: 800px;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .events-content {
+        max-width: 900px;
+    }
 }
 
 @media screen and (min-width: 1280px) {
     .events-content {
-        width: 50%;
+        max-width: 960px;
     }
 }
 
@@ -25,4 +53,109 @@
 
 #calendar {
     width: 100%;
+    font-size: 1rem;
+}
+
+#calendar .fc {
+    --fc-small-font-size: 0.95rem;
+    --fc-border-color: var(--color-border);
+}
+
+@media screen and (min-width: 640px) {
+    #calendar {
+        font-size: 1.1rem;
+    }
+
+    #calendar .fc {
+        --fc-small-font-size: 1rem;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    #calendar {
+        font-size: 1.25rem;
+    }
+
+    #calendar .fc {
+        --fc-small-font-size: 1.1rem;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    #calendar {
+        font-size: 1.35rem;
+    }
+
+    #calendar .fc {
+        --fc-small-font-size: 1.15rem;
+    }
+}
+
+#calendar .fc-toolbar {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: stretch;
+}
+
+#calendar .fc-toolbar-chunk {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+#calendar .fc-toolbar-title {
+    font-size: 1.25em;
+}
+
+#calendar .fc-footer-toolbar {
+    margin-top: 0.75rem;
+}
+
+#calendar .fc-footer-toolbar .fc-toolbar-chunk {
+    justify-content: center;
+}
+
+@media screen and (min-width: 640px) {
+    #calendar .fc-toolbar {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    #calendar .fc-toolbar-chunk {
+        width: auto;
+        justify-content: flex-start;
+    }
+}
+
+#calendar .fc-list {
+    border-radius: 0.75rem;
+    overflow: hidden;
+}
+
+#calendar .fc-list-table th,
+#calendar .fc-list-table td {
+    padding: 0.85rem 1rem;
+}
+
+#calendar .fc-list-day-cushion {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+@media screen and (min-width: 640px) {
+    #calendar .fc-list-day-cushion {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+#calendar .fc-list-event-time {
+    font-weight: 600;
+}
+
+#calendar .fc-list-event-title a {
+    color: inherit;
+    text-decoration: none;
 }
