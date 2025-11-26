@@ -12,16 +12,16 @@ const EducationList: React.FC = () => {
         {typedEducationData.map((edu, index) => (
           <div key={index} className="education-entry">
             <div className="education-header">
-              <h3>{edu['Degree Name']}</h3>
+              <h3>{edu.degreeName}</h3>
               <span className="education-years">
-                {edu['Start Date']} - {edu['End Date']}
+                {edu.startDate} - {edu.endDate}
               </span>
             </div>
-            <div className="education-school">{edu['School Name']}</div>
-            <div className="education-notes">{edu.Notes}</div>
-            {edu['Verification URL'] && (
+            <div className="education-school">{edu.schoolName}</div>
+            <div className="education-notes">{edu.notes}</div>
+            {edu.verificationUrl && (
               <a
-                href={edu['Verification URL']}
+                href={edu.verificationUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="education-verify"

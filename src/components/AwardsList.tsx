@@ -2,7 +2,7 @@ import './AwardsList.css';
 import awardsData from '../data/awards.json';
 import type { Award } from '../types/data';
 
-const typedAwardsData = awardsData.awards_and_fellowships as Award[];
+const typedAwardsData = awardsData.awardsAndFellowships as Award[];
 
 const AwardsList: React.FC = () => {
   // Sort awards by year (descending)

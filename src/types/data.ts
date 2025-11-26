@@ -13,7 +13,7 @@ export interface Project {
   url: string;
   description: string;
   img?: string;
-  'icon-overlay'?: string;
+  iconOverlay?: string;
   buttonText?: string;
 }
 
@@ -66,12 +66,12 @@ export interface EventItem {
 }
 
 export interface Education {
-  'School Name': string;
-  'Start Date': number;
-  'End Date': number;
-  Notes: string;
-  'Degree Name': string;
-  'Verification URL': string | null;
+  schoolName: string;
+  startDate: number;
+  endDate: number;
+  notes: string;
+  degreeName: string;
+  verificationUrl: string | null;
 }
 
 // Import canonical CSL-JSON types from the official schema

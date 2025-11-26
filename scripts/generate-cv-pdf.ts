@@ -5,7 +5,7 @@
  */
 
 import PdfPrinter from 'pdfmake';
-import type { TDocumentDefinitions, Content, ContentText } from 'pdfmake/interfaces';
+import type { TDocumentDefinitions, Content } from 'pdfmake/interfaces';
 import { writeFileSync } from 'fs';
 import { join } from 'path';
 
@@ -27,7 +27,7 @@ import type { Education, Award, CSLPublication, CSLPresentation } from '../src/t
 const typedEducationData = educationData as Education[];
 const typedPublicationsData = publicationsData.items as CSLPublication[];
 const typedPresentationsData = presentationsData as CSLPresentation[];
-const typedAwardsData = awardsData.awards_and_fellowships as Award[];
+const typedAwardsData = awardsData.awardsAndFellowships as Award[];
 
 // Define fonts for pdfmake (using roboto-fontface woff files)
 const fonts = {
@@ -86,14 +86,14 @@ function buildEducationSection(): Content[] {
   for (const edu of typedEducationData) {
     content.push({
       columns: [
-        { text: edu['Degree Name'], style: 'itemTitle', width: '*' },
-        { text: `${edu['Start Date']} - ${edu['End Date']}`, style: 'itemDate', width: 'auto', alignment: 'right' },
+        { text: edu.degreeName, style: 'itemTitle', width: '*' },
+        { text: `${edu.startDate} - ${edu.endDate}`, style: 'itemDate', width: 'auto', alignment: 'right' },
       ],
       margin: [0, 8, 0, 0],
     } as Content);
-    content.push({ text: edu['School Name'], style: 'itemSubtitle' } as Content);
-    if (edu.Notes) {
-      content.push({ text: edu.Notes, style: 'itemNotes' } as Content);
+    content.push({ text: edu.schoolName, style: 'itemSubtitle' } as Content);
+    if (edu.notes) {
+      content.push({ text: edu.notes, style: 'itemNotes' } as Content);
     }
   }
 

@@ -19,15 +19,15 @@ import { getYearFromCSLDate } from '../utils/cslDate';
 // Generate alumniOf array from education data
 const alumniOf = educationData
   .filter((edu: any) =>
-    ['Doctor of Philosophy (Ph.D.)', 'Master of Arts (M.A.)', "Bachelor's Degree"].includes(edu['Degree Name'])
+    ['Doctor of Philosophy (Ph.D.)', 'Master of Arts (M.A.)', "Bachelor's Degree"].includes(edu.degreeName)
   )
   .map((edu: any) => ({
     '@type': 'EducationalOrganization',
-    'name': edu['School Name']
+    'name': edu.schoolName
   }));
 
 // Generate award array from major awards (fellowships and best awards)
-const awards = awardsData.awards_and_fellowships
+const awards = awardsData.awardsAndFellowships
   .filter((award: any) =>
     award.award.toLowerCase().includes('fellowship') ||
     award.award.toLowerCase().includes('best')
@@ -64,14 +64,14 @@ const getCredentialCategory = (degreeName: string): string => {
 // Generate EducationalOccupationalCredential schemas for education
 const educationSchemas = educationData.map((edu: any) => ({
   '@type': 'EducationalOccupationalCredential',
-  'credentialCategory': getCredentialCategory(edu['Degree Name']),
-  'name': `${edu['Degree Name']}${edu.Notes ? ' in ' + edu.Notes : ''}`,
-  'educationalLevel': getEducationalLevel(edu['Degree Name']),
+  'credentialCategory': getCredentialCategory(edu.degreeName),
+  'name': `${edu.degreeName}${edu.notes ? ' in ' + edu.notes : ''}`,
+  'educationalLevel': getEducationalLevel(edu.degreeName),
   'recognizedBy': {
     '@type': 'EducationalOrganization',
-    'name': edu['School Name']
+    'name': edu.schoolName
   },
-  ...(edu['Verification URL'] && { 'url': edu['Verification URL'] })
+  ...(edu.verificationUrl && { 'url': edu.verificationUrl })
 }));
 
 // Generate ScholarlyArticle schemas for publications

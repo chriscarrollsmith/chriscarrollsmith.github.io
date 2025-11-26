@@ -17,14 +17,14 @@ const Projects: React.FC = () => {
           url: "https://github.com/TeamZombies/furne_frontend",
           description: "Interior design AI image generator with product image search",
           img: "furne-desktop.jpg",
-          "icon-overlay": "AECTech-ribbon-optimized.svg"
+          iconOverlay: "AECTech-ribbon-optimized.svg"
         },
         {
           title: "SessionScribe",
           url: "https://github.com/chriscarrollsmith/session-scribe",
           description: "AI transcribe-to-print pipeline",
           img: "sessionscribe-desktop.png",
-          "icon-overlay": "Epson-ribbon-optimized.svg"
+          iconOverlay: "Epson-ribbon-optimized.svg"
         },
         {
           title: "Promptly Technologies, LLC website",

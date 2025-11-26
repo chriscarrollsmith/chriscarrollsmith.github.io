@@ -6,7 +6,7 @@ interface CardProps {
 }
 
 const Card: React.FC<CardProps> = ({ project }) => (
-  <div className={`project-card ${project['icon-overlay'] ? 'featured' : ''}`}>
+  <div className={`project-card ${project.iconOverlay ? 'featured' : ''}`}>
     <div className="content-wrapper">
       <div className="title-section">
         <div className="title-container">
@@ -25,9 +25,9 @@ const Card: React.FC<CardProps> = ({ project }) => (
         </a>
       </div>
     </div>
-    {project['icon-overlay'] && (
+    {project.iconOverlay && (
       <img
-        src={`/images/${project['icon-overlay']}`}
+        src={`/images/${project.iconOverlay}`}
         alt="Icon Overlay"
         className="icon-overlay"
       />
