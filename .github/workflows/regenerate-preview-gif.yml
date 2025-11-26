@@ -1,0 +1,67 @@
+name: Regenerate Preview GIF
+
+on:
+  workflow_dispatch:
+  # Optionally run on push to main if you want automatic updates
+  # push:
+  #   branches: [ main ]
+
+permissions:
+  contents: write
+
+jobs:
+  regenerate-gif:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Install Playwright browsers
+        run: bunx playwright install --with-deps chromium
+
+      - name: Install ImageMagick
+        run: sudo apt-get update && sudo apt-get install -y imagemagick
+
+      - name: Build site
+        run: bun run build
+
+      - name: Start preview server in background
+        run: |
+          bun run preview &
+          echo "PREVIEW_PID=$!" >> $GITHUB_ENV
+          # Wait for server to be ready
+          timeout 60 bash -c 'until curl -s http://localhost:4321 > /dev/null; do sleep 1; done'
+
+      - name: Capture frames
+        run: bun visual_qa/generate_preview_gif.mjs --base-url http://localhost:4321
+
+      - name: Create animated GIF
+        run: |
+          convert -delay 200 -loop 0 .temp_gif_frames/frame-*.png -colors 256 -quality 100 site-preview-new.gif
+          # Optimize the GIF (less aggressive for better quality)
+          convert site-preview-new.gif -fuzz 5% -layers Optimize site-preview.gif
+          # Clean up temp files
+          rm -rf .temp_gif_frames site-preview-new.gif
+
+      - name: Stop preview server
+        if: always()
+        run: |
+          if [ ! -z "$PREVIEW_PID" ]; then
+            kill $PREVIEW_PID || true
+          fi
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add site-preview.gif
+          git diff --staged --quiet || git commit -m "chore: regenerate preview GIF"
+          git push

@@ -157,11 +157,11 @@ section {
 
 @media screen and (min-width: 1280px) {
   .hero-heading h1 {
-    font-size: 7rem;
+    font-size: 6.5rem;
   }
 
   .hero-heading h2 {
-    font-size: 3rem;
+    font-size: 2.75rem;
   }
 }
 

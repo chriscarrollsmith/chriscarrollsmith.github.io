@@ -157,6 +157,34 @@ If you want to use a custom domain instead of the default `https://{YOUR-GITHUB-
 
 The GitHub Actions workflow will automatically include the CNAME file in deployments.
 
+## Regenerating the Preview GIF
+
+The `site-preview.gif` displayed in this README shows an animated preview of the homepage sections. To regenerate it (e.g., after making visual changes):
+
+1. Go to **Actions** > **Regenerate Preview GIF** in your repository
+2. Click **Run workflow** > **Run workflow**
+3. The workflow will:
+   - Build the site
+   - Capture screenshots of each homepage section (#home, #about, #projects, #writing, #events)
+   - Combine them into an animated GIF (2 seconds per frame)
+   - Commit and push the updated `site-preview.gif`
+
+Alternatively, to regenerate locally (requires ImageMagick):
+
+```bash
+# Build and start preview server
+bun run build
+bun run preview &
+
+# Capture frames
+bun visual_qa/generate_preview_gif.mjs --base-url http://localhost:4321
+
+# Create GIF
+convert -delay 200 -loop 0 .temp_gif_frames/frame-*.png site-preview-new.gif
+convert site-preview-new.gif -fuzz 10% -layers Optimize site-preview.gif
+rm -rf .temp_gif_frames site-preview-new.gif
+```
+
 ## Blog Posts
 
 Blog posts are currently stored as JSON in `src/data/blogs.json`. Each post contains:
