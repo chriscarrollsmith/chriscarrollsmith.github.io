@@ -24,8 +24,8 @@ import { spawn } from 'child_process';
 import { PNG } from 'pngjs';
 
 // GIF dimensions (matching current site-preview.gif)
-const GIF_WIDTH = 1200;
-const GIF_HEIGHT = 564;
+const GIF_WIDTH = 1280;
+const GIF_HEIGHT = 602;
 
 // Sections to capture (in order of appearance on homepage)
 const HOMEPAGE_SECTIONS = [
@@ -81,9 +81,17 @@ async function captureSection(page, sectionId, width, height) {
     throw new Error(`No element found for selector "${sectionId}"`);
   }
 
-  await locator.first().scrollIntoViewIfNeeded();
-  // Give layout time to settle
-  await page.waitForTimeout(500);
+  // Scroll section to top of viewport
+  await page.evaluate((selector) => {
+    const element = document.querySelector(selector);
+    if (element) {
+      element.scrollIntoView({ behavior: 'instant', block: 'start' });
+    }
+  }, sectionId);
+
+  // Wait for any animations/images to load
+  await page.waitForTimeout(1500);
+  await page.waitForLoadState('networkidle');
 
   // Capture screenshot to buffer
   const screenshotBuffer = await page.screenshot({
@@ -140,17 +148,55 @@ async function generatePreviewGif({ baseUrl, output }) {
   await fs.promises.mkdir(tempDir, { recursive: true });
 
   console.log('Launching browser...');
-  const browser = await chromium.launch();
+  const browser = await chromium.launch({
+    headless: true,
+    args: [
+      '--font-render-hinting=none',
+      '--disable-gpu',
+      '--disable-cache',
+      '--disable-application-cache',
+      '--disable-offline-load-stale-cache',
+    ],
+  });
 
   try {
     const context = await browser.newContext({
       viewport: { width: GIF_WIDTH, height: GIF_HEIGHT },
+      deviceScaleFactor: 1,
       colorScheme: 'light',
+      bypassCSP: true,
+      ignoreHTTPSErrors: true,
     });
     const page = await context.newPage();
 
+    // Disable cache for this page
+    await page.route('**/*', (route) => {
+      route.continue({
+        headers: {
+          ...route.request().headers(),
+          'Cache-Control': 'no-cache, no-store, must-revalidate',
+        },
+      });
+    });
+
+    // Disable animations for consistent rendering
+    await page.addStyleTag({
+      content: `
+        *, *::before, *::after {
+          animation-duration: 0s !important;
+          animation-delay: 0s !important;
+          transition-duration: 0s !important;
+          transition-delay: 0s !important;
+        }
+      `,
+    });
+
     console.log(`Navigating to ${baseUrl}...`);
     await page.goto(baseUrl, { waitUntil: 'networkidle' });
+
+    // Wait for fonts to load
+    await page.evaluate(() => document.fonts.ready);
+    await page.waitForTimeout(500);
 
     // Capture each section
     const frameBuffers = [];

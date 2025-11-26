@@ -45,9 +45,9 @@ jobs:
 
       - name: Create animated GIF
         run: |
-          convert -delay 200 -loop 0 .temp_gif_frames/frame-*.png site-preview-new.gif
-          # Optimize the GIF
-          convert site-preview-new.gif -fuzz 10% -layers Optimize site-preview.gif
+          convert -delay 200 -loop 0 .temp_gif_frames/frame-*.png -colors 256 -quality 100 site-preview-new.gif
+          # Optimize the GIF (less aggressive for better quality)
+          convert site-preview-new.gif -fuzz 5% -layers Optimize site-preview.gif
           # Clean up temp files
           rm -rf .temp_gif_frames site-preview-new.gif
 
