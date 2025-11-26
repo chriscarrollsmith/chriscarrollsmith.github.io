@@ -38,16 +38,18 @@ const HomeClient: React.FC = () => {
               objectPosition: windowWidth < 1282 ? `calc(50% - ${hero.adjustment}) center` : `center`,
             }}
           />
-          <div className="hero-overlay" />
           <div className="hero-content">
-            <div className="hero-heading">
-              <h1>{typedSiteProperties.name}</h1>
-              <h2>{typedSiteProperties.title}</h2>
-            </div>
-            <div id="down-arrow">
-              <a href="#about">
-                <img className="clickable-icon" src="/images/down-arrow.svg" alt="scroll down" />
-              </a>
+            <div className="hero-text-area">
+              <div className="hero-overlay" />
+              <div className="hero-heading">
+                <h1>{typedSiteProperties.name}</h1>
+                <h2>{typedSiteProperties.title}</h2>
+              </div>
+              <div id="down-arrow">
+                <a href="#about">
+                  <img className="clickable-icon" src="/images/down-arrow.svg" alt="scroll down" />
+                </a>
+              </div>
             </div>
           </div>
         </>
