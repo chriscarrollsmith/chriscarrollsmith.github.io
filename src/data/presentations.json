@@ -164,7 +164,9 @@
       ]
     },
     "custom": {
-      "section": "Papers Presented"
+      "section": "Papers Presented",
+      "featured": true,
+      "slidesUrl": "https://github.com/chriscarrollsmith/llm-slideshow"
     }
   },
   {
@@ -188,7 +190,10 @@
       ]
     },
     "custom": {
-      "section": "Papers Presented"
+      "section": "Papers Presented",
+      "featured": true,
+      "videoUrl": "https://youtu.be/HSCNt4EBUpM?si=9ELYUaEejVuXea8D",
+      "slidesUrl": "https://docs.google.com/presentation/d/1BDwt2ibhF4GPTkBZsgehzBM03ba-SeaFmq8YlaY5ufA/edit?usp=sharing"
     }
   },
   {

@@ -92,6 +92,7 @@ type PresentationType = Extract<CSLItem['type'], 'paper-conference' | 'speech'>;
 export interface CSLCustom extends CustomKeyValuePairs {
   citations?: string;
   exclude?: boolean;
+  featured?: boolean;
 }
 
 // CSL Publication type using canonical types from the official CSL-JSON schema
@@ -107,6 +108,9 @@ export type { CSLAuthor, CSLDate };
 // Custom fields for presentations
 export interface CSLPresentationCustom extends CustomKeyValuePairs {
   section?: string; // "Panels Organized", "Papers Presented", "Respondent"
+  featured?: boolean;
+  videoUrl?: string;
+  slidesUrl?: string;
 }
 
 // CSL Presentation type using canonical types from the official CSL-JSON schema

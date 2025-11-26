@@ -24,71 +24,86 @@
 .presentation-entries {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 0.75rem;
 }
 
-.presentation-entry {
+/* Card style for featured presentations */
+.presentation-entry-card {
+  position: relative;
   padding: 1.5rem;
   background-color: var(--color-bg-light, #f9f9f9);
   border-radius: 8px;
   transition: box-shadow 0.3s;
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
 }
 
-.presentation-entry:hover {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.presentation-entry.featured {
-  background-color: #fff3cd;
-  border-left: 4px solid #ffc107;
+.featured-label {
+  position: absolute;
+  top: -0.5rem;
+  left: 1rem;
+  background-color: #0066cc;
+  color: #fff;
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 @media (prefers-color-scheme: dark) {
-  .presentation-entry.featured {
-    background-color: #3d3419;
-    border-left: 4px solid #ffb700;
+  .featured-label {
+    background-color: #1d4ed8;
   }
 }
 
-.presentation-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 1rem;
+.presentation-entry-card:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* List style for non-featured presentations */
+.presentation-entry-list {
+  padding: 0.5rem 0;
+  padding-left: 1.5em;
+  text-indent: -1.5em;
 }
 
 .presentation-formatted {
   font-size: 1rem;
   line-height: 1.6;
   color: var(--color-text, #333);
-  flex: 1;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+.presentation-entry-card .presentation-formatted {
+  margin-bottom: 0.5rem;
 }
 
 .presentation-formatted :global(i) {
   font-style: italic;
 }
 
-.featured-badge {
-  background-color: #ffc107;
-  color: #000;
-  padding: 0.25rem 0.75rem;
-  border-radius: 15px;
+.presentation-links {
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.presentation-links a {
+  color: var(--color-link, #0066cc);
+  text-decoration: none;
   font-size: 1rem;
-  font-weight: 600;
-  white-space: nowrap;
+}
+
+.presentation-links a:hover {
+  text-decoration: underline;
 }
 
 @media (max-width: 767px) {
-  .presentation-entry {
+  .presentation-entry-card {
     padding: 1rem;
-  }
-
-  .presentation-header {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .featured-badge {
-    align-self: flex-start;
   }
 }

@@ -69,7 +69,7 @@ const PresentationsList: React.FC = () => {
     setFormattedPresentations(formatted);
   }, []);
 
-  // Group presentations by section
+  // Group presentations by section, sorting featured first within each section
   const groupedPresentations = formattedPresentations.reduce((acc, item) => {
     if (!acc[item.section]) {
       acc[item.section] = [];
@@ -78,18 +78,17 @@ const PresentationsList: React.FC = () => {
     return acc;
   }, {} as Record<string, typeof formattedPresentations>);
 
-  // Highlight recent software/tech presentations
-  const isSoftwareTech = (pres: CSLPresentation) => {
-    const year = getYearFromCSLDate(pres.issued) ?? 0;
-    return (
-      year >= 2024 &&
-      (pres.title?.toLowerCase().includes('ai') ||
-        pres.title?.toLowerCase().includes('llm') ||
-        pres.title?.toLowerCase().includes('software') ||
-        pres.title?.toLowerCase().includes('command line') ||
-        pres.title?.toLowerCase().includes('eval'))
-    );
-  };
+  // Sort each section: featured first, then by year
+  Object.keys(groupedPresentations).forEach((section) => {
+    groupedPresentations[section].sort((a, b) => {
+      const aFeatured = a.pres.custom?.featured ? 1 : 0;
+      const bFeatured = b.pres.custom?.featured ? 1 : 0;
+      if (bFeatured !== aFeatured) return bFeatured - aFeatured;
+      const yearA = getYearFromCSLDate(a.pres.issued) ?? 0;
+      const yearB = getYearFromCSLDate(b.pres.issued) ?? 0;
+      return yearB - yearA;
+    });
+  });
 
   return (
     <div className="presentations-list">
@@ -100,22 +99,31 @@ const PresentationsList: React.FC = () => {
           <div className="presentation-entries">
             {presentations.map((item, index) => {
               const { pres, formatted } = item;
+              const isFeatured = pres.custom?.featured;
               return (
                 <div
                   key={index}
-                  className={`presentation-entry ${
-                    isSoftwareTech(pres) ? 'featured' : ''
-                  }`}
+                  className={`presentation-entry ${isFeatured ? 'presentation-entry-card' : 'presentation-entry-list'}`}
                 >
-                  <div className="presentation-header">
-                    <div
-                      className="presentation-formatted"
-                      dangerouslySetInnerHTML={{ __html: formatted }}
-                    />
-                    {isSoftwareTech(pres) && (
-                      <span className="featured-badge">Recent Software Work</span>
-                    )}
-                  </div>
+                  {isFeatured && <span className="featured-label">Featured</span>}
+                  <div
+                    className="presentation-formatted"
+                    dangerouslySetInnerHTML={{ __html: formatted }}
+                  />
+                  {isFeatured && (pres.custom?.videoUrl || pres.custom?.slidesUrl) && (
+                    <div className="presentation-links">
+                      {pres.custom?.videoUrl && (
+                        <a href={pres.custom.videoUrl} target="_blank" rel="noopener noreferrer">
+                          Video
+                        </a>
+                      )}
+                      {pres.custom?.slidesUrl && (
+                        <a href={pres.custom.slidesUrl} target="_blank" rel="noopener noreferrer">
+                          Slides
+                        </a>
+                      )}
+                    </div>
+                  )}
                 </div>
               );
             })}

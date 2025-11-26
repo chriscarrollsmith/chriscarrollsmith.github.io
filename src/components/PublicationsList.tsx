@@ -21,8 +21,11 @@ const PublicationsList: React.FC = () => {
       (pub) => !pub.custom?.exclude
     );
 
-    // Sort by year (descending)
+    // Sort featured first, then by year (descending)
     const sorted = [...filtered].sort((a, b) => {
+      const aFeatured = a.custom?.featured ? 1 : 0;
+      const bFeatured = b.custom?.featured ? 1 : 0;
+      if (bFeatured !== aFeatured) return bFeatured - aFeatured;
       const yearA = getYearFromCSLDate(a.issued) ?? 0;
       const yearB = getYearFromCSLDate(b.issued) ?? 0;
       return yearB - yearA;
@@ -65,22 +68,29 @@ const PublicationsList: React.FC = () => {
       <div className="publications-entries">
         {formattedPublications.map((item, index) => {
           const { pub, formatted } = item;
+          const isFeatured = pub.custom?.featured;
           return (
-            <div key={index} className="publication-entry">
+            <div
+              key={index}
+              className={`publication-entry ${isFeatured ? 'publication-entry-card' : 'publication-entry-list'}`}
+            >
+              {isFeatured && <span className="featured-label">Featured</span>}
               <div
                 className="publication-formatted"
                 dangerouslySetInnerHTML={{ __html: formatted }}
               />
-              {pub.custom?.citations && (
-                <div className="publication-citations">
-                  Citations: {pub.custom.citations}
-                </div>
-              )}
-              {pub.URL && (
-                <div className="publication-link">
-                  <a href={pub.URL} target="_blank" rel="noopener noreferrer">
-                    Full Text
-                  </a>
+              {isFeatured && (pub.custom?.citations || pub.URL) && (
+                <div className="publication-meta">
+                  {pub.custom?.citations && (
+                    <span className="publication-citations">
+                      Citations: {pub.custom.citations}
+                    </span>
+                  )}
+                  {pub.URL && (
+                    <a href={pub.URL} target="_blank" rel="noopener noreferrer" className="publication-link">
+                      Full Text
+                    </a>
+                  )}
                 </div>
               )}
             </div>
