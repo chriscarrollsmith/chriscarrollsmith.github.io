@@ -126,18 +126,30 @@ const publicationSchemas = typedPublicationsData
 
     <!-- Schema.org markup for Education Credentials -->
     {educationSchemas.map((schema) => (
-      <script type="application/ld+json" is:inline set:html={JSON.stringify({
-        "@context": "https://schema.org",
-        ...schema
-      })}></script>
+      <Fragment key={schema.name}>
+        <script
+          type="application/ld+json"
+          is:inline
+          set:html={JSON.stringify({
+            "@context": "https://schema.org",
+            ...schema
+          })}
+        ></script>
+      </Fragment>
     ))}
 
     <!-- Schema.org markup for Publications -->
     {publicationSchemas.map((schema) => (
-      <script type="application/ld+json" is:inline set:html={JSON.stringify({
-        "@context": "https://schema.org",
-        ...schema
-      })}></script>
+      <Fragment key={schema.headline}>
+        <script
+          type="application/ld+json"
+          is:inline
+          set:html={JSON.stringify({
+            "@context": "https://schema.org",
+            ...schema
+          })}
+        ></script>
+      </Fragment>
     ))}
   </Fragment>
 
