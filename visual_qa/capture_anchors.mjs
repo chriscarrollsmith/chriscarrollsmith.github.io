@@ -111,18 +111,44 @@ async function ensureDir(dir) {
   await fs.promises.mkdir(dir, { recursive: true });
 }
 
-async function annotatePage(page) {
+/**
+ * Injects CSS selector labels into the page for screenshot annotation
+ * Uses a bookmarklet-style approach to overlay labels without breaking layout
+ */
+async function addSelectorLabels(page) {
   await page.evaluate(() => {
     document.querySelectorAll('*').forEach(el => {
-      // Skip non-visible elements
-      if (['SCRIPT', 'STYLE', 'NOSCRIPT', 'META', 'LINK', 'TITLE'].includes(el.tagName)) return;
+      // Skip if element is too small or is a label we already added
+      const rect = el.getBoundingClientRect();
+      if (rect.width < 20 || rect.height < 20 || el.dataset.selectorLabel) return;
 
-      const label = document.createElement('div');
-      const selector = `${el.tagName.toLowerCase()}${el.id ? '#'+el.id : ''}${el.className ? '.'+[...el.classList].join('.') : ''}`;
-      label.textContent = selector;
-      label.style.cssText = 'position:absolute;top:0;left:0;background:black;color:lime;font-size:10px;padding:2px;z-index:999999;pointer-events:none;';
-      el.style.position = 'relative';
-      el.appendChild(label);
+      // Build selector string
+      let label = el.tagName.toLowerCase();
+      if (el.id) label += `#${el.id}`;
+      if (el.className && typeof el.className === 'string') {
+        const classes = el.className.trim().split(/\s+/).filter(c => c);
+        if (classes.length > 0) {
+          label += `.${classes.join('.')}`;
+        }
+      }
+
+      // Create label overlay
+      const div = document.createElement('div');
+      div.textContent = label;
+      div.dataset.selectorLabel = 'true';
+      div.style.cssText = `
+        position: fixed;
+        left: ${rect.left}px;
+        top: ${rect.top}px;
+        background: rgba(0, 0, 0, 0.8);
+        color: #0f0;
+        font: 10px monospace;
+        padding: 2px 4px;
+        pointer-events: none;
+        z-index: 999999;
+        white-space: nowrap;
+      `;
+      document.body.appendChild(div);
     });
   });
 }
@@ -172,8 +198,9 @@ async function captureScreens({ baseUrl, label, targets, annotate }) {
           // Give layout a moment to settle after scrolling
           await page.waitForTimeout(500);
 
+          // Add selector labels if --annotate flag is set
           if (annotate) {
-            await annotatePage(page);
+            await addSelectorLabels(page);
           }
 
           await page.screenshot({
@@ -216,8 +243,9 @@ async function captureScreens({ baseUrl, label, targets, annotate }) {
           // Extra delay for full-page screenshots to ensure layout is settled
           await page.waitForTimeout(600);
 
+          // Add selector labels if --annotate flag is set
           if (annotate) {
-            await annotatePage(page);
+            await addSelectorLabels(page);
           }
 
           await page.screenshot({
