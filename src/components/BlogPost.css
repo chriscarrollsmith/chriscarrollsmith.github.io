@@ -37,7 +37,6 @@
 }
 
 .blog-post .post-abstract {
-  font-size: 1.125rem;
   font-style: italic;
   color: var(--color-text-muted);
   margin-top: 1.5rem;

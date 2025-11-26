@@ -8,6 +8,96 @@ import AwardsList from '../components/AwardsList.tsx';
 import Footer from '../components/Footer.tsx';
 import '../App.css';
 import '../pages/_cv.css';
+
+// Import data for enhanced Schema.org markup
+import educationData from '../data/education.json';
+import awardsData from '../data/awards.json';
+import publicationsData from '../data/publications.json';
+import type { CSLPublication } from '../types/data';
+import { getYearFromCSLDate } from '../utils/cslDate';
+
+// Generate alumniOf array from education data
+const alumniOf = educationData
+  .filter((edu: any) =>
+    ['Doctor of Philosophy (Ph.D.)', 'Master of Arts (M.A.)', "Bachelor's Degree"].includes(edu['Degree Name'])
+  )
+  .map((edu: any) => ({
+    '@type': 'EducationalOrganization',
+    'name': edu['School Name']
+  }));
+
+// Generate award array from major awards (fellowships and best awards)
+const awards = awardsData.awards_and_fellowships
+  .filter((award: any) =>
+    award.award.toLowerCase().includes('fellowship') ||
+    award.award.toLowerCase().includes('best')
+  )
+  .map((award: any) => `${award.award} (${award.organization}, ${award.year})`);
+
+// Define areas of expertise based on education and research
+const knowsAbout = [
+  'Religious Studies',
+  'American Religious History',
+  'Data Science',
+  'Software Engineering',
+  'Machine Learning',
+  'Natural Language Processing',
+  'Web Development'
+];
+
+// Helper function to map degree names to educational levels
+const getEducationalLevel = (degreeName: string): string => {
+  if (degreeName.includes('Ph.D.') || degreeName.includes('Doctor')) return 'Doctorate';
+  if (degreeName.includes('M.A.') || degreeName.includes('Master')) return 'Masters';
+  if (degreeName.includes('Bachelor')) return 'Bachelors';
+  if (degreeName.includes('Professional Certificate')) return 'ProfessionalCertificate';
+  if (degreeName.includes('Certificate')) return 'Certificate';
+  return 'EducationalDegree';
+};
+
+// Helper function to determine credential category
+const getCredentialCategory = (degreeName: string): string => {
+  if (degreeName.includes('Certificate')) return 'certificate';
+  return 'degree';
+};
+
+// Generate EducationalOccupationalCredential schemas for education
+const educationSchemas = educationData.map((edu: any) => ({
+  '@type': 'EducationalOccupationalCredential',
+  'credentialCategory': getCredentialCategory(edu['Degree Name']),
+  'name': `${edu['Degree Name']}${edu.Notes ? ' in ' + edu.Notes : ''}`,
+  'educationalLevel': getEducationalLevel(edu['Degree Name']),
+  'recognizedBy': {
+    '@type': 'EducationalOrganization',
+    'name': edu['School Name']
+  },
+  ...(edu['Verification URL'] && { 'url': edu['Verification URL'] })
+}));
+
+// Generate ScholarlyArticle schemas for publications
+const typedPublicationsData = publicationsData.items as CSLPublication[];
+const publicationSchemas = typedPublicationsData
+  .filter((pub: CSLPublication) => !pub.custom?.exclude)
+  .map((pub: CSLPublication) => ({
+    '@type': 'ScholarlyArticle',
+    'headline': pub.title,
+    'author': pub.author?.map(a => ({
+      '@type': 'Person',
+      'name': a.literal || `${a.given || ''} ${a.family || ''}`.trim()
+    })) || [],
+    'datePublished': getYearFromCSLDate(pub.issued)?.toString(),
+    ...(pub['container-title'] && {
+      'publisher': {
+        '@type': 'Organization',
+        'name': pub['container-title']
+      }
+    }),
+    ...(pub.custom?.citations && {
+      'citation': `${pub.custom.citations} citations`
+    }),
+    ...(pub.URL && { 'url': pub.URL }),
+    ...(pub.DOI && { 'sameAs': `https://doi.org/${pub.DOI}` })
+  }));
 ---
 
 <BaseLayout
@@ -16,21 +106,39 @@ import '../pages/_cv.css';
   type="profile"
 >
   <Fragment slot="head">
-    <!-- Schema.org markup for Person -->
-    <script type="application/ld+json" is:inline>
-      {
+    <!-- Enhanced Schema.org markup for Person -->
+    <script type="application/ld+json" is:inline set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Christopher Carroll Smith",
+      "url": "https://christophercarrollsmith.com",
+      "sameAs": [
+        "https://orcid.org/0009-0008-1756-612X",
+        "https://scholar.google.com/citations?user=IY53lNkAAAAJ&hl=en"
+      ],
+      "jobTitle": "Software Architect",
+      "description": "Software architect, data storyteller, and president of Promptly Technologies, LLC",
+      "alumniOf": alumniOf,
+      "knowsAbout": knowsAbout,
+      "award": awards,
+      "publishingPrinciples": "https://orcid.org/0009-0008-1756-612X"
+    })}></script>
+
+    <!-- Schema.org markup for Education Credentials -->
+    {educationSchemas.map((schema) => (
+      <script type="application/ld+json" is:inline set:html={JSON.stringify({
         "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Christopher Carroll Smith",
-        "url": "https://christophercarrollsmith.com",
-        "sameAs": [
-          "https://orcid.org/0009-0008-1756-612X",
-          "https://scholar.google.com/citations?user=IY53lNkAAAAJ&hl=en"
-        ],
-        "jobTitle": "Software Architect",
-        "description": "Software architect, data storyteller, and president of Promptly Technologies, LLC"
-      }
-    </script>
+        ...schema
+      })}></script>
+    ))}
+
+    <!-- Schema.org markup for Publications -->
+    {publicationSchemas.map((schema) => (
+      <script type="application/ld+json" is:inline set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        ...schema
+      })}></script>
+    ))}
   </Fragment>
 
   <div class="App">
