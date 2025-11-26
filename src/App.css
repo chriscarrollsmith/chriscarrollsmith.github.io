@@ -105,7 +105,8 @@ section {
 
 .hero-heading {
   position: relative;
-  margin-top: 30vh;
+  margin-top: auto;
+  margin-bottom: 8rem;
   padding: 0 2rem;
   text-align: center;
 }
