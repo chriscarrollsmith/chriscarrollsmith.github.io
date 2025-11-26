@@ -23,6 +23,7 @@
  *   --label <label>        Label for screenshot folder (default: "run")
  *   --start-dev            Start dev server automatically
  *   --dev-cmd <cmd>        Dev server command (default: "bun run dev")
+ *   --annotate             Add CSS selector labels to screenshots
  *
  * Requirements:
  *   - Dev or preview server must be running and reachable at --base-url
@@ -52,6 +53,7 @@ function parseArgs(argv) {
   const targets = []; // can be anchors (#home) or paths (/cv)
   let startDev = false;
   let devCmd = 'bun run dev';
+  let annotate = false;
 
   for (let i = 0; i < args.length; i += 1) {
     const arg = args[i];
@@ -66,6 +68,8 @@ function parseArgs(argv) {
     } else if (arg === '--dev-cmd' && args[i + 1]) {
       devCmd = args[i + 1];
       i += 1;
+    } else if (arg === '--annotate') {
+      annotate = true;
     } else if (arg.startsWith('-')) {
       console.error(`Unknown option: ${arg}`);
       process.exit(1);
@@ -90,6 +94,7 @@ function parseArgs(argv) {
     targets,
     startDev,
     devCmd,
+    annotate,
   };
 }
 
@@ -106,7 +111,49 @@ async function ensureDir(dir) {
   await fs.promises.mkdir(dir, { recursive: true });
 }
 
-async function captureScreens({ baseUrl, label, targets }) {
+/**
+ * Injects CSS selector labels into the page for screenshot annotation
+ * Uses a bookmarklet-style approach to overlay labels without breaking layout
+ */
+async function addSelectorLabels(page) {
+  await page.evaluate(() => {
+    document.querySelectorAll('*').forEach(el => {
+      // Skip if element is too small or is a label we already added
+      const rect = el.getBoundingClientRect();
+      if (rect.width < 20 || rect.height < 20 || el.dataset.selectorLabel) return;
+
+      // Build selector string
+      let label = el.tagName.toLowerCase();
+      if (el.id) label += `#${el.id}`;
+      if (el.className && typeof el.className === 'string') {
+        const classes = el.className.trim().split(/\s+/).filter(c => c);
+        if (classes.length > 0) {
+          label += `.${classes.join('.')}`;
+        }
+      }
+
+      // Create label overlay
+      const div = document.createElement('div');
+      div.textContent = label;
+      div.dataset.selectorLabel = 'true';
+      div.style.cssText = `
+        position: fixed;
+        left: ${rect.left}px;
+        top: ${rect.top}px;
+        background: rgba(0, 0, 0, 0.8);
+        color: #0f0;
+        font: 10px monospace;
+        padding: 2px 4px;
+        pointer-events: none;
+        z-index: 999999;
+        white-space: nowrap;
+      `;
+      document.body.appendChild(div);
+    });
+  });
+}
+
+async function captureScreens({ baseUrl, label, targets, annotate }) {
   const outputRoot = path.resolve(process.cwd(), 'visual_qa', 'screenshots', label);
   await ensureDir(outputRoot);
 
@@ -151,6 +198,11 @@ async function captureScreens({ baseUrl, label, targets }) {
           // Give layout a moment to settle after scrolling
           await page.waitForTimeout(500);
 
+          // Add selector labels if --annotate flag is set
+          if (annotate) {
+            await addSelectorLabels(page);
+          }
+
           await page.screenshot({
             path: filePath,
             fullPage: false,
@@ -190,6 +242,11 @@ async function captureScreens({ baseUrl, label, targets }) {
           await page.goto(fullUrl, { waitUntil: 'networkidle' });
           // Extra delay for full-page screenshots to ensure layout is settled
           await page.waitForTimeout(600);
+
+          // Add selector labels if --annotate flag is set
+          if (annotate) {
+            await addSelectorLabels(page);
+          }
 
           await page.screenshot({
             path: filePath,
