@@ -149,8 +149,6 @@ The user will review staged changes and commit manually with GPG signing.
 
 Simon Willison's `llm` tool is available for vision model analysis.
 
-**CSS selector labels:** Add `--annotate` flag to screenshots to overlay element selectors for vision model communication.
-
 **Attach images:**
 ```bash
 llm -m openrouter/qwen/qwen2.5-vl-32b-instruct \
@@ -173,6 +171,8 @@ llm -m openrouter/qwen/qwen2.5-vl-32b-instruct \
     -a image.png \
     "Score the image" --schema "score int: Score 0-10" --xl | jq .  # Extracts last fenced code block
 ```
+
+**Add CSS selector labels:** Adding the `--annotate` flag when capturing screenshots will overlay element selectors to help the vision model communicate with you about layout and styling.
 
 Other uses include asking focused questions for visual understanding:
 - "Is the nav bar obscuring any page content?"
