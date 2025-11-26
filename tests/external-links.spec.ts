@@ -127,11 +127,17 @@ test.describe('External Links Validation', () => {
   const siteUrl = 'https://christophercarrollsmith.com';
 
   // Domains that block automated requests but work fine for humans
+  // These commonly return 403/429 or timeout in CI environments
   const botBlockingDomains = [
     'linkedin.com',
     'twitter.com',
     'facebook.com',
     'jstor.org',
+    'substack.com',      // Returns 403 in CI
+    'instagram.com',     // Returns 429 (rate limit) in CI
+    'scholar.google.com', // Returns 403 in CI
+    'web.archive.org',   // Often times out in CI
+    'academia.edu',      // Often times out in CI
   ];
 
   // Increase timeout for external link validation (checking many URLs)
