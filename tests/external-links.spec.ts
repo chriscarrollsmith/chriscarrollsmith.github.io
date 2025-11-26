@@ -126,6 +126,17 @@ test.describe('External Links Validation', () => {
 
   const siteUrl = 'https://christophercarrollsmith.com';
 
+  // Domains that block automated requests but work fine for humans
+  const botBlockingDomains = [
+    'linkedin.com',
+    'twitter.com',
+    'facebook.com',
+    'jstor.org',
+  ];
+
+  // Increase timeout for external link validation (checking many URLs)
+  test.setTimeout(120000); // 2 minutes
+
   test.beforeAll(async () => {
     const isOnline = await hasInternetConnection();
     if (!isOnline) {
@@ -153,21 +164,45 @@ test.describe('External Links Validation', () => {
       }
     }
 
-    console.log(`\nFound ${uniqueUrls.size} unique external links to validate...`);
+    // Filter out bot-blocking domains
+    const urlsToCheck = Array.from(uniqueUrls.entries()).filter(([url]) => {
+      try {
+        const urlObj = new URL(url);
+        const hostname = urlObj.hostname.toLowerCase();
+        return !botBlockingDomains.some(domain => hostname.includes(domain));
+      } catch {
+        return true; // Include invalid URLs so they get caught as errors
+      }
+    });
 
-    // Check each unique external link
+    const skippedCount = uniqueUrls.size - urlsToCheck.length;
+    console.log(`\nFound ${uniqueUrls.size} unique external links (${urlsToCheck.length} to validate, ${skippedCount} skipped due to bot-blocking)...`);
+
+    // Check links in parallel with concurrency limit
+    const CONCURRENCY_LIMIT = 10;
     const failedLinks: Array<ExternalLink & { status: number; error?: string }> = [];
 
-    for (const [url, link] of uniqueUrls) {
-      console.log(`Checking: ${url}`);
-      const result = await checkUrlStatus(url);
+    // Process links in batches
+    for (let i = 0; i < urlsToCheck.length; i += CONCURRENCY_LIMIT) {
+      const batch = urlsToCheck.slice(i, i + CONCURRENCY_LIMIT);
 
-      if (!result.ok) {
-        failedLinks.push({
-          ...link,
-          status: result.status,
-          error: result.error,
-        });
+      const results = await Promise.all(
+        batch.map(async ([url, link]) => {
+          console.log(`Checking: ${url}`);
+          const result = await checkUrlStatus(url);
+          return { url, link, result };
+        })
+      );
+
+      // Collect failures from this batch
+      for (const { link, result } of results) {
+        if (!result.ok) {
+          failedLinks.push({
+            ...link,
+            status: result.status,
+            error: result.error,
+          });
+        }
       }
     }
 
@@ -183,7 +218,7 @@ test.describe('External Links Validation', () => {
           errorMessage += `\n   Error: ${link.error}`;
         }
       });
-      errorMessage += `\n\nTotal external links checked: ${uniqueUrls.size}`;
+      errorMessage += `\n\nTotal links: ${uniqueUrls.size} (${urlsToCheck.length} checked, ${skippedCount} skipped)`;
     }
 
     // Assert all links are accessible
