@@ -27,23 +27,32 @@
   margin-bottom: 0.75rem;
 }
 
+/* Badge style for Featured and Award Winner labels */
 .featured-label {
   position: absolute;
   top: -0.5rem;
   left: 1rem;
-  background-color: #0066cc;
-  color: #fff;
+  display: inline-block;
   padding: 0.25rem 0.75rem;
   border-radius: 4px;
   font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  /* Light mode: purple border, white bg with white outline, purple text */
+  background-color: #fff;
+  color: var(--color-button-bg, #4e567e);
+  border: 2px solid var(--color-button-bg, #4e567e);
+  box-shadow: 0 0 0 2px #fff;
 }
 
 @media (prefers-color-scheme: dark) {
   .featured-label {
-    background-color: #1d4ed8;
+    /* Dark mode: light purple text, dark background */
+    background-color: #1a1a1a;
+    color: var(--color-link, #a0a8e0);
+    border-color: var(--color-link, #a0a8e0);
+    box-shadow: 0 0 0 2px #1a1a1a;
   }
 }
 
@@ -82,6 +91,7 @@
   margin-top: 0.5rem;
 }
 
+.publication-award,
 .publication-citations {
   font-size: 1rem;
   color: var(--color-text-muted, #666);

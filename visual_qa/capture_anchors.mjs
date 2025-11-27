@@ -350,7 +350,16 @@ if (import.meta.url === `file://${process.argv[1]}`) {
         const candidateDir = path.resolve(process.cwd(), 'visual_qa', 'screenshots', options.label);
 
         if (fs.existsSync(baselineDir)) {
+          // Compare top-level screenshots (viewport/anchor-based)
           await compareDirectories(baselineDir, candidateDir);
+
+          // Compare fullpage screenshots if both directories exist
+          const baselineFullpage = path.join(baselineDir, 'fullpage');
+          const candidateFullpage = path.join(candidateDir, 'fullpage');
+          if (fs.existsSync(baselineFullpage) && fs.existsSync(candidateFullpage)) {
+            console.log('\n=== Full-page Screenshot Comparison ===');
+            await compareDirectories(baselineFullpage, candidateFullpage);
+          }
         } else {
           console.log('\nℹ️  No baseline directory found. Skipping comparison.');
           console.log('   Run with --label baseline first to create baseline screenshots.');

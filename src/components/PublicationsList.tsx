@@ -69,18 +69,27 @@ const PublicationsList: React.FC = () => {
         {formattedPublications.map((item, index) => {
           const { pub, formatted } = item;
           const isFeatured = pub.custom?.featured;
+          const hasAwards = pub.custom?.awards && pub.custom.awards.length > 0;
+          const hasMeta = isFeatured && (pub.custom?.citations || pub.URL || hasAwards);
+          // Award Winner badge replaces Featured badge; show Featured only if no awards
+          const badgeLabel = hasAwards ? 'Award Winner' : 'Featured';
           return (
             <div
               key={index}
               className={`publication-entry ${isFeatured ? 'publication-entry-card' : 'publication-entry-list'}`}
             >
-              {isFeatured && <span className="featured-label">Featured</span>}
+              {isFeatured && <span className="featured-label">{badgeLabel}</span>}
               <div
                 className="publication-formatted"
                 dangerouslySetInnerHTML={{ __html: formatted }}
               />
-              {isFeatured && (pub.custom?.citations || pub.URL) && (
+              {hasMeta && (
                 <div className="publication-meta">
+                  {hasAwards && pub.custom?.awards?.map((award, i) => (
+                    <span key={i} className="publication-award">
+                      {award.award} ({award.organization}, {award.year})
+                    </span>
+                  ))}
                   {pub.custom?.citations && (
                     <span className="publication-citations">
                       Citations: {pub.custom.citations}

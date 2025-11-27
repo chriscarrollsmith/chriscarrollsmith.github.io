@@ -39,11 +39,16 @@ export async function compareImages(baselinePath, candidatePath) {
   const baselineData = PNG.sync.read(fs.readFileSync(baselinePath));
   const candidateData = PNG.sync.read(fs.readFileSync(candidatePath));
 
-  // Verify dimensions match
+  // Check for dimension mismatch
   if (baselineData.width !== candidateData.width || baselineData.height !== candidateData.height) {
-    throw new Error(
-      `Image dimensions mismatch: baseline (${baselineData.width}x${baselineData.height}) vs candidate (${candidateData.width}x${candidateData.height})`
-    );
+    return {
+      diffPixels: -1,
+      totalPixels: -1,
+      percentDiff: -1,
+      dimensionMismatch: true,
+      baselineDimensions: `${baselineData.width}x${baselineData.height}`,
+      candidateDimensions: `${candidateData.width}x${candidateData.height}`,
+    };
   }
 
   const { width, height } = baselineData;
@@ -106,7 +111,10 @@ export async function compareDirectories(baselineDir, candidateDir) {
     try {
       const result = await compareImages(baselinePath, candidatePath);
 
-      if (result.diffPixels === 0) {
+      if (result.dimensionMismatch) {
+        console.log(`🔶 ${filename}: Dimensions changed (${result.baselineDimensions} → ${result.candidateDimensions})`);
+        results.push({ filename, status: 'different', ...result });
+      } else if (result.diffPixels === 0) {
         console.log(`✅ ${filename}: Identical`);
         results.push({ filename, status: 'identical', ...result });
       } else {
@@ -158,7 +166,10 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     try {
       const result = await compareImages(baseline, candidate);
 
-      if (result.diffPixels === 0) {
+      if (result.dimensionMismatch) {
+        console.log(`Images have different dimensions: ${result.baselineDimensions} → ${result.candidateDimensions}`);
+        process.exit(1);
+      } else if (result.diffPixels === 0) {
         console.log('Images are identical');
         process.exit(0);
       } else {

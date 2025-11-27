@@ -93,7 +93,15 @@
       "container-title": "The Claremont Graduate University",
       "URL": "https://www.proquest.com/openview/e7c9ce4cf7a4ffda39fbc7e7d6e70573/1?pq-origsite=gscholar&cbl=18750",
       "custom": {
-        "citations": "6"
+        "citations": "6",
+        "featured": true,
+        "awards": [
+          {
+            "year": 2017,
+            "award": "Best Dissertation",
+            "organization": "Mormon History Association"
+          }
+        ]
       }
     },
     {

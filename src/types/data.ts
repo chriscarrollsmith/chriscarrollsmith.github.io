@@ -93,6 +93,7 @@ export interface CSLCustom extends CustomKeyValuePairs {
   citations?: string;
   exclude?: boolean;
   featured?: boolean;
+  awards?: Award[];
 }
 
 // CSL Publication type using canonical types from the official CSL-JSON schema
