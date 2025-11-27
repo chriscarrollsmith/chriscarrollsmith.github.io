@@ -181,7 +181,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
       console.error(`Error: ${err.message}`);
       process.exit(1);
     }
-  } else if (args.length === 0 || args.includes('--help')) {
+  } else if (args.includes('--help')) {
     console.log('Usage:');
     console.log('  bun visual_qa/compare_images.mjs baseline.png candidate.png');
     console.log('  bun visual_qa/compare_images.mjs  (compares visual_qa/screenshots/{baseline,candidate})');
@@ -191,10 +191,23 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     const baselineDir = path.resolve(process.cwd(), 'visual_qa', 'screenshots', 'baseline');
     const candidateDir = path.resolve(process.cwd(), 'visual_qa', 'screenshots', 'candidate');
 
+    // Compare top-level section screenshots
     const results = await compareDirectories(baselineDir, candidateDir);
 
+    // Compare fullpage screenshots if they exist
+    const fullpageBaselineDir = path.join(baselineDir, 'fullpage');
+    const fullpageCandidateDir = path.join(candidateDir, 'fullpage');
+    let fullpageResults = [];
+
+    if (fs.existsSync(fullpageBaselineDir) || fs.existsSync(fullpageCandidateDir)) {
+      console.log('\n--- Full Page Screenshots ---');
+      fullpageResults = await compareDirectories(fullpageBaselineDir, fullpageCandidateDir);
+    }
+
+    const allResults = [...results, ...fullpageResults];
+
     // Exit with 1 if any differences found
-    const hasDifferences = results.some(r => r.status === 'different' || r.status === 'new');
+    const hasDifferences = allResults.some(r => r.status === 'different' || r.status === 'new');
     process.exit(hasDifferences ? 1 : 0);
   }
 }
