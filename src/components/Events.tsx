@@ -176,6 +176,12 @@ type EventRowProps = {
   event: DisplayEvent;
 };
 
+const formatLabel: Record<string, string> = {
+  'in-person': 'In-person',
+  'remote': 'Remote',
+  'hybrid': 'Hybrid',
+};
+
 const EventRow: React.FC<EventRowProps> = ({ event }) => {
   const badgeLabel = event.status === 'past' ? 'Past event' : event.status === 'today' ? 'Today' : 'Upcoming';
   const badgeClass = `events-badge events-badge--${event.status}`;
@@ -189,14 +195,46 @@ const EventRow: React.FC<EventRowProps> = ({ event }) => {
           <p className="events-item-date">{dateLabel}</p>
           <p className="events-item-time">{timeLabel}</p>
         </div>
-        <span className={badgeClass}>{badgeLabel}</span>
+        <div className="events-badges">
+          <span className={badgeClass}>{badgeLabel}</span>
+          {event.format && (
+            <span className={`events-badge events-badge--format events-badge--${event.format}`}>
+              {formatLabel[event.format]}
+            </span>
+          )}
+        </div>
       </div>
       <p className="events-item-title">{event.title}</p>
-      {event.url && (
+      {event.location && (
+        <p className="events-item-location">{event.location}</p>
+      )}
+      {(event.eventUrl || event.meetingUrl || event.videoUrl || event.slidesUrl || event.codeUrl) && (
         <div className="events-meta">
-          <a className="events-link" href={event.url} target="_blank" rel="noreferrer">
-            Event details
-          </a>
+          {event.eventUrl && (
+            <a className="events-link" href={event.eventUrl} target="_blank" rel="noreferrer">
+              Event details
+            </a>
+          )}
+          {event.meetingUrl && (
+            <a className="events-link" href={event.meetingUrl} target="_blank" rel="noreferrer">
+              Join meeting
+            </a>
+          )}
+          {event.videoUrl && (
+            <a className="events-link" href={event.videoUrl} target="_blank" rel="noreferrer">
+              Video
+            </a>
+          )}
+          {event.slidesUrl && (
+            <a className="events-link" href={event.slidesUrl} target="_blank" rel="noreferrer">
+              Slides
+            </a>
+          )}
+          {event.codeUrl && (
+            <a className="events-link" href={event.codeUrl} target="_blank" rel="noreferrer">
+              Code
+            </a>
+          )}
         </div>
       )}
     </li>

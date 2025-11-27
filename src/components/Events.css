@@ -105,8 +105,24 @@
     font-weight: 500;
 }
 
+.events-item-location {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    margin: 0.25rem 0 0;
+}
+
+.events-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+}
+
 .events-meta {
     margin-top: 0.25rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
 }
 
 .events-link {
@@ -143,6 +159,28 @@
     background-color: transparent;
     color: var(--color-text-muted);
     border-color: var(--color-border);
+}
+
+.events-badge--format {
+    font-size: 0.7rem;
+}
+
+.events-badge--in-person {
+    background-color: rgba(34, 139, 34, 0.1);
+    color: #228b22;
+    border-color: #228b22;
+}
+
+.events-badge--remote {
+    background-color: rgba(70, 130, 180, 0.1);
+    color: #4682b4;
+    border-color: #4682b4;
+}
+
+.events-badge--hybrid {
+    background-color: rgba(148, 103, 189, 0.1);
+    color: #9467bd;
+    border-color: #9467bd;
 }
 
 .events-controls {

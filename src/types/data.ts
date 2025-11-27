@@ -58,11 +58,19 @@ export interface HeroImage {
   alt: string;
 }
 
+export type EventFormat = 'in-person' | 'remote' | 'hybrid';
+
 export interface EventItem {
   title: string;
   start: string;
   end?: string;
-  url?: string;
+  format?: EventFormat;
+  location?: string;
+  meetingUrl?: string;
+  eventUrl?: string;
+  videoUrl?: string;
+  slidesUrl?: string;
+  codeUrl?: string;
 }
 
 export interface Education {
@@ -94,6 +102,9 @@ export interface CSLCustom extends CustomKeyValuePairs {
   exclude?: boolean;
   featured?: boolean;
   awards?: Award[];
+  videoUrl?: string;
+  slidesUrl?: string;
+  codeUrl?: string;
 }
 
 // CSL Publication type using canonical types from the official CSL-JSON schema
@@ -112,6 +123,7 @@ export interface CSLPresentationCustom extends CustomKeyValuePairs {
   featured?: boolean;
   videoUrl?: string;
   slidesUrl?: string;
+  codeUrl?: string;
 }
 
 // CSL Presentation type using canonical types from the official CSL-JSON schema
