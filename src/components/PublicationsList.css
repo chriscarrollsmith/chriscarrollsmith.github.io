@@ -10,6 +10,17 @@
   text-align: left;
 }
 
+.publication-section {
+  margin-bottom: 2rem;
+}
+
+.publication-section h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--color-heading, #333);
+  text-align: left;
+}
+
 .publications-entries {
   display: flex;
   flex-direction: column;

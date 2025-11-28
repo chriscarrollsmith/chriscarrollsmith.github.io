@@ -5,6 +5,11 @@ import type { Education } from '../types/data';
 const typedEducationData = educationData as Education[];
 
 const EducationList: React.FC = () => {
+  // Don't render the section if there is no education data
+  if (typedEducationData.length === 0) {
+    return null;
+  }
+
   return (
     <div className="education-list">
       <h2>Education</h2>

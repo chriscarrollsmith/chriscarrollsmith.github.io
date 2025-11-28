@@ -1,6 +1,44 @@
 {
   "items": [
     {
+      "type": "article-magazine",
+      "title": "Icarus",
+      "author": [
+        {
+          "family": "Smith",
+          "given": "Christopher Carroll"
+        }
+      ],
+      "issued": {
+        "date-parts": [
+          [
+            2011
+          ]
+        ]
+      },
+      "container-title": "Bewildering Stories",
+      "issue": "443",
+      "URL": "https://www.bewilderingstories.com/issue443/smith_welcome.html",
+      "custom": {
+        "section": "Fiction",
+        "featured": true,
+        "awards": [
+          {
+            "year": 2011,
+            "award": "Mariner Award",
+            "organization": "Bewildering Stories",
+            "url": "https://www.bewilderingstories.com/anthologies/AR11.html"
+          },
+          {
+            "year": 2011,
+            "award": "Editor's Choice",
+            "organization": "Bewildering Stories",
+            "url": "https://www.bewilderingstories.com/anthologies/436-447/436-447_antho3.html#short_stories"
+          }
+        ]
+      }
+    },
+    {
       "type": "article-journal",
       "title": "Anti-Islamic Sentiment and Media Framing during the 9/11 Decade",
       "author": [

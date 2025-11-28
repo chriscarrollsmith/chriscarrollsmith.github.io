@@ -90,6 +90,12 @@ const PresentationsList: React.FC = () => {
     });
   });
 
+  // Don't render the section if there are no presentations
+  const sections = Object.keys(groupedPresentations);
+  if (sections.length === 0) {
+    return null;
+  }
+
   return (
     <div className="presentations-list">
       <h2>Presentations</h2>

@@ -8,6 +8,11 @@ const AwardsList: React.FC = () => {
   // Sort awards by year (descending)
   const sortedAwards = [...typedAwardsData].sort((a, b) => b.year - a.year);
 
+  // Don't render the section if there are no awards
+  if (sortedAwards.length === 0) {
+    return null;
+  }
+
   return (
     <div className="awards-list">
       <h2>Awards & Fellowships</h2>

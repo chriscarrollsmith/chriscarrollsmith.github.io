@@ -10,7 +10,10 @@
       "Bash(npx playwright install chromium)",
       "Bash(bun visual_qa/capture_anchors.mjs:*)",
       "Bash(node visual_qa/capture_anchors.mjs:*)",
-      "Bash(timeout 90 bun:*)"
+      "Bash(timeout 90 bun:*)",
+      "Bash(git checkout:*)",
+      "Bash(git add:*)",
+      "Bash(git rebase:*)"
     ],
     "deny": [],
     "ask": []

@@ -102,6 +102,7 @@ export interface CSLCustom extends CustomKeyValuePairs {
   exclude?: boolean;
   featured?: boolean;
   awards?: Award[];
+  section?: string; // "Academic Publications", "Fiction", etc.
   videoUrl?: string;
   slidesUrl?: string;
   codeUrl?: string;
