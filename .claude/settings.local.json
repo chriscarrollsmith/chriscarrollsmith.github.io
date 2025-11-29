@@ -20,7 +20,9 @@
       "Bash(convert:*)",
       "Bash(llm:*)",
       "Bash(\"I updated the projects section of a portfolio website. The first image is the baseline (before) and the second is the candidate (after). The changes include:\n- Replacing 6 projects with 7 new ones\n- Changing from 2 category sections to a single flat grid\n- Different project content and descriptions\n\nCompare the two screenshots and evaluate whether the candidate is an improvement or regression. Look for:\n1. Layout quality\n2. Readability\n3. Visual balance\n4. Any obvious issues\n\nGive your verdict: IMPROVEMENT, REGRESSION, or EQUIVALENT.\")",
-      "Bash(git restore:*)"
+      "Bash(git restore:*)",
+      "Bash(pkill:*)",
+      "Bash(bunx playwright test:*)"
     ],
     "deny": [],
     "ask": []

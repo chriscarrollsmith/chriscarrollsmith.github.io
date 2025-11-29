@@ -184,9 +184,44 @@ test.describe('Navigation Links', () => {
       // Verify content
       await navItem.verifyContent(page);
 
-      // Verify element is in viewport - scroll to it first if needed
+      // Verify element is in viewport (browser should have scrolled to it)
+      // NOTE: We do NOT call scrollIntoViewIfNeeded() here - that would mask
+      // the bug where hash navigation doesn't actually scroll the element
       const targetElement = page.locator(navItem.targetHash);
-      await targetElement.scrollIntoViewIfNeeded();
+      await expect(targetElement).toBeInViewport();
+    }
+  });
+
+  test('should navigate to sections from CV page', async ({ page }) => {
+    // Test navigation from the CV page back to home sections
+    const hashNavItems = expectedNavItems.filter(
+      (item): item is NavItem & { targetHash: string } => item.targetHash !== null
+    );
+
+    for (const navItem of hashNavItems) {
+      // Start from CV page
+      await page.goto('/cv');
+
+      // Click the nav link
+      const link = page.locator('#header').locator(`a:has-text("${navItem.text}")`);
+      await expect(link).toBeVisible();
+      await link.click();
+
+      // Wait for navigation
+      await page.waitForLoadState('networkidle');
+
+      // Verify we're on the home page with correct hash
+      const currentUrl = new URL(page.url());
+      expect(currentUrl.pathname).toBe('/');
+      expect(currentUrl.hash).toBe(navItem.targetHash);
+
+      // Verify content
+      await navItem.verifyContent(page);
+
+      // Verify element is in viewport (browser should have scrolled to it)
+      // NOTE: We do NOT call scrollIntoViewIfNeeded() here - that would mask
+      // the bug where hash navigation doesn't actually scroll the element
+      const targetElement = page.locator(navItem.targetHash);
       await expect(targetElement).toBeInViewport();
     }
   });
