@@ -1,0 +1,40 @@
+[
+  {
+    "title": "imfp / imfapi",
+    "url": "https://github.com/Promptly-Technologies-LLC/imfp",
+    "description": "Python and R SDKs for the IMF Data API, part of the R Consortium-funded econdataverse project"
+  },
+  {
+    "title": "etielle",
+    "url": "https://github.com/Promptly-Technologies-LLC/etielle",
+    "description": "Map nested JSON to relational database tables with a declarative, type-safe Python framework"
+  },
+  {
+    "title": "Promptly Technologies",
+    "url": "https://promptlytechnologies.com",
+    "description": "Eye-catching comic book-style React website showcasing my consulting business",
+    "img": "promptly-desktop-q95.webp"
+  },
+  {
+    "title": "pyzotero-cli",
+    "url": "https://github.com/chriscarrollsmith/pyzotero-cli",
+    "description": "Command-line interface for Zotero reference management, enabling AI-assisted academic citation workflows"
+  },
+  {
+    "title": "openai-responses-python-quickstart",
+    "url": "https://github.com/Promptly-Technologies-LLC/openai-responses-python-quickstart",
+    "description": "Build a tool-calling AI chatbot in minutes with this Python + FastAPI + HTMX starter template",
+    "img": "openai-quickstart.webp"
+  },
+  {
+    "title": "taskqueue-mcp",
+    "url": "https://github.com/chriscarrollsmith/taskqueue-mcp",
+    "description": "MCP tool for exposing a structured task queue to guide AI agent workflows. Great for taming an over-enthusiastic Claude."
+  },
+  {
+    "title": "fastapi-jinja2-postgres-webapp",
+    "url": "https://github.com/Promptly-Technologies-LLC/fastapi-jinja2-postgres-webapp",
+    "description": "Production-ready FastAPI + Jinja2 + Postgres template with user authentication built in",
+    "img": "fastapi-webapp.webp"
+  }
+]
