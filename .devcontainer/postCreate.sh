@@ -2,7 +2,7 @@
 set -e
 
 echo "==> Installing Git LFS..."
-apt-get update && apt-get install -y git-lfs
+sudo apt-get update && sudo apt-get install -y git-lfs
 
 echo "==> Installing project dependencies with Bun..."
 bun install
