@@ -20,13 +20,15 @@ const Writing: React.FC = () => {
       title: "Modeling Markets",
       description: "A Substack newsletter on economic modeling and quantitative finance",
       buttonText: "Substack",
-      url: "https://modelingmarkets.substack.com/"
+      url: "https://modelingmarkets.substack.com/",
+      img: "wspzoo-thumbnail.webp"
     },
     {
       title: "Dreams from My Brain",
       description: "An experimental podcast narrating actual dreams from my actual brain",
       buttonText: "Podbean",
-      url: "https://dreamsfrommybrain.podbean.com/"
+      url: "https://dreamsfrommybrain.podbean.com/",
+      img: "dfmb-thumbnail.webp"
     },
     {
       title: "Academic CV",
