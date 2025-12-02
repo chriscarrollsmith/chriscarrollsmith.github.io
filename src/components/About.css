@@ -1,39 +1,89 @@
 .about-section {
+    box-sizing: border-box;
     background-color: white;
-    width: 75%;
+    width: 90%;
+    max-width: 700px;
     padding: 2rem;
     margin: 2rem auto;
     text-align: center;
 }
 
-@media screen and (min-width: 1280px) {
-    .about-section {
-        width: 50%;
-    }
+.bio {
+    text-align: center;
+    font-size: 1.125rem;
+    line-height: 1.7;
 }
 
-.skills-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: 0;
-    padding: 0;
-    list-style: inside;
-}
-
-.skills-list li {
-    box-sizing: border-box;
-    width: auto;
-    margin: 0 2rem;
-}
-
-li {
-    line-height: 2;
+.bio-animated {
     position: relative;
+    min-height: 5rem;
 }
-  
-li::marker {
-color: #242d57;
+
+.bio-sentence {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* 32s cycle: 9s + 5s + 9s + 9s based on ~3 words/second */
+.bio-sentence:nth-child(1) { animation: sentence-fade-1 32s infinite; }
+.bio-sentence:nth-child(2) { animation: sentence-fade-2 32s infinite; }
+.bio-sentence:nth-child(3) { animation: sentence-fade-3 32s infinite; }
+.bio-sentence:nth-child(4) { animation: sentence-fade-4 32s infinite; }
+
+/* Sentence 1: 0-28.125% (9s) */
+@keyframes sentence-fade-1 {
+    0% { opacity: 0; visibility: hidden; }
+    3% { opacity: 1; visibility: visible; }
+    25% { opacity: 1; visibility: visible; }
+    28.125% { opacity: 0; visibility: hidden; }
+    100% { opacity: 0; visibility: hidden; }
+}
+
+/* Sentence 2: 28.125-43.75% (5s) - crossfades with sentence 1 */
+@keyframes sentence-fade-2 {
+    0%, 26% { opacity: 0; visibility: hidden; }
+    30% { opacity: 1; visibility: visible; }
+    40% { opacity: 1; visibility: visible; }
+    43.75% { opacity: 0; visibility: hidden; }
+    100% { opacity: 0; visibility: hidden; }
+}
+
+/* Sentence 3: 43.75-71.875% (9s) - crossfades with sentence 2 */
+@keyframes sentence-fade-3 {
+    0%, 41% { opacity: 0; visibility: hidden; }
+    45% { opacity: 1; visibility: visible; }
+    68% { opacity: 1; visibility: visible; }
+    71.875% { opacity: 0; visibility: hidden; }
+    100% { opacity: 0; visibility: hidden; }
+}
+
+/* Sentence 4: 71.875-100% (9s) - crossfades with sentence 3 and wraps to 1 */
+@keyframes sentence-fade-4 {
+    0%, 70% { opacity: 0; visibility: hidden; }
+    74% { opacity: 1; visibility: visible; }
+    96% { opacity: 1; visibility: visible; }
+    100% { opacity: 0; visibility: hidden; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .bio-animated {
+        min-height: auto;
+    }
+    .bio-sentence {
+        position: static;
+        display: block;
+        opacity: 1;
+        visibility: visible;
+        animation: none;
+        margin-bottom: 1rem;
+    }
+    .bio-sentence:last-child {
+        margin-bottom: 0;
+    }
 }
 
 .skills-icon {
