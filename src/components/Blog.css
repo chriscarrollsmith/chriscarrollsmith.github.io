@@ -46,20 +46,19 @@
 .blog-post-content {
   display: flex;
   gap: 1.5rem;
-  align-items: flex-end;
+  align-items: center;
 }
 
 .blog-thumbnail-link {
   flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  align-self: stretch;
+  display: block;
 }
 
 .blog-thumbnail {
   max-width: 200px;
+  max-height: 150px;
   width: auto;
-  height: 100%;
+  height: auto;
   object-fit: contain;
   border-radius: 8px;
   transition: transform 0.2s ease;

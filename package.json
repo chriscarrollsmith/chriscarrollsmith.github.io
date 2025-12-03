@@ -8,7 +8,8 @@
   "scripts": {
     "dev": "astro dev",
     "generate:pdf": "bun scripts/generate-cv-pdf.ts",
-    "build": "bun run generate:pdf && astro check && astro build",
+    "sync:substack": "bun scripts/sync-substack.ts",
+    "build": "bun run sync:substack && bun run generate:pdf && astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx,.astro",

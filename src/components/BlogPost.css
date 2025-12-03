@@ -50,6 +50,36 @@
   font-weight: 400;
 }
 
+/* Constrain and center all images within blog post content */
+.blog-post img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Center and style Substack image containers */
+.blog-post .captioned-image-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1.5rem 0;
+}
+
+.blog-post .captioned-image-container figure {
+  margin: 0;
+  max-width: 100%;
+}
+
+.blog-post .captioned-image-container .image-caption {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  text-align: center;
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
 .blog-post pre {
   display: inline-block;
   width: 100%;

@@ -76,6 +76,11 @@ const structuredData = {
         <div class="post-meta">
           <time datetime={post.date}>{new Date(post.date).toLocaleDateString()}</time>
           <span class="author-byline">By Christopher Carroll Smith</span>
+          {post.sourceUrl && (
+            <span class="source-attribution">
+              · Originally published on <a href={post.sourceUrl}>Substack</a>
+            </span>
+          )}
         </div>
         <p class="post-abstract">{post.excerpt}</p>
         <div set:html={post.content} />

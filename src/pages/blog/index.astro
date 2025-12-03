@@ -18,7 +18,15 @@ const sortedBlogData = [...typedBlogData].sort((a, b) => {
 
 // Calculate aspect ratios and dimensions for images
 const postsWithAspectRatio = sortedBlogData.map(post => {
-  if (!post.image) return { ...post, aspectRatio: null, width: undefined, height: undefined };
+  if (!post.image) return { ...post, aspectRatio: null, width: undefined, height: undefined, isExternalImage: false };
+
+  // Check if image is external URL (e.g., Substack CDN)
+  const isExternalImage = post.image.startsWith('http://') || post.image.startsWith('https://');
+
+  if (isExternalImage) {
+    // External images: can't calculate dimensions at build time, use default thumbnail behavior
+    return { ...post, aspectRatio: 1, width: undefined, height: undefined, isExternalImage: true };
+  }
 
   try {
     // Use process.cwd() to get project root, works correctly during build
@@ -29,10 +37,10 @@ const postsWithAspectRatio = sortedBlogData.map(post => {
     const height = dimensions.height ?? undefined;
     const aspectRatio = width && height ? width / height : null;
 
-    return { ...post, aspectRatio, width, height };
+    return { ...post, aspectRatio, width, height, isExternalImage: false };
   } catch (error) {
     console.error(`Failed to read image dimensions for ${post.image}:`, error);
-    return { ...post, aspectRatio: null, width: undefined, height: undefined };
+    return { ...post, aspectRatio: null, width: undefined, height: undefined, isExternalImage: false };
   }
 });
 ---
@@ -60,7 +68,7 @@ const postsWithAspectRatio = sortedBlogData.map(post => {
             {hasImage && isWideBanner && (
               <a href={`/blog/${post.id}`} class="blog-banner-link">
                 <img
-                  src={`/${post.image}`}
+                  src={post.isExternalImage ? post.image : `/${post.image}`}
                   alt={post.title}
                   class="blog-banner"
                   width={post.width}
@@ -74,7 +82,7 @@ const postsWithAspectRatio = sortedBlogData.map(post => {
               {hasThumbnail && thumbnailPosition === 'left' && (
                 <a href={`/blog/${post.id}`} class="blog-thumbnail-link">
                   <img
-                    src={`/${post.image}`}
+                    src={post.isExternalImage ? post.image : `/${post.image}`}
                     alt={post.title}
                     class="blog-thumbnail"
                     width={post.width}
@@ -97,7 +105,7 @@ const postsWithAspectRatio = sortedBlogData.map(post => {
               {hasThumbnail && thumbnailPosition === 'right' && (
                 <a href={`/blog/${post.id}`} class="blog-thumbnail-link">
                   <img
-                    src={`/${post.image}`}
+                    src={post.isExternalImage ? post.image : `/${post.image}`}
                     alt={post.title}
                     class="blog-thumbnail"
                     width={post.width}
