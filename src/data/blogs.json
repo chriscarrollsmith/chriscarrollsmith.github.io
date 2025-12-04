@@ -18,6 +18,36 @@
     "sourceId": "https://modelingmarkets.substack.com/p/announcing-imfapi-user-friendly-access"
   },
   {
+    "id": "youtube-lQnBPqIpc2A",
+    "title": "Chat with the budget bill in five CLI commands with `llm` — mini-hackathon recap, part 2",
+    "date": "2025-07-09",
+    "content": "<div class=\"video-container\" style=\"position:relative;padding-bottom:56.25%;height:0;overflow:hidden;max-width:100%;margin:1.5rem 0;\"><iframe style=\"position:absolute;top:0;left:0;width:100%;height:100%;\" src=\"https://www.youtube.com/embed/lQnBPqIpc2A\" title=\"Chat with the budget bill in five CLI commands with `llm` — mini-hackathon recap, part 2\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe></div>\n<p>At the July 5, 2025 Coders' Colaboratory mini-hackathon in Latham, NY. Developers had just one hour to find a cool use case for the `llm` command-line tool, created by Simon Willison. This video reviews the submissions. The winning project embedded the &quot;Big Beautiful Bill&quot; for RAG (Retrieval-Augmented Generation) with semantic search.</p>\n<p>`llm` website: <a href=\"https://llm.datasette.io/en/stable/\" target=\"_blank\" rel=\"noopener\">https://llm.datasette.io/en/stable/</a></p>\n<p>Writeup on the submissions: <a href=\"https://gist.github.com/chriscarrollsmith/87a41eb91fac52b7c57a51ec277bc2d5\" target=\"_blank\" rel=\"noopener\">https://gist.github.com/chriscarrollsmith/87a41eb91fac52b7c57a51ec277bc2d5</a></p>",
+    "excerpt": "At the July 5, 2025 Coders' Colaboratory mini-hackathon in Latham, NY. Developers had just one hour to find a cool use case for the `llm` command-line tool, created by Simon Willison.",
+    "image": "https://i1.ytimg.com/vi/lQnBPqIpc2A/hqdefault.jpg",
+    "sourceUrl": "https://www.youtube.com/watch?v=lQnBPqIpc2A",
+    "sourceId": "youtube:lQnBPqIpc2A"
+  },
+  {
+    "id": "youtube-UZ-9U1W0e4o",
+    "title": "Become a command-line superhero with Simon Willison's `llm` tool — mini-hackathon recap, part 1",
+    "date": "2025-07-06",
+    "content": "<div class=\"video-container\" style=\"position:relative;padding-bottom:56.25%;height:0;overflow:hidden;max-width:100%;margin:1.5rem 0;\"><iframe style=\"position:absolute;top:0;left:0;width:100%;height:100%;\" src=\"https://www.youtube.com/embed/UZ-9U1W0e4o\" title=\"Become a command-line superhero with Simon Willison's `llm` tool — mini-hackathon recap, part 1\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe></div>\n<p>A demo presentation I gave on Simon Willison's  incredible `llm` command-line tool at the Coders' Colaboratory mini-hackathon in Latham, NY on July 5, 2025.</p>\n<p>Demo notebook from the video: <a href=\"https://gist.github.com/chriscarrollsmith/4670b8466e19e77723327cb555f638e6\" target=\"_blank\" rel=\"noopener\">https://gist.github.com/chriscarrollsmith/4670b8466e19e77723327cb555f638e6</a></p>\n<p>LLM website: <a href=\"https://llm.datasette.io/\" target=\"_blank\" rel=\"noopener\">https://llm.datasette.io/</a></p>",
+    "excerpt": "A demo presentation I gave on Simon Willison's  incredible `llm` command-line tool at the Coders' Colaboratory mini-hackathon in Latham, NY on July 5, 2025.",
+    "image": "https://i2.ytimg.com/vi/UZ-9U1W0e4o/hqdefault.jpg",
+    "sourceUrl": "https://www.youtube.com/watch?v=UZ-9U1W0e4o",
+    "sourceId": "youtube:UZ-9U1W0e4o"
+  },
+  {
+    "id": "youtube-RBTl94xeKqg",
+    "title": "Use Claude Code in RStudio to ship R code like some kind of 10x tidyverse developer",
+    "date": "2025-03-07",
+    "content": "<div class=\"video-container\" style=\"position:relative;padding-bottom:56.25%;height:0;overflow:hidden;max-width:100%;margin:1.5rem 0;\"><iframe style=\"position:absolute;top:0;left:0;width:100%;height:100%;\" src=\"https://www.youtube.com/embed/RBTl94xeKqg\" title=\"Use Claude Code in RStudio to ship R code like some kind of 10x tidyverse developer\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe></div>\n<p>All the kids are talking about Claude Code. Maybe you've heard of it. But did you know you can use it to write R code right inside of RStudio? No more messing with Cursor to try to get it to play nice with your R dependencies; just you and Claude in the comfortable editor you know and love: <a href=\"https://posit.co/download/rstudio-desktop/.\" target=\"_blank\" rel=\"noopener\">https://posit.co/download/rstudio-desktop/.</a></p>\n<p>Here is the `CLAUDE.md` file we create during the video: <a href=\"https://github.com/Teal-Insights/r-wbids/blob/73-add-documentation-for-contributors/CLAUDE.md\" target=\"_blank\" rel=\"noopener\">https://github.com/Teal-Insights/r-wbids/blob/73-add-documentation-for-contributors/CLAUDE.md</a></p>",
+    "excerpt": "All the kids are talking about Claude Code. Maybe you've heard of it. But did you know you can use it to write R code right inside of RStudio? No more messing with Cursor to try to get it to play n...",
+    "image": "https://i3.ytimg.com/vi/RBTl94xeKqg/hqdefault.jpg",
+    "sourceUrl": "https://www.youtube.com/watch?v=RBTl94xeKqg",
+    "sourceId": "youtube:RBTl94xeKqg"
+  },
+  {
     "id": "comprehensively-documenting-how-to",
     "title": "Comprehensively documenting how to work with IMF data in Python",
     "date": "2025-01-28",
