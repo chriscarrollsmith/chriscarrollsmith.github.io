@@ -82,6 +82,7 @@ export interface Education {
   notes: string;
   degreeName: string;
   verificationUrl: string | null;
+  exclude?: boolean;
 }
 
 // Import canonical CSL-JSON types from the official schema
