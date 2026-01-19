@@ -11,6 +11,9 @@ import { join } from 'path';
 
 const typedBlogData = blogData as BlogPost[];
 
+// Normalize image path to always have a single leading slash
+const normalizeImagePath = (path: string) => `/${path.replace(/^\/+/, '')}`;
+
 // Sort posts by date, most recent first
 const sortedBlogData = [...typedBlogData].sort((a, b) => {
   return new Date(b.date).getTime() - new Date(a.date).getTime();
@@ -30,7 +33,7 @@ const postsWithAspectRatio = sortedBlogData.map(post => {
 
   try {
     // Use process.cwd() to get project root, works correctly during build
-    const imagePath = join(process.cwd(), 'public', post.image);
+    const imagePath = join(process.cwd(), 'public', post.image.replace(/^\/+/, ''));
     const buffer = readFileSync(imagePath);
     const dimensions = sizeOf(buffer);
     const width = dimensions.width ?? undefined;
@@ -68,7 +71,7 @@ const postsWithAspectRatio = sortedBlogData.map(post => {
             {hasImage && isWideBanner && (
               <a href={`/blog/${post.id}`} class="blog-banner-link">
                 <img
-                  src={post.isExternalImage ? post.image : `/${post.image}`}
+                  src={post.isExternalImage ? post.image : normalizeImagePath(post.image!)}
                   alt={post.title}
                   class="blog-banner"
                   width={post.width}
@@ -82,7 +85,7 @@ const postsWithAspectRatio = sortedBlogData.map(post => {
               {hasThumbnail && thumbnailPosition === 'left' && (
                 <a href={`/blog/${post.id}`} class="blog-thumbnail-link">
                   <img
-                    src={post.isExternalImage ? post.image : `/${post.image}`}
+                    src={post.isExternalImage ? post.image : normalizeImagePath(post.image!)}
                     alt={post.title}
                     class="blog-thumbnail"
                     width={post.width}
@@ -105,7 +108,7 @@ const postsWithAspectRatio = sortedBlogData.map(post => {
               {hasThumbnail && thumbnailPosition === 'right' && (
                 <a href={`/blog/${post.id}`} class="blog-thumbnail-link">
                   <img
-                    src={post.isExternalImage ? post.image : `/${post.image}`}
+                    src={post.isExternalImage ? post.image : normalizeImagePath(post.image!)}
                     alt={post.title}
                     class="blog-thumbnail"
                     width={post.width}

@@ -23,7 +23,8 @@ const pageDescription = post.excerpt.slice(0, 155) + '...';
 const pageImage = post.image || '/images/Chris_landscape.jpg';
 const siteURL = 'https://christophercarrollsmith.com';
 const postURL = `${siteURL}/blog/${post.id}`;
-const absoluteImage = pageImage.startsWith('http') ? pageImage : `${siteURL}/${pageImage}`;
+// Normalize path to avoid double slashes (handles both "/images/..." and "images/...")
+const absoluteImage = pageImage.startsWith('http') ? pageImage : `${siteURL}/${pageImage.replace(/^\/+/, '')}`;
 
 // Schema.org structured data for the article
 const structuredData = {
