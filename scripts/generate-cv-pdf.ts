@@ -6,8 +6,9 @@
 
 import PdfPrinter from 'pdfmake';
 import type { TDocumentDefinitions, Content } from 'pdfmake/interfaces';
-import { writeFileSync } from 'fs';
+import { existsSync, readFileSync, writeFileSync } from 'fs';
 import { join } from 'path';
+import { createHash } from 'crypto';
 
 // Import data files
 import educationData from '../src/data/education.json';
@@ -40,6 +41,26 @@ const fonts = {
 };
 
 const printer = new PdfPrinter(fonts);
+
+function stablePdfTrailerIdHex32(docDefinition: TDocumentDefinitions): string {
+  const json = JSON.stringify(docDefinition);
+  // PDF trailer IDs are typically 16 bytes (32 hex chars). We derive a stable 16-byte ID
+  // from the document definition so identical inputs yield identical PDF bytes.
+  return createHash('sha256').update(json).digest('hex').slice(0, 32);
+}
+
+function normalizePdfMetadata(pdfBuffer: Buffer, creationDateYYYYMMDDHHmmSS: string, idHex32: string): Buffer {
+  const input = pdfBuffer.toString('latin1');
+
+  // Keep replacements the same length to avoid invalidating xref byte offsets.
+  let output = input.replace(/\(D:\d{14}Z\)/g, `(D:${creationDateYYYYMMDDHHmmSS}Z)`);
+  output = output.replace(
+    /(\/ID\s*\[\s*<)([0-9a-fA-F]{32})(>\s*<)([0-9a-fA-F]{32})(>\s*\])/g,
+    `$1${idHex32}$3${idHex32}$5`,
+  );
+
+  return output === input ? pdfBuffer : Buffer.from(output, 'latin1');
+}
 
 /**
  * Extract year from CSL date object
@@ -317,8 +338,19 @@ async function main() {
   const chunks: Buffer[] = [];
   pdfDoc.on('data', (chunk: Buffer) => chunks.push(chunk));
   pdfDoc.on('end', () => {
-    const pdfBuffer = Buffer.concat(chunks);
-    writeFileSync(outputPath, pdfBuffer);
+    const rawPdfBuffer = Buffer.concat(chunks);
+    const stableIdHex32 = stablePdfTrailerIdHex32(docDefinition);
+    const normalizedPdfBuffer = normalizePdfMetadata(rawPdfBuffer, '19700101000000', stableIdHex32);
+
+    if (existsSync(outputPath)) {
+      const existing = readFileSync(outputPath);
+      if (existing.equals(normalizedPdfBuffer)) {
+        console.log(`CV PDF unchanged: ${outputPath}`);
+        return;
+      }
+    }
+
+    writeFileSync(outputPath, normalizedPdfBuffer);
     console.log(`CV PDF generated: ${outputPath}`);
   });
 
