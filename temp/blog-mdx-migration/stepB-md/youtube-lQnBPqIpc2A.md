@@ -1,0 +1,29 @@
+<div class="video-container" style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;max-width:100%;margin:1.5rem 0;">
+
+<div class="iframe">
+
+<div id="player">
+
+</div>
+
+<div class="player-unavailable">
+
+# An error occurred.
+
+<div class="submessage">
+
+Unable to execute JavaScript.
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+At the July 5, 2025 Coders' Colaboratory mini-hackathon in Latham, NY. Developers had just one hour to find a cool use case for the \`llm\` command-line tool, created by Simon Willison. This video reviews the submissions. The winning project embedded the "Big Beautiful Bill" for RAG (Retrieval-Augmented Generation) with semantic search.
+
+\`llm\` website: <a href="https://llm.datasette.io/en/stable/" target="_blank" rel="noopener">https://llm.datasette.io/en/stable/</a>
+
+Writeup on the submissions: <a href="https://gist.github.com/chriscarrollsmith/87a41eb91fac52b7c57a51ec277bc2d5" target="_blank" rel="noopener">https://gist.github.com/chriscarrollsmith/87a41eb91fac52b7c57a51ec277bc2d5</a>

@@ -2,48 +2,48 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import HeaderAstro from '../../components/HeaderAstro.astro';
 import Footer from '../../components/Footer.tsx';
-import blogData from '../../data/blogs.json';
-import type { BlogPost } from '../../types/data';
+import { getCollection } from 'astro:content';
 import '../../components/Blog.css';
 import sizeOf from 'image-size';
 import { readFileSync } from 'fs';
 import { join } from 'path';
 
-const typedBlogData = blogData as BlogPost[];
-
 // Normalize image path to always have a single leading slash
 const normalizeImagePath = (path: string) => `/${path.replace(/^\/+/, '')}`;
 
+const blogPosts = await getCollection('blog');
+
 // Sort posts by date, most recent first
-const sortedBlogData = [...typedBlogData].sort((a, b) => {
-  return new Date(b.date).getTime() - new Date(a.date).getTime();
+const sortedBlogData = [...blogPosts].sort((a, b) => {
+  return new Date(b.data.date).getTime() - new Date(a.data.date).getTime();
 });
 
 // Calculate aspect ratios and dimensions for images
 const postsWithAspectRatio = sortedBlogData.map(post => {
-  if (!post.image) return { ...post, aspectRatio: null, width: undefined, height: undefined, isExternalImage: false };
+  const image = post.data.image;
+  if (!image) return { post, aspectRatio: null, width: undefined, height: undefined, isExternalImage: false, image: undefined };
 
   // Check if image is external URL (e.g., Substack CDN)
-  const isExternalImage = post.image.startsWith('http://') || post.image.startsWith('https://');
+  const isExternalImage = image.startsWith('http://') || image.startsWith('https://');
 
   if (isExternalImage) {
     // External images: can't calculate dimensions at build time, use default thumbnail behavior
-    return { ...post, aspectRatio: 1, width: undefined, height: undefined, isExternalImage: true };
+    return { post, aspectRatio: 1, width: undefined, height: undefined, isExternalImage: true, image };
   }
 
   try {
     // Use process.cwd() to get project root, works correctly during build
-    const imagePath = join(process.cwd(), 'public', post.image.replace(/^\/+/, ''));
+    const imagePath = join(process.cwd(), 'public', image.replace(/^\/+/, ''));
     const buffer = readFileSync(imagePath);
     const dimensions = sizeOf(buffer);
     const width = dimensions.width ?? undefined;
     const height = dimensions.height ?? undefined;
     const aspectRatio = width && height ? width / height : null;
 
-    return { ...post, aspectRatio, width, height, isExternalImage: false };
+    return { post, aspectRatio, width, height, isExternalImage: false, image };
   } catch (error) {
-    console.error(`Failed to read image dimensions for ${post.image}:`, error);
-    return { ...post, aspectRatio: null, width: undefined, height: undefined, isExternalImage: false };
+    console.error(`Failed to read image dimensions for ${image}:`, error);
+    return { post, aspectRatio: null, width: undefined, height: undefined, isExternalImage: false, image };
   }
 });
 ---
@@ -57,9 +57,10 @@ const postsWithAspectRatio = sortedBlogData.map(post => {
     <HeaderAstro />
     <div class="blog-container">
       <h1>Blog</h1>
-      {postsWithAspectRatio.map((post, index) => {
-        const isWideBanner = post.aspectRatio && post.aspectRatio > 2;
-        const hasImage = post.image && post.aspectRatio;
+      {postsWithAspectRatio.map((item, index) => {
+        const { post } = item;
+        const isWideBanner = item.aspectRatio && item.aspectRatio > 2;
+        const hasImage = item.image && item.aspectRatio;
         const hasThumbnail = hasImage && !isWideBanner;
 
         // Alternate thumbnail position (even indices = right, odd = left)
@@ -67,15 +68,15 @@ const postsWithAspectRatio = sortedBlogData.map(post => {
 
         return (
           // eslint-disable-next-line react/jsx-key
-          <article id={String(post.id)} class={`blog-post-summary ${isWideBanner ? 'blog-post-banner' : ''} ${hasThumbnail ? `thumbnail-${thumbnailPosition}` : ''}`}>
+          <article id={post.slug} class={`blog-post-summary ${isWideBanner ? 'blog-post-banner' : ''} ${hasThumbnail ? `thumbnail-${thumbnailPosition}` : ''}`}>
             {hasImage && isWideBanner && (
-              <a href={`/blog/${post.id}`} class="blog-banner-link">
+              <a href={`/blog/${post.slug}`} class="blog-banner-link">
                 <img
-                  src={post.isExternalImage ? post.image : normalizeImagePath(post.image!)}
-                  alt={post.title}
+                  src={item.isExternalImage ? item.image : normalizeImagePath(item.image!)}
+                  alt={post.data.title}
                   class="blog-banner"
-                  width={post.width}
-                  height={post.height}
+                  width={item.width}
+                  height={item.height}
                   loading="lazy"
                   decoding="async"
                 />
@@ -83,13 +84,13 @@ const postsWithAspectRatio = sortedBlogData.map(post => {
             )}
             <div class="blog-post-content">
               {hasThumbnail && thumbnailPosition === 'left' && (
-                <a href={`/blog/${post.id}`} class="blog-thumbnail-link">
+                <a href={`/blog/${post.slug}`} class="blog-thumbnail-link">
                   <img
-                    src={post.isExternalImage ? post.image : normalizeImagePath(post.image!)}
-                    alt={post.title}
+                    src={item.isExternalImage ? item.image : normalizeImagePath(item.image!)}
+                    alt={post.data.title}
                     class="blog-thumbnail"
-                    width={post.width}
-                    height={post.height}
+                    width={item.width}
+                    height={item.height}
                     loading="lazy"
                     decoding="async"
                   />
@@ -97,22 +98,22 @@ const postsWithAspectRatio = sortedBlogData.map(post => {
               )}
               <div class="blog-post-text">
                 <h2>
-                  <a href={`/blog/${post.id}`}>{post.title}</a>
+                  <a href={`/blog/${post.slug}`}>{post.data.title}</a>
                 </h2>
                 <div class="post-meta">
-                  <time datetime={post.date}>{new Date(post.date).toLocaleDateString()}</time>
+                  <time datetime={post.data.date}>{new Date(post.data.date).toLocaleDateString()}</time>
                   <span class="author-byline">By Christopher Carroll Smith</span>
                 </div>
-                <p>{post.excerpt}</p>
+                <p>{post.data.excerpt}</p>
               </div>
               {hasThumbnail && thumbnailPosition === 'right' && (
-                <a href={`/blog/${post.id}`} class="blog-thumbnail-link">
+                <a href={`/blog/${post.slug}`} class="blog-thumbnail-link">
                   <img
-                    src={post.isExternalImage ? post.image : normalizeImagePath(post.image!)}
-                    alt={post.title}
+                    src={item.isExternalImage ? item.image : normalizeImagePath(item.image!)}
+                    alt={post.data.title}
                     class="blog-thumbnail"
-                    width={post.width}
-                    height={post.height}
+                    width={item.width}
+                    height={item.height}
                     loading="lazy"
                     decoding="async"
                   />

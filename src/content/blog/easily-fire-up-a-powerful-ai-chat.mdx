@@ -1,0 +1,218 @@
+---
+title: "Easily fire up a powerful AI chat model that runs for free on your home computer"
+date: "2023-11-30"
+excerpt: "Quickly install and run an open-source Llama model with vision capabilities on your personal Mac or Windows PC"
+image: "https://substackcdn.com/image/fetch/$s_!7w4W!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3e31e242-91ef-4e84-afff-36e04dcf1fbc_1131x997.jpeg"
+sourceUrl: "https://knowledgeworkersguide.substack.com/p/easily-fire-up-a-powerful-ai-chat"
+sourceId: "https://knowledgeworkersguide.substack.com/p/easily-fire-up-a-powerful-ai-chat"
+---
+
+## Llamafile, by Mozilla, allows easy installation of open-source AI chat models
+
+Mozilla, the maker of the Firefox browser, just released an open-source project called [llamafile](https://hacks.mozilla.org/2023/11/introducing-llamafile/). Developed by [Justine Tunney](https://justine.lol/), llamafile is a system for easily installing and running open-source AI chat models on your home computer.
+
+Without getting into too much detail about how it works, credit to Justine for her years of work on the [Cosmopolitan libc](https://github.com/jart/cosmopolitan) package that made this possible. Credit also to Simon Willison for [bringing this to my attention](https://simonwillison.net/2023/Nov/29/llamafile/) through his excellent blog.
+
+## Why use llamafile instead of a cloud service like ChatGPT?
+
+The most powerful state-of-the-art performance is probably always going to come from commercial services like [ChatGPT](https://chat.openai.com/). So why would you install and use an open-source model with llamafile? Here are several reasons:
+
+1.  **It’s free!** Using an open-source model installed with llamafile instead of paying for ChatGPT Plus could save you \$20 per month. Since llamafiles run on your home computer rather than in the cloud, the only cost is the electricity and the wear and tear on your CPU.
+
+2.  **It can be used offline!** Since llamafiles install and run on your computer, they don’t require access to the Internet. If your Internet connection is spotty or you do a lot of computer work outside your home, it could be hugely helpful to have offline access to AI chat!
+
+3.  **It protects your data!** Most of the commercial AI services are harvesting your usage data to protect their models, and users’ sensitive account and contact information has repeatedly been [exposed in training data leaks](https://arxiv.org/abs/2311.17035).
+
+4.  **It lets you to experiment with different models!** Different models have different strengths and weaknesses. For instance, ChatGPT has so many guardrails that it’s largely useless for writing adventure stories that contain fight scenes. Thus, genre fiction writers may have much better luck with open-source models.
+
+## Install and use an AI chat model on your home PC in five easy steps
+
+Here’s how to install and use the llamafile for LLaVA 1.5, a powerful model that can take both text and image prompts.
+
+### **1. Fire up a command prompt.**
+
+On Windows, you can type “cmd” into the search box next to the start menu and then select “Command Prompt” from the start menu popup.
+
+<div class="captioned-image-container">
+
+<figure>
+<a href="https://substackcdn.com/image/fetch/$s_!7w4W!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3e31e242-91ef-4e84-afff-36e04dcf1fbc_1131x997.jpeg" class="image-link image2 is-viewable-img" target="_blank" data-component-name="Image2ToDOM"></a>
+<div class="image2-inset">
+<img src="https://substackcdn.com/image/fetch/$s_!7w4W!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3e31e242-91ef-4e84-afff-36e04dcf1fbc_1131x997.jpeg" class="sizing-normal" data-attrs="{&quot;src&quot;:&quot;https://substack-post-media.s3.amazonaws.com/public/images/3e31e242-91ef-4e84-afff-36e04dcf1fbc_1131x997.jpeg&quot;,&quot;srcNoWatermark&quot;:null,&quot;fullscreen&quot;:null,&quot;imageSize&quot;:null,&quot;height&quot;:997,&quot;width&quot;:1131,&quot;resizeWidth&quot;:null,&quot;bytes&quot;:140879,&quot;alt&quot;:null,&quot;title&quot;:null,&quot;type&quot;:&quot;image/jpeg&quot;,&quot;href&quot;:null,&quot;belowTheFold&quot;:true,&quot;topImage&quot;:false,&quot;internalRedirect&quot;:null,&quot;isProcessing&quot;:false,&quot;align&quot;:null,&quot;offset&quot;:false}" srcset="https://substackcdn.com/image/fetch/$s_!7w4W!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3e31e242-91ef-4e84-afff-36e04dcf1fbc_1131x997.jpeg 424w, https://substackcdn.com/image/fetch/$s_!7w4W!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3e31e242-91ef-4e84-afff-36e04dcf1fbc_1131x997.jpeg 848w, https://substackcdn.com/image/fetch/$s_!7w4W!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3e31e242-91ef-4e84-afff-36e04dcf1fbc_1131x997.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!7w4W!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3e31e242-91ef-4e84-afff-36e04dcf1fbc_1131x997.jpeg 1456w" sizes="100vw" loading="lazy" width="1131" height="997" />
+<div class="image-link-expand">
+<div class="pencraft pc-display-flex pc-gap-8 pc-reset">
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld2JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXJlZnJlc2gtY3ciPjxwYXRoIGQ9Ik0zIDEyYTkgOSAwIDAgMSA5LTkgOS43NSA5Ljc1IDAgMCAxIDYuNzQgMi43NEwyMSA4Ij48L3BhdGg+PHBhdGggZD0iTTIxIDN2NWgtNSI+PC9wYXRoPjxwYXRoIGQ9Ik0yMSAxMmE5IDkgMCAwIDEtOSA5IDkuNzUgOS43NSAwIDAgMS02Ljc0LTIuNzRMMyAxNiI+PC9wYXRoPjxwYXRoIGQ9Ik04IDE2SDN2NSI+PC9wYXRoPjwvc3ZnPg==" class="lucide lucide-refresh-cw" />
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld2JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLW1heGltaXplMiBsdWNpZGUtbWF4aW1pemUtMiI+PHBvbHlsaW5lIHBvaW50cz0iMTUgMyAyMSAzIDIxIDkiPjwvcG9seWxpbmU+PHBvbHlsaW5lIHBvaW50cz0iOSAyMSAzIDIxIDMgMTUiPjwvcG9seWxpbmU+PGxpbmUgeDE9IjIxIiB4Mj0iMTQiIHkxPSIzIiB5Mj0iMTAiPjwvbGluZT48bGluZSB4MT0iMyIgeDI9IjEwIiB5MT0iMjEiIHkyPSIxNCI+PC9saW5lPjwvc3ZnPg==" class="lucide lucide-maximize2 lucide-maximize-2" />
+</div>
+</div>
+</div>
+<figcaption>On Windows, type “cmd” into the search field on the Start bar.</figcaption>
+</figure>
+
+</div>
+
+On a Mac, press Command + Spacebar to open Spotlight Search, then type “Terminal” and press Enter when the Terminal application appears in the search results.
+
+<div class="captioned-image-container">
+
+<figure>
+<a href="https://substackcdn.com/image/fetch/$s_!gx_V!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F83a607d0-09ed-4aee-8036-9d82e51ab892_768x524.jpeg" class="image-link image2 is-viewable-img" target="_blank" data-component-name="Image2ToDOM"></a>
+<div class="image2-inset">
+<img src="https://substackcdn.com/image/fetch/$s_!gx_V!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F83a607d0-09ed-4aee-8036-9d82e51ab892_768x524.jpeg" class="sizing-normal" data-attrs="{&quot;src&quot;:&quot;https://substack-post-media.s3.amazonaws.com/public/images/83a607d0-09ed-4aee-8036-9d82e51ab892_768x524.jpeg&quot;,&quot;srcNoWatermark&quot;:null,&quot;fullscreen&quot;:null,&quot;imageSize&quot;:null,&quot;height&quot;:524,&quot;width&quot;:768,&quot;resizeWidth&quot;:null,&quot;bytes&quot;:26802,&quot;alt&quot;:null,&quot;title&quot;:null,&quot;type&quot;:&quot;image/jpeg&quot;,&quot;href&quot;:null,&quot;belowTheFold&quot;:true,&quot;topImage&quot;:false,&quot;internalRedirect&quot;:null,&quot;isProcessing&quot;:false,&quot;align&quot;:null,&quot;offset&quot;:false}" srcset="https://substackcdn.com/image/fetch/$s_!gx_V!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F83a607d0-09ed-4aee-8036-9d82e51ab892_768x524.jpeg 424w, https://substackcdn.com/image/fetch/$s_!gx_V!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F83a607d0-09ed-4aee-8036-9d82e51ab892_768x524.jpeg 848w, https://substackcdn.com/image/fetch/$s_!gx_V!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F83a607d0-09ed-4aee-8036-9d82e51ab892_768x524.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!gx_V!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F83a607d0-09ed-4aee-8036-9d82e51ab892_768x524.jpeg 1456w" sizes="100vw" loading="lazy" width="768" height="524" />
+<div class="image-link-expand">
+<div class="pencraft pc-display-flex pc-gap-8 pc-reset">
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld2JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXJlZnJlc2gtY3ciPjxwYXRoIGQ9Ik0zIDEyYTkgOSAwIDAgMSA5LTkgOS43NSA5Ljc1IDAgMCAxIDYuNzQgMi43NEwyMSA4Ij48L3BhdGg+PHBhdGggZD0iTTIxIDN2NWgtNSI+PC9wYXRoPjxwYXRoIGQ9Ik0yMSAxMmE5IDkgMCAwIDEtOSA5IDkuNzUgOS43NSAwIDAgMS02Ljc0LTIuNzRMMyAxNiI+PC9wYXRoPjxwYXRoIGQ9Ik04IDE2SDN2NSI+PC9wYXRoPjwvc3ZnPg==" class="lucide lucide-refresh-cw" />
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld2JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLW1heGltaXplMiBsdWNpZGUtbWF4aW1pemUtMiI+PHBvbHlsaW5lIHBvaW50cz0iMTUgMyAyMSAzIDIxIDkiPjwvcG9seWxpbmU+PHBvbHlsaW5lIHBvaW50cz0iOSAyMSAzIDIxIDMgMTUiPjwvcG9seWxpbmU+PGxpbmUgeDE9IjIxIiB4Mj0iMTQiIHkxPSIzIiB5Mj0iMTAiPjwvbGluZT48bGluZSB4MT0iMyIgeDI9IjEwIiB5MT0iMjEiIHkyPSIxNCI+PC9saW5lPjwvc3ZnPg==" class="lucide lucide-maximize2 lucide-maximize-2" />
+</div>
+</div>
+</div>
+<figcaption>On a Mac, use command + spacebar to access Spotlight Search, and then search for “Terminal.”</figcaption>
+</figure>
+
+</div>
+
+### **2. Download the llamafile.**
+
+To download the llamafile for Llava 1.5, copy and paste this command into your terminal window and then press Enter:
+
+`curl -LO https://huggingface.co/jartine/llava-v1.5-7B-GGUF/resolve/main/llamafile-server-0.1-llava-v1.5-7b-q4`
+
+To copy and paste, you can highlight the text above and then use keyboard shortcuts: **Ctrl + c** for Copy and **Ctrl + v** for Paste in Windows, or **Cmd + c** for Copy and **Cmd + v** for Paste on a Mac.
+
+Also note that this is a large file, so it may take a couple hours to download if you have a slow Internet connection like the Starbucks wi-fi I used. Make sure you don’t close your terminal window or restart your PC until the download is complete!
+
+<div class="captioned-image-container">
+
+<figure>
+<a href="https://substackcdn.com/image/fetch/$s_!u-4c!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0202a34d-e907-45da-8bf2-8f537c21e049_1723x944.png" class="image-link image2 is-viewable-img" target="_blank" data-component-name="Image2ToDOM"></a>
+<div class="image2-inset">
+<img src="https://substackcdn.com/image/fetch/$s_!u-4c!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0202a34d-e907-45da-8bf2-8f537c21e049_1723x944.png" class="sizing-normal" data-attrs="{&quot;src&quot;:&quot;https://substack-post-media.s3.amazonaws.com/public/images/0202a34d-e907-45da-8bf2-8f537c21e049_1723x944.png&quot;,&quot;srcNoWatermark&quot;:null,&quot;fullscreen&quot;:null,&quot;imageSize&quot;:null,&quot;height&quot;:798,&quot;width&quot;:1456,&quot;resizeWidth&quot;:null,&quot;bytes&quot;:49131,&quot;alt&quot;:null,&quot;title&quot;:null,&quot;type&quot;:&quot;image/png&quot;,&quot;href&quot;:null,&quot;belowTheFold&quot;:true,&quot;topImage&quot;:false,&quot;internalRedirect&quot;:null,&quot;isProcessing&quot;:false,&quot;align&quot;:null,&quot;offset&quot;:false}" srcset="https://substackcdn.com/image/fetch/$s_!u-4c!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0202a34d-e907-45da-8bf2-8f537c21e049_1723x944.png 424w, https://substackcdn.com/image/fetch/$s_!u-4c!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0202a34d-e907-45da-8bf2-8f537c21e049_1723x944.png 848w, https://substackcdn.com/image/fetch/$s_!u-4c!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0202a34d-e907-45da-8bf2-8f537c21e049_1723x944.png 1272w, https://substackcdn.com/image/fetch/$s_!u-4c!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0202a34d-e907-45da-8bf2-8f537c21e049_1723x944.png 1456w" sizes="100vw" loading="lazy" width="1456" height="798" />
+<div class="image-link-expand">
+<div class="pencraft pc-display-flex pc-gap-8 pc-reset">
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld2JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXJlZnJlc2gtY3ciPjxwYXRoIGQ9Ik0zIDEyYTkgOSAwIDAgMSA5LTkgOS43NSA5Ljc1IDAgMCAxIDYuNzQgMi43NEwyMSA4Ij48L3BhdGg+PHBhdGggZD0iTTIxIDN2NWgtNSI+PC9wYXRoPjxwYXRoIGQ9Ik0yMSAxMmE5IDkgMCAwIDEtOSA5IDkuNzUgOS43NSAwIDAgMS02Ljc0LTIuNzRMMyAxNiI+PC9wYXRoPjxwYXRoIGQ9Ik04IDE2SDN2NSI+PC9wYXRoPjwvc3ZnPg==" class="lucide lucide-refresh-cw" />
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld2JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLW1heGltaXplMiBsdWNpZGUtbWF4aW1pemUtMiI+PHBvbHlsaW5lIHBvaW50cz0iMTUgMyAyMSAzIDIxIDkiPjwvcG9seWxpbmU+PHBvbHlsaW5lIHBvaW50cz0iOSAyMSAzIDIxIDMgMTUiPjwvcG9seWxpbmU+PGxpbmUgeDE9IjIxIiB4Mj0iMTQiIHkxPSIzIiB5Mj0iMTAiPjwvbGluZT48bGluZSB4MT0iMyIgeDI9IjEwIiB5MT0iMjEiIHkyPSIxNCI+PC9saW5lPjwvc3ZnPg==" class="lucide lucide-maximize2 lucide-maximize-2" />
+</div>
+</div>
+</div>
+<figcaption>Download using a “curl” command</figcaption>
+</figure>
+
+</div>
+
+Note that you can also download the file manually by [clicking this link](https://huggingface.co/jartine/llava-v1.5-7B-GGUF/resolve/main/llava-v1.5-7b-q4-server.llamafile?download=true). Just make sure you save the file to the default directory shown in your terminal. For instance, in the screenshot above, the default directory is shown as C:\Users\chris, so that’s where I would want to place the file if I downloaded it manually. (Downloading it through the terminal will automatically save it in the right place!)
+
+### **3. Make the downloaded file executable.**
+
+In Windows, you will need to add ‘.exe’ to the filename of the downloaded file. You can do that manually, or just run this command from the shell:
+
+`ren "llamafile-server-0.1-llava-v1.5-7b-q4" "llamafile-server-0.1-llava-v1.5-7b-q4.exe"`
+
+On a Mac, run this command to give your system permission to execute the file as a program:
+
+`chmod 755 llamafile-server-0.1-llava-v1.5-7b-q4`
+
+### **4. Start the Llava 1.5 server**
+
+To start the server, use this command:
+
+`./llamafile-server-0.1-llava-v1.5-7b-q4`
+
+It may take a few minutes, but eventually you should see the text, “llama server listening at http://127.0.0.1:8080.” That indicates that your server is up and running.
+
+<div class="captioned-image-container">
+
+<figure>
+<a href="https://substackcdn.com/image/fetch/$s_!ONz9!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa977cf42-7032-41d2-a73c-9b53f930e460_1709x860.jpeg" class="image-link image2 is-viewable-img" target="_blank" data-component-name="Image2ToDOM"></a>
+<div class="image2-inset">
+<img src="https://substackcdn.com/image/fetch/$s_!ONz9!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa977cf42-7032-41d2-a73c-9b53f930e460_1709x860.jpeg" class="sizing-normal" data-attrs="{&quot;src&quot;:&quot;https://substack-post-media.s3.amazonaws.com/public/images/a977cf42-7032-41d2-a73c-9b53f930e460_1709x860.jpeg&quot;,&quot;srcNoWatermark&quot;:null,&quot;fullscreen&quot;:null,&quot;imageSize&quot;:null,&quot;height&quot;:733,&quot;width&quot;:1456,&quot;resizeWidth&quot;:null,&quot;bytes&quot;:268772,&quot;alt&quot;:null,&quot;title&quot;:null,&quot;type&quot;:&quot;image/jpeg&quot;,&quot;href&quot;:null,&quot;belowTheFold&quot;:true,&quot;topImage&quot;:false,&quot;internalRedirect&quot;:null,&quot;isProcessing&quot;:false,&quot;align&quot;:null,&quot;offset&quot;:false}" srcset="https://substackcdn.com/image/fetch/$s_!ONz9!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa977cf42-7032-41d2-a73c-9b53f930e460_1709x860.jpeg 424w, https://substackcdn.com/image/fetch/$s_!ONz9!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa977cf42-7032-41d2-a73c-9b53f930e460_1709x860.jpeg 848w, https://substackcdn.com/image/fetch/$s_!ONz9!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa977cf42-7032-41d2-a73c-9b53f930e460_1709x860.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!ONz9!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa977cf42-7032-41d2-a73c-9b53f930e460_1709x860.jpeg 1456w" sizes="100vw" loading="lazy" width="1456" height="733" />
+<div class="image-link-expand">
+<div class="pencraft pc-display-flex pc-gap-8 pc-reset">
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld2JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXJlZnJlc2gtY3ciPjxwYXRoIGQ9Ik0zIDEyYTkgOSAwIDAgMSA5LTkgOS43NSA5Ljc1IDAgMCAxIDYuNzQgMi43NEwyMSA4Ij48L3BhdGg+PHBhdGggZD0iTTIxIDN2NWgtNSI+PC9wYXRoPjxwYXRoIGQ9Ik0yMSAxMmE5IDkgMCAwIDEtOSA5IDkuNzUgOS43NSAwIDAgMS02Ljc0LTIuNzRMMyAxNiI+PC9wYXRoPjxwYXRoIGQ9Ik04IDE2SDN2NSI+PC9wYXRoPjwvc3ZnPg==" class="lucide lucide-refresh-cw" />
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld2JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLW1heGltaXplMiBsdWNpZGUtbWF4aW1pemUtMiI+PHBvbHlsaW5lIHBvaW50cz0iMTUgMyAyMSAzIDIxIDkiPjwvcG9seWxpbmU+PHBvbHlsaW5lIHBvaW50cz0iOSAyMSAzIDIxIDMgMTUiPjwvcG9seWxpbmU+PGxpbmUgeDE9IjIxIiB4Mj0iMTQiIHkxPSIzIiB5Mj0iMTAiPjwvbGluZT48bGluZSB4MT0iMyIgeDI9IjEwIiB5MT0iMjEiIHkyPSIxNCI+PC9saW5lPjwvc3ZnPg==" class="lucide lucide-maximize2 lucide-maximize-2" />
+</div>
+</div>
+</div>
+<figcaption>When you run the command to start the server, don’t be intimidated by this wall of text. It means it worked!</figcaption>
+</figure>
+
+</div>
+
+Note that it’s very important not to close this terminal window until you’re done using the AI chat model! (Your terminal window is now a “local server” on which the chat bot runs.)
+
+### 5. Navigate to the URL in the browser.
+
+Hold the Ctrl or CMD key and click the “http://127.0.0.1:8080” link in your terminal. Alternatively, you can open a web browser and paste that URL into the address bar. This will open an interface for Llava 1.5.
+
+Note that even though you’re using a web browser, you’re not actually using the web. Your browser is connected to the offline server that you started from the terminal window: a “web app” that is running on—and only available from—your own PC.
+
+## Choose your settings and start a chat!
+
+You will see a number of available settings, which you can change if you want. For instance, you might try experimenting with different system prompts.
+
+<div class="captioned-image-container">
+
+<figure>
+<a href="https://substackcdn.com/image/fetch/$s_!LsCo!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4dc6ba4e-71f8-40bf-af3e-47b6e992ee1e_929x793.jpeg" class="image-link image2 is-viewable-img" target="_blank" data-component-name="Image2ToDOM"></a>
+<div class="image2-inset">
+<img src="https://substackcdn.com/image/fetch/$s_!LsCo!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4dc6ba4e-71f8-40bf-af3e-47b6e992ee1e_929x793.jpeg" class="sizing-normal" data-attrs="{&quot;src&quot;:&quot;https://substack-post-media.s3.amazonaws.com/public/images/4dc6ba4e-71f8-40bf-af3e-47b6e992ee1e_929x793.jpeg&quot;,&quot;srcNoWatermark&quot;:null,&quot;fullscreen&quot;:null,&quot;imageSize&quot;:null,&quot;height&quot;:793,&quot;width&quot;:929,&quot;resizeWidth&quot;:null,&quot;bytes&quot;:134846,&quot;alt&quot;:null,&quot;title&quot;:null,&quot;type&quot;:&quot;image/jpeg&quot;,&quot;href&quot;:null,&quot;belowTheFold&quot;:true,&quot;topImage&quot;:false,&quot;internalRedirect&quot;:null,&quot;isProcessing&quot;:false,&quot;align&quot;:null,&quot;offset&quot;:false}" srcset="https://substackcdn.com/image/fetch/$s_!LsCo!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4dc6ba4e-71f8-40bf-af3e-47b6e992ee1e_929x793.jpeg 424w, https://substackcdn.com/image/fetch/$s_!LsCo!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4dc6ba4e-71f8-40bf-af3e-47b6e992ee1e_929x793.jpeg 848w, https://substackcdn.com/image/fetch/$s_!LsCo!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4dc6ba4e-71f8-40bf-af3e-47b6e992ee1e_929x793.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!LsCo!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4dc6ba4e-71f8-40bf-af3e-47b6e992ee1e_929x793.jpeg 1456w" sizes="100vw" loading="lazy" width="929" height="793" />
+<div class="image-link-expand">
+<div class="pencraft pc-display-flex pc-gap-8 pc-reset">
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld2JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXJlZnJlc2gtY3ciPjxwYXRoIGQ9Ik0zIDEyYTkgOSAwIDAgMSA5LTkgOS43NSA5Ljc1IDAgMCAxIDYuNzQgMi43NEwyMSA4Ij48L3BhdGg+PHBhdGggZD0iTTIxIDN2NWgtNSI+PC9wYXRoPjxwYXRoIGQ9Ik0yMSAxMmE5IDkgMCAwIDEtOSA5IDkuNzUgOS43NSAwIDAgMS02Ljc0LTIuNzRMMyAxNiI+PC9wYXRoPjxwYXRoIGQ9Ik04IDE2SDN2NSI+PC9wYXRoPjwvc3ZnPg==" class="lucide lucide-refresh-cw" />
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld2JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLW1heGltaXplMiBsdWNpZGUtbWF4aW1pemUtMiI+PHBvbHlsaW5lIHBvaW50cz0iMTUgMyAyMSAzIDIxIDkiPjwvcG9seWxpbmU+PHBvbHlsaW5lIHBvaW50cz0iOSAyMSAzIDIxIDMgMTUiPjwvcG9seWxpbmU+PGxpbmUgeDE9IjIxIiB4Mj0iMTQiIHkxPSIzIiB5Mj0iMTAiPjwvbGluZT48bGluZSB4MT0iMyIgeDI9IjEwIiB5MT0iMjEiIHkyPSIxNCI+PC9saW5lPjwvc3ZnPg==" class="lucide lucide-maximize2 lucide-maximize-2" />
+</div>
+</div>
+</div>
+<figcaption>You can control the system prompt, username, chatbot name, and various more technical settings, but the defaults should be fine.</figcaption>
+</figure>
+
+</div>
+
+To start a conversation with the chatbot, scroll to the bottom of the page, enter a prompt in the “Say something…” field, and then click “Send.”
+
+<div class="captioned-image-container">
+
+<figure>
+<a href="https://substackcdn.com/image/fetch/$s_!jOdn!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F23160c4d-3e8d-4644-ba03-ded54c900770_926x811.jpeg" class="image-link image2 is-viewable-img" target="_blank" data-component-name="Image2ToDOM"></a>
+<div class="image2-inset">
+<img src="https://substackcdn.com/image/fetch/$s_!jOdn!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F23160c4d-3e8d-4644-ba03-ded54c900770_926x811.jpeg" class="sizing-normal" data-attrs="{&quot;src&quot;:&quot;https://substack-post-media.s3.amazonaws.com/public/images/23160c4d-3e8d-4644-ba03-ded54c900770_926x811.jpeg&quot;,&quot;srcNoWatermark&quot;:null,&quot;fullscreen&quot;:null,&quot;imageSize&quot;:null,&quot;height&quot;:811,&quot;width&quot;:926,&quot;resizeWidth&quot;:null,&quot;bytes&quot;:136647,&quot;alt&quot;:null,&quot;title&quot;:null,&quot;type&quot;:&quot;image/jpeg&quot;,&quot;href&quot;:null,&quot;belowTheFold&quot;:true,&quot;topImage&quot;:false,&quot;internalRedirect&quot;:null,&quot;isProcessing&quot;:false,&quot;align&quot;:null,&quot;offset&quot;:false}" srcset="https://substackcdn.com/image/fetch/$s_!jOdn!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F23160c4d-3e8d-4644-ba03-ded54c900770_926x811.jpeg 424w, https://substackcdn.com/image/fetch/$s_!jOdn!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F23160c4d-3e8d-4644-ba03-ded54c900770_926x811.jpeg 848w, https://substackcdn.com/image/fetch/$s_!jOdn!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F23160c4d-3e8d-4644-ba03-ded54c900770_926x811.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!jOdn!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F23160c4d-3e8d-4644-ba03-ded54c900770_926x811.jpeg 1456w" sizes="100vw" loading="lazy" width="926" height="811" />
+<div class="image-link-expand">
+<div class="pencraft pc-display-flex pc-gap-8 pc-reset">
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld2JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXJlZnJlc2gtY3ciPjxwYXRoIGQ9Ik0zIDEyYTkgOSAwIDAgMSA5LTkgOS43NSA5Ljc1IDAgMCAxIDYuNzQgMi43NEwyMSA4Ij48L3BhdGg+PHBhdGggZD0iTTIxIDN2NWgtNSI+PC9wYXRoPjxwYXRoIGQ9Ik0yMSAxMmE5IDkgMCAwIDEtOSA5IDkuNzUgOS43NSAwIDAgMS02Ljc0LTIuNzRMMyAxNiI+PC9wYXRoPjxwYXRoIGQ9Ik04IDE2SDN2NSI+PC9wYXRoPjwvc3ZnPg==" class="lucide lucide-refresh-cw" />
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld2JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLW1heGltaXplMiBsdWNpZGUtbWF4aW1pemUtMiI+PHBvbHlsaW5lIHBvaW50cz0iMTUgMyAyMSAzIDIxIDkiPjwvcG9seWxpbmU+PHBvbHlsaW5lIHBvaW50cz0iOSAyMSAzIDIxIDMgMTUiPjwvcG9seWxpbmU+PGxpbmUgeDE9IjIxIiB4Mj0iMTQiIHkxPSIzIiB5Mj0iMTAiPjwvbGluZT48bGluZSB4MT0iMyIgeDI9IjEwIiB5MT0iMjEiIHkyPSIxNCI+PC9saW5lPjwvc3ZnPg==" class="lucide lucide-maximize2 lucide-maximize-2" />
+</div>
+</div>
+</div>
+<figcaption>Enter a prompt and click “Send” to start a new chat.</figcaption>
+</figure>
+
+</div>
+
+This will open a chat interface where the LLM will provide output, and you can keep the conversation going if you want. Depending on the speed of your computer, you may find that it takes several seconds to output each word. Unfortunately, this is unavoidable. These are pretty heavy models, and your Toshiba laptop isn’t really the hardware they’re meant to run on. Still, it’s pretty incredible that it works at all!
+
+<div class="captioned-image-container">
+
+<figure>
+<a href="https://substackcdn.com/image/fetch/$s_!0Sb8!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Faa88028f-6b75-4a1c-9f6b-1e4ecc8b2524_960x517.jpeg" class="image-link image2 is-viewable-img" target="_blank" data-component-name="Image2ToDOM"></a>
+<div class="image2-inset">
+<img src="https://substackcdn.com/image/fetch/$s_!0Sb8!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Faa88028f-6b75-4a1c-9f6b-1e4ecc8b2524_960x517.jpeg" class="sizing-normal" data-attrs="{&quot;src&quot;:&quot;https://substack-post-media.s3.amazonaws.com/public/images/aa88028f-6b75-4a1c-9f6b-1e4ecc8b2524_960x517.jpeg&quot;,&quot;srcNoWatermark&quot;:null,&quot;fullscreen&quot;:null,&quot;imageSize&quot;:null,&quot;height&quot;:517,&quot;width&quot;:960,&quot;resizeWidth&quot;:null,&quot;bytes&quot;:75882,&quot;alt&quot;:null,&quot;title&quot;:null,&quot;type&quot;:&quot;image/jpeg&quot;,&quot;href&quot;:null,&quot;belowTheFold&quot;:true,&quot;topImage&quot;:false,&quot;internalRedirect&quot;:null,&quot;isProcessing&quot;:false,&quot;align&quot;:null,&quot;offset&quot;:false}" srcset="https://substackcdn.com/image/fetch/$s_!0Sb8!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Faa88028f-6b75-4a1c-9f6b-1e4ecc8b2524_960x517.jpeg 424w, https://substackcdn.com/image/fetch/$s_!0Sb8!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Faa88028f-6b75-4a1c-9f6b-1e4ecc8b2524_960x517.jpeg 848w, https://substackcdn.com/image/fetch/$s_!0Sb8!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Faa88028f-6b75-4a1c-9f6b-1e4ecc8b2524_960x517.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!0Sb8!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Faa88028f-6b75-4a1c-9f6b-1e4ecc8b2524_960x517.jpeg 1456w" sizes="100vw" loading="lazy" width="960" height="517" />
+<div class="image-link-expand">
+<div class="pencraft pc-display-flex pc-gap-8 pc-reset">
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld2JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXJlZnJlc2gtY3ciPjxwYXRoIGQ9Ik0zIDEyYTkgOSAwIDAgMSA5LTkgOS43NSA5Ljc1IDAgMCAxIDYuNzQgMi43NEwyMSA4Ij48L3BhdGg+PHBhdGggZD0iTTIxIDN2NWgtNSI+PC9wYXRoPjxwYXRoIGQ9Ik0yMSAxMmE5IDkgMCAwIDEtOSA5IDkuNzUgOS43NSAwIDAgMS02Ljc0LTIuNzRMMyAxNiI+PC9wYXRoPjxwYXRoIGQ9Ik04IDE2SDN2NSI+PC9wYXRoPjwvc3ZnPg==" class="lucide lucide-refresh-cw" />
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld2JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLW1heGltaXplMiBsdWNpZGUtbWF4aW1pemUtMiI+PHBvbHlsaW5lIHBvaW50cz0iMTUgMyAyMSAzIDIxIDkiPjwvcG9seWxpbmU+PHBvbHlsaW5lIHBvaW50cz0iOSAyMSAzIDIxIDMgMTUiPjwvcG9seWxpbmU+PGxpbmUgeDE9IjIxIiB4Mj0iMTQiIHkxPSIzIiB5Mj0iMTAiPjwvbGluZT48bGluZSB4MT0iMyIgeDI9IjEwIiB5MT0iMjEiIHkyPSIxNCI+PC9saW5lPjwvc3ZnPg==" class="lucide lucide-maximize2 lucide-maximize-2" />
+</div>
+</div>
+</div>
+<figcaption>Have Llava 1.5 write a poem, or even upload an image and have the chatbot describe it to you. This model is multimodal!</figcaption>
+</figure>
+
+</div>
+
+## Conclusion
+
+When you’re finished using the chatbot, just close the browser window and the terminal window you ran the server from.
+
+Since you’ve already downloaded and installed the llamafile, you won’t need to repeat steps 2 and 3 next time you want to use it. Just start a terminal (step 1), start the local server (step 4), and open the link to the local server in a browser window (step 5).
+
+You can also experiment with other models. For writing Python code, try downloading the Wizardcoder-13B-Python model from [https://huggingface.co/jartine/wizardcoder-13b-python/resolve/main/wizardcoder-python-13b-main.llamafile](https://huggingface.co/jartine/wizardcoder-13b-python/resolve/main/wizardcoder-python-13b-main.llamafile). For a more general-purpose chatbot, download the Mistral-7B-instruct model from [https://huggingface.co/jartine/mistral-7b.llamafile/resolve/main/mistral-7b-instruct-v0.1-Q4_K_M-main.llamafile](https://huggingface.co/jartine/mistral-7b.llamafile/resolve/main/mistral-7b-instruct-v0.1-Q4_K_M-main.llamafile). Just repeat the instructions above, but replace the download link and file name.
+
+Thanks to the incredible work of open source developers, these and other models are getting easier and easier to deploy locally on home computers. That makes us all less dependent on big technology companies like OpenAI, which can only be a good thing.

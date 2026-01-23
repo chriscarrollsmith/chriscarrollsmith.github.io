@@ -1,0 +1,90 @@
+<div class="captioned-image-container">
+
+<figure>
+<a href="https://substackcdn.com/image/fetch/$s_!ixK8!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1576b956-ff03-44ad-a506-35e78035d482_1186x858.png" class="image-link image2 is-viewable-img" target="_blank" data-component-name="Image2ToDOM"></a>
+<div class="image2-inset">
+<img src="https://substackcdn.com/image/fetch/$s_!ixK8!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1576b956-ff03-44ad-a506-35e78035d482_1186x858.png" class="sizing-normal" data-attrs="{&quot;src&quot;:&quot;https://substack-post-media.s3.amazonaws.com/public/images/1576b956-ff03-44ad-a506-35e78035d482_1186x858.png&quot;,&quot;srcNoWatermark&quot;:null,&quot;fullscreen&quot;:null,&quot;imageSize&quot;:null,&quot;height&quot;:858,&quot;width&quot;:1186,&quot;resizeWidth&quot;:null,&quot;bytes&quot;:62698,&quot;alt&quot;:null,&quot;title&quot;:null,&quot;type&quot;:&quot;image/png&quot;,&quot;href&quot;:null,&quot;belowTheFold&quot;:false,&quot;topImage&quot;:true,&quot;internalRedirect&quot;:null,&quot;isProcessing&quot;:false,&quot;align&quot;:null,&quot;offset&quot;:false}" srcset="https://substackcdn.com/image/fetch/$s_!ixK8!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1576b956-ff03-44ad-a506-35e78035d482_1186x858.png 424w, https://substackcdn.com/image/fetch/$s_!ixK8!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1576b956-ff03-44ad-a506-35e78035d482_1186x858.png 848w, https://substackcdn.com/image/fetch/$s_!ixK8!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1576b956-ff03-44ad-a506-35e78035d482_1186x858.png 1272w, https://substackcdn.com/image/fetch/$s_!ixK8!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1576b956-ff03-44ad-a506-35e78035d482_1186x858.png 1456w" sizes="100vw" data-fetchpriority="high" width="1186" height="858" />
+<div class="image-link-expand">
+<div class="pencraft pc-display-flex pc-gap-8 pc-reset">
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld2JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXJlZnJlc2gtY3ciPjxwYXRoIGQ9Ik0zIDEyYTkgOSAwIDAgMSA5LTkgOS43NSA5Ljc1IDAgMCAxIDYuNzQgMi43NEwyMSA4Ij48L3BhdGg+PHBhdGggZD0iTTIxIDN2NWgtNSI+PC9wYXRoPjxwYXRoIGQ9Ik0yMSAxMmE5IDkgMCAwIDEtOSA5IDkuNzUgOS43NSAwIDAgMS02Ljc0LTIuNzRMMyAxNiI+PC9wYXRoPjxwYXRoIGQ9Ik04IDE2SDN2NSI+PC9wYXRoPjwvc3ZnPg==" class="lucide lucide-refresh-cw" />
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld2JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLW1heGltaXplMiBsdWNpZGUtbWF4aW1pemUtMiI+PHBvbHlsaW5lIHBvaW50cz0iMTUgMyAyMSAzIDIxIDkiPjwvcG9seWxpbmU+PHBvbHlsaW5lIHBvaW50cz0iOSAyMSAzIDIxIDMgMTUiPjwvcG9seWxpbmU+PGxpbmUgeDE9IjIxIiB4Mj0iMTQiIHkxPSIzIiB5Mj0iMTAiPjwvbGluZT48bGluZSB4MT0iMyIgeDI9IjEwIiB5MT0iMjEiIHkyPSIxNCI+PC9saW5lPjwvc3ZnPg==" class="lucide lucide-maximize2 lucide-maximize-2" />
+</div>
+</div>
+</div>
+<figcaption>A simple plot of a time series of coal prices available from the Primary Commodity Price System database through <code>imfp</code></figcaption>
+</figure>
+
+</div>
+
+I’m excited to announce a **major overhaul** of the [documentation website](https://promptlytechnologies.com/imfp/) for `imfp`—a Python library we created at [Promptly Technologies](https://promptlytechnologies.com) to help you easily download data from the [International Monetary Fund’s (IMF) RESTful JSON API](http://data.imf.org/). With this update, we aimed to make `imfp` **much** more approachable and usable for analysts, researchers, and data enthusiasts who are not expert programmers.
+
+## Why a New Documentation Site?
+
+If you’ve used IMF data before, you know that the hundreds of API endpoints, undocumented rate limits, and dozens of different query parameters can be a little daunting. That’s why we decided to create a **comprehensive, visually appealing, and easy-to-navigate documentation website** with detailed sample code and an end-to-end example project that uses `imfp`.
+
+### What’s New?
+
+- **Best Practices for Querying the API**: We’ve broken down each step of querying the IMF API, including [discovering available databases](https://promptlytechnologies.com/imfp/docs/databases.html), [filtering on thousands of indicators](https://promptlytechnologies.com/imfp/docs/parameters.html), and [caching retrieved data](https://promptlytechnologies.com/imfp/docs/rate_limits.html#caching-strategy) to avoid dreaded rate limit errors.
+
+- **Detailed Guides for Working with Returned Data**: Instead of just returning a DataFrame and leaving you on your own, we [walk you through](https://promptlytechnologies.com/imfp/docs/usage.html) the basics of data cleaning and feature engineering, including how to convert time periods to numeric values, adjust for inflation, convert to US dollars, and normalize for population.
+
+- **Improved Navigation and Search**: The website is now organized into different pages, with a quickstart guide supplemented by detailed deep dives on different topics. A search function speeds up finding the info you’re looking for. We’ve also provided the full documentation as a [single text file](https://promptlytechnologies.com/imfp/docs/static/llms.txt) that you can provide as context to an AI model like [DeepSeek](https://chat.deepseek.com/) or [ChatGPT](https://chatgpt.com/).
+
+## Shout-Out to Jenny Xu
+
+<div class="image-gallery-embed" attrs="{&quot;gallery&quot;:{&quot;images&quot;:[{&quot;type&quot;:&quot;image/jpeg&quot;,&quot;src&quot;:&quot;https://substack-post-media.s3.amazonaws.com/public/images/6c0f9d21-f73d-4d05-b1a0-6febd3a51b70_1560x1540.jpeg&quot;},{&quot;type&quot;:&quot;image/png&quot;,&quot;src&quot;:&quot;https://substack-post-media.s3.amazonaws.com/public/images/9d0dd55a-7e4d-413c-bec9-3140fa650884_1348x1046.png&quot;}],&quot;caption&quot;:&quot;Promptly Technologies intern Jenny Xu, a double major in psychology and statistics at UC Davis, investigated the relationship between GDP growth and a measure of gender equality available through imfp&quot;,&quot;alt&quot;:&quot;A headshot of Jenny and a plot showing no relationship between GDP growth and gender equality change&quot;,&quot;staticGalleryImage&quot;:{&quot;type&quot;:&quot;image/png&quot;,&quot;src&quot;:&quot;https://substack-post-media.s3.amazonaws.com/public/images/10cfbd08-6517-4630-ab86-19de19aa5d9b_1456x720.png&quot;}},&quot;isEditorNode&quot;:true}">
+
+</div>
+
+This overhaul also gives me an opportunity celebrate the outstanding work of our intern, **Jenny Xu**. Last fall, she carried out a six-week [demonstration project](https://promptlytechnologies.com/imfp/docs/demo.html) using `imfp`, aimed at exploring the relationship between GDP growth and changes in a measure of gender inequality across countries. Jenny’s statistical tests found *no* significant relationship between the two (i.e., a null result). I’m very proud of the work she did on this project.
+
+Why celebrate a null finding? Because good research is about **transparency** and **reproducible methods**, not forcing a significant p-value. More to the point, the purpose of Jenny’s project was to demonstrate how to use `imfp` from end to end in a real research project, and she accomplished that goal admirably. Jenny’s [Quarto notebook](https://github.com/Promptly-Technologies-LLC/imfp/blob/main/docs/demo.qmd) shows exactly how to:
+
+1.  Identify the relevant IMF databases and parameters (in her case, the Gender Equality database and the International Financial Statistics).
+
+2.  Systematically fetch, clean, and transform the data (inflation adjustment, population normalization, etc.).
+
+3.  Produce informative visualizations (bar plots, heatmaps, and line charts).
+
+4.  Perform regressions and time-series analyses.
+
+Her project is a perfect example of how `imfp` can serve real research workflows—whether or not the final results are what you expect. (We strongly believe in the **value of publishing null results**, which help steer the broader research community toward more accurate or innovative future studies!)
+
+> *“The point of the project was to show how to do a data analysis project with the library, not to publish a positive finding.”*  
+> — My parting words to Jenny when she worried that “no effect” might seem anticlimactic!
+
+Jenny’s full write-up—including code, plots, and analysis—can be found on our [Demo](https://promptlytechnologies.com/imfp/docs/demo.html) page. It’s well worth a look, both for the method and the reproducible Jupyter/Quarto pipelines.
+
+## Highlights of the `imfp` Workflow
+
+If you’re new to `imfp`, here’s a quick taste:
+
+1.  **List the IMF databases**:
+
+    `databases = imfp.imf_databases()`
+
+2.  **View valid parameters** (e.g., for the commodity price database, `PCPS`):
+
+    `params = imfp.imf_parameters("PCPS")`
+
+3.  **Request data**:
+
+    `df = imfp.imf_dataset(database_id="PCPS", freq=["A"], commodity=["PCOAL"], unit_measure=["IX"], start_year=2000, end_year=2015)`
+
+That’s really all you need to start accessing data from the IMF! But that just scratches the surface of what’s in the new docs, which cover everything from caching strategies to data cleaning, feature engineering, and merging different data sets.
+
+## Try It Out!
+
+Ready to try `imfp`? It’s as simple as:
+
+`pip install --upgrade imfp`
+
+## Thank You and Next Steps
+
+- To Jenny Xu, for not only her great demo project, but also her helpful user testing and feedback on UX.
+
+- To the open-source community, whose questions and bug reports have helped shape each iteration of `imfp`.
+
+We hope this documentation site makes your research or analytics journey smoother and more enjoyable. We know there are lots of features still to add and lots of bugs to work out. If you encounter problems using imfp, please feel free to let us know by [opening a GitHub issue](https://github.com/Promptly-Technologies-LLC/imfp/issues), or even better—contributing a pull request! We’re excited to see what you’ll create using `imfp`.
+
+Happy coding, and here’s to furthering open, transparent research—one dataset at a time.

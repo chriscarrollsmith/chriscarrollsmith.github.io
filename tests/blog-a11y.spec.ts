@@ -31,7 +31,9 @@ test.describe('Blog pages accessibility', () => {
   });
 
   test('blog post has no Axe-core accessibility violations', async ({ page }) => {
-    await page.goto('/blog/1');
+    // Use the canonical slug route rather than a legacy numeric path.
+    // Legacy numeric paths may intentionally trigger a redirect-like flow.
+    await page.goto('/blog/xor-encryption');
 
     const results = await new AxeBuilder({ page })
       .withTags(['wcag2a', 'wcag2aa'])

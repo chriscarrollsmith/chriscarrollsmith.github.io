@@ -1,0 +1,58 @@
+.container {
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-light);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  margin: 1.5rem 0;
+}
+
+.xor-demo-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.operation-btn {
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  color: var(--color-text);
+  padding: 0.4rem 0.75rem;
+  border-radius: 999px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.operation-btn.is-active {
+  background: var(--color-link);
+  color: var(--color-bg);
+  border-color: transparent;
+}
+
+.xor-demo-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0.5rem 0 1rem 0;
+}
+
+.xor-demo-table th,
+.xor-demo-table td {
+  border: 1px solid var(--color-border);
+  padding: 0.5rem;
+  text-align: center;
+}
+
+.balance-info {
+  border-top: 1px solid var(--color-border);
+  padding-top: 0.75rem;
+}
+
+.balance-info p {
+  margin: 0.25rem 0;
+}
+
+.balance-description {
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+

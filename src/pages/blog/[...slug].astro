@@ -1,0 +1,147 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import HeaderAstro from '../../components/HeaderAstro.astro';
+import Footer from '../../components/Footer.tsx';
+import '../../components/Blog.css';
+import '../../components/BlogPost.css';
+import 'prismjs/themes/prism-tomorrow.css';
+
+import { getCollection, render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  const paths: Array<{ params: { slug: string } }> = [];
+
+  for (const post of posts) {
+    paths.push({ params: { slug: post.slug } });
+    if (post.data.legacyId !== undefined) {
+      paths.push({ params: { slug: String(post.data.legacyId) } });
+    }
+  }
+
+  return paths;
+}
+
+const slugParam = Astro.params.slug;
+const slug = Array.isArray(slugParam) ? slugParam.join('/') : slugParam ?? '';
+
+const posts = (await getCollection('blog')) as CollectionEntry<'blog'>[];
+const legacyTarget = posts.find(
+  (p: CollectionEntry<'blog'>) => p.data.legacyId !== undefined && String(p.data.legacyId) === slug,
+);
+const post = legacyTarget ?? posts.find((p: CollectionEntry<'blog'>) => p.slug === slug);
+
+if (!post) {
+  throw new Error(`Blog post not found for slug: ${slug}`);
+}
+
+const isLegacyRedirect = legacyTarget !== undefined && legacyTarget.slug !== slug;
+const targetPath = `/blog/${post.slug}`;
+const canonicalURL = new URL(targetPath, 'https://christophercarrollsmith.com').href;
+
+const pageTitle = `${post.data.title.slice(0, 60)} | Christopher Carroll Smith`;
+const pageDescription = post.data.excerpt.slice(0, 155) + '...';
+const pageImage = post.data.image || '/images/Chris_landscape.jpg';
+
+// Schema.org structured data for the article (only on canonical pages)
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.data.title,
+  description: post.data.excerpt,
+  image: pageImage,
+  datePublished: post.data.date,
+  dateModified: post.data.date,
+  author: {
+    '@type': 'Person',
+    name: 'Christopher Carroll Smith',
+    url: 'https://christophercarrollsmith.com',
+  },
+  publisher: {
+    '@type': 'Person',
+    name: 'Christopher Carroll Smith',
+    url: 'https://christophercarrollsmith.com',
+  },
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': canonicalURL,
+  },
+};
+
+const { Content } = await render(post);
+
+function sourceLabel(url: string): string {
+  if (url.includes('substack.com')) return 'Substack';
+  if (url.includes('youtube.com') || url.includes('youtu.be')) return 'YouTube';
+  return 'the original source';
+}
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  image={pageImage}
+  type="article"
+  canonicalURL={canonicalURL}
+>
+  <Fragment slot="head">
+    {isLegacyRedirect && (
+      <>
+        <meta http-equiv="refresh" content={`0; url=${targetPath}`} />
+        <meta name="robots" content="noindex,follow" />
+      </>
+    )}
+
+    {!isLegacyRedirect && (
+      <>
+        <meta property="article:published_time" content={post.data.date} />
+        <meta property="article:modified_time" content={post.data.date} />
+        <meta property="article:author" content="Christopher Carroll Smith" />
+        <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+      </>
+    )}
+  </Fragment>
+
+  <div class="App">
+    <HeaderAstro />
+    <div class="blog-container">
+      <article class="blog-post">
+        {isLegacyRedirect ? (
+          <>
+            <h1>Redirecting…</h1>
+            <p>
+              This post has moved to <a href={targetPath}>{targetPath}</a>.
+            </p>
+          </>
+        ) : (
+          <>
+            <h1>{post.data.title}</h1>
+            <div class="post-meta">
+              <time datetime={post.data.date}>{new Date(post.data.date).toLocaleDateString()}</time>
+              <span class="author-byline">By Christopher Carroll Smith</span>
+              {post.data.sourceUrl && (
+                <span class="source-attribution">
+                  · Originally published on <a href={post.data.sourceUrl}>{sourceLabel(post.data.sourceUrl)}</a>
+                </span>
+              )}
+            </div>
+            <p class="post-abstract">{post.data.excerpt}</p>
+            <Content />
+          </>
+        )}
+      </article>
+    </div>
+    <Footer client:load />
+  </div>
+
+  {!isLegacyRedirect && (
+    <script>
+      import Prism from 'prismjs';
+      import 'prismjs/components/prism-python';
+
+      Prism.highlightAll();
+    </script>
+  )}
+</BaseLayout>
+

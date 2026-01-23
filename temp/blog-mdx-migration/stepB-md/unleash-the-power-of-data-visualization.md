@@ -1,0 +1,107 @@
+Python is the ultimate tool for accessing and analyzing data and quickly and reproducibly generating beautiful data visualizations. But let's face it: learning Python can be a real pain in the graphs. Unless you're some kind of computer programming prodigy, it can take months or even years to master the ins and outs of this powerful programming language.
+
+Enter [ChatGPT](https://chat.openai.com/chat): the AI sidekick that can generate Python scripts that you can repeatably run on your computer even if you have zero programming experience. All you need is Python, a Python IDE, and the necessary libraries installed on your computer. In this post, written with the assistance of ChatGPT, I’ll walk you through the setup. In just five easy steps, you'll be creating stunning data visualizations that will make the jocks steal your lunch money and call you “nerd.”
+
+So get cozy, grab a cup of coffee, and let ChatGPT be your guide on an adventure full of indecipherable code, mysterious figures, and twisty plots!
+
+# **Step 1: Installing Python and Spyder**
+
+First things first: you’ll need to have Python and an IDE (interactive development environment) installed on your computer. Don't worry if you have no idea what I’m talking about. We’ll use an easy-to-install distribution package called Anaconda, which includes both Python and the Spyder IDE.
+
+To install Python and Spyder, follow these two simple steps:
+
+1.  Go to the **[Anaconda website](https://www.anaconda.com/products/distribution)** and download the latest version of Anaconda for your operating system.
+
+2.  Run the Anaconda installer and follow the on-screen instructions. (Note: to avoid frustration later, select the option to install for “Just Me!”)
+
+That's it! You're now ready to install the necessary Python libraries.
+
+# Step 2: Installing pandas, matplotlib, and other libraries
+
+Before you can use ChatGPT to generate Python scripts for data visualization, you'll need to install some Python libraries on your computer. The most important libraries for data visualization are pandas and matplotlib, which provide tools for loading, manipulating, and visualizing data.
+
+To install pandas and matplotlib, follow these steps:
+
+1.  Open Spyder. In Windows, you can find Spyder by typing “Spyder” into the “Search” box on the Windows taskbar.
+
+2.  In the lower right-hand pane of Spyder, known as the “console,” type the following command:
+
+    `conda install pandas matplotlib`
+
+Installation may take a minute or two, but when it’s finished, the console should output a message indicating that the libraries have successfully installed.
+
+# Step 3: Finding data sources that are easily accessible through a Python library or API
+
+Finding data sources that can be downloaded through Python is undoubtedly the hardest step, because it will require a little research on your part. You’ll need to know what kind of data you’re looking for, and you’ll need to ask either Google or ChatGPT to identify sources of that type of data that can easily be accessed through Python. Ideally, you’ll find a library that can pull in the data automatically. For illustration purposes, we’ll use the “yfinance” library for stock market data.
+
+1.  Once you’ve identified the library you want, search the [Anaconda Forge](https://anaconda.org/conda-forge/matplotlib) website for the library name.
+
+2.  Find and click your library in the search results.
+
+3.  You will see a page that says, “To install this package run one of the following.” Copy and paste one of these into the Spyder console. For yfinance, we’ll use:
+
+    `conda install -c conda-forge yfinance`
+
+4.  From the “Consoles” menu, select “Restart kernel.”
+
+Great! You’re ready to have ChatGPT write you a Python script!
+
+# **Step 4: Have ChatGPT write a script to access and plot the data you want**
+
+To have the chatbot create a Python script for you, navigate to the [ChatGPT](https://chat.openai.com/chat) page. In designing your prompt, you’ll want to ask for a Python script that 1) accesses data from a specific source, and 2) generates a data visualization from the data according to your specifications.
+
+For illustration purposes, I asked ChatGPT to “Write a python script using the yfinance package to get historical S&P 500 price data and generate an attractive data visualization of annual S&P 500 price return from 2000 to 2021.”
+
+The bot returned this result:
+
+<div class="captioned-image-container">
+
+<figure>
+<a href="https://substackcdn.com/image/fetch/$s_!fn1f!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F4e36da95-ece7-4a2b-9501-3c341f84ad3d_937x666.jpeg" class="image-link image2 is-viewable-img" target="_blank" data-component-name="Image2ToDOM"></a>
+<div class="image2-inset">
+<img src="https://substackcdn.com/image/fetch/$s_!fn1f!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F4e36da95-ece7-4a2b-9501-3c341f84ad3d_937x666.jpeg" class="sizing-normal" data-attrs="{&quot;src&quot;:&quot;https://bucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com/public/images/4e36da95-ece7-4a2b-9501-3c341f84ad3d_937x666.jpeg&quot;,&quot;srcNoWatermark&quot;:null,&quot;fullscreen&quot;:null,&quot;imageSize&quot;:null,&quot;height&quot;:666,&quot;width&quot;:937,&quot;resizeWidth&quot;:null,&quot;bytes&quot;:109937,&quot;alt&quot;:null,&quot;title&quot;:null,&quot;type&quot;:&quot;image/jpeg&quot;,&quot;href&quot;:null,&quot;belowTheFold&quot;:true,&quot;topImage&quot;:false,&quot;internalRedirect&quot;:null,&quot;isProcessing&quot;:false,&quot;align&quot;:null,&quot;offset&quot;:false}" srcset="https://substackcdn.com/image/fetch/$s_!fn1f!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F4e36da95-ece7-4a2b-9501-3c341f84ad3d_937x666.jpeg 424w, https://substackcdn.com/image/fetch/$s_!fn1f!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F4e36da95-ece7-4a2b-9501-3c341f84ad3d_937x666.jpeg 848w, https://substackcdn.com/image/fetch/$s_!fn1f!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F4e36da95-ece7-4a2b-9501-3c341f84ad3d_937x666.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!fn1f!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F4e36da95-ece7-4a2b-9501-3c341f84ad3d_937x666.jpeg 1456w" sizes="100vw" loading="lazy" width="937" height="666" />
+<div class="image-link-expand">
+<div class="pencraft pc-display-flex pc-gap-8 pc-reset">
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld2JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXJlZnJlc2gtY3ciPjxwYXRoIGQ9Ik0zIDEyYTkgOSAwIDAgMSA5LTkgOS43NSA5Ljc1IDAgMCAxIDYuNzQgMi43NEwyMSA4Ij48L3BhdGg+PHBhdGggZD0iTTIxIDN2NWgtNSI+PC9wYXRoPjxwYXRoIGQ9Ik0yMSAxMmE5IDkgMCAwIDEtOSA5IDkuNzUgOS43NSAwIDAgMS02Ljc0LTIuNzRMMyAxNiI+PC9wYXRoPjxwYXRoIGQ9Ik04IDE2SDN2NSI+PC9wYXRoPjwvc3ZnPg==" class="lucide lucide-refresh-cw" />
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld2JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLW1heGltaXplMiBsdWNpZGUtbWF4aW1pemUtMiI+PHBvbHlsaW5lIHBvaW50cz0iMTUgMyAyMSAzIDIxIDkiPjwvcG9seWxpbmU+PHBvbHlsaW5lIHBvaW50cz0iOSAyMSAzIDIxIDMgMTUiPjwvcG9seWxpbmU+PGxpbmUgeDE9IjIxIiB4Mj0iMTQiIHkxPSIzIiB5Mj0iMTAiPjwvbGluZT48bGluZSB4MT0iMyIgeDI9IjEwIiB5MT0iMjEiIHkyPSIxNCI+PC9saW5lPjwvc3ZnPg==" class="lucide lucide-maximize2 lucide-maximize-2" />
+</div>
+</div>
+</div>
+</figure>
+
+</div>
+
+Try this prompt for yourself in ChatGPT now! To copy code generated by the chat bot, simply click the “Copy code” button provided in the upper right corner of your results.
+
+# Step 5: Save and run your script in Spyder, and view and save your plot
+
+The left-hand pane in Spyder is a blank Python script. Paste your copied code into this pane. You’ll probably want to save your script in case you want to run it more than once. (For instance, stock market data is updated daily, so you can run stock charting scripts every day to get updated charts.) Above the pane where you pasted your code, you’ll find a floppy disk icon. If you hover your mouse cursor over the icon, you’ll see the floating text, “Save your file.” Click the button to save your script. You know the drill.
+
+To the right of the “Save” button is a green triangle icon. This is the button to run your script. If you click this button, Python will execute your code.
+
+You’ll view your results in the top-right pane. If you don’t see your your generated plot, it’s probably because you need to click over to the “Plots” tab using the buttons beneath the pane. Once you’ve generated your plot, you can right-click it to copy it or save it as an image file.
+
+Check out the cool plot we generated with our stock market script! For any given date from 2000 to 2021, the plot shows the next-twelve months percent return for the S&P 500 stock index. For instance, if you bought the S&P 500 at the recession low in 2009, you made over 60% over the next year. And if you bought it at the pandemic low in March 2020, you made even more!
+
+<div class="captioned-image-container">
+
+<figure>
+<a href="https://substackcdn.com/image/fetch/$s_!7LIU!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F3eedb8a9-a48b-4d46-b128-05a6fb17e3af_406x278.png" class="image-link image2 is-viewable-img" target="_blank" data-component-name="Image2ToDOM"></a>
+<div class="image2-inset">
+<img src="https://substackcdn.com/image/fetch/$s_!7LIU!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F3eedb8a9-a48b-4d46-b128-05a6fb17e3af_406x278.png" class="sizing-normal" data-attrs="{&quot;src&quot;:&quot;https://bucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com/public/images/3eedb8a9-a48b-4d46-b128-05a6fb17e3af_406x278.png&quot;,&quot;srcNoWatermark&quot;:null,&quot;fullscreen&quot;:null,&quot;imageSize&quot;:null,&quot;height&quot;:278,&quot;width&quot;:406,&quot;resizeWidth&quot;:null,&quot;bytes&quot;:24094,&quot;alt&quot;:null,&quot;title&quot;:null,&quot;type&quot;:&quot;image/png&quot;,&quot;href&quot;:null,&quot;belowTheFold&quot;:true,&quot;topImage&quot;:false,&quot;internalRedirect&quot;:null,&quot;isProcessing&quot;:false,&quot;align&quot;:null,&quot;offset&quot;:false}" srcset="https://substackcdn.com/image/fetch/$s_!7LIU!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F3eedb8a9-a48b-4d46-b128-05a6fb17e3af_406x278.png 424w, https://substackcdn.com/image/fetch/$s_!7LIU!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F3eedb8a9-a48b-4d46-b128-05a6fb17e3af_406x278.png 848w, https://substackcdn.com/image/fetch/$s_!7LIU!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F3eedb8a9-a48b-4d46-b128-05a6fb17e3af_406x278.png 1272w, https://substackcdn.com/image/fetch/$s_!7LIU!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F3eedb8a9-a48b-4d46-b128-05a6fb17e3af_406x278.png 1456w" sizes="100vw" loading="lazy" width="406" height="278" />
+<div class="image-link-expand">
+<div class="pencraft pc-display-flex pc-gap-8 pc-reset">
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld2JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXJlZnJlc2gtY3ciPjxwYXRoIGQ9Ik0zIDEyYTkgOSAwIDAgMSA5LTkgOS43NSA5Ljc1IDAgMCAxIDYuNzQgMi43NEwyMSA4Ij48L3BhdGg+PHBhdGggZD0iTTIxIDN2NWgtNSI+PC9wYXRoPjxwYXRoIGQ9Ik0yMSAxMmE5IDkgMCAwIDEtOSA5IDkuNzUgOS43NSAwIDAgMS02Ljc0LTIuNzRMMyAxNiI+PC9wYXRoPjxwYXRoIGQ9Ik04IDE2SDN2NSI+PC9wYXRoPjwvc3ZnPg==" class="lucide lucide-refresh-cw" />
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld2JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLW1heGltaXplMiBsdWNpZGUtbWF4aW1pemUtMiI+PHBvbHlsaW5lIHBvaW50cz0iMTUgMyAyMSAzIDIxIDkiPjwvcG9seWxpbmU+PHBvbHlsaW5lIHBvaW50cz0iOSAyMSAzIDIxIDMgMTUiPjwvcG9seWxpbmU+PGxpbmUgeDE9IjIxIiB4Mj0iMTQiIHkxPSIzIiB5Mj0iMTAiPjwvbGluZT48bGluZSB4MT0iMyIgeDI9IjEwIiB5MT0iMjEiIHkyPSIxNCI+PC9saW5lPjwvc3ZnPg==" class="lucide lucide-maximize2 lucide-maximize-2" />
+</div>
+</div>
+</div>
+</figure>
+
+</div>
+
+# Conclusion
+
+Used in combination with Python, ChatGPT is an incredibly versatile and beginner-friendly tool. Once you’ve unlocked your secret power to execute Python scripts with no prior coding knowledge, you’ll never go back. You’re sure to get hooked on the intoxicating power that comes with being able to pretend you know what you’re doing. Mua ha ha!
+
+No, seriously, though, this is a great tool for data science dabblers or amateurs just starting to get into Python. Not only can ChatGPT write simple Python scripts, but it also does a great job of teaching, explaining, and debugging code. In fact, if you run into trouble following the instructions in this post, I highly recommend asking the bot for advice. You’ll generate your first plot with no prior Python knowledge; but after several trials and with a little effort, you may soon find you can understand and write some code yourself!

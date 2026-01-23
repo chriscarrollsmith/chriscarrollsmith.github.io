@@ -1,0 +1,29 @@
+<div class="video-container" style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;max-width:100%;margin:1.5rem 0;">
+
+<div class="iframe">
+
+<div id="player">
+
+</div>
+
+<div class="player-unavailable">
+
+# An error occurred.
+
+<div class="submessage">
+
+Unable to execute JavaScript.
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+A demo presentation I gave on Simon Willison's incredible \`llm\` command-line tool at the Coders' Colaboratory mini-hackathon in Latham, NY on July 5, 2025.
+
+Demo notebook from the video: <a href="https://gist.github.com/chriscarrollsmith/4670b8466e19e77723327cb555f638e6" target="_blank" rel="noopener">https://gist.github.com/chriscarrollsmith/4670b8466e19e77723327cb555f638e6</a>
+
+LLM website: <a href="https://llm.datasette.io/" target="_blank" rel="noopener">https://llm.datasette.io/</a>

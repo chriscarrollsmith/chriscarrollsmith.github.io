@@ -1,0 +1,27 @@
+<div class="video-container" style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;max-width:100%;margin:1.5rem 0;">
+
+<div class="iframe">
+
+<div id="player">
+
+</div>
+
+<div class="player-unavailable">
+
+# An error occurred.
+
+<div class="submessage">
+
+Unable to execute JavaScript.
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+All the kids are talking about Claude Code. Maybe you've heard of it. But did you know you can use it to write R code right inside of RStudio? No more messing with Cursor to try to get it to play nice with your R dependencies; just you and Claude in the comfortable editor you know and love: <a href="https://posit.co/download/rstudio-desktop/." target="_blank" rel="noopener">https://posit.co/download/rstudio-desktop/.</a>
+
+Here is the \`CLAUDE.md\` file we create during the video: <a href="https://github.com/Teal-Insights/r-wbids/blob/73-add-documentation-for-contributors/CLAUDE.md" target="_blank" rel="noopener">https://github.com/Teal-Insights/r-wbids/blob/73-add-documentation-for-contributors/CLAUDE.md</a>

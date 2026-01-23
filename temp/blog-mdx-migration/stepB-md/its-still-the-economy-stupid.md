@@ -1,0 +1,270 @@
+"Why is Biden losing even though economic data are strong? Must be his age."
+
+No, listen. It's the economy. It's always the economy. This is all American voters care about. Sorry, I don't make the rules.
+
+There's no question the headline numbers look good. GDP is rising. Unemployment is low. Real wages are reported to be rising for the working class.
+
+<div class="image-gallery-embed" attrs="{&quot;gallery&quot;:{&quot;images&quot;:[{&quot;type&quot;:&quot;image/png&quot;,&quot;src&quot;:&quot;https://substack-post-media.s3.amazonaws.com/public/images/c9aa40bc-fb78-434b-b946-c12421f1bf41_805x544.png&quot;},{&quot;type&quot;:&quot;image/png&quot;,&quot;src&quot;:&quot;https://substack-post-media.s3.amazonaws.com/public/images/901d154e-d18b-49d5-a007-52122f52502d_802x508.png&quot;},{&quot;type&quot;:&quot;image/jpeg&quot;,&quot;src&quot;:&quot;https://substack-post-media.s3.amazonaws.com/public/images/c7c6d15e-8a80-4682-bc31-090aad31cc9f_1088x1121.jpeg&quot;}],&quot;caption&quot;:&quot;Headline data imply that consumers are in stellar shape. Sources: FRED, The Economist&quot;,&quot;alt&quot;:&quot;US GDP is soaring, US unemployment is near multi-decade lows, and \&quot;real wages\&quot; for the bottom 10% are growing fast&quot;,&quot;staticGalleryImage&quot;:{&quot;type&quot;:&quot;image/png&quot;,&quot;src&quot;:&quot;https://substack-post-media.s3.amazonaws.com/public/images/7561de74-af60-4e33-a688-0b9ba2637bdf_1456x474.png&quot;}},&quot;isEditorNode&quot;:true}">
+
+</div>
+
+Yet there’s a large divergence between these headline economic numbers and consumer sentiment, which throughout Joe Biden’s presidential term has been depressed.
+
+<div class="captioned-image-container">
+
+<figure>
+<a href="https://substackcdn.com/image/fetch/$s_!VpgA!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F870c037f-9f50-4ba3-b555-50baaac19d49_807x544.png" class="image-link image2 is-viewable-img" target="_blank" data-component-name="Image2ToDOM"></a>
+<div class="image2-inset">
+<img src="https://substackcdn.com/image/fetch/$s_!VpgA!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F870c037f-9f50-4ba3-b555-50baaac19d49_807x544.png" title="FRED series for University of Michigan consumer sentiment, showing current sentiment below 80" class="sizing-normal" data-attrs="{&quot;src&quot;:&quot;https://substack-post-media.s3.amazonaws.com/public/images/870c037f-9f50-4ba3-b555-50baaac19d49_807x544.png&quot;,&quot;srcNoWatermark&quot;:null,&quot;fullscreen&quot;:null,&quot;imageSize&quot;:null,&quot;height&quot;:544,&quot;width&quot;:807,&quot;resizeWidth&quot;:null,&quot;bytes&quot;:73350,&quot;alt&quot;:&quot;FRED series for University of Michigan consumer sentiment, showing current sentiment below 80&quot;,&quot;title&quot;:null,&quot;type&quot;:&quot;image/png&quot;,&quot;href&quot;:null,&quot;belowTheFold&quot;:false,&quot;topImage&quot;:true,&quot;internalRedirect&quot;:null,&quot;isProcessing&quot;:false,&quot;align&quot;:null,&quot;offset&quot;:false}" srcset="https://substackcdn.com/image/fetch/$s_!VpgA!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F870c037f-9f50-4ba3-b555-50baaac19d49_807x544.png 424w, https://substackcdn.com/image/fetch/$s_!VpgA!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F870c037f-9f50-4ba3-b555-50baaac19d49_807x544.png 848w, https://substackcdn.com/image/fetch/$s_!VpgA!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F870c037f-9f50-4ba3-b555-50baaac19d49_807x544.png 1272w, https://substackcdn.com/image/fetch/$s_!VpgA!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F870c037f-9f50-4ba3-b555-50baaac19d49_807x544.png 1456w" sizes="100vw" data-fetchpriority="high" width="807" height="544" alt="FRED series for University of Michigan consumer sentiment, showing current sentiment below 80" />
+<div class="image-link-expand">
+<div class="pencraft pc-display-flex pc-gap-8 pc-reset">
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld2JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXJlZnJlc2gtY3ciPjxwYXRoIGQ9Ik0zIDEyYTkgOSAwIDAgMSA5LTkgOS43NSA5Ljc1IDAgMCAxIDYuNzQgMi43NEwyMSA4Ij48L3BhdGg+PHBhdGggZD0iTTIxIDN2NWgtNSI+PC9wYXRoPjxwYXRoIGQ9Ik0yMSAxMmE5IDkgMCAwIDEtOSA5IDkuNzUgOS43NSAwIDAgMS02Ljc0LTIuNzRMMyAxNiI+PC9wYXRoPjxwYXRoIGQ9Ik04IDE2SDN2NSI+PC9wYXRoPjwvc3ZnPg==" class="lucide lucide-refresh-cw" />
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld2JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLW1heGltaXplMiBsdWNpZGUtbWF4aW1pemUtMiI+PHBvbHlsaW5lIHBvaW50cz0iMTUgMyAyMSAzIDIxIDkiPjwvcG9seWxpbmU+PHBvbHlsaW5lIHBvaW50cz0iOSAyMSAzIDIxIDMgMTUiPjwvcG9seWxpbmU+PGxpbmUgeDE9IjIxIiB4Mj0iMTQiIHkxPSIzIiB5Mj0iMTAiPjwvbGluZT48bGluZSB4MT0iMyIgeDI9IjEwIiB5MT0iMjEiIHkyPSIxNCI+PC9saW5lPjwvc3ZnPg==" class="lucide lucide-maximize2 lucide-maximize-2" />
+</div>
+</div>
+</div>
+<figcaption>Consumer sentiment plumbed recessionary lows in 2022 and has only partially recovered. Source: FRED</figcaption>
+</figure>
+
+</div>
+
+Similarly, for a president apparently presiding over an economic boom, Biden’s approval ratings have been persistently poor.
+
+<div class="captioned-image-container">
+
+<figure>
+<a href="https://substackcdn.com/image/fetch/$s_!rOCR!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1e77bfdc-817b-4319-87df-fc6c9a0ac0fc_812x523.png" class="image-link image2 is-viewable-img" target="_blank" data-component-name="Image2ToDOM"></a>
+<div class="image2-inset">
+<img src="https://substackcdn.com/image/fetch/$s_!rOCR!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1e77bfdc-817b-4319-87df-fc6c9a0ac0fc_812x523.png" class="sizing-normal" data-attrs="{&quot;src&quot;:&quot;https://substack-post-media.s3.amazonaws.com/public/images/1e77bfdc-817b-4319-87df-fc6c9a0ac0fc_812x523.png&quot;,&quot;srcNoWatermark&quot;:null,&quot;fullscreen&quot;:null,&quot;imageSize&quot;:null,&quot;height&quot;:523,&quot;width&quot;:812,&quot;resizeWidth&quot;:null,&quot;bytes&quot;:124992,&quot;alt&quot;:null,&quot;title&quot;:null,&quot;type&quot;:&quot;image/png&quot;,&quot;href&quot;:null,&quot;belowTheFold&quot;:false,&quot;topImage&quot;:false,&quot;internalRedirect&quot;:null,&quot;isProcessing&quot;:false,&quot;align&quot;:null,&quot;offset&quot;:false}" srcset="https://substackcdn.com/image/fetch/$s_!rOCR!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1e77bfdc-817b-4319-87df-fc6c9a0ac0fc_812x523.png 424w, https://substackcdn.com/image/fetch/$s_!rOCR!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1e77bfdc-817b-4319-87df-fc6c9a0ac0fc_812x523.png 848w, https://substackcdn.com/image/fetch/$s_!rOCR!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1e77bfdc-817b-4319-87df-fc6c9a0ac0fc_812x523.png 1272w, https://substackcdn.com/image/fetch/$s_!rOCR!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1e77bfdc-817b-4319-87df-fc6c9a0ac0fc_812x523.png 1456w" sizes="100vw" width="812" height="523" />
+<div class="image-link-expand">
+<div class="pencraft pc-display-flex pc-gap-8 pc-reset">
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld2JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXJlZnJlc2gtY3ciPjxwYXRoIGQ9Ik0zIDEyYTkgOSAwIDAgMSA5LTkgOS43NSA5Ljc1IDAgMCAxIDYuNzQgMi43NEwyMSA4Ij48L3BhdGg+PHBhdGggZD0iTTIxIDN2NWgtNSI+PC9wYXRoPjxwYXRoIGQ9Ik0yMSAxMmE5IDkgMCAwIDEtOSA5IDkuNzUgOS43NSAwIDAgMS02Ljc0LTIuNzRMMyAxNiI+PC9wYXRoPjxwYXRoIGQ9Ik04IDE2SDN2NSI+PC9wYXRoPjwvc3ZnPg==" class="lucide lucide-refresh-cw" />
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld2JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLW1heGltaXplMiBsdWNpZGUtbWF4aW1pemUtMiI+PHBvbHlsaW5lIHBvaW50cz0iMTUgMyAyMSAzIDIxIDkiPjwvcG9seWxpbmU+PHBvbHlsaW5lIHBvaW50cz0iOSAyMSAzIDIxIDMgMTUiPjwvcG9seWxpbmU+PGxpbmUgeDE9IjIxIiB4Mj0iMTQiIHkxPSIzIiB5Mj0iMTAiPjwvbGluZT48bGluZSB4MT0iMyIgeDI9IjEwIiB5MT0iMjEiIHkyPSIxNCI+PC9saW5lPjwvc3ZnPg==" class="lucide lucide-maximize2 lucide-maximize-2" />
+</div>
+</div>
+</div>
+<figcaption>Over 55% of voters disapprove of Joe Biden, while only 39% approve. Source: Five Thirty Eight</figcaption>
+</figure>
+
+</div>
+
+Confronted with such “alternative” data, many Progressives insist that there is “no recession,” that consumers have it better than ever, and that the reasons for the divergence between headline measures and sentiment are purely behavioral.
+
+<div class="captioned-image-container">
+
+<figure>
+<a href="https://substackcdn.com/image/fetch/$s_!RYPa!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6d65b9cb-cd06-4933-97f6-9696dd0f16ec_500x500.jpeg" class="image-link image2 is-viewable-img" target="_blank" data-component-name="Image2ToDOM"></a>
+<div class="image2-inset">
+<img src="https://substackcdn.com/image/fetch/$s_!RYPa!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6d65b9cb-cd06-4933-97f6-9696dd0f16ec_500x500.jpeg" title="Man pointing in a mirror asking, &quot;Could our economic measures be missing something? No, it&#39;s the consumer who is wrong.&quot;" class="sizing-normal" data-attrs="{&quot;src&quot;:&quot;https://substack-post-media.s3.amazonaws.com/public/images/6d65b9cb-cd06-4933-97f6-9696dd0f16ec_500x500.jpeg&quot;,&quot;srcNoWatermark&quot;:null,&quot;fullscreen&quot;:null,&quot;imageSize&quot;:null,&quot;height&quot;:500,&quot;width&quot;:500,&quot;resizeWidth&quot;:null,&quot;bytes&quot;:68810,&quot;alt&quot;:&quot;Man pointing in a mirror asking, \&quot;Could our economic measures be missing something? No, it&#39;s the consumer who is wrong.\&quot;&quot;,&quot;title&quot;:null,&quot;type&quot;:&quot;image/jpeg&quot;,&quot;href&quot;:null,&quot;belowTheFold&quot;:true,&quot;topImage&quot;:false,&quot;internalRedirect&quot;:null,&quot;isProcessing&quot;:false,&quot;align&quot;:null,&quot;offset&quot;:false}" srcset="https://substackcdn.com/image/fetch/$s_!RYPa!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6d65b9cb-cd06-4933-97f6-9696dd0f16ec_500x500.jpeg 424w, https://substackcdn.com/image/fetch/$s_!RYPa!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6d65b9cb-cd06-4933-97f6-9696dd0f16ec_500x500.jpeg 848w, https://substackcdn.com/image/fetch/$s_!RYPa!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6d65b9cb-cd06-4933-97f6-9696dd0f16ec_500x500.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!RYPa!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6d65b9cb-cd06-4933-97f6-9696dd0f16ec_500x500.jpeg 1456w" sizes="100vw" loading="lazy" width="500" height="500" alt="Man pointing in a mirror asking, &quot;Could our economic measures be missing something? No, it&#39;s the consumer who is wrong.&quot;" />
+<div class="image-link-expand">
+<div class="pencraft pc-display-flex pc-gap-8 pc-reset">
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld2JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXJlZnJlc2gtY3ciPjxwYXRoIGQ9Ik0zIDEyYTkgOSAwIDAgMSA5LTkgOS43NSA5Ljc1IDAgMCAxIDYuNzQgMi43NEwyMSA4Ij48L3BhdGg+PHBhdGggZD0iTTIxIDN2NWgtNSI+PC9wYXRoPjxwYXRoIGQ9Ik0yMSAxMmE5IDkgMCAwIDEtOSA5IDkuNzUgOS43NSAwIDAgMS02Ljc0LTIuNzRMMyAxNiI+PC9wYXRoPjxwYXRoIGQ9Ik04IDE2SDN2NSI+PC9wYXRoPjwvc3ZnPg==" class="lucide lucide-refresh-cw" />
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld2JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLW1heGltaXplMiBsdWNpZGUtbWF4aW1pemUtMiI+PHBvbHlsaW5lIHBvaW50cz0iMTUgMyAyMSAzIDIxIDkiPjwvcG9seWxpbmU+PHBvbHlsaW5lIHBvaW50cz0iOSAyMSAzIDIxIDMgMTUiPjwvcG9seWxpbmU+PGxpbmUgeDE9IjIxIiB4Mj0iMTQiIHkxPSIzIiB5Mj0iMTAiPjwvbGluZT48bGluZSB4MT0iMyIgeDI9IjEwIiB5MT0iMjEiIHkyPSIxNCI+PC9saW5lPjwvc3ZnPg==" class="lucide lucide-maximize2 lucide-maximize-2" />
+</div>
+</div>
+</div>
+<figcaption>Did Progressives gaslight themselves into running an unpopular candidate?</figcaption>
+</figure>
+
+</div>
+
+There is some plausibility to this Progressive narrative blaming political messaging or cognitive bias for creating a misperception. Proponents cite [surveys](https://www.axios.com/2023/08/18/americans-economy-bad-personal-finances-good) showing Americans are more upbeat about their personal finances than the national economy, with 60% saying their finances are good, but 71% saying the economy is poor.
+
+One could even argue that this is rational. Consumers prefer price stability, even when wages grow faster than prices, because price instability creates uncertainty about the future. Consumers lack confidence that, if inflation continues, their wages will continue to keep up.
+
+But this is not the whole story. When headline numbers diverge this much from the wisdom of crowds, you can either shout down the crowd, or you can take a hard look at your headline measures. When we take the latter approach, we find that the headline data misses some important nuances about the current economy.
+
+## Limitations of the headline metrics
+
+There are three important ways in which the headline GDP and unemployment numbers misrepresent the current economic reality:
+
+1.  Headline metrics exclude borrowing costs.
+
+2.  Headline metrics flatten differential inflation rates.
+
+3.  Headline metrics mask underlying labor market weakness.
+
+Let’s take these one at a time, in roughly order of importance.
+
+### 1. Headline metrics exclude borrowing costs
+
+As economist Lawrence Summers and his coauthors argue in a new [NBER paper](https://www.nber.org/papers/w32163), “the cost of money is part of the cost of living,” so it’s problematic that the Consumer Price Index (CPI) we use for measuring cost-of-living inflation doesn’t include borrowing costs. And since interest rates increased over the past year along with prices, borrowing costs are definitely up.
+
+In fact, if we construct an alternative measure of inflation that includes borrowing costs, inflation last year looks catastrophically worse. Summers and his coauthors estimate that inflation peaked at over 18%, and that year-over-year growth of personal interest payments exceeded 60%.
+
+<div class="captioned-image-container">
+
+<figure>
+<a href="https://substackcdn.com/image/fetch/$s_!OhKV!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8fece249-88f4-49fd-8446-bcf8d9092306_3900x2284.jpeg" class="image-link image2 is-viewable-img" target="_blank" data-component-name="Image2ToDOM"></a>
+<div class="image2-inset">
+<img src="https://substackcdn.com/image/fetch/$s_!OhKV!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8fece249-88f4-49fd-8446-bcf8d9092306_3900x2284.jpeg" title="A chart from Summers&#39; NBER paper shows estimated CPI using an alternative formula, with last year&#39;s peak above 18%" class="sizing-normal" data-attrs="{&quot;src&quot;:&quot;https://substack-post-media.s3.amazonaws.com/public/images/8fece249-88f4-49fd-8446-bcf8d9092306_3900x2284.jpeg&quot;,&quot;srcNoWatermark&quot;:null,&quot;fullscreen&quot;:null,&quot;imageSize&quot;:null,&quot;height&quot;:853,&quot;width&quot;:1456,&quot;resizeWidth&quot;:null,&quot;bytes&quot;:616116,&quot;alt&quot;:&quot;A chart from Summers&#39; NBER paper shows estimated CPI using an alternative formula, with last year&#39;s peak above 18%&quot;,&quot;title&quot;:null,&quot;type&quot;:&quot;image/jpeg&quot;,&quot;href&quot;:null,&quot;belowTheFold&quot;:true,&quot;topImage&quot;:false,&quot;internalRedirect&quot;:null,&quot;isProcessing&quot;:false,&quot;align&quot;:null,&quot;offset&quot;:false}" srcset="https://substackcdn.com/image/fetch/$s_!OhKV!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8fece249-88f4-49fd-8446-bcf8d9092306_3900x2284.jpeg 424w, https://substackcdn.com/image/fetch/$s_!OhKV!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8fece249-88f4-49fd-8446-bcf8d9092306_3900x2284.jpeg 848w, https://substackcdn.com/image/fetch/$s_!OhKV!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8fece249-88f4-49fd-8446-bcf8d9092306_3900x2284.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!OhKV!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8fece249-88f4-49fd-8446-bcf8d9092306_3900x2284.jpeg 1456w" sizes="100vw" loading="lazy" width="1456" height="853" alt="A chart from Summers&#39; NBER paper shows estimated CPI using an alternative formula, with last year&#39;s peak above 18%" />
+<div class="image-link-expand">
+<div class="pencraft pc-display-flex pc-gap-8 pc-reset">
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld2JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXJlZnJlc2gtY3ciPjxwYXRoIGQ9Ik0zIDEyYTkgOSAwIDAgMSA5LTkgOS43NSA5Ljc1IDAgMCAxIDYuNzQgMi43NEwyMSA4Ij48L3BhdGg+PHBhdGggZD0iTTIxIDN2NWgtNSI+PC9wYXRoPjxwYXRoIGQ9Ik0yMSAxMmE5IDkgMCAwIDEtOSA5IDkuNzUgOS43NSAwIDAgMS02Ljc0LTIuNzRMMyAxNiI+PC9wYXRoPjxwYXRoIGQ9Ik04IDE2SDN2NSI+PC9wYXRoPjwvc3ZnPg==" class="lucide lucide-refresh-cw" />
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld2JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLW1heGltaXplMiBsdWNpZGUtbWF4aW1pemUtMiI+PHBvbHlsaW5lIHBvaW50cz0iMTUgMyAyMSAzIDIxIDkiPjwvcG9seWxpbmU+PHBvbHlsaW5lIHBvaW50cz0iOSAyMSAzIDIxIDMgMTUiPjwvcG9seWxpbmU+PGxpbmUgeDE9IjIxIiB4Mj0iMTQiIHkxPSIzIiB5Mj0iMTAiPjwvbGluZT48bGluZSB4MT0iMyIgeDI9IjEwIiB5MT0iMjEiIHkyPSIxNCI+PC9saW5lPjwvc3ZnPg==" class="lucide lucide-maximize2 lucide-maximize-2" />
+</div>
+</div>
+</div>
+<figcaption>Adjusted for personal interest payments, CPI peaked last year above 18%. Source: NBER Working Paper 32163</figcaption>
+</figure>
+
+</div>
+
+They argue that this alternative inflation measure explains over 75% of the recent divergence between consumer sentiment and headline economic measures.
+
+### 2. Headline metrics flatten differential inflation rates
+
+About 2/3 of Americans own the house they live in, and homeowners are less affected by changes in housing prices than the 1/3 of Americans who rent the place they live. Unless a homeowner decides to move, housing fluctuations may affect their cost of living not at all.
+
+Yet when we “adjust” wages for inflation to measure “real wage growth” for different segments of the population, we always use a single inflation number, as if rich and poor have experienced the same inflation rate. The reality is that cost of living inflation is disproportionately borne by the bottom tercile of earners, the lion’s share of whom are renters. That makes charts like this one, that show “real hourly wages” increasing for the bottom decile, extremely misleading.
+
+<div class="captioned-image-container">
+
+<figure>
+<a href="https://substackcdn.com/image/fetch/$s_!CNDD!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd0a494ec-ede7-477f-b48b-b01a0fb7434c_1088x1121.jpeg" class="image-link image2 is-viewable-img" target="_blank" data-component-name="Image2ToDOM"></a>
+<div class="image2-inset">
+<img src="https://substackcdn.com/image/fetch/$s_!CNDD!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd0a494ec-ede7-477f-b48b-b01a0fb7434c_1088x1121.jpeg" title="A chart from The Economist shows the median real wage for the top decile flat since the pandemic, while the bottom decile&#39;s wages have boomed" class="sizing-normal" data-attrs="{&quot;src&quot;:&quot;https://substack-post-media.s3.amazonaws.com/public/images/d0a494ec-ede7-477f-b48b-b01a0fb7434c_1088x1121.jpeg&quot;,&quot;srcNoWatermark&quot;:null,&quot;fullscreen&quot;:null,&quot;imageSize&quot;:null,&quot;height&quot;:1121,&quot;width&quot;:1088,&quot;resizeWidth&quot;:null,&quot;bytes&quot;:100236,&quot;alt&quot;:&quot;A chart from The Economist shows the median real wage for the top decile flat since the pandemic, while the bottom decile&#39;s wages have boomed&quot;,&quot;title&quot;:null,&quot;type&quot;:&quot;image/jpeg&quot;,&quot;href&quot;:null,&quot;belowTheFold&quot;:true,&quot;topImage&quot;:false,&quot;internalRedirect&quot;:null,&quot;isProcessing&quot;:false,&quot;align&quot;:null,&quot;offset&quot;:false}" srcset="https://substackcdn.com/image/fetch/$s_!CNDD!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd0a494ec-ede7-477f-b48b-b01a0fb7434c_1088x1121.jpeg 424w, https://substackcdn.com/image/fetch/$s_!CNDD!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd0a494ec-ede7-477f-b48b-b01a0fb7434c_1088x1121.jpeg 848w, https://substackcdn.com/image/fetch/$s_!CNDD!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd0a494ec-ede7-477f-b48b-b01a0fb7434c_1088x1121.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!CNDD!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd0a494ec-ede7-477f-b48b-b01a0fb7434c_1088x1121.jpeg 1456w" sizes="100vw" loading="lazy" width="1088" height="1121" alt="A chart from The Economist shows the median real wage for the top decile flat since the pandemic, while the bottom decile&#39;s wages have boomed" />
+<div class="image-link-expand">
+<div class="pencraft pc-display-flex pc-gap-8 pc-reset">
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld2JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXJlZnJlc2gtY3ciPjxwYXRoIGQ9Ik0zIDEyYTkgOSAwIDAgMSA5LTkgOS43NSA5Ljc1IDAgMCAxIDYuNzQgMi43NEwyMSA4Ij48L3BhdGg+PHBhdGggZD0iTTIxIDN2NWgtNSI+PC9wYXRoPjxwYXRoIGQ9Ik0yMSAxMmE5IDkgMCAwIDEtOSA5IDkuNzUgOS43NSAwIDAgMS02Ljc0LTIuNzRMMyAxNiI+PC9wYXRoPjxwYXRoIGQ9Ik04IDE2SDN2NSI+PC9wYXRoPjwvc3ZnPg==" class="lucide lucide-refresh-cw" />
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld2JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLW1heGltaXplMiBsdWNpZGUtbWF4aW1pemUtMiI+PHBvbHlsaW5lIHBvaW50cz0iMTUgMyAyMSAzIDIxIDkiPjwvcG9seWxpbmU+PHBvbHlsaW5lIHBvaW50cz0iOSAyMSAzIDIxIDMgMTUiPjwvcG9seWxpbmU+PGxpbmUgeDE9IjIxIiB4Mj0iMTQiIHkxPSIzIiB5Mj0iMTAiPjwvbGluZT48bGluZSB4MT0iMyIgeDI9IjEwIiB5MT0iMjEiIHkyPSIxNCI+PC9saW5lPjwvc3ZnPg==" class="lucide lucide-maximize2 lucide-maximize-2" />
+</div>
+</div>
+</div>
+<figcaption>Source: The Economist</figcaption>
+</figure>
+
+</div>
+
+The story this chart tells about “real wage growth” for the bottom decile is tough to square with other data, such as credit card delinquencies, that show consumers under more financial stress than at any time in the last decade:
+
+<div class="captioned-image-container">
+
+<figure>
+<a href="https://substackcdn.com/image/fetch/$s_!XrFu!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9078912f-dc78-46d1-b719-fa2602ad8018_806x544.png" class="image-link image2 is-viewable-img" target="_blank" data-component-name="Image2ToDOM"></a>
+<div class="image2-inset">
+<img src="https://substackcdn.com/image/fetch/$s_!XrFu!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9078912f-dc78-46d1-b719-fa2602ad8018_806x544.png" title="Credit card delinquencies are at their highest level since 2011" class="sizing-normal" data-attrs="{&quot;src&quot;:&quot;https://substack-post-media.s3.amazonaws.com/public/images/9078912f-dc78-46d1-b719-fa2602ad8018_806x544.png&quot;,&quot;srcNoWatermark&quot;:null,&quot;fullscreen&quot;:null,&quot;imageSize&quot;:null,&quot;height&quot;:544,&quot;width&quot;:806,&quot;resizeWidth&quot;:null,&quot;bytes&quot;:48421,&quot;alt&quot;:&quot;Credit card delinquencies are at their highest level since 2011&quot;,&quot;title&quot;:null,&quot;type&quot;:&quot;image/png&quot;,&quot;href&quot;:null,&quot;belowTheFold&quot;:true,&quot;topImage&quot;:false,&quot;internalRedirect&quot;:null,&quot;isProcessing&quot;:false,&quot;align&quot;:null,&quot;offset&quot;:false}" srcset="https://substackcdn.com/image/fetch/$s_!XrFu!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9078912f-dc78-46d1-b719-fa2602ad8018_806x544.png 424w, https://substackcdn.com/image/fetch/$s_!XrFu!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9078912f-dc78-46d1-b719-fa2602ad8018_806x544.png 848w, https://substackcdn.com/image/fetch/$s_!XrFu!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9078912f-dc78-46d1-b719-fa2602ad8018_806x544.png 1272w, https://substackcdn.com/image/fetch/$s_!XrFu!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9078912f-dc78-46d1-b719-fa2602ad8018_806x544.png 1456w" sizes="100vw" loading="lazy" width="806" height="544" alt="Credit card delinquencies are at their highest level since 2011" />
+<div class="image-link-expand">
+<div class="pencraft pc-display-flex pc-gap-8 pc-reset">
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld2JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXJlZnJlc2gtY3ciPjxwYXRoIGQ9Ik0zIDEyYTkgOSAwIDAgMSA5LTkgOS43NSA5Ljc1IDAgMCAxIDYuNzQgMi43NEwyMSA4Ij48L3BhdGg+PHBhdGggZD0iTTIxIDN2NWgtNSI+PC9wYXRoPjxwYXRoIGQ9Ik0yMSAxMmE5IDkgMCAwIDEtOSA5IDkuNzUgOS43NSAwIDAgMS02Ljc0LTIuNzRMMyAxNiI+PC9wYXRoPjxwYXRoIGQ9Ik04IDE2SDN2NSI+PC9wYXRoPjwvc3ZnPg==" class="lucide lucide-refresh-cw" />
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld2JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLW1heGltaXplMiBsdWNpZGUtbWF4aW1pemUtMiI+PHBvbHlsaW5lIHBvaW50cz0iMTUgMyAyMSAzIDIxIDkiPjwvcG9seWxpbmU+PHBvbHlsaW5lIHBvaW50cz0iOSAyMSAzIDIxIDMgMTUiPjwvcG9seWxpbmU+PGxpbmUgeDE9IjIxIiB4Mj0iMTQiIHkxPSIzIiB5Mj0iMTAiPjwvbGluZT48bGluZSB4MT0iMyIgeDI9IjEwIiB5MT0iMjEiIHkyPSIxNCI+PC9saW5lPjwvc3ZnPg==" class="lucide lucide-maximize2 lucide-maximize-2" />
+</div>
+</div>
+</div>
+<figcaption>Credit card delinquencies are at their highest level since 2011, though still lower than the pre-Great Financial Crisis delinquency rate. Source: FRED</figcaption>
+</figure>
+
+</div>
+
+In fact, [a recent Gallup poll](https://news.gallup.com/poll/469898/half-say-worse-off-highest-2009.aspx) found that over half of Americans say they are worse off financially than they were a year ago, which is the highest number since the depths of the Great Financial Crisis in 2009. The reality is that in this era of high inflation, as in most economic crises throughout history, the poor have borne the brunt.
+
+### 3. Headline metrics mask underlying labor market weakness
+
+Although the headline unemployment rate is low, alternative data hint at underlying weakness. For instance, [economists note](https://mishtalk.com/economics/jobs-up-216000-but-employment-down-683000-job-revisions-71000/) that the economy has added 1.6 million jobs since March 2023, but full-time employment is down by 1.1 million over the same period. That’s because more workers are working part-time, often involuntarily.
+
+<div class="captioned-image-container">
+
+<figure>
+<a href="https://substackcdn.com/image/fetch/$s_!wTfw!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fda3d087c-5460-40eb-b5a0-62c8cf922675_2340x1301.png" class="image-link image2 is-viewable-img" target="_blank" data-component-name="Image2ToDOM"></a>
+<div class="image2-inset">
+<img src="https://substackcdn.com/image/fetch/$s_!wTfw!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fda3d087c-5460-40eb-b5a0-62c8cf922675_2340x1301.png" title="Chart shows part-time employment up, full-time down" class="sizing-normal" data-attrs="{&quot;src&quot;:&quot;https://substack-post-media.s3.amazonaws.com/public/images/da3d087c-5460-40eb-b5a0-62c8cf922675_2340x1301.png&quot;,&quot;srcNoWatermark&quot;:null,&quot;fullscreen&quot;:null,&quot;imageSize&quot;:null,&quot;height&quot;:810,&quot;width&quot;:1456,&quot;resizeWidth&quot;:null,&quot;bytes&quot;:203718,&quot;alt&quot;:&quot;Chart shows part-time employment up, full-time down&quot;,&quot;title&quot;:null,&quot;type&quot;:&quot;image/png&quot;,&quot;href&quot;:null,&quot;belowTheFold&quot;:true,&quot;topImage&quot;:false,&quot;internalRedirect&quot;:null,&quot;isProcessing&quot;:false,&quot;align&quot;:null,&quot;offset&quot;:false}" srcset="https://substackcdn.com/image/fetch/$s_!wTfw!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fda3d087c-5460-40eb-b5a0-62c8cf922675_2340x1301.png 424w, https://substackcdn.com/image/fetch/$s_!wTfw!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fda3d087c-5460-40eb-b5a0-62c8cf922675_2340x1301.png 848w, https://substackcdn.com/image/fetch/$s_!wTfw!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fda3d087c-5460-40eb-b5a0-62c8cf922675_2340x1301.png 1272w, https://substackcdn.com/image/fetch/$s_!wTfw!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fda3d087c-5460-40eb-b5a0-62c8cf922675_2340x1301.png 1456w" sizes="100vw" loading="lazy" width="1456" height="810" alt="Chart shows part-time employment up, full-time down" />
+<div class="image-link-expand">
+<div class="pencraft pc-display-flex pc-gap-8 pc-reset">
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld2JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXJlZnJlc2gtY3ciPjxwYXRoIGQ9Ik0zIDEyYTkgOSAwIDAgMSA5LTkgOS43NSA5Ljc1IDAgMCAxIDYuNzQgMi43NEwyMSA4Ij48L3BhdGg+PHBhdGggZD0iTTIxIDN2NWgtNSI+PC9wYXRoPjxwYXRoIGQ9Ik0yMSAxMmE5IDkgMCAwIDEtOSA5IDkuNzUgOS43NSAwIDAgMS02Ljc0LTIuNzRMMyAxNiI+PC9wYXRoPjxwYXRoIGQ9Ik04IDE2SDN2NSI+PC9wYXRoPjwvc3ZnPg==" class="lucide lucide-refresh-cw" />
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld2JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLW1heGltaXplMiBsdWNpZGUtbWF4aW1pemUtMiI+PHBvbHlsaW5lIHBvaW50cz0iMTUgMyAyMSAzIDIxIDkiPjwvcG9seWxpbmU+PHBvbHlsaW5lIHBvaW50cz0iOSAyMSAzIDIxIDMgMTUiPjwvcG9seWxpbmU+PGxpbmUgeDE9IjIxIiB4Mj0iMTQiIHkxPSIzIiB5Mj0iMTAiPjwvbGluZT48bGluZSB4MT0iMyIgeDI9IjEwIiB5MT0iMjEiIHkyPSIxNCI+PC9saW5lPjwvc3ZnPg==" class="lucide lucide-maximize2 lucide-maximize-2" />
+</div>
+</div>
+</div>
+<figcaption>Source: VettaFi Advisor Perspectives</figcaption>
+</figure>
+
+</div>
+
+We are also recently seeing a gap open up between “initial claims for unemployment insurance” (a measure of how many people were laid off last week) and “continuing claims for unemployment insurance” (a measure of how many people received unemployment insurance last week because they haven’t yet found a job).
+
+Initial claims are flat, which means there aren’t too many layoffs happening, but continuing claims are rising, which means the people who have been laid off are having a hard time getting rehired. In fact, it’s rare outside of a recession to see continuing claims rise this much.
+
+<div class="captioned-image-container">
+
+<figure>
+<a href="https://substackcdn.com/image/fetch/$s_!lnAy!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2c652073-8fb5-402b-86bb-ed7c1d4dea6f_1763x816.png" class="image-link image2 is-viewable-img" target="_blank" data-component-name="Image2ToDOM"></a>
+<div class="image2-inset">
+<img src="https://substackcdn.com/image/fetch/$s_!lnAy!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2c652073-8fb5-402b-86bb-ed7c1d4dea6f_1763x816.png" title="Continuing claims are rising, while initial claims are flat" class="sizing-normal" data-attrs="{&quot;src&quot;:&quot;https://substack-post-media.s3.amazonaws.com/public/images/2c652073-8fb5-402b-86bb-ed7c1d4dea6f_1763x816.png&quot;,&quot;srcNoWatermark&quot;:null,&quot;fullscreen&quot;:null,&quot;imageSize&quot;:null,&quot;height&quot;:674,&quot;width&quot;:1456,&quot;resizeWidth&quot;:null,&quot;bytes&quot;:138533,&quot;alt&quot;:&quot;Continuing claims are rising, while initial claims are flat&quot;,&quot;title&quot;:null,&quot;type&quot;:&quot;image/png&quot;,&quot;href&quot;:null,&quot;belowTheFold&quot;:true,&quot;topImage&quot;:false,&quot;internalRedirect&quot;:null,&quot;isProcessing&quot;:false,&quot;align&quot;:null,&quot;offset&quot;:false}" srcset="https://substackcdn.com/image/fetch/$s_!lnAy!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2c652073-8fb5-402b-86bb-ed7c1d4dea6f_1763x816.png 424w, https://substackcdn.com/image/fetch/$s_!lnAy!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2c652073-8fb5-402b-86bb-ed7c1d4dea6f_1763x816.png 848w, https://substackcdn.com/image/fetch/$s_!lnAy!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2c652073-8fb5-402b-86bb-ed7c1d4dea6f_1763x816.png 1272w, https://substackcdn.com/image/fetch/$s_!lnAy!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2c652073-8fb5-402b-86bb-ed7c1d4dea6f_1763x816.png 1456w" sizes="100vw" loading="lazy" width="1456" height="674" alt="Continuing claims are rising, while initial claims are flat" />
+<div class="image-link-expand">
+<div class="pencraft pc-display-flex pc-gap-8 pc-reset">
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld2JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXJlZnJlc2gtY3ciPjxwYXRoIGQ9Ik0zIDEyYTkgOSAwIDAgMSA5LTkgOS43NSA5Ljc1IDAgMCAxIDYuNzQgMi43NEwyMSA4Ij48L3BhdGg+PHBhdGggZD0iTTIxIDN2NWgtNSI+PC9wYXRoPjxwYXRoIGQ9Ik0yMSAxMmE5IDkgMCAwIDEtOSA5IDkuNzUgOS43NSAwIDAgMS02Ljc0LTIuNzRMMyAxNiI+PC9wYXRoPjxwYXRoIGQ9Ik04IDE2SDN2NSI+PC9wYXRoPjwvc3ZnPg==" class="lucide lucide-refresh-cw" />
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld2JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLW1heGltaXplMiBsdWNpZGUtbWF4aW1pemUtMiI+PHBvbHlsaW5lIHBvaW50cz0iMTUgMyAyMSAzIDIxIDkiPjwvcG9seWxpbmU+PHBvbHlsaW5lIHBvaW50cz0iOSAyMSAzIDIxIDMgMTUiPjwvcG9seWxpbmU+PGxpbmUgeDE9IjIxIiB4Mj0iMTQiIHkxPSIzIiB5Mj0iMTAiPjwvbGluZT48bGluZSB4MT0iMyIgeDI9IjEwIiB5MT0iMjEiIHkyPSIxNCI+PC9saW5lPjwvc3ZnPg==" class="lucide lucide-maximize2 lucide-maximize-2" />
+</div>
+</div>
+</div>
+<figcaption>Source: TradingView</figcaption>
+</figure>
+
+</div>
+
+Likewise, data published by Glassboro show layoff anxieties high and employee confidence plummeting.
+
+<div class="captioned-image-container">
+
+<figure>
+<a href="https://substackcdn.com/image/fetch/$s_!7sXg!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7c7b7e29-f2a1-4d82-9f43-94b8aff73ebf_2048x1365.png" class="image-link image2 is-viewable-img" target="_blank" data-component-name="Image2ToDOM"></a>
+<div class="image2-inset">
+<img src="https://substackcdn.com/image/fetch/$s_!7sXg!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7c7b7e29-f2a1-4d82-9f43-94b8aff73ebf_2048x1365.png" class="sizing-normal" data-attrs="{&quot;src&quot;:&quot;https://substack-post-media.s3.amazonaws.com/public/images/7c7b7e29-f2a1-4d82-9f43-94b8aff73ebf_2048x1365.png&quot;,&quot;srcNoWatermark&quot;:null,&quot;fullscreen&quot;:null,&quot;imageSize&quot;:null,&quot;height&quot;:970,&quot;width&quot;:1456,&quot;resizeWidth&quot;:null,&quot;bytes&quot;:255118,&quot;alt&quot;:null,&quot;title&quot;:null,&quot;type&quot;:&quot;image/png&quot;,&quot;href&quot;:null,&quot;belowTheFold&quot;:true,&quot;topImage&quot;:false,&quot;internalRedirect&quot;:null,&quot;isProcessing&quot;:false,&quot;align&quot;:null,&quot;offset&quot;:false}" srcset="https://substackcdn.com/image/fetch/$s_!7sXg!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7c7b7e29-f2a1-4d82-9f43-94b8aff73ebf_2048x1365.png 424w, https://substackcdn.com/image/fetch/$s_!7sXg!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7c7b7e29-f2a1-4d82-9f43-94b8aff73ebf_2048x1365.png 848w, https://substackcdn.com/image/fetch/$s_!7sXg!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7c7b7e29-f2a1-4d82-9f43-94b8aff73ebf_2048x1365.png 1272w, https://substackcdn.com/image/fetch/$s_!7sXg!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7c7b7e29-f2a1-4d82-9f43-94b8aff73ebf_2048x1365.png 1456w" sizes="100vw" loading="lazy" width="1456" height="970" />
+<div class="image-link-expand">
+<div class="pencraft pc-display-flex pc-gap-8 pc-reset">
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld2JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXJlZnJlc2gtY3ciPjxwYXRoIGQ9Ik0zIDEyYTkgOSAwIDAgMSA5LTkgOS43NSA5Ljc1IDAgMCAxIDYuNzQgMi43NEwyMSA4Ij48L3BhdGg+PHBhdGggZD0iTTIxIDN2NWgtNSI+PC9wYXRoPjxwYXRoIGQ9Ik0yMSAxMmE5IDkgMCAwIDEtOSA5IDkuNzUgOS43NSAwIDAgMS02Ljc0LTIuNzRMMyAxNiI+PC9wYXRoPjxwYXRoIGQ9Ik04IDE2SDN2NSI+PC9wYXRoPjwvc3ZnPg==" class="lucide lucide-refresh-cw" />
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld2JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLW1heGltaXplMiBsdWNpZGUtbWF4aW1pemUtMiI+PHBvbHlsaW5lIHBvaW50cz0iMTUgMyAyMSAzIDIxIDkiPjwvcG9seWxpbmU+PHBvbHlsaW5lIHBvaW50cz0iOSAyMSAzIDIxIDMgMTUiPjwvcG9seWxpbmU+PGxpbmUgeDE9IjIxIiB4Mj0iMTQiIHkxPSIzIiB5Mj0iMTAiPjwvbGluZT48bGluZSB4MT0iMyIgeDI9IjEwIiB5MT0iMjEiIHkyPSIxNCI+PC9saW5lPjwvc3ZnPg==" class="lucide lucide-maximize2 lucide-maximize-2" />
+</div>
+</div>
+</div>
+</figure>
+
+</div>
+
+And then there are the people who don’t show up in this data at all. If you’re a freelancer or contractor or recently moved across state lines, you may not be eligible for unemployment insurance when you get laid off. In our increasingly mobile gig economy, more and more people are falling through these cracks.
+
+And it’s these workers, unfortunately, who have been most affected by the rise of generative AI. According to the [Financial Times](https://www.ft.com/content/b2928076-5c52-43e9-8872-08fda2aa2fcf), freelance income fell by nearly 10% within five months of the rollout of ChatGPT.
+
+<div class="captioned-image-container">
+
+<figure>
+<a href="https://substackcdn.com/image/fetch/$s_!Foxj!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbabc5afe-f1e2-4d58-8330-ff04f972714f_1400x942.png" class="image-link image2 is-viewable-img" target="_blank" data-component-name="Image2ToDOM"></a>
+<div class="image2-inset">
+<img src="https://substackcdn.com/image/fetch/$s_!Foxj!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbabc5afe-f1e2-4d58-8330-ff04f972714f_1400x942.png" title="Freelancers&#39; income fell nearly 10% within 5 months of the release of ChatGPT" class="sizing-normal" data-attrs="{&quot;src&quot;:&quot;https://substack-post-media.s3.amazonaws.com/public/images/babc5afe-f1e2-4d58-8330-ff04f972714f_1400x942.png&quot;,&quot;srcNoWatermark&quot;:null,&quot;fullscreen&quot;:null,&quot;imageSize&quot;:null,&quot;height&quot;:942,&quot;width&quot;:1400,&quot;resizeWidth&quot;:null,&quot;bytes&quot;:90118,&quot;alt&quot;:&quot;Freelancers&#39; income fell nearly 10% within 5 months of the release of ChatGPT&quot;,&quot;title&quot;:null,&quot;type&quot;:&quot;image/png&quot;,&quot;href&quot;:null,&quot;belowTheFold&quot;:true,&quot;topImage&quot;:false,&quot;internalRedirect&quot;:null,&quot;isProcessing&quot;:false,&quot;align&quot;:null,&quot;offset&quot;:false}" srcset="https://substackcdn.com/image/fetch/$s_!Foxj!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbabc5afe-f1e2-4d58-8330-ff04f972714f_1400x942.png 424w, https://substackcdn.com/image/fetch/$s_!Foxj!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbabc5afe-f1e2-4d58-8330-ff04f972714f_1400x942.png 848w, https://substackcdn.com/image/fetch/$s_!Foxj!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbabc5afe-f1e2-4d58-8330-ff04f972714f_1400x942.png 1272w, https://substackcdn.com/image/fetch/$s_!Foxj!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbabc5afe-f1e2-4d58-8330-ff04f972714f_1400x942.png 1456w" sizes="100vw" loading="lazy" width="1400" height="942" alt="Freelancers&#39; income fell nearly 10% within 5 months of the release of ChatGPT" />
+<div class="image-link-expand">
+<div class="pencraft pc-display-flex pc-gap-8 pc-reset">
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld2JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXJlZnJlc2gtY3ciPjxwYXRoIGQ9Ik0zIDEyYTkgOSAwIDAgMSA5LTkgOS43NSA5Ljc1IDAgMCAxIDYuNzQgMi43NEwyMSA4Ij48L3BhdGg+PHBhdGggZD0iTTIxIDN2NWgtNSI+PC9wYXRoPjxwYXRoIGQ9Ik0yMSAxMmE5IDkgMCAwIDEtOSA5IDkuNzUgOS43NSAwIDAgMS02Ljc0LTIuNzRMMyAxNiI+PC9wYXRoPjxwYXRoIGQ9Ik04IDE2SDN2NSI+PC9wYXRoPjwvc3ZnPg==" class="lucide lucide-refresh-cw" />
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld2JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLW1heGltaXplMiBsdWNpZGUtbWF4aW1pemUtMiI+PHBvbHlsaW5lIHBvaW50cz0iMTUgMyAyMSAzIDIxIDkiPjwvcG9seWxpbmU+PHBvbHlsaW5lIHBvaW50cz0iOSAyMSAzIDIxIDMgMTUiPjwvcG9seWxpbmU+PGxpbmUgeDE9IjIxIiB4Mj0iMTQiIHkxPSIzIiB5Mj0iMTAiPjwvbGluZT48bGluZSB4MT0iMyIgeDI9IjEwIiB5MT0iMjEiIHkyPSIxNCI+PC9saW5lPjwvc3ZnPg==" class="lucide lucide-maximize2 lucide-maximize-2" />
+</div>
+</div>
+</div>
+<figcaption>Source: Financial Times</figcaption>
+</figure>
+
+</div>
+
+## Don’t let headline metrics become a target
+
+Goodhart’s Law says that “when a measure becomes a target, it ceases to be a good measure.” And that’s part of what’s happening here.
+
+Headline economic metrics are usually a good proxy for how Americans are doing, but “gaming” the metrics won’t get policymakers reelected if voters feel bad, and no amount of pounding the GDP chart will make them feel good.
+
+When consumers tell us they’re in trouble, we need to believe them. And if our measures missed it, we need to have the humility to reassess the measures. Remember, it’s only a “[silent recession](https://www.bankrate.com/banking/savings/americans-experiencing-silent-recession/)” to elites who aren’t struggling to buy groceries or pay the bills.
+
+<div class="captioned-image-container">
+
+<figure>
+<a href="https://substackcdn.com/image/fetch/$s_!0M5d!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc0cba560-dede-4419-9505-072c23e2a844_450x371.png" class="image-link image2 is-viewable-img" target="_blank" data-component-name="Image2ToDOM"></a>
+<div class="image2-inset">
+<img src="https://substackcdn.com/image/fetch/$s_!0M5d!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc0cba560-dede-4419-9505-072c23e2a844_450x371.png" title="Chart shows food insecurity up sharply in the US in 2022" class="sizing-normal" data-attrs="{&quot;src&quot;:&quot;https://substack-post-media.s3.amazonaws.com/public/images/c0cba560-dede-4419-9505-072c23e2a844_450x371.png&quot;,&quot;srcNoWatermark&quot;:null,&quot;fullscreen&quot;:null,&quot;imageSize&quot;:null,&quot;height&quot;:371,&quot;width&quot;:450,&quot;resizeWidth&quot;:null,&quot;bytes&quot;:38996,&quot;alt&quot;:&quot;Chart shows food insecurity up sharply in the US in 2022&quot;,&quot;title&quot;:null,&quot;type&quot;:&quot;image/png&quot;,&quot;href&quot;:null,&quot;belowTheFold&quot;:true,&quot;topImage&quot;:false,&quot;internalRedirect&quot;:null,&quot;isProcessing&quot;:false,&quot;align&quot;:null,&quot;offset&quot;:false}" srcset="https://substackcdn.com/image/fetch/$s_!0M5d!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc0cba560-dede-4419-9505-072c23e2a844_450x371.png 424w, https://substackcdn.com/image/fetch/$s_!0M5d!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc0cba560-dede-4419-9505-072c23e2a844_450x371.png 848w, https://substackcdn.com/image/fetch/$s_!0M5d!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc0cba560-dede-4419-9505-072c23e2a844_450x371.png 1272w, https://substackcdn.com/image/fetch/$s_!0M5d!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc0cba560-dede-4419-9505-072c23e2a844_450x371.png 1456w" sizes="100vw" loading="lazy" width="450" height="371" alt="Chart shows food insecurity up sharply in the US in 2022" />
+<div class="image-link-expand">
+<div class="pencraft pc-display-flex pc-gap-8 pc-reset">
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld2JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXJlZnJlc2gtY3ciPjxwYXRoIGQ9Ik0zIDEyYTkgOSAwIDAgMSA5LTkgOS43NSA5Ljc1IDAgMCAxIDYuNzQgMi43NEwyMSA4Ij48L3BhdGg+PHBhdGggZD0iTTIxIDN2NWgtNSI+PC9wYXRoPjxwYXRoIGQ9Ik0yMSAxMmE5IDkgMCAwIDEtOSA5IDkuNzUgOS43NSAwIDAgMS02Ljc0LTIuNzRMMyAxNiI+PC9wYXRoPjxwYXRoIGQ9Ik04IDE2SDN2NSI+PC9wYXRoPjwvc3ZnPg==" class="lucide lucide-refresh-cw" />
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld2JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLW1heGltaXplMiBsdWNpZGUtbWF4aW1pemUtMiI+PHBvbHlsaW5lIHBvaW50cz0iMTUgMyAyMSAzIDIxIDkiPjwvcG9seWxpbmU+PHBvbHlsaW5lIHBvaW50cz0iOSAyMSAzIDIxIDMgMTUiPjwvcG9seWxpbmU+PGxpbmUgeDE9IjIxIiB4Mj0iMTQiIHkxPSIzIiB5Mj0iMTAiPjwvbGluZT48bGluZSB4MT0iMyIgeDI9IjEwIiB5MT0iMjEiIHkyPSIxNCI+PC9saW5lPjwvc3ZnPg==" class="lucide lucide-maximize2 lucide-maximize-2" />
+</div>
+</div>
+</div>
+<figcaption>12.8 percent of U.S. households were food insecure at some time during 2022. Source: USDA</figcaption>
+</figure>
+
+</div>

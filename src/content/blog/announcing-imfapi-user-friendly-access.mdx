@@ -1,0 +1,95 @@
+---
+title: "Announcing imfapi: User-Friendly Access to IMF Data in R"
+date: "2025-10-25"
+excerpt: "New IMF API, new IMF API R library &#8212; part of the econdataverse initiative"
+image: "https://substackcdn.com/image/fetch/$s_!8T4q!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd5b9c38e-0712-4878-a5b1-2da15fff86bc_655x239.jpeg"
+sourceUrl: "https://modelingmarkets.substack.com/p/announcing-imfapi-user-friendly-access"
+sourceId: "https://modelingmarkets.substack.com/p/announcing-imfapi-user-friendly-access"
+---
+
+<div class="captioned-image-container">
+
+<figure>
+<a href="https://substackcdn.com/image/fetch/$s_!8T4q!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd5b9c38e-0712-4878-a5b1-2da15fff86bc_655x239.jpeg" class="image-link image2" target="_blank" data-component-name="Image2ToDOM"></a>
+<div class="image2-inset">
+<img src="https://substackcdn.com/image/fetch/$s_!8T4q!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd5b9c38e-0712-4878-a5b1-2da15fff86bc_655x239.jpeg" title="Logos of Tidy Intelligence, Teal Insights, ONE Campaign, and Promptly Technologies" class="sizing-normal" data-attrs="{&quot;src&quot;:&quot;https://substack-post-media.s3.amazonaws.com/public/images/d5b9c38e-0712-4878-a5b1-2da15fff86bc_655x239.jpeg&quot;,&quot;srcNoWatermark&quot;:null,&quot;fullscreen&quot;:null,&quot;imageSize&quot;:null,&quot;height&quot;:239,&quot;width&quot;:655,&quot;resizeWidth&quot;:null,&quot;bytes&quot;:22177,&quot;alt&quot;:&quot;Logos of Tidy Intelligence, Teal Insights, ONE Campaign, and Promptly Technologies&quot;,&quot;title&quot;:null,&quot;type&quot;:&quot;image/jpeg&quot;,&quot;href&quot;:null,&quot;belowTheFold&quot;:false,&quot;topImage&quot;:true,&quot;internalRedirect&quot;:&quot;https://modelingmarkets.substack.com/i/176365427?img=https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd5b9c38e-0712-4878-a5b1-2da15fff86bc_655x239.jpeg&quot;,&quot;isProcessing&quot;:false,&quot;align&quot;:null,&quot;offset&quot;:false}" srcset="https://substackcdn.com/image/fetch/$s_!8T4q!,w_424,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd5b9c38e-0712-4878-a5b1-2da15fff86bc_655x239.jpeg 424w, https://substackcdn.com/image/fetch/$s_!8T4q!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd5b9c38e-0712-4878-a5b1-2da15fff86bc_655x239.jpeg 848w, https://substackcdn.com/image/fetch/$s_!8T4q!,w_1272,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd5b9c38e-0712-4878-a5b1-2da15fff86bc_655x239.jpeg 1272w, https://substackcdn.com/image/fetch/$s_!8T4q!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd5b9c38e-0712-4878-a5b1-2da15fff86bc_655x239.jpeg 1456w" sizes="100vw" data-fetchpriority="high" width="655" height="239" alt="Logos of Tidy Intelligence, Teal Insights, ONE Campaign, and Promptly Technologies" />
+<div>
+
+</div>
+</div>
+<figcaption>The econdataverse is a collaborative effort by Tidy Intelligence, Teal Insights, the ONE Campaign, and Promptly Technologies</figcaption>
+</figure>
+
+</div>
+
+We’re excited to announce the release of [imfapi](https://teal-insights.github.io/r-imfapi/), a new R package for programmatic access to the International Monetary Fund’s “SDMX 3.0 IMF Data API.” This package is part of the [econdataverse](https://www.econdataverse.org/) project, funded by an R Consortium grant to create a unified ecosystem of tools for economic data access and analysis.
+
+## Why `imfapi`?
+
+The IMF’s recent rollout of their SDMX 3.0 API caught the econ data community off guard. Existing packages like `imfp` and `imfr` (which I authored/maintained) relied on the SDMX 2.0 API, which suddenly stopped working.
+
+The `imfapi` package was developed as an emergency response to this API migration. Fortunately, we already had R Consortium funding to develop the `econdataverse`, a family of R and Python packages to provide programmatic access to the universe of macroeconomic data through consistent, user-friendly interfaces, with tidy data outputs and comprehensive testing. Our original project plan mostly called for patching and extending the existing IMF API packages, but with the 3.0 API rollout, it made more sense to build a new R package from the ground up.
+
+## A Four-Step Workflow
+
+The `imfapi` package provides an intuitive workflow for accessing IMF data:
+
+1.  Discover datasets with `imf_get_dataflows()`
+
+2.  Identify the “dimensions” on which you can filter a given dataset with `imf_get_datastructure()`
+
+3.  Find valid “codes” for filtering a given dimension with `imf_get_codelists()`
+
+4.  Fetch the actual data with your filters with `imf_get()`
+
+Here’s a quick example retrieving annual Producer Price Index data for the USA and Canada:
+
+```
+library(imfapi)
+
+# Get the data
+ppi_data <- imf_get(
+  dataflow_id = "PPI",
+  dimensions = list(FREQUENCY = c("A"), COUNTRY = c("USA", "CAN")),
+  start_period = "2015",
+  end_period = "2020"
+)
+
+```
+All data is returned in tidy format, ready for analysis with the `tidyverse` or other modern R tools.
+
+## Built for the econdataverse
+
+The `imfapi` package follows the `econdataverse` design principles:
+
+- Consistent naming: Functions follow the `imf_*` pattern with clear, predictable names and signatures
+
+- Tidy outputs: All data returned in tidy format for seamless integration with modern R workflows
+
+- Comprehensive testing: Extensive unit tests ensure reliability
+
+- Open source: Released under the MIT License for maximum flexibility
+
+This package joins other `econdataverse` tools like `wbids` (World Bank debt statistics), `wbwdi` (World Development Indicators), and `owidapi` (Our World in Data), all designed to work together seamlessly.
+
+## Real-World Impact
+
+The `imfapi` package isn’t just a technical tool—it’s infrastructure for better policy decisions. Tools like the Nature Finance Debt Dynamics Explorer, which will be demonstrated to V20 policymakers at the spring IMF/World Bank Meetings, rely on packages like this to help climate-vulnerable countries understand their debt trajectories without expensive data subscriptions.
+
+For developing country policymakers who often face the choice between paying tens of thousands of dollars for commercial data platforms or making decisions with incomplete information, the `econdataverse` provides a third option: free, open-source tools that democratize access to critical economic data.
+
+## Get Started
+
+Install `imfapi` from CRAN:
+
+```
+install.packages("imfapi")
+
+```
+Visit the [documentation website](https://teal-insights.github.io/r-imfapi/) for detailed documentation and examples, or check out the [Github repo](https://github.com/Teal-Insights/r-imfapi) to contribute.
+
+## Acknowledgments
+
+This work was developed by my company, Promptly Technologies, under contract for Teal Insights as part of the `econdataverse` initiative, with funding from the R Consortium. Special thanks to Teal Emery (Teal Insights) and Christoph Scheuch (Tidy Intelligence) for their collaboration on the broader `econdataverse` vision.
+
+The econdataverse is a collaborative effort between Tidy Intelligence, Teal Insights, Promptly Technologies, and the ONE Campaign to build a universe of open-source packages for working seamlessly with economic data in R and Python. Learn more at https://www.econdataverse.org/.

@@ -1,0 +1,85 @@
+<p>Almost everyone who learns Python gets burned at some point by this little quirk. Imagine you're writing a function <code class="inline">append_to</code> that appends an element <code class="inline">e</code> to a list <code class="inline">l</code>, with <code class="inline">l</code> as an optional argument and an empty list as the default. You might be tempted to initialize the default empty list in the function signature. We would expect calling <code class="inline">append_to(1)</code> to always return <code class="inline">[1]</code>, right? But look what happens when we call it twice:</p><pre><code class="language-python">def append_to(e, l=[]):
+    l.append(e)
+    return l
+
+print(append_to(1))
+print(append_to(2))</code></pre><pre><samp>[1]
+[1, 2]</samp></pre><p>However, notice that this is not what happens with "immutable" data types like <code class="inline">int</code> or <code class="inline">str</code>. If we initialize these variables to default values and then modify them inside the function, they get reset to the default the next time the function is called:</p><pre><code class="language-python">def multiply_it(x, y = 1):
+    y = x * y
+    return y
+
+print(multiply_it(2))
+print(multiply_it(2))</code></pre><pre><samp>2
+2</samp></pre><p>So why is the behavior different? Well, there are a couple important things to understand here.</p><p>First, Python has "mutable" objects (e.g., lists, dicts, sets) and "immutable" ones (e.g., ints, strings), and the two categories of objects behave differently when passed to a function.</p><p>For memory efficiency, Python typically only stores one copy of any immutable object. Variables with the same immutable value will almost always point to the same location in memory. For example, if <code class="inline">a</code> and <code class="inline">b</code> both equal <code class="inline">1</code>, they will have the same <code class="inline">id</code>. If I change the value of one of these variables (e.g., <code class="inline">a += 1</code>), I'm not actually modifying the object it pointed to; that object is immutable and cannot be changed. Rather, I'm telling the variable that it now points to a new/different immutable object at a different memory address.</p><pre><code class="language-python">print(f"id of the integer '1': {id(1)}")
+
+a = 1
+
+print(f"id of 'a' in parent scope: {id(a)}")
+
+def a_func(a, b = 1):
+    print(f"id of 'a' in function scope: {id(a)}")
+    print(f"id of 'b' in function scope: {id(b)}")
+
+a_func(a)
+
+a += 1
+
+print(f"id of 'a' after incrementing: {id(a)}")</code></pre><pre><samp>id of the integer '1': 140736354896312
+id of 'a' in parent scope: 140736354896312
+id of 'a' in function scope: 140736354896312
+id of 'b' in function scope: 140736354896312
+id of 'a' after incrementing: 140736354896344</samp></pre><p>Mutable objects are more complicated, however. Since these mutable objects might be very large, Python generally prefers to change them "in place"—by tweaking the object at the original memory address—rather than by creating an entire new modified copy of the object at a new address, as we would with an immutable object. For the same reason, Python's default behavior is to pass them "by reference" in assignment operations, function calls, and function return statements. In other words, a variable passed to the function from the parent scope, the variable inside the function, and the variable returned from the function will all point to the same object in memory. A consequence of this handling of mutable objects is that in-place changes made to a mutable object inside a function also affect the object in the parent scope (since they both point to the same memory address).</p><pre><code class="language-python">a = [1]
+
+print(f"Value of 'a' in parent scope: {a}")
+
+def append_to(e, l):
+    l.append(e)
+
+append_to(2, a)
+
+print(f"Value of 'a' in parent scope after in-place 'append' inside function: {a}")</code></pre><pre><samp>Value of 'a' in parent scope: [1]
+Value of 'a' in parent scope after in-place 'append' inside function: [1, 2]</samp></pre><p>The second thing that needs to be understood in order to grasp the weird behavior of mutable default arguments is exactly when, how, and where the default value is constructed.</p><p>When: Any code in the function signature's default arguments is evaluated when the function is initialized, not every time it's run.</p><p>How: When you execute the code to create a function, the function is created as an object, and its default values are bound to the object (under its <code class="inline">__defaults__</code> attribute).</p><p>Where: This means that, just like any other mutable object you might pass to the function, the default mutable object exists in the parent scope, and any in-place modifications of the object inside the function will also change it persistently in the parent scope.</p><pre><code class="language-python">def append_to(e, l = []):
+    l.append(e)
+    print("Inside function:")
+    print(f"- Value of 'l' after append: {l}")
+    print(f"- id of 'l' after append: {id(l)}")
+
+print("In parent scope before calling function:")
+print(f"- Default value of 'l' bound to function object: {append_to.__defaults__[0]}")
+print(f"- id of default value of 'l' bound to function object: {id(append_to.__defaults__[0])}")
+
+append_to(1)
+
+print("In parent scope after calling function:")
+print(f"- Default value of 'l' bound to function object: {append_to.__defaults__[0]}")
+print(f"- id of default value of 'l' bound to function object: {id(append_to.__defaults__[0])}")</code></pre><pre><samp>In parent scope before calling function:
+- Default value of 'l' bound to function object: []
+- id of default value of 'l' bound to function object: 2423913173504
+Inside function:
+- Value of 'l' after append: [1]
+- id of 'l' after append: 2423913173504
+In parent scope after calling function:
+- Default value of 'l' bound to function object: [1]
+- id of default value of 'l' bound to function object: 2423913173504</samp></pre><p>How, then, should we handle the case where we want an optional argument that initializes a new empty mutable object every time a user calls the function without specifying an input for the argument? The standard approach is to make the default value <code class="inline">None</code>, and then initialize an empty object inside the function body if the argument is <code class="inline">None</code>.</p><pre><code class="language-python">def append_to(e, l = None):
+    if l is None:
+        l = []
+    l.append(e)
+    print(f"id of 'l' inside function: {id(l)}")
+    return l
+
+l = append_to(1)
+print(f"id of 'l' returned from function: {id(l)}")</code></pre><pre><samp>id of 'l' inside function: 2423912764096
+id of 'l' returned from function: 2423912764096</samp></pre><p>Note, however, that we usually return <code class="inline">None</code> from a function that modifies a mutable object "in place" (to avoid implying that it returns a copy), but we have to break that pattern in the above workaround. Returning the object from the function is perfectly valid, but it's considered bad style.</p><p>The more idiomatic (a.k.a Pythonic) solution would be to make the mutable argument non-optional (i.e., supply no default value) and require users to initialize an empty mutable object in the calling context and pass it to the function.</p><pre><code class="language-python">l = []
+
+def append_to(e, l):
+    l.append(e)
+
+append_to(1, l)
+print(l)</code></pre><pre><samp>[1]</samp></pre><p>Your other option is to avoid doing "in-place" operations on the mutable default argument and instead copy it, then modify and return the copy. There are lots of ways to do this. Mutable objects generally have a <code class="inline">.copy()</code> method that will return a copy rather than a reference to the object. Or you can append to a list with the <code class="inline">+</code> operator, slice a list with <code class="inline">[:]</code>, or use any other method or operator that returns a copy instead of modifying in place. Just keep in mind that this can be quite computationally expensive if the object you're copying is really big.</p><pre><code class="language-python">def appended_to(e, l = []):
+    new_l = l.copy()
+    new_l.append(e)
+    return new_l
+
+print(appended_to(1))
+print(appended_to(2))</code></pre><pre><samp>[1]
+[2]</samp></pre>
