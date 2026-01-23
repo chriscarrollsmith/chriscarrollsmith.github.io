@@ -32,7 +32,6 @@ export interface SocialProfiles {
 export interface SiteProperties {
   name: string;
   title: string;
-  calendlyUrl: string;
   convertKitFormId: string;
   convertKitDataUid: string;
   formspreeFormId: string;

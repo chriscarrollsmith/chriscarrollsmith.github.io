@@ -8,7 +8,7 @@ export default defineConfig({
   integrations: [react(), sitemap()],
   vite: {
     ssr: {
-      noExternal: ['@formspree/react', 'convertkit-react', 'react-calendly']
+      noExternal: ['@formspree/react', 'convertkit-react']
     }
   }
 });
