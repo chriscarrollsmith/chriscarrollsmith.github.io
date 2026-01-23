@@ -1,22 +1,16 @@
 /**
- * Syncs blog posts from Substack RSS feeds into blogs.json
+ * Syncs blog posts from Substack RSS feeds into MDX blog content.
  * Skips gracefully in CI environments where Substack blocks requests
  */
 
-import { readFileSync, writeFileSync } from 'fs';
+import { spawnSync } from 'child_process';
 import { join } from 'path';
-
-interface BlogPost {
-  id: number | string;
-  title: string;
-  date: string;
-  content: string;
-  excerpt: string;
-  image?: string;
-  script?: string;
-  sourceUrl?: string;
-  sourceId?: string;
-}
+import { BLOG_CONTENT_DIR } from './blog-mdx/paths';
+import { buildExistingBlogIndex } from './blog-mdx/existingIndex';
+import { makeMarkdownMdxSafe } from './blog-mdx/mdxSafe';
+import { uniqueSlug } from './blog-mdx/slug';
+import { normalizeImagePath, renderMdx, writeFileEnsuringDir } from './blog-mdx/writeMdx';
+import { decodeHtmlEntities } from './blog-mdx/htmlEntities';
 
 interface RSSItem {
   title: string;
@@ -32,7 +26,6 @@ const FEEDS = [
   'https://modelingmarkets.substack.com/feed',
 ];
 
-const BLOGS_JSON_PATH = join(import.meta.dir, '..', 'src', 'data', 'blogs.json');
 const FETCH_TIMEOUT_MS = 10000;
 
 /**
@@ -138,20 +131,18 @@ function extractFirstImage(html: string): string | undefined {
 /**
  * Convert RSS item to BlogPost
  */
-function rssItemToBlogPost(item: RSSItem): BlogPost {
-  const content = cleanContent(item.contentEncoded);
-  const image = extractFirstImage(item.contentEncoded);
+function htmlToMarkdown(html: string): string {
+  const result = spawnSync('pandoc', ['-f', 'html', '-t', 'gfm', '--wrap=none'], {
+    input: html,
+    encoding: 'utf-8',
+    stdio: ['pipe', 'pipe', 'inherit'],
+  });
 
-  return {
-    id: extractSlug(item.guid),
-    title: item.title,
-    date: formatDate(item.pubDate),
-    content,
-    excerpt: item.description,
-    image,
-    sourceUrl: item.link,
-    sourceId: item.guid,
-  };
+  if (result.status !== 0) {
+    throw new Error('pandoc failed to convert HTML to markdown');
+  }
+
+  return String(result.stdout ?? '');
 }
 
 /**
@@ -196,12 +187,10 @@ async function main() {
 
   console.log('Syncing Substack posts...');
 
-  // Read existing blogs
-  const existingBlogs: BlogPost[] = JSON.parse(readFileSync(BLOGS_JSON_PATH, 'utf-8'));
-  const existingSourceIds = new Set(existingBlogs.map(b => b.sourceId).filter(Boolean));
+  const existing = buildExistingBlogIndex(BLOG_CONTENT_DIR);
 
   // Fetch and parse all feeds
-  const newPosts: BlogPost[] = [];
+  const newItems: RSSItem[] = [];
 
   for (const feedUrl of FEEDS) {
     console.log(`  Fetching ${feedUrl}...`);
@@ -215,27 +204,45 @@ async function main() {
     console.log(`  Found ${items.length} posts`);
 
     for (const item of items) {
-      if (!existingSourceIds.has(item.guid)) {
-        newPosts.push(rssItemToBlogPost(item));
-        existingSourceIds.add(item.guid); // Prevent duplicates across feeds
+      if (!existing.sourceIds.has(item.guid)) {
+        newItems.push(item);
+        existing.sourceIds.add(item.guid); // Prevent duplicates across feeds in this run
       }
     }
   }
 
-  if (newPosts.length === 0) {
+  if (newItems.length === 0) {
     console.log('No new posts to sync');
     return;
   }
 
-  console.log(`Adding ${newPosts.length} new posts`);
+  console.log(`Adding ${newItems.length} new posts`);
 
-  // Merge and sort by date descending
-  const allBlogs = [...existingBlogs, ...newPosts].sort(
-    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-  );
+  for (const item of newItems) {
+    const html = cleanContent(item.contentEncoded);
+    const image = extractFirstImage(item.contentEncoded);
 
-  // Write back
-  writeFileSync(BLOGS_JSON_PATH, JSON.stringify(allBlogs, null, 2) + '\n');
+    const desiredSlug = extractSlug(item.guid) || extractSlug(item.link) || 'substack-post';
+    const slug = uniqueSlug(desiredSlug, existing.slugs);
+    existing.slugs.add(slug);
+
+    const markdown = makeMarkdownMdxSafe(htmlToMarkdown(html).trim());
+
+    const mdx = renderMdx({
+      frontmatter: {
+        title: decodeHtmlEntities(item.title),
+        date: formatDate(item.pubDate),
+        excerpt: decodeHtmlEntities(item.description),
+        image: image ? normalizeImagePath(image) : undefined,
+        sourceUrl: item.link,
+        sourceId: item.guid,
+      },
+      body: markdown.length > 0 ? markdown : html,
+    });
+
+    writeFileEnsuringDir(join(BLOG_CONTENT_DIR, `${slug}.mdx`), mdx);
+  }
+
   console.log('Done');
 }
 

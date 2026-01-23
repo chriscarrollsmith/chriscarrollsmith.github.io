@@ -37,6 +37,7 @@ if (!post) {
 }
 
 const isLegacyRedirect = legacyTarget !== undefined && legacyTarget.slug !== slug;
+const isSyndicated = !isLegacyRedirect && post.data.sourceUrl !== undefined;
 const targetPath = `/blog/${post.slug}`;
 const canonicalURL = new URL(targetPath, 'https://christophercarrollsmith.com').href;
 
@@ -95,6 +96,7 @@ function sourceLabel(url: string): string {
 
     {!isLegacyRedirect && (
       <>
+        {isSyndicated && <meta name="robots" content="noindex,follow" />}
         <meta property="article:published_time" content={post.data.date} />
         <meta property="article:modified_time" content={post.data.date} />
         <meta property="article:author" content="Christopher Carroll Smith" />
