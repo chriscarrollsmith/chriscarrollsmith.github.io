@@ -10,7 +10,8 @@
     "generate:pdf": "bun scripts/generate-cv-pdf.ts",
     "sync:substack": "bun scripts/sync-substack.ts",
     "sync:youtube": "bun scripts/sync-youtube.ts",
-    "build": "bun run sync:substack && bun run sync:youtube && bun run generate:pdf && astro check && astro build",
+    "render:mermaid": "bun scripts/render-mermaid-images.ts",
+    "build": "bun run sync:substack && bun run sync:youtube && bun run generate:pdf && bun run render:mermaid && astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx,.astro",
@@ -38,7 +39,8 @@
     "prismjs": "^1.30.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "roboto-fontface": "^0.10.0"
+    "roboto-fontface": "^0.10.0",
+    "unist-util-visit": "^5.1.0"
   },
   "devDependencies": {
     "@astrojs/react": "^4.4.1",
@@ -62,6 +64,7 @@
     "eslint-plugin-react-refresh": "^0.3.4",
     "gh-pages": "^5.0.0",
     "json-schema-to-typescript": "^15.0.4",
+    "mermaid": "^11.12.2",
     "pixelmatch": "^7.1.0",
     "playwright": "^1.56.1",
     "pngjs": "^7.0.0",

@@ -50,6 +50,16 @@
   font-weight: 400;
 }
 
+/* Mermaid diagrams: full-width with side padding */
+.blog-post .mermaid-diagram {
+  margin: 2rem 0;
+  padding: 0 2rem;
+}
+
+.blog-post .mermaid-diagram img {
+  width: 100%;
+}
+
 /* Constrain and center all images within blog post content */
 .blog-post img {
   max-width: 100%;
@@ -242,6 +252,10 @@
 @media screen and (max-width: 767px) {
   .blog-post {
     margin-bottom: 1.875rem;
+  }
+
+  .blog-post .mermaid-diagram {
+    padding: 0 1rem;
   }
 
   .blog-post h2 {
