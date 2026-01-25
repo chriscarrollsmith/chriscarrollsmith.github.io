@@ -8,13 +8,6 @@ type CodeNode = {
   value: string;
 };
 
-type ImageNode = {
-  type: 'image';
-  url: string;
-  title?: string;
-  alt?: string;
-};
-
 type Parent = {
   type: string;
   children: unknown[];
