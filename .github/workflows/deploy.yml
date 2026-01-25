@@ -17,11 +17,27 @@ jobs:
       - name: Checkout your repository using git
         uses: actions/checkout@v5
 
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
       - name: Add CNAME file
         run: echo "christophercarrollsmith.com" > ./public/CNAME
 
-      - name: Install, build, and upload your site
-        uses: withastro/action@v5
+      - name: Install dependencies
+        run: bun install
+
+      - name: Install Playwright browsers
+        run: bunx playwright install --with-deps
+
+      - name: Build site
+        run: bun run build
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
 
   deploy:
     needs: build
