@@ -72,6 +72,15 @@ const structuredData = {
 
 const { Content } = await render(post);
 
+const parseBlogDate = (dateString: string) => new Date(`${dateString}T00:00:00Z`);
+const formatBlogDate = (dateString: string) =>
+  parseBlogDate(dateString).toLocaleDateString(undefined, {
+    timeZone: 'UTC',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+
 function sourceLabel(url: string): string {
   if (url.includes('substack.com')) return 'Substack';
   if (url.includes('youtube.com') || url.includes('youtu.be')) return 'YouTube';
@@ -120,7 +129,7 @@ function sourceLabel(url: string): string {
           <>
             <h1>{post.data.title}</h1>
             <div class="post-meta">
-              <time datetime={post.data.date}>{new Date(post.data.date).toLocaleDateString()}</time>
+              <time datetime={post.data.date}>{formatBlogDate(post.data.date)}</time>
               <span class="author-byline">By Christopher Carroll Smith</span>
               {post.data.sourceUrl && (
                 <span class="source-attribution">
@@ -146,4 +155,3 @@ function sourceLabel(url: string): string {
     </script>
   )}
 </BaseLayout>
-

@@ -13,9 +13,18 @@ const normalizeImagePath = (path: string) => `/${path.replace(/^\/+/, '')}`;
 
 const blogPosts = await getCollection('blog');
 
+const parseBlogDate = (dateString: string) => new Date(`${dateString}T00:00:00Z`);
+const formatBlogDate = (dateString: string) =>
+  parseBlogDate(dateString).toLocaleDateString(undefined, {
+    timeZone: 'UTC',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+
 // Sort posts by date, most recent first
 const sortedBlogData = [...blogPosts].sort((a, b) => {
-  return new Date(b.data.date).getTime() - new Date(a.data.date).getTime();
+  return parseBlogDate(b.data.date).getTime() - parseBlogDate(a.data.date).getTime();
 });
 
 // Calculate aspect ratios and dimensions for images
@@ -101,7 +110,7 @@ const postsWithAspectRatio = sortedBlogData.map(post => {
                   <a href={`/blog/${post.slug}`}>{post.data.title}</a>
                 </h2>
                 <div class="post-meta">
-                  <time datetime={post.data.date}>{new Date(post.data.date).toLocaleDateString()}</time>
+                  <time datetime={post.data.date}>{formatBlogDate(post.data.date)}</time>
                   <span class="author-byline">By Christopher Carroll Smith</span>
                 </div>
                 <p>{post.data.excerpt}</p>
