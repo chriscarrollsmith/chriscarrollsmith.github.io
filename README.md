@@ -144,8 +144,8 @@ If you want to use a custom domain instead of the default `https://{YOUR-GITHUB-
 
 ### 2. Update site configuration
 
-1. Edit `astro.config.mjs`:
-   ```js
+1. Edit `astro.config.ts`:
+   ```ts
    export default defineConfig({
      site: 'https://yourdomain.com',
      // ...

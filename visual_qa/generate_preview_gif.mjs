@@ -21,7 +21,6 @@ import fs from 'fs';
 import path from 'path';
 import { chromium } from 'playwright';
 import { spawn } from 'child_process';
-import { PNG } from 'pngjs';
 
 // GIF dimensions (matching current site-preview.gif)
 const GIF_WIDTH = 1280;
@@ -73,7 +72,7 @@ function parseArgs(argv) {
   return { baseUrl, output, startDev, devCmd };
 }
 
-async function captureSection(page, sectionId, width, height) {
+async function captureSection(page, sectionId) {
   const locator = page.locator(sectionId);
   const count = await locator.count();
 
@@ -99,45 +98,6 @@ async function captureSection(page, sectionId, width, height) {
   });
 
   return screenshotBuffer;
-}
-
-async function resizeAndCropImage(buffer, targetWidth, targetHeight) {
-  const png = PNG.sync.read(buffer);
-
-  // Calculate scaling to fill target dimensions while maintaining aspect ratio
-  const scaleX = targetWidth / png.width;
-  const scaleY = targetHeight / png.height;
-  const scale = Math.max(scaleX, scaleY);
-
-  const scaledWidth = Math.round(png.width * scale);
-  const scaledHeight = Math.round(png.height * scale);
-
-  // Create new image at target size
-  const result = new PNG({ width: targetWidth, height: targetHeight });
-
-  // Calculate crop offset to center the image
-  const offsetX = Math.round((scaledWidth - targetWidth) / 2);
-  const offsetY = Math.round((scaledHeight - targetHeight) / 2);
-
-  // Simple nearest-neighbor scaling and cropping
-  for (let y = 0; y < targetHeight; y++) {
-    for (let x = 0; x < targetWidth; x++) {
-      const srcX = Math.floor((x + offsetX) / scale);
-      const srcY = Math.floor((y + offsetY) / scale);
-
-      if (srcX >= 0 && srcX < png.width && srcY >= 0 && srcY < png.height) {
-        const srcIdx = (png.width * srcY + srcX) << 2;
-        const dstIdx = (targetWidth * y + x) << 2;
-
-        result.data[dstIdx] = png.data[srcIdx];
-        result.data[dstIdx + 1] = png.data[srcIdx + 1];
-        result.data[dstIdx + 2] = png.data[srcIdx + 2];
-        result.data[dstIdx + 3] = png.data[srcIdx + 3];
-      }
-    }
-  }
-
-  return result;
 }
 
 async function generatePreviewGif({ baseUrl, output }) {
@@ -203,7 +163,7 @@ async function generatePreviewGif({ baseUrl, output }) {
     for (let i = 0; i < HOMEPAGE_SECTIONS.length; i++) {
       const section = HOMEPAGE_SECTIONS[i];
       console.log(`Capturing section ${i + 1}/${HOMEPAGE_SECTIONS.length}: ${section.name} (${section.id})`);
-      const buffer = await captureSection(page, section.id, GIF_WIDTH, GIF_HEIGHT);
+      const buffer = await captureSection(page, section.id);
       frameBuffers.push(buffer);
 
       // Save frame to temp directory with numbered filename for correct ordering
