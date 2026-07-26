@@ -34,6 +34,7 @@ const About: React.FC = () => {
       )}
       <div className="hero-content">
         <div className="about-section">
+          <h2 className="visually-hidden">About</h2>
           <div className="bio bio-animated">
             {bioSentences.map((sentence, i) => (
               <span key={i} className="bio-sentence">

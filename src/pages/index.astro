@@ -18,12 +18,14 @@ import '../App.css';
 >
   <div class="App">
     <HeaderAstro />
-    <HomeClient client:load />
-    <About client:load />
-    <Projects client:load />
-    <ProjectFeature client:load />
-    <Writing client:only="react" />
-    <Events client:only="react" />
+    <main>
+      <HomeClient client:load />
+      <About client:load />
+      <Projects client:load />
+      <ProjectFeature client:load />
+      <Writing client:only="react" />
+      <Events client:only="react" />
+    </main>
     <Footer client:load />
   </div>
 </BaseLayout>

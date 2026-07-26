@@ -12,6 +12,10 @@
     z-index: 20;
   }
 
+  #header nav {
+    display: contents;
+  }
+
   #header a {
     text-decoration: none;
     color: black;

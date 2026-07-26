@@ -11,6 +11,12 @@ const Writing: React.FC = () => {
 
   const writingData = [
     {
+      title: "Blog",
+      description: "Original essays and technical writing on AI, software, and data",
+      buttonText: "Read",
+      url: "/blog"
+    },
+    {
       title: "A Knowledge Workers' Guide to the Singularity",
       description: "A Substack newsletter on staying employed in knowledge work amid major technological disruption by AI",
       buttonText: "Substack",
@@ -48,6 +54,9 @@ const Writing: React.FC = () => {
       )}
       <div className="hero-content">
         <div className="writing-grid">
+          <div className="category-title-container">
+            <h2 className="category-title">Writing</h2>
+          </div>
           {writingData.map((writing, index) => (
             <Card key={index} project={writing} />
           ))}

@@ -4,15 +4,17 @@ import './Header.css';
 const currentPath = Astro.url.pathname;
 ---
 
-<div id="header">
-  <a href="/#home" data-hash-link>Home</a>
-  <a href="/#about" data-hash-link>About</a>
-  <a href="/#projects" data-hash-link>Projects</a>
-  <a href="/#writing" data-hash-link>Writing</a>
-  <a href="/#events" data-hash-link>Events</a>
-  <a href="/cv" class:list={[{ active: currentPath.startsWith('/cv') }]}>CV</a>
-  <a href="/blog" class:list={[{ active: currentPath.startsWith('/blog') }]}>Blog</a>
-</div>
+<header id="header">
+  <nav aria-label="Primary">
+    <a href="/#home" data-hash-link>Home</a>
+    <a href="/#about" data-hash-link>About</a>
+    <a href="/#projects" data-hash-link>Projects</a>
+    <a href="/#writing" data-hash-link>Writing</a>
+    <a href="/#events" data-hash-link>Events</a>
+    <a href="/cv" class:list={[{ active: currentPath.startsWith('/cv') }]}>CV</a>
+    <a href="/blog" class:list={[{ active: currentPath.startsWith('/blog') }]}>Blog</a>
+  </nav>
+</header>
 
 <script>
   // Handle hash navigation from non-home pages

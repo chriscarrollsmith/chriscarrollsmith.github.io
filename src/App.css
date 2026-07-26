@@ -189,6 +189,33 @@ section.white {
   min-height: 100vh;
 }
 
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.category-title-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  width: 100%;
+  flex: 1 0 200px;
+  margin: 0.5rem;
+  position: relative;
+  overflow: visible;
+  padding: 1rem;
+  border-radius: 15px;
+}
+
 /* Reasonable defaults for headings site-wide */
 h1 {
   font-weight: 300;

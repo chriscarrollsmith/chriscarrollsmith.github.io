@@ -64,7 +64,7 @@ const postsWithAspectRatio = sortedBlogData.map(post => {
 >
   <div class="App">
     <HeaderAstro />
-    <div class="blog-container">
+    <main class="blog-container">
       <h1>Blog</h1>
       {postsWithAspectRatio.map((item, index) => {
         const { post } = item;
@@ -132,7 +132,7 @@ const postsWithAspectRatio = sortedBlogData.map(post => {
           </article>
         );
       })}
-    </div>
+    </main>
     <Footer client:load />
   </div>
 </BaseLayout>

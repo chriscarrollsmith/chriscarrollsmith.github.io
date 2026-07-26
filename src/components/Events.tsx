@@ -124,7 +124,7 @@ const Events: React.FC = () => {
       <div className="hero-content">
         <div className="events-content">
           <header className="events-header">
-            <h1>Events</h1>
+            <h2>Events</h2>
             <p className="events-subhead">
               Workshops, talks, and community sessions about AI workflows and tooling.
             </p>
