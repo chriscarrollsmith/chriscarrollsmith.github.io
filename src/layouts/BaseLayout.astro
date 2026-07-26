@@ -1,4 +1,7 @@
 ---
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+import sizeOf from 'image-size';
 import '../main.css';
 import '../App.css';
 
@@ -6,6 +9,7 @@ interface Props {
   title?: string;
   description?: string;
   image?: string;
+  imageAlt?: string;
   type?: string;
   canonicalURL?: string;
 }
@@ -14,13 +18,27 @@ const {
   title = "Christopher Carroll Smith",
   description = "Website of Christopher Carroll Smith, software architect, data storyteller, and president of Promptly Technologies, LLC.",
   image = "/images/Chris_landscape.jpg",
+  imageAlt = title,
   type = "website",
   canonicalURL
 } = Astro.props;
 
 const siteURL = 'https://christophercarrollsmith.com';
+const siteName = 'Christopher Carroll Smith';
 const canonical = canonicalURL || new URL(Astro.url.pathname, siteURL).href;
 const absoluteImage = image.startsWith('http') ? image : new URL(image, siteURL).href;
+
+let imageWidth: number | undefined;
+let imageHeight: number | undefined;
+if (!image.startsWith('http')) {
+  try {
+    const dimensions = sizeOf(readFileSync(join(process.cwd(), 'public', image.replace(/^\/+/, ''))));
+    imageWidth = dimensions.width;
+    imageHeight = dimensions.height;
+  } catch {
+    // Dimensions are optional enrichment for Open Graph consumers.
+  }
+}
 ---
 
 <!DOCTYPE html>
@@ -39,17 +57,24 @@ const absoluteImage = image.startsWith('http') ? image : new URL(image, siteURL)
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content={type} />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:url" content={canonical} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={absoluteImage} />
+    <meta property="og:image:alt" content={imageAlt} />
+    {imageWidth && <meta property="og:image:width" content={String(imageWidth)} />}
+    {imageHeight && <meta property="og:image:height" content={String(imageHeight)} />}
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:creator" content="Christopher Carroll Smith" />
+    <meta name="twitter:site" content="@christophcsmith" />
+    <meta name="twitter:creator" content="@christophcsmith" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     {image && <meta name="twitter:image" content={absoluteImage} />}
+    {image && <meta name="twitter:image:alt" content={imageAlt} />}
 
     <!-- Additional head content -->
     <slot name="head" />
