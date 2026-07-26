@@ -5,7 +5,7 @@ import {
   formatBlogPageDescription,
   formatBlogPageTitle,
   truncateAtWordBoundary,
-} from '../truncateMeta';
+} from '../../../src/seo/truncateMeta';
 
 describe('truncateMeta', () => {
   test('does not append ellipsis when text fits', () => {

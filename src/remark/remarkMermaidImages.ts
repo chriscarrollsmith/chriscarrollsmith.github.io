@@ -1,3 +1,4 @@
+import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import type { Plugin } from 'unified';
 import { visit } from 'unist-util-visit';
@@ -20,14 +21,22 @@ type HtmlNode = {
 
 function escapeAttr(value: string): string {
   return value
-    .replaceAll('&', '&amp;')
-    .replaceAll('"', '&quot;')
-    .replaceAll('<', '&lt;')
-    .replaceAll('>', '&gt;');
+    .replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
 }
 
 function titleFromFile(file: { value?: unknown; path?: unknown }): string | undefined {
-  const raw = typeof file.value === 'string' ? file.value : '';
+  let raw = typeof file.value === 'string' ? file.value : '';
+  if (!raw && typeof file.path === 'string') {
+    try {
+      raw = readFileSync(file.path, 'utf8');
+    } catch {
+      raw = '';
+    }
+  }
+
   const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---/);
   if (!match) return undefined;
   const titleLine = match[1].split(/\r?\n/).find((line) => line.startsWith('title:'));
@@ -63,9 +72,8 @@ export const remarkMermaidImages: Plugin = () => {
 
       diagramIndex += 1;
       const bodyUrl = `/images/mermaid/${slug}-${diagramIndex}.png`;
-      const alt = title
-        ? `Diagram ${diagramIndex} from “${title}”`
-        : `Diagram ${diagramIndex}`;
+      const fallbackTitle = title || slug.replace(/-/g, ' ');
+      const alt = `Diagram ${diagramIndex} from “${fallbackTitle}”`;
       const replacement: HtmlNode = {
         type: 'html',
         value: `<div class="mermaid-diagram"><img src="${bodyUrl}" alt="${escapeAttr(alt)}" loading="lazy" decoding="async" /></div>`,
