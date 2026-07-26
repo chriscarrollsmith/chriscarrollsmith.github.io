@@ -11,6 +11,7 @@ import { makeMarkdownMdxSafe } from './blog-mdx/mdxSafe';
 import { uniqueSlug } from './blog-mdx/slug';
 import { normalizeImagePath, renderMdx, writeFileEnsuringDir } from './blog-mdx/writeMdx';
 import { decodeHtmlEntities } from './blog-mdx/htmlEntities';
+import { ensureImgAlts } from './blog-mdx/ensureImgAlts';
 
 interface RSSItem {
   title: string;
@@ -104,11 +105,15 @@ function extractSlug(url: string): string {
 /**
  * Clean Substack HTML content by removing elements that won't work on GitHub Pages
  */
-function cleanContent(html: string): string {
+function cleanContent(html: string, title: string): string {
   // Remove Substack subscribe widget containers (they won't work outside Substack)
   // The structure is: div.subscription-widget-wrap-editor > div.subscription-widget > (preamble + form with nested divs)
   // We need to match 5 closing </div> tags
-  return html.replace(/<div class="subscription-widget-wrap-editor"[\s\S]*?<\/form>\s*<\/div>\s*<\/div>/g, '');
+  const withoutWidgets = html.replace(
+    /<div class="subscription-widget-wrap-editor"[\s\S]*?<\/form>\s*<\/div>\s*<\/div>/g,
+    '',
+  );
+  return ensureImgAlts(withoutWidgets, { title });
 }
 
 /**
@@ -219,18 +224,22 @@ async function main() {
   console.log(`Adding ${newItems.length} new posts`);
 
   for (const item of newItems) {
-    const html = cleanContent(item.contentEncoded);
+    const title = decodeHtmlEntities(item.title);
+    const html = cleanContent(item.contentEncoded, title);
     const image = extractFirstImage(item.contentEncoded);
 
     const desiredSlug = extractSlug(item.guid) || extractSlug(item.link) || 'substack-post';
     const slug = uniqueSlug(desiredSlug, existing.slugs);
     existing.slugs.add(slug);
 
-    const markdown = makeMarkdownMdxSafe(htmlToMarkdown(html).trim());
+    const markdown = ensureImgAlts(
+      makeMarkdownMdxSafe(htmlToMarkdown(html).trim()),
+      { title },
+    );
 
     const mdx = renderMdx({
       frontmatter: {
-        title: decodeHtmlEntities(item.title),
+        title,
         date: formatDate(item.pubDate),
         excerpt: decodeHtmlEntities(item.description),
         image: image ? normalizeImagePath(image) : undefined,

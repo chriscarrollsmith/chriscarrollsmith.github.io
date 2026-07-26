@@ -57,4 +57,16 @@ test.describe('Blog pages accessibility', () => {
 
     expect(results.violations, 'Axe-core accessibility violations').toEqual([]);
   });
+
+  test('syndicated Substack post has no image-alt Axe violations after backfill', async ({ page }) => {
+    await page.goto('/blog/knowledge-workers-guide');
+
+    const results = await new AxeBuilder({ page })
+      .withTags(['wcag2a', 'wcag2aa'])
+      .disableRules(['color-contrast'])
+      .analyze();
+
+    const imageAltViolations = results.violations.filter((v) => v.id === 'image-alt');
+    expect(imageAltViolations, 'image-alt accessibility violations').toEqual([]);
+  });
 });

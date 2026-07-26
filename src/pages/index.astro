@@ -8,14 +8,18 @@ import ProjectFeature from '../components/ProjectFeature.tsx';
 import Writing from '../components/Writing.tsx';
 import Events from '../components/Events.tsx';
 import Footer from '../components/Footer.tsx';
+import { buildHomeJsonLd, SITE_DESCRIPTION, SITE_NAME } from '../seo/sitePerson';
 import '../App.css';
 ---
 
 <BaseLayout
-  title="Christopher Carroll Smith"
-  description="Website of Christopher Carroll Smith, software architect, data storyteller, and president of Promptly Technologies, LLC."
+  title={SITE_NAME}
+  description={SITE_DESCRIPTION}
   type="website"
 >
+  <Fragment slot="head">
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(buildHomeJsonLd())} />
+  </Fragment>
   <div class="App">
     <HeaderAstro />
     <main>

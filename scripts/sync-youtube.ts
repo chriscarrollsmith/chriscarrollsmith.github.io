@@ -9,6 +9,7 @@ import { BLOG_CONTENT_DIR } from './blog-mdx/paths';
 import { buildExistingBlogIndex } from './blog-mdx/existingIndex';
 import { uniqueSlug } from './blog-mdx/slug';
 import { normalizeImagePath, renderMdx, writeFileEnsuringDir } from './blog-mdx/writeMdx';
+import { truncateAtWordBoundary } from '../src/seo/truncateMeta';
 
 interface YouTubeEntry {
   videoId: string;
@@ -98,19 +99,18 @@ function generateVideoContent(entry: YouTubeEntry): string {
 }
 
 /**
- * Generate excerpt from description (first sentence or first 200 chars)
+ * Generate excerpt from description (first sentence or first ~200 chars)
  */
 function generateExcerpt(description: string): string {
   const firstLine = description.split('\n')[0].trim();
   if (firstLine.length <= 200) {
     return firstLine;
   }
-  // Try to cut at sentence boundary
   const sentenceEnd = firstLine.slice(0, 200).lastIndexOf('. ');
   if (sentenceEnd > 100) {
     return firstLine.slice(0, sentenceEnd + 1);
   }
-  return firstLine.slice(0, 197) + '...';
+  return truncateAtWordBoundary(firstLine, 200);
 }
 
 /**

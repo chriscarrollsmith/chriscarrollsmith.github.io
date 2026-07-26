@@ -18,6 +18,28 @@ type HtmlNode = {
   value: string;
 };
 
+function escapeAttr(value: string): string {
+  return value
+    .replaceAll('&', '&amp;')
+    .replaceAll('"', '&quot;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;');
+}
+
+function titleFromFile(file: { value?: unknown; path?: unknown }): string | undefined {
+  const raw = typeof file.value === 'string' ? file.value : '';
+  const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+  if (!match) return undefined;
+  const titleLine = match[1].split(/\r?\n/).find((line) => line.startsWith('title:'));
+  if (!titleLine) return undefined;
+  const value = titleLine.slice('title:'.length).trim();
+  try {
+    return JSON.parse(value);
+  } catch {
+    return value.replace(/^['"]|['"]$/g, '');
+  }
+}
+
 /**
  * Replace Mermaid fenced code blocks with a static image reference.
  *
@@ -30,6 +52,7 @@ export const remarkMermaidImages: Plugin = () => {
   return (tree, file) => {
     const filePath = typeof file.path === 'string' ? file.path : '';
     const slug = filePath ? path.basename(filePath, path.extname(filePath)) : 'diagram';
+    const title = titleFromFile(file);
 
     let diagramIndex = 0;
 
@@ -40,13 +63,15 @@ export const remarkMermaidImages: Plugin = () => {
 
       diagramIndex += 1;
       const bodyUrl = `/images/mermaid/${slug}-${diagramIndex}.png`;
+      const alt = title
+        ? `Diagram ${diagramIndex} from “${title}”`
+        : `Diagram ${diagramIndex}`;
       const replacement: HtmlNode = {
         type: 'html',
-        value: `<div class="mermaid-diagram"><img src="${bodyUrl}" alt="Diagram" loading="lazy" decoding="async" /></div>`,
+        value: `<div class="mermaid-diagram"><img src="${bodyUrl}" alt="${escapeAttr(alt)}" loading="lazy" decoding="async" /></div>`,
       };
 
       parent.children.splice(index, 1, replacement);
     });
   };
 };
-

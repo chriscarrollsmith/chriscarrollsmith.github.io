@@ -1,7 +1,9 @@
-import { readdir, readFile, mkdir } from 'node:fs/promises';
+import { readdir, readFile, writeFile, mkdir } from 'node:fs/promises';
 import path from 'node:path';
 import { createRequire } from 'node:module';
 import { chromium, type Page } from 'playwright';
+import { parseFrontmatter } from './blog-mdx/frontmatter';
+import { renderMdx } from './blog-mdx/writeMdx';
 
 const require = createRequire(import.meta.url);
 
@@ -56,6 +58,13 @@ function escapeHtml(s: string): string {
     .replaceAll('>', '&gt;')
     .replaceAll('"', '&quot;')
     .replaceAll("'", '&#039;');
+}
+
+function shouldSetMermaidOgFrontmatter(currentImage: string | undefined, ogPath: string): boolean {
+  if (!currentImage) return true;
+  // Keep manually curated non-mermaid images; refresh mermaid OG paths for this post.
+  if (currentImage.includes('/images/mermaid/')) return currentImage !== ogPath;
+  return false;
 }
 
 async function renderMermaidToPng(page: Page, diagram: string, outPath: string): Promise<void> {
@@ -208,6 +217,7 @@ async function main() {
   const ogPage = await browser.newPage();
 
   let total = 0;
+  let frontmatterUpdates = 0;
 
   for (const filePath of mdxFiles) {
     const mdx = await readFile(filePath, 'utf-8');
@@ -224,6 +234,17 @@ async function main() {
       await renderMermaidToPng(ogPage, blocks[i], outOgPath);
       total += 1;
     }
+
+    const ogPath = `/images/mermaid/${slug}-1-og.png`;
+    const frontmatter = parseFrontmatter(mdx);
+    if (shouldSetMermaidOgFrontmatter(frontmatter.image, ogPath)) {
+      const next = renderMdx({
+        frontmatter: { ...frontmatter, image: ogPath },
+        body,
+      });
+      await writeFile(filePath, next, 'utf-8');
+      frontmatterUpdates += 1;
+    }
   }
 
   await bodyContext.close();
@@ -231,6 +252,10 @@ async function main() {
 
   // eslint-disable-next-line no-console
   console.log(`Rendered ${total} Mermaid diagram(s) to ${path.relative(PROJECT_ROOT, OUT_DIR)}/`);
+  if (frontmatterUpdates > 0) {
+    // eslint-disable-next-line no-console
+    console.log(`Updated image frontmatter on ${frontmatterUpdates} Mermaid post(s)`);
+  }
 }
 
 main().catch(err => {
@@ -238,4 +263,3 @@ main().catch(err => {
   console.error(err);
   process.exitCode = 1;
 });
-
