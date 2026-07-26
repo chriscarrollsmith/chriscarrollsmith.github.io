@@ -12,7 +12,8 @@ bun visual_qa/capture_anchors.mjs \
   --base-url http://localhost:4321 \
   --start-dev \
   --label baseline \
-  "#home" "#about" "#projects" "#writing" "#events"
+  "#home" "#about" "#projects" "#writing" "#events" \
+  "/cv" "/blog" "/blog/1"
 ```
 
 ---
@@ -41,9 +42,10 @@ bun run lint
 ```bash
 bun visual_qa/capture_anchors.mjs \
   --base-url http://localhost:4321 \
-    --start-dev \
-    --label candidate \
-  "#home" "#about" "#projects" "#writing" "#events"
+  --start-dev \
+  --label candidate \
+  "#home" "#about" "#projects" "#writing" "#events" \
+  "/cv" "/blog" "/blog/1"
 ```
 
 **The script will automatically compare candidate screenshots against baseline and report:**
