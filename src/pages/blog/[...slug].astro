@@ -11,7 +11,13 @@ import type { CollectionEntry } from 'astro:content';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
-  return posts.map((post) => ({ params: { slug: post.slug } }));
+  const paths: Array<{ params: { slug: string } }> = [];
+
+  for (const post of posts) {
+    paths.push({ params: { slug: post.slug } });
+  }
+
+  return paths;
 }
 
 const slugParam = Astro.params.slug;

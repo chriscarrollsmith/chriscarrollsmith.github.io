@@ -65,7 +65,8 @@ export function shouldIncludeInSitemap(page: string): boolean {
 
   const blogMatch = path.match(/^\/blog\/([^/]+)$/);
   if (blogMatch) {
-    const post = posts.find((entry) => entry.slug === blogMatch[1]);
+    const slug = blogMatch[1].toLowerCase();
+    const post = posts.find((entry) => entry.slug.toLowerCase() === slug);
     if (post?.isSyndicated) {
       return false;
     }
