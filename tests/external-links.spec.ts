@@ -138,6 +138,7 @@ test.describe('External Links Validation', () => {
     'scholar.google.com', // Returns 403 in CI
     'web.archive.org',   // Often times out in CI
     'academia.edu',      // Often times out in CI
+    'scribert.com',      // Intermittent fetch failures / timeouts in CI
   ];
 
   // Increase timeout for external link validation (checking many URLs)

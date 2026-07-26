@@ -60,7 +60,7 @@ To edit the site, you can use GitHub Codespaces or clone the repo locally to wor
 Make sure to:
 
 - Update the site metadata fields in `package.json` to your own information
-- Change the `site` property in `astro.config.mjs` to `'https://{YOUR-GITHUB-USERNAME}.github.io'`
+- Change the `site` property in `astro.config.ts` to `'https://{YOUR-GITHUB-USERNAME}.github.io'`
 - Edit the JSON files in `src/data` and the images and documents in `public` to customize site content and appearance
 - Customize `src/components/About.tsx` to add your own information
 - Customize `src/components/Projects.tsx` to display your own projects
@@ -73,15 +73,16 @@ Make sure to:
 /
 ├── public/              # Static assets (images, documents, CNAME)
 ├── src/
-│   ├── components/      # React components (.jsx) and Astro components (.astro)
+│   ├── components/      # React components (.tsx) and Astro components (.astro)
+│   ├── content/blog/   # MDX blog posts (Astro content collection)
 │   ├── data/           # JSON data files for content
 │   ├── layouts/        # Astro layouts with SEO meta tags
 │   └── pages/          # File-based routing (generates URLs)
 │       ├── index.astro # Home page
 │       └── blog/
-│           ├── index.astro    # Blog list
-│           └── [id].astro     # Dynamic blog posts
-├── astro.config.mjs    # Astro configuration
+│           ├── index.astro      # Blog list
+│           └── [...slug].astro  # Dynamic blog posts
+├── astro.config.ts     # Astro configuration
 └── package.json
 ```
 
@@ -187,31 +188,30 @@ rm -rf .temp_gif_frames site-preview-new.gif
 
 ## Blog Posts
 
-Blog posts are currently stored as JSON in `src/data/blogs.json`. Each post contains:
-- `id` - Unique identifier (used in URL)
+Blog posts are MDX files in `src/content/blog/`, validated by the Astro content collection schema in `src/content/config.ts`. Frontmatter fields include:
 - `title` - Post title
 - `date` - Publication date
 - `excerpt` - Short description (used in meta tags for social previews)
-- `content` - HTML content
-- `image` - Preview image for social media
-- `script` - Optional JavaScript for interactive elements
+- `image` - Optional preview image for social media
+- `sourceUrl` / `sourceId` - Optional syndication metadata
+- `legacyId` - Optional legacy numeric/string id
 
 ### Adding a New Blog Post
 
-Add a new object to the `blogs.json` array:
+Create a new `.mdx` file in `src/content/blog/`:
 
-```json
-{
-  "id": 4,
-  "title": "Your Post Title",
-  "date": "2025-01-15",
-  "excerpt": "A compelling description for social media previews...",
-  "content": "<p>Your HTML content here...</p>",
-  "image": "images/your-preview-image.png"
-}
+```mdx
+---
+title: "Your Post Title"
+date: "2025-01-15"
+excerpt: "A compelling description for social media previews..."
+image: "/images/your-preview-image.png"
+---
+
+Your markdown content here.
 ```
 
-The build process will automatically generate a static page at `/blog/4` with embedded SEO meta tags.
+The build process generates a static page at `/blog/<filename-slug>` with embedded SEO meta tags.
 
 ## License
 

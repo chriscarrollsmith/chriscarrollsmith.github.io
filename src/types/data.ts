@@ -1,15 +1,3 @@
-export interface BlogPost {
-  id: number | string;
-  title: string;
-  date: string;
-  content: string;
-  excerpt: string;
-  image?: string;
-  script?: string;
-  sourceUrl?: string;
-  sourceId?: string;
-}
-
 export interface Project {
   title: string;
   url: string;

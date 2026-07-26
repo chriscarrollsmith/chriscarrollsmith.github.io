@@ -42,7 +42,7 @@
 - Keep labels, ARIA attributes, and semantic HTML
 
 ### Keep site URLs in sync
-- Canonical URL defined in: `astro.config.mjs` (`site` field) AND `src/layouts/BaseLayout.astro` (`siteURL` constant)
+- Canonical URL defined in: `astro.config.ts` (`site` field) AND `src/layouts/BaseLayout.astro` (`siteURL` constant)
 
 ---
 

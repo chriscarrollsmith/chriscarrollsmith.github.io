@@ -16,7 +16,7 @@ export default defineConfig({
   ],
   vite: {
     ssr: {
-      noExternal: ['@formspree/react', 'convertkit-react']
+      noExternal: ['@formspree/react']
     }
   }
 });
