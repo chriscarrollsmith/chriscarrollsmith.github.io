@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import HeaderAstro from '../components/HeaderAstro.astro';
 import Footer from '../components/Footer.tsx';
 import '../App.css';
+import './_not-found.css';
 ---
 
 <BaseLayout
@@ -14,10 +15,10 @@ import '../App.css';
     <meta name="robots" content="noindex,follow" />
   </Fragment>
 
-  <div class="App">
+  <div class="App not-found-page">
     <HeaderAstro />
-    <main class="blog-container">
-      <article class="blog-post">
+    <main class="not-found-main">
+      <article class="not-found-content">
         <h1>Page not found</h1>
         <p>
           That URL does not match any page on this site. Try one of these instead:
