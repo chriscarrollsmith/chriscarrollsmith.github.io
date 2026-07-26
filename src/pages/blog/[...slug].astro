@@ -6,8 +6,11 @@ import '../../components/Blog.css';
 import '../../components/BlogPost.css';
 import 'prismjs/themes/prism-tomorrow.css';
 
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
 import { getCollection, render } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
+import { formatBlogPageDescription, formatBlogPageTitle } from '../../seo/truncateMeta';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -33,9 +36,11 @@ if (!post) {
 const isSyndicated = post.data.sourceUrl !== undefined;
 const canonicalURL = new URL(`/blog/${post.slug}`, 'https://christophercarrollsmith.com').href;
 
-const pageTitle = `${post.data.title.slice(0, 60)} | Christopher Carroll Smith`;
-const pageDescription = post.data.excerpt.slice(0, 155) + '...';
-const pageImage = post.data.image || '/images/Chris_landscape.jpg';
+const mermaidOgImage = `/images/mermaid/${post.slug}-1-og.png`;
+const hasMermaidOg = existsSync(join(process.cwd(), 'public', mermaidOgImage.replace(/^\/+/, '')));
+const pageTitle = formatBlogPageTitle(post.data.title);
+const pageDescription = formatBlogPageDescription(post.data.excerpt);
+const pageImage = post.data.image || (hasMermaidOg ? mermaidOgImage : '/images/Chris_landscape.jpg');
 const absoluteImage = pageImage.startsWith('http')
   ? pageImage
   : new URL(pageImage, 'https://christophercarrollsmith.com').href;

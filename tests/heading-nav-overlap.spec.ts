@@ -4,6 +4,7 @@ test.describe('Page heading visibility (not obscured by nav)', () => {
   const pages = [
     { url: '/blog', heading: 'Blog' },
     { url: '/cv', heading: 'Curriculum Vitae' },
+    { url: '/this-page-does-not-exist', heading: 'Page not found' },
   ];
 
   // Tolerance in pixels for overlap detection

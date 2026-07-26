@@ -15,6 +15,7 @@ import awardsData from '../data/awards.json';
 import publicationsData from '../data/publications.json';
 import type { CSLPublication } from '../types/data';
 import { getYearFromCSLDate } from '../utils/cslDate';
+import { SITE_NAME, buildPersonSchema } from '../seo/sitePerson';
 
 // Generate alumniOf array from education data
 const alumniOf = educationData
@@ -101,27 +102,20 @@ const publicationSchemas = typedPublicationsData
 ---
 
 <BaseLayout
-  title="Christopher Carroll Smith - CV"
-  description="Curriculum Vitae of Christopher Carroll Smith: Education, Publications, Presentations, and Awards"
+  title={`${SITE_NAME} - CV`}
+  description={`Curriculum Vitae of ${SITE_NAME}: Education, Publications, Presentations, and Awards`}
   type="profile"
 >
   <Fragment slot="head">
     <!-- Enhanced Schema.org markup for Person -->
     <script type="application/ld+json" is:inline set:html={JSON.stringify({
       "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Christopher Carroll Smith",
-      "url": "https://christophercarrollsmith.com",
-      "sameAs": [
-        "https://orcid.org/0009-0008-1756-612X",
-        "https://scholar.google.com/citations?user=IY53lNkAAAAJ&hl=en"
-      ],
-      "jobTitle": "Software Architect",
-      "description": "Software architect, data storyteller, and president of Promptly Technologies, LLC",
-      "alumniOf": alumniOf,
-      "knowsAbout": knowsAbout,
-      "award": awards,
-      "publishingPrinciples": "https://orcid.org/0009-0008-1756-612X"
+      ...buildPersonSchema({
+        alumniOf,
+        knowsAbout,
+        award: awards,
+        publishingPrinciples: "https://orcid.org/0009-0008-1756-612X",
+      }),
     })}></script>
 
     <!-- Schema.org markup for Education Credentials -->

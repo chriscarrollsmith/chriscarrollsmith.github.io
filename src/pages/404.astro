@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeaderAstro from '../components/HeaderAstro.astro';
+import Footer from '../components/Footer.tsx';
+import '../App.css';
+import './_not-found.css';
+---
+
+<BaseLayout
+  title="Page not found | Christopher Carroll Smith"
+  description="The page you requested could not be found on Christopher Carroll Smith's website."
+  type="website"
+>
+  <Fragment slot="head">
+    <meta name="robots" content="noindex,follow" />
+  </Fragment>
+
+  <div class="App not-found-page">
+    <HeaderAstro />
+    <main class="not-found-main">
+      <article class="not-found-content">
+        <h1>Page not found</h1>
+        <p>
+          That URL does not match any page on this site. Try one of these instead:
+        </p>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/cv">CV</a></li>
+        </ul>
+      </article>
+    </main>
+    <Footer client:load />
+  </div>
+</BaseLayout>
