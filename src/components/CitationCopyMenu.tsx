@@ -1,6 +1,5 @@
 import { useEffect, useId, useRef, useState } from 'react';
 import type { CitationStyle, CSLItem } from '../utils/citationFormats';
-import { copyCitation } from '../utils/citationFormats';
 
 const STYLES: { id: CitationStyle; label: string }[] = [
   { id: 'bibtex', label: 'BibTeX' },
@@ -49,6 +48,7 @@ const CitationCopyMenu: React.FC<CitationCopyMenuProps> = ({ item, title }) => {
   const handleCopy = async (style: CitationStyle) => {
     setBusy(true);
     try {
+      const { copyCitation } = await import('../utils/citationFormats');
       await copyCitation(item, style);
       setStatus(`Copied ${STYLES.find((s) => s.id === style)?.label ?? style}`);
       setOpen(false);

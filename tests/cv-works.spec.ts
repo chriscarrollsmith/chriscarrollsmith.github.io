@@ -12,14 +12,18 @@ test.describe('CV works browser', () => {
     });
     await search.fill('Anti-Islamic');
 
-    await expect(page.locator('.cv-works-count')).toContainText('Showing 1 of');
+    await expect(page.locator('.cv-works-count')).toContainText('Showing 2 of');
     await expect(page.locator('.publication-entry')).toHaveCount(1);
+    await expect(page.locator('.presentation-entry')).toHaveCount(1);
     await expect(page.locator('.publication-formatted')).toContainText('Anti-Islamic');
   });
 
   test('filters works by year facet', async ({ page }) => {
-    await page.locator('details.cv-works-facet', { hasText: 'Year' }).locator('summary').click();
+    const yearFacet = page.locator('details.cv-works-facet', { hasText: 'Year' });
+    await yearFacet.locator('summary').click();
     await page.locator('label.cv-works-chip', { hasText: '2024' }).click();
+    // Collapse the facet so it does not obscure toolbar controls.
+    await yearFacet.locator('summary').click();
 
     await expect(page.locator('.cv-works-count')).toContainText('Showing');
     const countText = await page.locator('.cv-works-count').innerText();

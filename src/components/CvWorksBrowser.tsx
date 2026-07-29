@@ -1,6 +1,5 @@
 import { startTransition, useDeferredValue, useEffect, useMemo, useState } from 'react';
 import Fuse from 'fuse.js';
-import { Cite } from '../utils/citation';
 import {
   loadCvWorks,
   sortSections,
@@ -20,19 +19,10 @@ type Density = 'comfortable' | 'compact';
 
 const ALL_WORKS = loadCvWorks();
 
-function formatHtml(item: CSLPublication | CSLPresentation): string {
-  try {
-    const cite = new Cite([item]);
-    return cite.format('bibliography', {
-      format: 'html',
-      template: 'apa',
-      lang: 'en-US',
-    });
-  } catch (error) {
-    console.error('Error formatting citation:', error, item);
-    const year = getYearFromCSLDate(item.issued) ?? '';
-    return `${item.title || 'Untitled'}${year ? ` (${year})` : ''}`;
-  }
+function fallbackHtml(item: CSLPublication | CSLPresentation): string {
+  const year = getYearFromCSLDate(item.issued) ?? '';
+  const title = item.title || 'Untitled';
+  return `<div>${title}${year ? ` (${year})` : ''}</div>`;
 }
 
 const CvWorksBrowser: React.FC = () => {
@@ -69,11 +59,28 @@ const CvWorksBrowser: React.FC = () => {
   );
 
   useEffect(() => {
-    const map: Record<string, string> = {};
-    for (const work of ALL_WORKS) {
-      map[work.id] = formatHtml(work.item);
-    }
-    setFormattedHtml(map);
+    let cancelled = false;
+    void import('../utils/citation').then(({ Cite }) => {
+      if (cancelled) return;
+      const map: Record<string, string> = {};
+      for (const work of ALL_WORKS) {
+        try {
+          const cite = new Cite([work.item]);
+          map[work.id] = cite.format('bibliography', {
+            format: 'html',
+            template: 'apa',
+            lang: 'en-US',
+          });
+        } catch (error) {
+          console.error('Error formatting citation:', error, work.item);
+          map[work.id] = fallbackHtml(work.item);
+        }
+      }
+      setFormattedHtml(map);
+    });
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   const filteredWorks = useMemo(() => {
@@ -160,7 +167,7 @@ const CvWorksBrowser: React.FC = () => {
           <div
             className={formattedClass}
             dangerouslySetInnerHTML={{
-              __html: formattedHtml[work.id] || `<div>${work.title}</div>`,
+              __html: formattedHtml[work.id] || fallbackHtml(work.item),
             }}
           />
           <CitationCopyMenu item={work.item} title={work.title} />
@@ -249,7 +256,7 @@ const CvWorksBrowser: React.FC = () => {
         </div>
 
         <div className="cv-works-facets">
-          <details className="cv-works-facet">
+          <details className="cv-works-facet" name="cv-facets">
             <summary>
               Year
               {selectedYears.length > 0 ? ` (${selectedYears.length})` : ''}
@@ -268,7 +275,7 @@ const CvWorksBrowser: React.FC = () => {
             </div>
           </details>
 
-          <details className="cv-works-facet">
+          <details className="cv-works-facet" name="cv-facets">
             <summary>
               Type
               {selectedTypes.length > 0 ? ` (${selectedTypes.length})` : ''}
