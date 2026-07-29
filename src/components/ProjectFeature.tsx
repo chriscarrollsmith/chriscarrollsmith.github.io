@@ -7,7 +7,7 @@ const typedHeroData = heroData as HeroImage[];
 const ProjectFeature: React.FC = () => {
   const hero = typedHeroData.find(h => h.name === 'project-feature');
 
-  const portraitImage = { alt: "Mockup of Scribert app on a mobile device", src: "images/mobile-mockup2.png" };
+  const portraitImage = { alt: "Mockup of Scribert app on a mobile device", src: "/images/mobile-mockup2.png" };
   const landscapeImage = { alt: "", src: "" };
   const buttonText = "Sign up";
   const buttonUrl = "https://www.scribert.com/signin/signup";

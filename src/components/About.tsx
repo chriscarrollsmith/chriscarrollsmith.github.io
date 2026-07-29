@@ -9,12 +9,12 @@ const About: React.FC = () => {
   const hero = typedHeroData.find(h => h.name === 'about');
 
   const techIcons = [
-    { alt: "Typescript", src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" },
-    { alt: "Python", src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" },
-    { alt: "R", src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/r/r-original.svg" },
-    { alt: "Rust", src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/rust/rust-original.svg" },
-    { alt: "React", src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" },
-    { alt: "PostgreSQL", src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" }
+    { alt: "Typescript", src: "/images/tech/typescript.svg" },
+    { alt: "Python", src: "/images/tech/python.svg" },
+    { alt: "R", src: "/images/tech/r.svg" },
+    { alt: "Rust", src: "/images/tech/rust.svg" },
+    { alt: "React", src: "/images/tech/react.svg" },
+    { alt: "PostgreSQL", src: "/images/tech/postgresql.svg" }
   ];
 
   const bioSentences = [
