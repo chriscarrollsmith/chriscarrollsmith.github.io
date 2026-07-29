@@ -9,9 +9,11 @@
         "@astrojs/mdx": "^4.3.13",
         "@astrojs/sitemap": "^3.6.0",
         "@citation-js/core": "^0.7.21",
+        "@citation-js/plugin-bibtex": "0.7.21",
         "@citation-js/plugin-csl": "^0.7.21",
         "@formspree/react": "^2.5.1",
         "date-fns": "^4.1.0",
+        "fuse.js": "^7.5.0",
         "image-size": "^2.0.2",
         "pdfmake": "^0.2.20",
         "prismjs": "^1.30.0",
@@ -133,6 +135,8 @@
     "@citation-js/date": ["@citation-js/date@0.5.1", "", {}, "sha512-1iDKAZ4ie48PVhovsOXQ+C6o55dWJloXqtznnnKy6CltJBQLIuLLuUqa8zlIvma0ZigjVjgDUhnVaNU1MErtZw=="],
 
     "@citation-js/name": ["@citation-js/name@0.4.2", "", {}, "sha512-brSPsjs2fOVzSnARLKu0qncn6suWjHVQtrqSUrnqyaRH95r/Ad4wPF5EsoWr+Dx8HzkCGb/ogmoAzfCsqlTwTQ=="],
+
+    "@citation-js/plugin-bibtex": ["@citation-js/plugin-bibtex@0.7.21", "", { "dependencies": { "@citation-js/date": "^0.5.0", "@citation-js/name": "^0.4.2", "moo": "^0.5.1" }, "peerDependencies": { "@citation-js/core": "^0.7.0" } }, "sha512-O008pSsJgiYKn4+7gAWrbNpNdUH++aMeYmZaJ2oFQ8X1tcY5jNBxJcr0zZojNtUi5CVOaXXHQ0yIifoUhuF2Vg=="],
 
     "@citation-js/plugin-csl": ["@citation-js/plugin-csl@0.7.21", "", { "dependencies": { "@citation-js/date": "^0.5.0", "citeproc": "^2.4.6" }, "peerDependencies": { "@citation-js/core": "^0.7.0" } }, "sha512-23ySPYCWDiU1JqhvqTYLn6+C11LkeJxTfyPKKXCK2wan9iF9ODvY7JYNl/OJgtwvu485dKfDpqqptWv6i71Meg=="],
 
@@ -1082,6 +1086,8 @@
 
     "functions-have-names": ["functions-have-names@1.2.3", "", {}, "sha512-xckBUXyTIqT97tq2x2AMb+g163b5JFysYk0x4qxNFwbfQkmNZoiRHb6sPzI9/QV33WeuvVYBUIiD4NzNIyqaRQ=="],
 
+    "fuse.js": ["fuse.js@7.5.0", "", {}, "sha512-sQtrEfA+ez/3G0cCZecF70oqpCRttCexYUG4mUrtWL49ULUzUyxokt5kyqwtKzj1270RaKih+hcP3qLcumccow=="],
+
     "gensync": ["gensync@1.0.0-beta.2", "", {}, "sha512-3hN7NaskYvMDLQY55gnW3NQ+mesEAepTqlg+VEbj7zzqEMBVNhzcGYYeqFo/TlYz6eQiFcp1HcsCZO+nGgS8zg=="],
 
     "get-caller-file": ["get-caller-file@2.0.5", "", {}, "sha512-DyFP3BM/3YHTQOCUL/w0OZHR0lpKeGrxotcHWcqNEdnltqFwXVfhEBQ94eIo34AfQpo0rGki4cyIiftY06h2Fg=="],
@@ -1511,6 +1517,8 @@
     "mkdirp": ["mkdirp@0.5.6", "", { "dependencies": { "minimist": "^1.2.6" }, "bin": { "mkdirp": "bin/cmd.js" } }, "sha512-FP+p8RB8OWpF3YZBCrP5gtADmtXApB5AMLn+vdyA+PyxCjrCs00mjyUozssO33cwDeT3wNGdLxJ5M//YqtHAJw=="],
 
     "mlly": ["mlly@1.8.0", "", { "dependencies": { "acorn": "^8.15.0", "pathe": "^2.0.3", "pkg-types": "^1.3.1", "ufo": "^1.6.1" } }, "sha512-l8D9ODSRWLe2KHJSifWGwBqpTZXIXTeo8mlKjY+E2HAakaTeNpqAyBZ8GSqLzHgw4XmHmC8whvpjJNMbFZN7/g=="],
+
+    "moo": ["moo@0.5.3", "", {}, "sha512-m2fmM2dDm7GZQsY7KK2cme8agi+AAljILjQnof7p1ZMDe6dQ4bdnSMx0cPppudoeNv5hEFQirN6u+O4fDE0IWA=="],
 
     "mrmime": ["mrmime@2.0.1", "", {}, "sha512-Y3wQdFg2Va6etvQ5I82yUhGdsKrcYox6p7FfL1LbK2J4V01F9TGlepTIhnK24t7koZibmg82KGglhA1XK5IsLQ=="],
 

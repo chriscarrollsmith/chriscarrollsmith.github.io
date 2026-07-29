@@ -2,8 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HeaderAstro from '../components/HeaderAstro.astro';
 import EducationList from '../components/EducationList.tsx';
-import PublicationsList from '../components/PublicationsList.tsx';
-import PresentationsList from '../components/PresentationsList.tsx';
+import CvWorksBrowser from '../components/CvWorksBrowser.tsx';
 import AwardsList from '../components/AwardsList.tsx';
 import Footer from '../components/Footer.tsx';
 import '../App.css';
@@ -166,8 +165,7 @@ const publicationSchemas = typedPublicationsData
       </div>
 
       <EducationList client:load />
-      <PublicationsList client:load />
-      <PresentationsList client:load />
+      <CvWorksBrowser client:load />
       <AwardsList client:load />
     </main>
     <Footer client:load />
