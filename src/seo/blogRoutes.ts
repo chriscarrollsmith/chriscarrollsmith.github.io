@@ -7,7 +7,8 @@ const BLOG_DIR = join(process.cwd(), 'src/content/blog');
 export type BlogRouteMeta = {
   slug: string;
   legacyId?: string;
-  isSyndicated: boolean;
+  /** Thin syndication mirrors stay out of the sitemap; enriched posts can opt in. */
+  isNoindex: boolean;
 };
 
 function parseFrontmatter(raw: string): Record<string, string> {
@@ -31,10 +32,11 @@ export function getBlogRouteMeta(): BlogRouteMeta[] {
     .map((name) => {
       const slug = name.replace(/\.mdx?$/, '');
       const fields = parseFrontmatter(readFileSync(join(BLOG_DIR, name), 'utf8'));
+      const indexable = fields.indexable === 'true';
       return {
         slug,
         legacyId: fields.legacyId,
-        isSyndicated: Boolean(fields.sourceUrl),
+        isNoindex: Boolean(fields.sourceUrl) && !indexable,
       };
     });
 }
@@ -54,7 +56,7 @@ function normalizeSitemapPath(page: string): string {
   return pathname.replace(/\/+$/, '') || '/';
 }
 
-/** Exclude syndicated (noindex) posts and legacy numeric blog paths from the sitemap. */
+/** Exclude noindex syndicated posts and legacy numeric blog paths from the sitemap. */
 export function shouldIncludeInSitemap(page: string): boolean {
   const path = normalizeSitemapPath(page);
   const posts = getBlogRouteMeta();
@@ -67,7 +69,7 @@ export function shouldIncludeInSitemap(page: string): boolean {
   if (blogMatch) {
     const slug = blogMatch[1].toLowerCase();
     const post = posts.find((entry) => entry.slug.toLowerCase() === slug);
-    if (post?.isSyndicated) {
+    if (post?.isNoindex) {
       return false;
     }
   }

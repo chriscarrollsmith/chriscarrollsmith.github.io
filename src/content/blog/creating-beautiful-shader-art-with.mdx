@@ -1,0 +1,66 @@
+---
+title: "Creating beautiful shader art with Claude Code"
+date: "2026-02-14"
+excerpt: "To get quality outputs from an AI agent, have it make a detailed study of examples of quality outputs first"
+image: "/images/shader-art/legofield-poster.jpg"
+sourceUrl: "https://knowledgeworkersguide.substack.com/p/creating-beautiful-shader-art-with"
+sourceId: "https://knowledgeworkersguide.substack.com/p/creating-beautiful-shader-art-with"
+---
+
+<div class="shader-art-embed">
+  <iframe src="/shader-art/legofield-procedural-plasma-landscape.html" title="Live WebGL demo: Legofield procedural plasma landscape" loading="eager"></iframe>
+</div>
+
+I’ve been experimenting with using [Claude Code](https://code.claude.com/docs/en/overview) to create “shader art.”
+
+The results are striking, and they illustrate a thesis I’ve been working on. More on that in a minute. First, let me explain **shaders** for the uninitiated.
+
+# What’s “shader art”?
+
+A **shader** is a small program that runs on your graphics chip (GPU). It uses mathematical equations to compute, in parallel, how to color each of the pixels on your screen.
+
+All the 3D graphics in your video games or Pixar movies are ultimately powered by shaders, although mostly they use libraries built on *top* of shaders rather than writer shader code directly.
+
+**Shader art** is the practice of using these tiny programs to generate stunning visuals—fractal landscapes, pulsing geometries, infinite tunnels, organic forms—entirely through math, with no textures, no 3D models, no assets or higher-level abstractions of any kind.
+
+What makes it so impressive is the sheer constraint: you're painting with equations, deriving every curve, shadow, reflection, and color gradient from raw trigonometry, noise functions, and clever coordinate transformations, all crammed into a few dozen lines of code that must run in real time at 60 frames per second.
+
+Websites like [ShaderToy](https://www.shadertoy.com/) aggregate some of the best human-created examples of this art form.
+
+<div class="shader-art-embed">
+  <iframe src="/shader-art/glass-box.html" title="Live WebGL demo: glass box shader" loading="lazy"></iframe>
+</div>
+
+# My shader art workflow
+
+To get Claude to create beautiful shader art, I’m using a workflow where I have Claude:
+
+1.  Collect high-quality examples from the Internet
+
+2.  Analyze the examples and extract composable patterns and methodologies into “agent skills”
+
+3.  Prompt subagents to create novel artwork using said skills
+
+The results have been really good.
+
+# About the examples in this post
+
+The first example above is Claude’s riff on a classic human-written shader called “[Legofield](https://www.shadertoy.com/view/XtBSzy)” by a ShaderToy user named Gijs. Claude identified how it works, then created a skill that agents can use to make their own Lego-inspired art (you can clone the skill from my GitHub [here](https://github.com/chriscarrollsmith/legofield-shader)). The above example is ~150 lines of HTML code.
+
+The second, more complex example above is a little under 400 lines of HTML code. It uses reflections, shadows, transparencies, rotations; it’s an incredible composition and visually stunning. That example and the example below this paragraph were inspired by (but not derivative of!) artworks by ShaderToy user [mrange](https://www.shadertoy.com/user/mrange/).
+
+<div class="shader-art-embed">
+  <iframe src="/shader-art/smooth-geometry.html" title="Live WebGL demo: smooth geometry shader" loading="lazy"></iframe>
+</div>
+
+# The takeaway: to get quality outputs from AI, have AI study quality outputs
+
+My takeaway from this experiment is that if you want quality outputs from an AI agent, you should have it make a detailed study of quality output examples first!
+
+In particular, the agent should break down high-quality work products to see how they’re put together, to reverse-engineer the step-by-step process by which you might arrive at that output, and to identify the reusable components/abstractions and the general principles behind them.
+
+Capturing those learnings enables agents to go beyond naive, simple outputs—to string together complex, multi-step workflows and achieve rich compositions like this one inspired by ShaderToy user [BigWIngs](https://www.shadertoy.com/user/BigWIngs/).
+
+<div class="shader-art-embed">
+  <iframe src="/shader-art/starlit-peaks.html" title="Live WebGL demo: starlit peaks shader" loading="lazy"></iframe>
+</div>

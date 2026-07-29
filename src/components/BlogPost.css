@@ -50,6 +50,27 @@
   font-weight: 400;
 }
 
+/* Live WebGL shader demos (embedded HTML) */
+.blog-post .shader-art-embed {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+  margin: 1.5rem 0;
+  background: #0a0f14;
+  border-radius: 0.25rem;
+}
+
+.blog-post .shader-art-embed iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
 /* Mermaid diagrams: full-width with side padding */
 .blog-post .mermaid-diagram {
   margin: 2rem 0;

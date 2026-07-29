@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Glass Box - mrange style</title>
+<style>
+  * { margin: 0; padding: 0; }
+  body { background: #000; overflow: hidden; }
+  canvas { display: block; width: 100vw; height: 100vh; }
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<script>
+const canvas = document.getElementById('c');
+const gl = canvas.getContext('webgl2');
+if (!gl) { document.body.innerHTML = '<h1 style="color:white;padding:2em">WebGL2 not supported</h1>'; }
+
+function resize() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  gl.viewport(0, 0, canvas.width, canvas.height);
+}
+window.addEventListener('resize', resize);
+resize();
+
+const vsSource = `#version 300 es
+in vec4 a_position;
+void main() { gl_Position = a_position; }`;
+
+const fsSource = `#version 300 es
+precision highp float;
+uniform vec2 iResolution;
+uniform float iTime;
+uniform vec2 iMouse;
+out vec4 outColor;
+
+#define TIME        iTime
+#define RESOLUTION  iResolution
+#define PI          3.141592654
+#define TAU         (2.0*PI)
+#define ROT(a)      mat2(cos(a), sin(a), -sin(a), cos(a))
+
+// --- mrange utility functions (CC0) ---
+
+const float refr_index = 0.8;
+const float phi = (sqrt(5.0) + 1.0) / 2.0;
+const float beerHue = 0.65;
+
+vec3 hsv2rgb_approx(vec3 hsv) {
+  return (cos(hsv.x * TAU + vec3(0.0, 4.0, 2.0)) * hsv.y + 2.0 - hsv.y) * hsv.z / 2.0;
+}
+
+vec3 aces_approx(vec3 v) {
+  v = max(v, 0.0);
+  v *= 0.6;
+  float a = 2.51, b = 0.03, c = 2.43, d = 0.59, e = 0.14;
+  return clamp((v*(a*v+b))/(v*(c*v+d)+e), 0.0, 1.0);
+}
+
+float pmin(float a, float b, float k) {
+  float h = clamp(0.5 + 0.5*(b - a)/k, 0.0, 1.0);
+  return mix(b, a, h) - k*h*(1.0 - h);
+}
+
+float pmax(float a, float b, float k) {
+  return -pmin(-a, -b, k);
+}
+
+// 3D distance functions
+float box(vec3 p, vec3 b) {
+  vec3 q = abs(p) - b;
+  return length(max(q, 0.0)) + min(max(q.x, max(q.y, q.z)), 0.0);
+}
+
+float boxFrame(vec3 p, vec3 b, float e) {
+  p = abs(p) - b;
+  vec3 q = abs(p + e) - e;
+  return min(min(
+    length(max(vec3(p.x, q.y, q.z), 0.0)) + min(max(p.x, max(q.y, q.z)), 0.0),
+    length(max(vec3(q.x, p.y, q.z), 0.0)) + min(max(q.x, max(p.y, q.z)), 0.0)),
+    length(max(vec3(q.x, q.y, p.z), 0.0)) + min(max(q.x, max(q.y, p.z)), 0.0));
+}
+
+float torus(vec3 p, vec2 t) {
+  vec2 q = vec2(length(p.xz) - t.x, p.y);
+  return length(q) - t.y;
+}
+
+// Animated rotation matrix
+mat3 animatedRotation(float t) {
+  float a1 = t * 0.5;
+  float a2 = t * 0.707;
+  float a3 = t * 0.33;
+  float c1 = cos(a1), s1 = sin(a1);
+  float c2 = cos(a2), s2 = sin(a2);
+  float c3 = cos(a3), s3 = sin(a3);
+  return mat3(
+    c1*c2, c1*s2*s3 - c3*s1, s1*s3 + c1*c3*s2,
+    c2*s1, c1*c3 + s1*s2*s3, c3*s1*s2 - c1*s3,
+    -s2, c2*s3, c2*c3
+  );
+}
+
+// Constants
+const vec3 boxDim = vec3(1.0, phi, phi * 0.7);
+const float boxEdge = 0.008;
+const float bottom = -1.7;
+const vec3 rayOrigin = normalize(vec3(0.0, 3.0, -5.0)) * 7.0;
+const vec3 lookAt = vec3(0.0, 0.5 * -1.7, 0.0);
+
+mat3 g_rot;
+float g_glowDist;
+
+// External scene
+float dfExternal(vec3 p) {
+  float dbox = box(p, boxDim);
+  float dframe = boxFrame(p, boxDim, 0.0) - boxEdge;
+  float d = dbox;
+  d = pmax(d, -(dframe - 2.0*boxEdge), 8.0*boxEdge);
+  d = min(d, dframe);
+  g_glowDist = min(g_glowDist, dframe);
+  return d;
+}
+
+// Internal scene (inside box)
+float dfInternal(vec3 p) {
+  float dbox = -box(p, boxDim); // inverted box = interior
+
+  vec3 rp = g_rot * p;
+  float dtorus = torus(rp, vec2(0.7, 0.04));
+  float dsphere = length(rp) - 0.55;
+  dsphere = pmax(dsphere, -(dtorus - 0.08), 0.05);
+
+  float d = dbox;
+  d = min(d, dsphere);
+  d = min(d, dtorus);
+
+  float gd = min(boxFrame(p, boxDim, 0.0) - boxEdge, dtorus);
+  g_glowDist = min(g_glowDist, gd);
+  return d;
+}
+
+float rayMarch(vec3 ro, vec3 rd, float tMax, bool isInternal) {
+  float t = 0.01;
+  for (int i = 0; i < 80; i++) {
+    vec3 pos = ro + rd * t;
+    float d = isInternal ? dfInternal(pos) : dfExternal(pos);
+    if (d < 0.001 || t > tMax) break;
+    t += d;
+  }
+  return t;
+}
+
+vec3 calcNormal(vec3 pos, bool isInternal) {
+  vec2 eps = vec2(0.001, 0.0);
+  if (isInternal) {
+    return normalize(vec3(
+      dfInternal(pos + eps.xyy) - dfInternal(pos - eps.xyy),
+      dfInternal(pos + eps.yxy) - dfInternal(pos - eps.yxy),
+      dfInternal(pos + eps.yyx) - dfInternal(pos - eps.yyx)
+    ));
+  } else {
+    return normalize(vec3(
+      dfExternal(pos + eps.xyy) - dfExternal(pos - eps.xyy),
+      dfExternal(pos + eps.yxy) - dfExternal(pos - eps.yxy),
+      dfExternal(pos + eps.yyx) - dfExternal(pos - eps.yyx)
+    ));
+  }
+}
+
+// World background
+vec3 renderWorld(vec3 ro, vec3 rd) {
+  vec3 col = vec3(0.0);
+  float bt = -(ro.y - bottom) / rd.y;
+
+  // Sky
+  col = hsv2rgb_approx(vec3(
+    0.6,
+    clamp(0.3 + 0.9 * rd.y, 0.0, 1.0),
+    1.5 * clamp(2.0 - 2.0 * rd.y * rd.y, 0.0, 2.0)
+  ));
+
+  // Ground plane with grid
+  if (bt > 0.0) {
+    vec3 bp = ro + rd * bt;
+    vec2 bpp = bp.xz;
+    vec2 npp = round(bpp);
+    vec2 cpp = bpp - npp;
+    vec2 app = abs(cpp);
+
+    float gfre = 1.0 + rd.y;
+    gfre *= gfre;
+    gfre *= gfre;
+
+    float gd = min(app.x, app.y) - mix(0.01, 0.0, gfre);
+    vec3 bbcol = hsv2rgb_approx(vec3(0.7, 0.2, 1.25));
+    float bfade = mix(1.0, 0.2, exp(-0.3 * max(bt - 15.0, 0.0)));
+    float gaa = mix(0.0, 0.08, bfade);
+
+    vec3 bcol = mix(bbcol, bbcol * bfade, smoothstep(gaa, -gaa, gd));
+    col = mix(col, bcol, exp(-0.008 * bt));
+  }
+
+  return col;
+}
+
+// Render internal bouncing light
+vec3 renderInternal(vec3 ro, vec3 rd) {
+  vec3 agg = vec3(0.0);
+  float ragg = 1.0;
+  float tagg = 0.0;
+
+  for (int bounce = 0; bounce < 4; bounce++) {
+    if (ragg < 0.1) break;
+    g_glowDist = 1000.0;
+
+    float t = rayMarch(ro, rd, 20.0, true);
+    float glowDist = g_glowDist;
+    tagg += t;
+
+    vec3 ip = ro + rd * t;
+    vec3 n = calcNormal(ip, true);
+    vec3 ir = reflect(rd, n);
+
+    float ifre = 1.0 + dot(n, rd);
+    ifre *= ifre;
+
+    vec3 beerCol = -hsv2rgb_approx(vec3(beerHue + 0.5, 0.5, 1.0));
+    vec3 beer = ragg * exp(0.2 * beerCol * tagg);
+
+    vec3 glowCol = hsv2rgb_approx(vec3(0.55, 0.7, 2e-3));
+    agg += glowCol * beer * ((1.0 + tagg*tagg*4e-2) * 6.0 /
+           max(glowDist, 5e-4 + tagg*tagg*2e-4/ragg));
+
+    ragg *= mix(0.6, 0.8, ifre);
+    if (glowDist < 0.002) ragg = 0.0;
+
+    ro = ip;
+    rd = ir;
+  }
+
+  return agg;
+}
+
+vec3 effect(vec2 p, vec2 pp) {
+  vec3 ro = rayOrigin;
+  const vec3 up = vec3(0.0, 1.0, 0.0);
+
+  // Orbit camera slowly
+  ro.xz *= ROT(0.1 * TIME);
+  g_rot = animatedRotation(0.707 * TIME);
+
+  vec3 ww = normalize(lookAt - ro);
+  vec3 uu = normalize(cross(up, ww));
+  vec3 vv = cross(ww, uu);
+
+  const float fov = 2.0;
+  vec3 rd = normalize(-p.x * uu + p.y * vv + fov * ww);
+
+  vec3 col = renderWorld(ro, rd);
+
+  // Ground shadow intersection
+  float bt = -(ro.y - bottom) / rd.y;
+  vec3 bp = ro + rd * bt;
+  float bd = dfExternal(bp);
+
+  // Ray march external shape
+  g_glowDist = 1000.0;
+  float st = rayMarch(ro, rd, 20.0, false);
+  float sglowDist = g_glowDist;
+
+  if (st < 20.0 && (bt < 0.0 || st < bt)) {
+    vec3 sp = ro + rd * st;
+    vec3 sn = calcNormal(sp, false);
+    vec3 sr = reflect(rd, sn);
+    vec3 srr = refract(rd, sn, refr_index);
+
+    float sfre = 1.0 + dot(rd, sn);
+    sfre *= sfre;
+    sfre = mix(0.05, 1.0, sfre);
+
+    vec3 refCol = hsv2rgb_approx(vec3(beerHue, 0.66, 0.33));
+
+    // Reflection of world
+    vec3 rwcol = renderWorld(sp, sr);
+
+    // Internal refraction + bouncing
+    vec3 ricol = vec3(0.0);
+    if (sglowDist > 0.002) {
+      ricol = renderInternal(sp, srr) * (1.0 - sfre);
+    }
+
+    if (srr == vec3(0.0)) {
+      // Total internal reflection
+      col = rwcol * sqrt(sfre) * refCol;
+    } else {
+      col = mix(ricol * smoothstep(0.0, 0.25, sglowDist), rwcol * refCol, sfre);
+    }
+  } else if (bt > 0.0) {
+    // Ground shadow from box
+    col *= mix(1.0, 0.125, exp(-bd));
+  }
+
+  // Glow from frame edges
+  vec3 glowCol = hsv2rgb_approx(vec3(0.55, 0.5, 4e-3));
+  col += glowCol / max(sglowDist, 0.001);
+
+  // Post-processing
+  col -= 0.03 * vec3(2.0, 3.0, 1.0) * (length(p) + 0.25);
+  col *= smoothstep(1.7, 0.8, length(pp));
+  col = aces_approx(col);
+  col = sqrt(col);
+
+  return col;
+}
+
+void mainImage(out vec4 fragColor, in vec2 fragCoord) {
+  vec2 q = fragCoord / RESOLUTION.xy;
+  vec2 p = -1.0 + 2.0 * q;
+  vec2 pp = p;
+  p.x *= RESOLUTION.x / RESOLUTION.y;
+
+  vec3 col = effect(p, pp);
+  fragColor = vec4(col, 1.0);
+}
+
+void main() { mainImage(outColor, gl_FragCoord.xy); }
+`;
+
+function createShader(gl, source, type) {
+    const shader = gl.createShader(type);
+    gl.shaderSource(shader, source);
+    gl.compileShader(shader);
+    if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+        console.error(gl.getShaderInfoLog(shader));
+        gl.deleteShader(shader);
+        return null;
+    }
+    return shader;
+}
+
+const vs = createShader(gl, vsSource, gl.VERTEX_SHADER);
+const fs = createShader(gl, fsSource, gl.FRAGMENT_SHADER);
+const program = gl.createProgram();
+gl.attachShader(program, vs);
+gl.attachShader(program, fs);
+gl.linkProgram(program);
+if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+    console.error(gl.getProgramInfoLog(program));
+}
+
+const vao = gl.createVertexArray();
+gl.bindVertexArray(vao);
+const buf = gl.createBuffer();
+gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, -1,1, 1,-1, 1,1]), gl.STATIC_DRAW);
+const posLoc = gl.getAttribLocation(program, 'a_position');
+gl.enableVertexAttribArray(posLoc);
+gl.vertexAttribPointer(posLoc, 2, gl.FLOAT, false, 0, 0);
+
+const resLoc = gl.getUniformLocation(program, 'iResolution');
+const timeLoc = gl.getUniformLocation(program, 'iTime');
+const mouseLoc = gl.getUniformLocation(program, 'iMouse');
+
+let mouse = { x: 0.5, y: 0.5 };
+window.addEventListener('mousemove', e => {
+    mouse.x = e.clientX / window.innerWidth;
+    mouse.y = e.clientY / window.innerHeight;
+});
+
+function animate(time) {
+    requestAnimationFrame(animate);
+    gl.useProgram(program);
+    gl.bindVertexArray(vao);
+    gl.uniform2f(resLoc, canvas.width, canvas.height);
+    gl.uniform1f(timeLoc, time / 1000.0);
+    gl.uniform2f(mouseLoc, mouse.x, mouse.y);
+    gl.drawArrays(gl.TRIANGLES, 0, 6);
+}
+requestAnimationFrame(animate);
+</script>
+</body>
+</html>

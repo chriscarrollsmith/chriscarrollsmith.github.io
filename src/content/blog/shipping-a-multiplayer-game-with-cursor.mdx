@@ -1,0 +1,19 @@
+---
+title: "Shipping a multiplayer game with Cursor Cloud Agents"
+date: "2026-07-29"
+excerpt: "A demo for Albany Can Code: connect a Cursor Cloud Agent to a Hetzner VPS and ship a Jackbox-style game to the internet in under ten minutes."
+image: "https://i3.ytimg.com/vi/bQl3iidMn7Q/hqdefault.jpg"
+sourceUrl: "https://www.youtube.com/watch?v=bQl3iidMn7Q"
+sourceId: "youtube:bQl3iidMn7Q"
+indexable: true
+---
+
+<div class="video-container" style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;max-width:100%;margin:1.5rem 0;"><iframe style="position:absolute;top:0;left:0;width:100%;height:100%;" src="https://www.youtube.com/embed/bQl3iidMn7Q" title="Creating and deploying a multiplayer online game with Cursor Cloud Agents in under 10 minutes" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+
+This is a demo I did for an [Albany Can Code](https://cancode.org/) beginner programming class on July 23, 2026. I showed the students how to directly connect their Cursor Cloud Agent up to a Hetzner server with full admin rights and let it ship games straight to the Internet for them (because what every beginner really needs is a nuclear weapon).
+
+The killer Cursor Cloud Agents feature is that the `hcloud` OAuth2 login flow works exactly the same way from the cloud terminal as it would from a local terminal on my computer. This is no small engineering feat. Usually, authenticating a CLI tool inside a terminal that's remote-connected to a cloud container is more involved, and at least requires manually typing in a six-digit code. But in Cursor, it's a single-click authorization and redirect. I'm honestly not even sure how they did this, but it makes developing with Cloud Agents extremely convenient.
+
+They've also optimized container startup times, so you can start a cloud container and have it development ready in under ten seconds. Again, this shouldn't be possible, and I think it probably means [they've got all my local dev files already sitting on their server somewhere](https://x.com/migtissera/status/2081985113857089692?s=20), which I don't love. But the speed and convenience may be worth the privacy tradeoff.
+
+I can now have half a dozen agents developing in parallel without worrying about git collisions or Internet service interruptions or OOM'ing my poor consumer laptop. Cursor has made this so frictionless that it has become my default workflow, which is very unexpected! And, as a bonus, it makes development work much more secure, at least in the sense that Cursor agents no longer have access to my entire file system!
