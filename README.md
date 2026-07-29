@@ -194,6 +194,7 @@ Blog posts are MDX files in `src/content/blog/`, validated by the Astro content 
 - `excerpt` - Short description (used in meta tags for social previews)
 - `image` - Optional preview image for social media
 - `sourceUrl` / `sourceId` - Optional syndication metadata
+- `indexable` - Optional; set `true` on enriched syndicated posts to allow indexing
 - `legacyId` - Optional legacy numeric/string id
 
 ### Adding a New Blog Post

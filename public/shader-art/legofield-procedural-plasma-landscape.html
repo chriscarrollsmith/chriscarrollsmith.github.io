@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Legofield Procedural Field (Landscape)</title>
+<style>
+html, body { margin: 0; height: 100%; background: #0a0f14; }
+canvas { width: 100vw; height: 100vh; display: block; }
+</style>
+</head>
+<body>
+<canvas id="gl"></canvas>
+<script>
+const canvas = document.getElementById("gl");
+const gl = canvas.getContext("webgl");
+if (!gl) throw new Error("WebGL not available");
+
+const vsrc = `
+attribute vec2 aPos;
+void main() { gl_Position = vec4(aPos, 0.0, 1.0); }
+`;
+
+const fsrc = `
+precision highp float;
+uniform vec2 uResolution;
+uniform float uTime;
+const float LOOP_SECONDS = 8.0;
+
+vec2 legoCellCenterPx(vec2 fragCoord, vec2 resolution, float blocksPerWidth) {
+    float c = blocksPerWidth / resolution.x;
+    return floor(fragCoord * c + 0.5) / c;
+}
+vec2 legoCellUv(vec2 fragCoord, vec2 cellCenterPx, vec2 resolution, float blocksPerWidth) {
+    float c = blocksPerWidth / resolution.x;
+    return (fragCoord - cellCenterPx) * c * 2.0;
+}
+float legoStudRing(vec2 cellUv, float studRadius, float ringWidth) {
+    float r = length(cellUv);
+    return smoothstep(studRadius - ringWidth, studRadius, r)
+         - smoothstep(studRadius, studRadius + ringWidth, r);
+}
+float legoEdgeMask(vec2 cellUv) {
+    return smoothstep(0.84, 1.0, max(abs(cellUv.x), abs(cellUv.y)));
+}
+
+vec3 field(vec2 uv, float t) {
+    vec2 p = uv * 2.0 - 1.0;
+    // Turn the portrait-biased field on its side for landscape framing.
+    p = vec2(-p.y, p.x);
+    p.x *= uResolution.y / uResolution.x;
+
+    float r = length(p);
+    vec2 d = normalize(p + vec2(1e-6, 0.0));
+    float cx = d.x;
+    float s = d.y;
+    // Branch-cut-free 5x angular harmonic.
+    float cos5 = 16.0 * cx * cx * cx * cx * cx - 20.0 * cx * cx * cx + 5.0 * cx;
+    float sin5 = 16.0 * s * s * s * s * s - 20.0 * s * s * s + 5.0 * s;
+    float phase = 6.28318530718 * t / LOOP_SECONDS;
+    float wt = phase;
+    float angular = cos5 * cos(wt) - sin5 * sin(wt);
+
+    float w = sin(9.0 * r - 2.0 * phase) + angular;
+    vec3 c = 0.5 + 0.5 * cos(vec3(0.0, 2.0, 4.0) + w + vec3(0.2, 0.7, 1.4));
+    return c;
+}
+
+void main() {
+    vec2 fragCoord = gl_FragCoord.xy;
+    float t = mod(uTime, LOOP_SECONDS);
+
+    float blocksPerWidth = 30.0;
+    float studRadius = 0.60; // Canonical ratio from original Legofield.
+    float ringWidth = 0.08;
+    float edgeStrength = 0.50;
+    float studHighlight = 0.30;
+    vec2 lightDir = normalize(vec2(-0.6, 0.75));
+    float outlineGray = 0.35;
+    float lightArcLift = 0.30;
+    float lightArcBias = 0.05;
+    float lightArcStrength = 0.55;
+    float shadowArcStrength = 0.75;
+
+    vec2 centerPx = legoCellCenterPx(fragCoord, uResolution, blocksPerWidth);
+    vec2 cellUv = legoCellUv(fragCoord, centerPx, uResolution, blocksPerWidth);
+
+    vec2 centerUv = centerPx / uResolution;
+    vec3 base = field(centerUv, t);
+
+    float ring = legoStudRing(cellUv, studRadius, ringWidth);
+    float edge = legoEdgeMask(cellUv);
+    vec2 n2 = normalize(cellUv + vec2(1e-5));
+    float lambert = max(0.0, dot(n2, lightDir));
+    float side = dot(n2, lightDir);
+    float litArc = ring * smoothstep(0.0, 0.35, side);
+    float shadowArc = ring * smoothstep(0.0, 0.35, -side);
+
+    vec3 col = base;
+    vec3 outlineColor = vec3(outlineGray);
+    vec3 litArcColor = clamp(base * (1.0 + lightArcLift) + vec3(lightArcBias), 0.0, 1.0);
+    col *= 1.0 + studHighlight * ring * lambert;
+    col = mix(col, outlineColor, edgeStrength * edge);
+    col = mix(col, litArcColor, lightArcStrength * litArc);
+    col = mix(col, outlineColor, shadowArcStrength * shadowArc);
+
+    gl_FragColor = vec4(clamp(col, 0.0, 1.0), 1.0);
+}
+`;
+
+function shader(type, src){
+  const s = gl.createShader(type);
+  gl.shaderSource(s, src);
+  gl.compileShader(s);
+  if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(s));
+  return s;
+}
+const prog = gl.createProgram();
+gl.attachShader(prog, shader(gl.VERTEX_SHADER, vsrc));
+gl.attachShader(prog, shader(gl.FRAGMENT_SHADER, fsrc));
+gl.linkProgram(prog);
+if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(prog));
+gl.useProgram(prog);
+
+const quad = gl.createBuffer();
+gl.bindBuffer(gl.ARRAY_BUFFER, quad);
+gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+const aPos = gl.getAttribLocation(prog, "aPos");
+gl.enableVertexAttribArray(aPos);
+gl.vertexAttribPointer(aPos, 2, gl.FLOAT, false, 0, 0);
+
+const uResolution = gl.getUniformLocation(prog, "uResolution");
+const uTime = gl.getUniformLocation(prog, "uTime");
+
+function resize(){
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  canvas.width = Math.floor(innerWidth * dpr);
+  canvas.height = Math.floor(innerHeight * dpr);
+  gl.viewport(0, 0, canvas.width, canvas.height);
+}
+addEventListener("resize", resize);
+resize();
+
+const t0 = performance.now();
+function frame(){
+  const t = (performance.now() - t0) * 0.001;
+  gl.uniform2f(uResolution, canvas.width, canvas.height);
+  gl.uniform1f(uTime, t);
+  gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+  requestAnimationFrame(frame);
+}
+frame();
+</script>
+</body>
+</html>

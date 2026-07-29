@@ -9,6 +9,8 @@ const blog = defineCollection({
     image: z.string().optional(),
     sourceUrl: z.string().url().optional(),
     sourceId: z.string().optional(),
+    /** When true, a syndicated post is eligible for indexing (sitemap + no noindex). */
+    indexable: z.boolean().optional(),
     legacyId: z.union([z.string(), z.number()]).optional(),
   }),
 });

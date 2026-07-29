@@ -33,7 +33,7 @@ if (!post) {
   throw new Error(`Blog post not found for slug: ${slug}`);
 }
 
-const isSyndicated = post.data.sourceUrl !== undefined;
+const isNoindex = post.data.sourceUrl !== undefined && post.data.indexable !== true;
 const canonicalURL = new URL(`/blog/${post.slug}`, 'https://christophercarrollsmith.com').href;
 
 const mermaidOgImage = `/images/mermaid/${post.slug}-1-og.png`;
@@ -44,6 +44,22 @@ const pageImage = post.data.image || (hasMermaidOg ? mermaidOgImage : '/images/C
 const absoluteImage = pageImage.startsWith('http')
   ? pageImage
   : new URL(pageImage, 'https://christophercarrollsmith.com').href;
+
+const youtubeId =
+  post.data.sourceId?.match(/^youtube:(.+)$/)?.[1] ??
+  post.data.sourceUrl?.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([\w-]+)/)?.[1];
+
+const videoObject = youtubeId && post.data.sourceUrl
+  ? {
+      '@type': 'VideoObject',
+      name: post.data.title,
+      description: post.data.excerpt,
+      thumbnailUrl: absoluteImage,
+      uploadDate: post.data.date,
+      embedUrl: `https://www.youtube.com/embed/${youtubeId}`,
+      contentUrl: post.data.sourceUrl,
+    }
+  : undefined;
 
 // Schema.org structured data for the article
 const structuredData = {
@@ -68,6 +84,7 @@ const structuredData = {
     '@type': 'WebPage',
     '@id': canonicalURL,
   },
+  ...(videoObject ? { video: videoObject } : {}),
 };
 
 const { Content } = await render(post);
@@ -97,7 +114,7 @@ function sourceLabel(url: string): string {
   canonicalURL={canonicalURL}
 >
   <Fragment slot="head">
-    {isSyndicated && <meta name="robots" content="noindex,follow" />}
+    {isNoindex && <meta name="robots" content="noindex,follow" />}
     <meta property="article:published_time" content={post.data.date} />
     <meta property="article:modified_time" content={post.data.date} />
     <meta property="article:author" content="Christopher Carroll Smith" />
