@@ -53,9 +53,11 @@ test.describe('CV works browser', () => {
     const firstEntry = page.locator('.publication-entry').first();
     await firstEntry.getByRole('button', { name: /Cite/ }).click();
     await page.getByRole('menuitem', { name: 'Copy APA' }).click();
+    await expect(firstEntry.locator('.citation-copy-status')).toContainText('Copied APA');
 
-    const clipboard = await page.evaluate(() => navigator.clipboard.readText());
-    expect(clipboard.length).toBeGreaterThan(20);
-    expect(clipboard).toMatch(/\(20\d{2}\)/);
+    await expect
+      .poll(async () => page.evaluate(() => navigator.clipboard.readText()))
+      .toMatch(/\(20\d{2}\)/);
   });
 });
+
