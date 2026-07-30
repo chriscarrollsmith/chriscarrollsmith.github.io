@@ -1,4 +1,11 @@
-import { startTransition, useDeferredValue, useEffect, useMemo, useState } from 'react';
+import {
+  startTransition,
+  useDeferredValue,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import Fuse from 'fuse.js';
 import {
   loadCvWorks,
@@ -33,6 +40,7 @@ const CvWorksBrowser: React.FC = () => {
   const [selectedVenue, setSelectedVenue] = useState('');
   const [density, setDensity] = useState<Density>('comfortable');
   const [formattedHtml, setFormattedHtml] = useState<Record<string, string>>({});
+  const facetsRef = useRef<HTMLDivElement>(null);
 
   const years = useMemo(() => uniqueYears(ALL_WORKS), []);
   const types = useMemo(() => {
@@ -81,6 +89,18 @@ const CvWorksBrowser: React.FC = () => {
     return () => {
       cancelled = true;
     };
+  }, []);
+
+  useEffect(() => {
+    const onPointerDown = (event: MouseEvent) => {
+      const root = facetsRef.current;
+      if (!root || root.contains(event.target as Node)) return;
+      root.querySelectorAll<HTMLDetailsElement>('details[open]').forEach((details) => {
+        details.open = false;
+      });
+    };
+    document.addEventListener('mousedown', onPointerDown);
+    return () => document.removeEventListener('mousedown', onPointerDown);
   }, []);
 
   const filteredWorks = useMemo(() => {
@@ -223,122 +243,126 @@ const CvWorksBrowser: React.FC = () => {
     );
   };
 
-  return (
-    <div className={`cv-works-browser density-${density}`}>
-      <div className="cv-works-toolbar">
-        <div className="cv-works-toolbar-row">
-          <label className="cv-works-search">
-            <span className="visually-hidden">Search publications and presentations</span>
-            <input
-              type="search"
-              value={query}
-              onChange={(event) => setQuery(event.target.value)}
-              placeholder="Search titles, venues, authors…"
-              autoComplete="off"
-            />
-          </label>
-          <div className="cv-works-density" role="group" aria-label="List density">
-            <button
-              type="button"
-              aria-pressed={density === 'comfortable'}
-              onClick={() => setDensity('comfortable')}
-            >
-              Comfortable
-            </button>
-            <button
-              type="button"
-              aria-pressed={density === 'compact'}
-              onClick={() => setDensity('compact')}
-            >
-              Compact
-            </button>
-          </div>
+  const toolbar = (
+    <div className="cv-works-toolbar">
+      <div className="cv-works-toolbar-row">
+        <label className="cv-works-search">
+          <span className="visually-hidden">Search publications and presentations</span>
+          <input
+            type="search"
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            placeholder="Search titles, venues, authors…"
+            autoComplete="off"
+          />
+        </label>
+        <div className="cv-works-density" role="group" aria-label="List density">
+          <button
+            type="button"
+            aria-pressed={density === 'comfortable'}
+            onClick={() => setDensity('comfortable')}
+          >
+            Comfortable
+          </button>
+          <button
+            type="button"
+            aria-pressed={density === 'compact'}
+            onClick={() => setDensity('compact')}
+          >
+            Compact
+          </button>
         </div>
-
-        <div className="cv-works-facets">
-          <details className="cv-works-facet" name="cv-facets">
-            <summary>
-              Year
-              {selectedYears.length > 0 ? ` (${selectedYears.length})` : ''}
-            </summary>
-            <div className="cv-works-facet-options" role="group" aria-label="Filter by year">
-              {years.map((year) => (
-                <label key={year} className="cv-works-chip">
-                  <input
-                    type="checkbox"
-                    checked={selectedYears.includes(year)}
-                    onChange={() => toggleYear(year)}
-                  />
-                  <span>{year}</span>
-                </label>
-              ))}
-            </div>
-          </details>
-
-          <details className="cv-works-facet" name="cv-facets">
-            <summary>
-              Type
-              {selectedTypes.length > 0 ? ` (${selectedTypes.length})` : ''}
-            </summary>
-            <div className="cv-works-facet-options" role="group" aria-label="Filter by type">
-              {types.map((type) => (
-                <label key={type.value} className="cv-works-chip">
-                  <input
-                    type="checkbox"
-                    checked={selectedTypes.includes(type.value)}
-                    onChange={() => toggleType(type.value)}
-                  />
-                  <span>{type.label}</span>
-                </label>
-              ))}
-            </div>
-          </details>
-
-          <label className="cv-works-venue">
-            <span className="visually-hidden">Filter by venue</span>
-            <select
-              value={selectedVenue}
-              onChange={(event) => setSelectedVenue(event.target.value)}
-              autoComplete="off"
-            >
-              <option value="">All venues</option>
-              {venues.map((venue) => (
-                <option key={venue} value={venue}>
-                  {venue}
-                </option>
-              ))}
-            </select>
-          </label>
-
-          {hasActiveFilters && (
-            <button type="button" className="cv-works-clear" onClick={clearFilters}>
-              Clear filters
-            </button>
-          )}
-        </div>
-
-        <p className="cv-works-count" aria-live="polite">
-          Showing {filteredWorks.length} of {ALL_WORKS.length} works
-          {publications.length > 0 || presentations.length > 0
-            ? ` · ${publications.length} publications · ${presentations.length} presentations`
-            : ''}
-        </p>
       </div>
 
-      {publicationSections.length > 0 && (
-        <div className="publications-list">
-          <h2>Publications</h2>
-          {publicationSections.map((section) => {
-            const entries = publications.filter((w) => w.section === section);
-            return (
-              <div key={section} className="publication-section">
-                <h3>{section}</h3>
-                <div className="publications-entries">{entries.map(renderEntry)}</div>
-              </div>
-            );
-          })}
-        </div>
-      )}
+      <div className="cv-works-facets" ref={facetsRef}>
+        <details className="cv-works-facet" name="cv-facets">
+          <summary>
+            Year
+            {selectedYears.length > 0 ? ` (${selectedYears.length})` : ''}
+          </summary>
+          <div className="cv-works-facet-options" role="group" aria-label="Filter by year">
+            {years.map((year) => (
+              <label key={year} className="cv-works-chip">
+                <input
+                  type="checkbox"
+                  checked={selectedYears.includes(year)}
+                  onChange={() => toggleYear(year)}
+                />
+                <span>{year}</span>
+              </label>
+            ))}
+          </div>
+        </details>
+
+        <details className="cv-works-facet" name="cv-facets">
+          <summary>
+            Type
+            {selectedTypes.length > 0 ? ` (${selectedTypes.length})` : ''}
+          </summary>
+          <div className="cv-works-facet-options" role="group" aria-label="Filter by type">
+            {types.map((type) => (
+              <label key={type.value} className="cv-works-chip">
+                <input
+                  type="checkbox"
+                  checked={selectedTypes.includes(type.value)}
+                  onChange={() => toggleType(type.value)}
+                />
+                <span>{type.label}</span>
+              </label>
+            ))}
+          </div>
+        </details>
+
+        <label className="cv-works-venue">
+          <span className="visually-hidden">Filter by venue</span>
+          <select
+            value={selectedVenue}
+            onChange={(event) => setSelectedVenue(event.target.value)}
+            autoComplete="off"
+          >
+            <option value="">All venues</option>
+            {venues.map((venue) => (
+              <option key={venue} value={venue}>
+                {venue}
+              </option>
+            ))}
+          </select>
+        </label>
+
+        {hasActiveFilters && (
+          <button type="button" className="cv-works-clear" onClick={clearFilters}>
+            Clear filters
+          </button>
+        )}
+      </div>
+
+      <p className="cv-works-count" aria-live="polite">
+        Showing {filteredWorks.length} of {ALL_WORKS.length} works
+        {publications.length > 0 || presentations.length > 0
+          ? ` · ${publications.length} publications · ${presentations.length} presentations`
+          : ''}
+      </p>
+    </div>
+  );
+
+  return (
+    <div className={`cv-works-browser density-${density}`}>
+      <div className="publications-list">
+        <h2>Publications</h2>
+        {toolbar}
+        {publicationSections.map((section) => {
+          const entries = publications.filter((w) => w.section === section);
+          return (
+            <div key={section} className="publication-section">
+              <h3>{section}</h3>
+              <div className="publications-entries">{entries.map(renderEntry)}</div>
+            </div>
+          );
+        })}
+        {publications.length === 0 && (
+          <p className="cv-works-empty">No publications match these filters.</p>
+        )}
+      </div>
 
       {presentationSections.length > 0 && (
         <div className="presentations-list">
@@ -356,7 +380,7 @@ const CvWorksBrowser: React.FC = () => {
       )}
 
       {filteredWorks.length === 0 && (
-        <p className="cv-works-empty">No works match these filters.</p>
+        <p className="cv-works-empty visually-hidden">No works match these filters.</p>
       )}
     </div>
   );

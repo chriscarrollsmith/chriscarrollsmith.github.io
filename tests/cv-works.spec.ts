@@ -20,10 +20,30 @@ test.describe('CV works browser', () => {
 
   test('filters works by year facet', async ({ page }) => {
     const yearFacet = page.locator('details.cv-works-facet', { hasText: 'Year' });
-    await yearFacet.locator('summary').click();
+    const typeFacet = page.locator('details.cv-works-facet', { hasText: 'Type' });
+    const yearSummary = yearFacet.locator('summary');
+    const typeSummary = typeFacet.locator('summary');
+
+    await page.locator('.cv-works-toolbar').scrollIntoViewIfNeeded();
+    const yearBefore = await yearSummary.boundingBox();
+    const typeBefore = await typeSummary.boundingBox();
+    expect(yearBefore).toBeTruthy();
+    expect(typeBefore).toBeTruthy();
+    // Year and Type share a row before opening.
+    expect(Math.abs(yearBefore!.y - typeBefore!.y)).toBeLessThan(4);
+
+    await yearSummary.click();
+    await expect(yearFacet).toHaveAttribute('open', '');
     await page.locator('label.cv-works-chip', { hasText: '2024' }).click();
-    // Collapse the facet so it does not obscure toolbar controls.
-    await yearFacet.locator('summary').click();
+
+    const yearAfter = await yearSummary.boundingBox();
+    const typeAfter = await typeSummary.boundingBox();
+    expect(yearAfter).toBeTruthy();
+    expect(typeAfter).toBeTruthy();
+    // Opening/selecting must not stretch Year to full width or push Type to a new row.
+    expect(yearAfter!.width).toBeLessThan(160);
+    expect(Math.abs(yearAfter!.y - typeAfter!.y)).toBeLessThan(4);
+    expect(typeAfter!.x).toBeGreaterThan(yearAfter!.x);
 
     await expect(page.locator('.cv-works-count')).toContainText('Showing');
     const countText = await page.locator('.cv-works-count').innerText();
@@ -31,8 +51,22 @@ test.describe('CV works browser', () => {
     expect(shown).toBeGreaterThan(0);
     expect(shown).toBeLessThan(65);
 
+    await yearSummary.click();
     await page.getByRole('button', { name: 'Clear filters' }).click();
     await expect(page.locator('.cv-works-count')).toContainText('Showing 65 of 65');
+  });
+
+  test('places search controls under the Publications heading', async ({ page }) => {
+    const publicationsHeading = page.locator('.publications-list > h2');
+    const toolbar = page.locator('.publications-list > .cv-works-toolbar');
+    await expect(publicationsHeading).toBeVisible();
+    await expect(toolbar).toBeVisible();
+
+    const headingBox = await publicationsHeading.boundingBox();
+    const toolbarBox = await toolbar.boundingBox();
+    expect(headingBox).toBeTruthy();
+    expect(toolbarBox).toBeTruthy();
+    expect(toolbarBox!.y).toBeGreaterThan(headingBox!.y);
   });
 
   test('toggles compact density', async ({ page }) => {

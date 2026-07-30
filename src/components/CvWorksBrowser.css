@@ -2,6 +2,10 @@
   margin-bottom: 2rem;
 }
 
+.publications-list > .cv-works-toolbar {
+  margin-top: 0.25rem;
+}
+
 .cv-works-toolbar {
   position: sticky;
   top: 3.5rem;
@@ -74,28 +78,27 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.65rem;
-  align-items: flex-start;
+  align-items: center;
   margin-top: 0.75rem;
 }
 
-.cv-works-facets details[open] {
-  flex: 1 1 100%;
-}
-
 .cv-works-facet {
-  min-width: 7rem;
+  position: relative;
+  flex: 0 0 auto;
 }
 
 .cv-works-facet > summary {
   list-style: none;
   cursor: pointer;
   user-select: none;
+  display: inline-block;
   padding: 0.4rem 0.7rem;
   border: 1px solid var(--color-border);
   border-radius: 6px;
   background: var(--color-bg);
   color: var(--color-text);
   font-size: 0.85rem;
+  white-space: nowrap;
 }
 
 .cv-works-facet > summary::-webkit-details-marker {
@@ -107,12 +110,21 @@
 }
 
 .cv-works-facet-options {
+  position: absolute;
+  top: calc(100% + 0.25rem);
+  left: 0;
+  z-index: 6;
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.35rem 0.75rem;
-  max-width: min(100%, 36rem);
-  margin-top: 0.45rem;
-  padding: 0.5rem 0.15rem;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 12rem;
+  max-height: 16rem;
+  overflow: auto;
+  padding: 0.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  background: var(--color-bg);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
 .cv-works-chip {
@@ -321,6 +333,7 @@
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
   }
 
+  .cv-works-facet-options,
   .citation-copy-menu {
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
   }
