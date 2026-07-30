@@ -141,17 +141,6 @@
   margin: 0;
 }
 
-.cv-works-venue select {
-  max-width: min(100%, 18rem);
-  padding: 0.4rem 0.7rem;
-  border: 1px solid var(--color-border);
-  border-radius: 6px;
-  background: var(--color-bg);
-  color: var(--color-text);
-  font: inherit;
-  font-size: 0.85rem;
-}
-
 .cv-works-clear {
   padding: 0.4rem 0.7rem;
   border: 1px solid var(--color-border);
@@ -320,10 +309,6 @@
 
   .citation-copy {
     align-self: flex-start;
-  }
-
-  .cv-works-venue select {
-    max-width: 100%;
   }
 }
 

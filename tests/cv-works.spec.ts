@@ -56,6 +56,31 @@ test.describe('CV works browser', () => {
     await expect(page.locator('.cv-works-count')).toContainText('Showing 65 of 65');
   });
 
+  test('filters works by venue facet', async ({ page }) => {
+    const venueFacet = page.locator('details.cv-works-facet', { hasText: 'Venue' });
+    await venueFacet.locator('summary').click();
+    await expect(venueFacet).toHaveAttribute('open', '');
+
+    const firstVenue = page.locator('.cv-works-facet-options[aria-label="Filter by venue"] label').first();
+    const venueLabel = (await firstVenue.locator('span').innerText()).trim();
+    await firstVenue.click();
+
+    await expect(page.locator('.cv-works-count')).toContainText('Showing');
+    const countText = await page.locator('.cv-works-count').innerText();
+    const shown = Number(countText.match(/Showing (\d+)/)?.[1] ?? 0);
+    expect(shown).toBeGreaterThan(0);
+    expect(shown).toBeLessThan(65);
+    await expect(venueFacet.locator('summary')).toContainText('Venue (1)');
+
+    // Selected works should all include the venue string somewhere in the entry.
+    const entries = page.locator('.publication-entry, .presentation-entry');
+    const entryCount = await entries.count();
+    expect(entryCount).toBe(shown);
+    for (let i = 0; i < Math.min(entryCount, 5); i++) {
+      await expect(entries.nth(i)).toContainText(venueLabel);
+    }
+  });
+
   test('closes year dropdown when clicking outside the menu', async ({ page }) => {
     const yearFacet = page.locator('details.cv-works-facet', { hasText: 'Year' });
     await yearFacet.locator('summary').click();

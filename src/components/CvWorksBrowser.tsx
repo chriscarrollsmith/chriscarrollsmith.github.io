@@ -37,7 +37,7 @@ const CvWorksBrowser: React.FC = () => {
   const deferredQuery = useDeferredValue(query);
   const [selectedYears, setSelectedYears] = useState<number[]>([]);
   const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
-  const [selectedVenue, setSelectedVenue] = useState('');
+  const [selectedVenues, setSelectedVenues] = useState<string[]>([]);
   const [density, setDensity] = useState<Density>('comfortable');
   const [formattedHtml, setFormattedHtml] = useState<Record<string, string>>({});
   const facetsRef = useRef<HTMLDivElement>(null);
@@ -105,7 +105,7 @@ const CvWorksBrowser: React.FC = () => {
       });
     };
 
-    // Capture phase so we close before other controls (e.g. venue select) take focus.
+    // Capture phase so outside clicks dismiss open menus reliably.
     document.addEventListener('pointerdown', onPointerDown, true);
     return () => document.removeEventListener('pointerdown', onPointerDown, true);
   }, []);
@@ -124,12 +124,12 @@ const CvWorksBrowser: React.FC = () => {
     if (selectedTypes.length > 0) {
       works = works.filter((w) => selectedTypes.includes(w.type));
     }
-    if (selectedVenue) {
-      works = works.filter((w) => w.venue === selectedVenue);
+    if (selectedVenues.length > 0) {
+      works = works.filter((w) => selectedVenues.includes(w.venue));
     }
 
     return sortWorks(works);
-  }, [deferredQuery, fuse, selectedYears, selectedTypes, selectedVenue]);
+  }, [deferredQuery, fuse, selectedYears, selectedTypes, selectedVenues]);
 
   const publications = filteredWorks.filter((w) => w.kind === 'publication');
   const presentations = filteredWorks.filter((w) => w.kind === 'presentation');
@@ -147,14 +147,14 @@ const CvWorksBrowser: React.FC = () => {
     query.trim().length > 0 ||
     selectedYears.length > 0 ||
     selectedTypes.length > 0 ||
-    selectedVenue.length > 0;
+    selectedVenues.length > 0;
 
   const clearFilters = () => {
     startTransition(() => {
       setQuery('');
       setSelectedYears([]);
       setSelectedTypes([]);
-      setSelectedVenue('');
+      setSelectedVenues([]);
     });
   };
 
@@ -167,6 +167,12 @@ const CvWorksBrowser: React.FC = () => {
   const toggleType = (type: string) => {
     setSelectedTypes((prev) =>
       prev.includes(type) ? prev.filter((t) => t !== type) : [...prev, type],
+    );
+  };
+
+  const toggleVenue = (venue: string) => {
+    setSelectedVenues((prev) =>
+      prev.includes(venue) ? prev.filter((v) => v !== venue) : [...prev, venue],
     );
   };
 
@@ -320,21 +326,24 @@ const CvWorksBrowser: React.FC = () => {
           </div>
         </details>
 
-        <label className="cv-works-venue">
-          <span className="visually-hidden">Filter by venue</span>
-          <select
-            value={selectedVenue}
-            onChange={(event) => setSelectedVenue(event.target.value)}
-            autoComplete="off"
-          >
-            <option value="">All venues</option>
+        <details className="cv-works-facet" name="cv-facets">
+          <summary>
+            Venue
+            {selectedVenues.length > 0 ? ` (${selectedVenues.length})` : ''}
+          </summary>
+          <div className="cv-works-facet-options" role="group" aria-label="Filter by venue">
             {venues.map((venue) => (
-              <option key={venue} value={venue}>
-                {venue}
-              </option>
+              <label key={venue} className="cv-works-chip">
+                <input
+                  type="checkbox"
+                  checked={selectedVenues.includes(venue)}
+                  onChange={() => toggleVenue(venue)}
+                />
+                <span>{venue}</span>
+              </label>
             ))}
-          </select>
-        </label>
+          </div>
+        </details>
 
         {hasActiveFilters && (
           <button type="button" className="cv-works-clear" onClick={clearFilters}>
