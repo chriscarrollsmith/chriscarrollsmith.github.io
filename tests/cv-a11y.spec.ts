@@ -35,14 +35,16 @@ test.describe('CV page section headings', () => {
   test('renders section headings only when data exists (happy path)', async ({ page }) => {
     await page.goto('/cv');
 
-    // Check that main section headings are present (h2 level)
+    // Check that main section headings are present
     const educationHeading = page.locator('h2:text("Education")');
-    const publicationsHeading = page.locator('h2:text("Publications")');
-    const presentationsHeading = page.locator('h2:text("Presentations")');
+    const worksHeading = page.locator('h2:text("Publications and Presentations")');
+    const publicationsHeading = page.locator('.publications-list h3:text("Publications")');
+    const presentationsHeading = page.locator('.presentations-list h3:text("Presentations")');
     const awardsHeading = page.locator('h2:text("Awards & Fellowships")');
 
     // All main sections should be visible when data exists
     await expect(educationHeading).toBeVisible();
+    await expect(worksHeading).toBeVisible();
     await expect(publicationsHeading).toBeVisible();
     await expect(presentationsHeading).toBeVisible();
     await expect(awardsHeading).toBeVisible();
@@ -55,8 +57,8 @@ test.describe('CV page section headings', () => {
     await page.locator('.publications-list').waitFor({ state: 'visible' });
 
     // Check that publication subsections are present
-    const academicPublicationsHeading = page.locator('.publication-section h3:text("Academic Publications")');
-    const fictionHeading = page.locator('.publication-section h3:text("Fiction")');
+    const academicPublicationsHeading = page.locator('.publication-section h4:text("Academic Publications")');
+    const fictionHeading = page.locator('.publication-section h4:text("Fiction")');
 
     // Both sections should be visible when they have entries
     await expect(academicPublicationsHeading).toBeVisible();
@@ -116,7 +118,7 @@ test.describe('CV page section headings', () => {
 
     for (let i = 0; i < pubSectionCount; i++) {
       const section = publicationSections.nth(i);
-      const heading = await section.locator('h3').textContent();
+      const heading = await section.locator('h4').textContent();
       const entries = section.locator('.publications-entries > div');
       const entryCount = await entries.count();
 
@@ -130,7 +132,7 @@ test.describe('CV page section headings', () => {
 
     for (let i = 0; i < presSectionCount; i++) {
       const section = presentationSections.nth(i);
-      const heading = await section.locator('h3').textContent();
+      const heading = await section.locator('h4').textContent();
       const entries = section.locator('.presentation-entries > div');
       const entryCount = await entries.count();
 
