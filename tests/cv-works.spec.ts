@@ -92,21 +92,26 @@ test.describe('CV works browser', () => {
     await yearFacet.locator('summary').click();
     await expect(yearFacet).toHaveAttribute('open', '');
 
-    await page.locator('h2:text("Publications")').click();
+    await page.locator('h2:text("Publications and Presentations")').click();
     await expect(yearFacet).not.toHaveAttribute('open', '');
   });
 
-  test('places search controls under the Publications heading', async ({ page }) => {
-    const publicationsHeading = page.locator('.publications-list > h2');
-    const toolbar = page.locator('.publications-list > .cv-works-toolbar');
-    await expect(publicationsHeading).toBeVisible();
+  test('places search controls under the Publications and Presentations heading', async ({ page }) => {
+    const worksHeading = page.locator('.cv-works-browser > h2.cv-works-heading');
+    const toolbar = page.locator('.cv-works-browser > .cv-works-toolbar');
+    const publicationsHeading = page.locator('.publications-list > h3');
+    await expect(worksHeading).toHaveText('Publications and Presentations');
     await expect(toolbar).toBeVisible();
+    await expect(publicationsHeading).toHaveText('Publications');
 
-    const headingBox = await publicationsHeading.boundingBox();
+    const headingBox = await worksHeading.boundingBox();
     const toolbarBox = await toolbar.boundingBox();
+    const publicationsBox = await publicationsHeading.boundingBox();
     expect(headingBox).toBeTruthy();
     expect(toolbarBox).toBeTruthy();
+    expect(publicationsBox).toBeTruthy();
     expect(toolbarBox!.y).toBeGreaterThan(headingBox!.y);
+    expect(publicationsBox!.y).toBeGreaterThan(toolbarBox!.y);
   });
 
   test('toggles compact density', async ({ page }) => {

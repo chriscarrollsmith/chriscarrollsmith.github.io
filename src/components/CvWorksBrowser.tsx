@@ -363,14 +363,16 @@ const CvWorksBrowser: React.FC = () => {
 
   return (
     <div className={`cv-works-browser density-${density}`}>
+      <h2 className="cv-works-heading">Publications and Presentations</h2>
+      {toolbar}
+
       <div className="publications-list">
-        <h2>Publications</h2>
-        {toolbar}
+        <h3>Publications</h3>
         {publicationSections.map((section) => {
           const entries = publications.filter((w) => w.section === section);
           return (
             <div key={section} className="publication-section">
-              <h3>{section}</h3>
+              <h4>{section}</h4>
               <div className="publications-entries">{entries.map(renderEntry)}</div>
             </div>
           );
@@ -382,12 +384,12 @@ const CvWorksBrowser: React.FC = () => {
 
       {presentationSections.length > 0 && (
         <div className="presentations-list">
-          <h2>Presentations</h2>
+          <h3>Presentations</h3>
           {presentationSections.map((section) => {
             const entries = presentations.filter((w) => w.section === section);
             return (
               <div key={section} className="presentation-section">
-                <h3>{section}</h3>
+                <h4>{section}</h4>
                 <div className="presentation-entries">{entries.map(renderEntry)}</div>
               </div>
             );

@@ -2,7 +2,16 @@
   margin-bottom: 2rem;
 }
 
-.publications-list > .cv-works-toolbar {
+.cv-works-heading {
+  font-size: 2rem;
+  margin: 0 0 1rem;
+  border-bottom: 1px solid var(--color-border, #e0e0e0);
+  padding-bottom: 0.5rem;
+  text-align: left;
+  color: var(--color-heading, #333);
+}
+
+.cv-works-browser > .cv-works-toolbar {
   margin-top: 0.25rem;
 }
 
@@ -290,10 +299,16 @@
   margin-bottom: 1.25rem;
 }
 
-.density-compact .publication-section h3,
-.density-compact .presentation-section h3 {
-  font-size: 1.2rem;
-  margin-bottom: 0.5rem;
+.density-compact .publications-list h3,
+.density-compact .presentations-list h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.65rem;
+}
+
+.density-compact .publication-section h4,
+.density-compact .presentation-section h4 {
+  font-size: 1.05rem;
+  margin-bottom: 0.4rem;
 }
 
 @media (max-width: 767px) {
