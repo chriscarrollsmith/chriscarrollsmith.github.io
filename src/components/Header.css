@@ -1,33 +1,290 @@
 #header {
-    position: fixed;
+  --header-bar-height: 3.25rem;
+  --header-progress-height: 3px;
+  --header-fg: #1a1a1a;
+  --header-fg-muted: rgba(26, 26, 26, 0.55);
+  --header-bg: rgba(255, 255, 255, 0.82);
+  --header-border: rgba(0, 0, 0, 0.08);
+  --header-accent: #4e567e;
+  --header-progress: #4e567e;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 20;
+  box-sizing: border-box;
+  color: var(--header-fg);
+  background: var(--header-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--header-border);
+}
+
+.header-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--header-progress-height);
+  background: transparent;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.header-progress-fill {
+  height: 100%;
+  width: 100%;
+  background: var(--header-progress);
+  transform-origin: left center;
+  transform: scaleX(0);
+}
+
+@keyframes header-scroll-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@supports (animation-timeline: scroll()) {
+  .header-progress-fill {
+    animation: header-scroll-progress linear;
+    animation-timeline: scroll(root);
+  }
+}
+
+.header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: var(--header-bar-height);
+  padding: 0.55rem 1rem;
+  box-sizing: border-box;
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
+.header-brand {
+  display: inline-flex;
+  align-items: baseline;
+  text-decoration: none;
+  color: var(--header-fg);
+  font-family: "Cormorant Garamond", serif;
+  line-height: 1.2;
+  z-index: 1;
+  flex-shrink: 1;
+  min-width: 0;
+}
+
+.header-brand:hover {
+  color: var(--header-accent);
+  text-decoration: none;
+}
+
+/* Compact mark on small screens; full name from sm up — never both */
+.header-brand-short {
+  font-weight: 400;
+  font-size: 1.35rem;
+  letter-spacing: 0.04em;
+}
+
+.header-brand-full {
+  display: none;
+  font-weight: 300;
+  font-size: 1.05rem;
+  letter-spacing: 0.01em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.header-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--header-border);
+  border-radius: 0.35rem;
+  background: rgba(255, 255, 255, 0.55);
+  color: var(--header-fg);
+  cursor: pointer;
+  z-index: 1;
+}
+
+.header-toggle:hover {
+  border-color: var(--header-accent);
+  color: var(--header-accent);
+}
+
+.header-toggle-bars,
+.header-toggle-bars::before,
+.header-toggle-bars::after {
+  display: block;
+  width: 1.1rem;
+  height: 2px;
+  background: currentColor;
+  border-radius: 1px;
+  transition: transform 160ms ease, opacity 160ms ease;
+}
+
+.header-toggle-bars {
+  position: relative;
+}
+
+.header-toggle-bars::before,
+.header-toggle-bars::after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+
+.header-toggle-bars::before {
+  top: -5px;
+}
+
+.header-toggle-bars::after {
+  top: 5px;
+}
+
+#header.is-open .header-toggle-bars {
+  background: transparent;
+}
+
+#header.is-open .header-toggle-bars::before {
+  top: 0;
+  transform: rotate(45deg);
+}
+
+#header.is-open .header-toggle-bars::after {
+  top: 0;
+  transform: rotate(-45deg);
+}
+
+#primary-nav {
+  display: none;
+  flex-direction: column;
+  gap: 0.15rem;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  padding: 0.5rem 1rem 1rem;
+  background: var(--header-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--header-border);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+}
+
+#header.is-open #primary-nav {
+  display: flex;
+}
+
+#primary-nav a {
+  text-decoration: none;
+  color: var(--header-fg);
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 400;
+  font-size: 1.15rem;
+  padding: 0.55rem 0.35rem;
+  border-radius: 0.25rem;
+  transition: color 150ms ease, background-color 150ms ease;
+}
+
+#primary-nav a:hover {
+  color: var(--header-accent);
+  background: rgba(78, 86, 126, 0.08);
+  text-decoration: none;
+}
+
+#primary-nav a.active,
+#primary-nav a[aria-current] {
+  color: var(--header-accent);
+  box-shadow: inset 3px 0 0 var(--header-accent);
+}
+
+@media screen and (min-width: 640px) {
+  .header-brand-short {
+    display: none;
+  }
+
+  .header-brand-full {
+    display: inline;
+  }
+
+  .header-toggle {
+    display: none;
+  }
+
+  #primary-nav,
+  #header.is-open #primary-nav {
     display: flex;
-    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    position: static;
+    gap: 0.35rem 1.1rem;
+    padding: 0;
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border: none;
+    box-shadow: none;
     flex-wrap: wrap;
-    box-sizing: border-box;
-    gap: 2rem;
-    background: rgba(255,255,255,0.75);
-    padding: 1rem;
-    top: 0;
-    width: 100vw;
-    z-index: 20;
+    justify-content: flex-end;
   }
 
-  #header nav {
-    display: contents;
+  #primary-nav a {
+    font-size: 1.05rem;
+    padding: 0.2rem 0;
+    border-radius: 0;
   }
 
-  #header a {
-    text-decoration: none;
-    color: black;
+  #primary-nav a:hover {
+    background: transparent;
   }
 
-  @media screen and (min-width: 1280px) {
-    #header a {
-      font-size: 1.2rem;
-    }
+  #primary-nav a.active,
+  #primary-nav a[aria-current] {
+    box-shadow: none;
+    border-bottom: 2px solid var(--header-accent);
+    padding-bottom: 0;
   }
-  
-  #header a:hover {
-    color: #4e567e;
+}
+
+@media screen and (min-width: 768px) {
+  .header-bar {
+    padding: 0.55rem 1.5rem;
   }
-  
+}
+
+@media screen and (min-width: 1280px) {
+  #primary-nav a {
+    font-size: 1.15rem;
+  }
+
+  .header-brand-full {
+    font-size: 1.15rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header-progress-fill {
+    animation: none;
+    transform: none;
+    width: 0;
+  }
+
+  .header-toggle-bars,
+  .header-toggle-bars::before,
+  .header-toggle-bars::after {
+    transition: none;
+  }
+}

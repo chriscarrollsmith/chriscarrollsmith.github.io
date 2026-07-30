@@ -14,8 +14,8 @@
   justify-content: flex-start;
   width: 100%;
   box-sizing: border-box;
-  /* Fixed header wraps to multiple rows on narrow screens */
-  padding: 12rem 1.5rem 3rem;
+  /* Clear the single-row fixed header on narrow screens */
+  padding: 5.5rem 1.5rem 3rem;
 }
 
 .not-found-content {
