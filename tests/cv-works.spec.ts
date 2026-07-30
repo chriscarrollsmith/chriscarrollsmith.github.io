@@ -56,6 +56,21 @@ test.describe('CV works browser', () => {
     await expect(page.locator('.cv-works-count')).toContainText('Showing 65 of 65');
   });
 
+  test('closes year dropdown when clicking outside the menu', async ({ page }) => {
+    const yearFacet = page.locator('details.cv-works-facet', { hasText: 'Year' });
+    await yearFacet.locator('summary').click();
+    await expect(yearFacet).toHaveAttribute('open', '');
+
+    await page.locator('.cv-works-search input').click();
+    await expect(yearFacet).not.toHaveAttribute('open', '');
+
+    await yearFacet.locator('summary').click();
+    await expect(yearFacet).toHaveAttribute('open', '');
+
+    await page.locator('h2:text("Publications")').click();
+    await expect(yearFacet).not.toHaveAttribute('open', '');
+  });
+
   test('places search controls under the Publications heading', async ({ page }) => {
     const publicationsHeading = page.locator('.publications-list > h2');
     const toolbar = page.locator('.publications-list > .cv-works-toolbar');

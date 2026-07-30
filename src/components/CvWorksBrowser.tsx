@@ -92,15 +92,22 @@ const CvWorksBrowser: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    const onPointerDown = (event: MouseEvent) => {
+    const onPointerDown = (event: PointerEvent) => {
       const root = facetsRef.current;
-      if (!root || root.contains(event.target as Node)) return;
+      if (!root) return;
+      const target = event.target;
+      if (!(target instanceof Node)) return;
+
       root.querySelectorAll<HTMLDetailsElement>('details[open]').forEach((details) => {
-        details.open = false;
+        if (!details.contains(target)) {
+          details.open = false;
+        }
       });
     };
-    document.addEventListener('mousedown', onPointerDown);
-    return () => document.removeEventListener('mousedown', onPointerDown);
+
+    // Capture phase so we close before other controls (e.g. venue select) take focus.
+    document.addEventListener('pointerdown', onPointerDown, true);
+    return () => document.removeEventListener('pointerdown', onPointerDown, true);
   }, []);
 
   const filteredWorks = useMemo(() => {
