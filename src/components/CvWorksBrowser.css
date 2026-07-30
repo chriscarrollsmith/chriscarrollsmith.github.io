@@ -16,15 +16,11 @@
 }
 
 .cv-works-toolbar {
-  position: sticky;
-  top: 3.5rem;
-  z-index: 5;
   margin-bottom: 1.75rem;
   padding: 0.85rem 1rem;
-  background-color: color-mix(in srgb, var(--color-bg) 92%, transparent);
+  background-color: var(--color-bg);
   border: 1px solid var(--color-border);
   border-radius: 8px;
-  backdrop-filter: blur(8px);
 }
 
 .cv-works-toolbar-row {
@@ -313,7 +309,6 @@
 
 @media (max-width: 767px) {
   .cv-works-toolbar {
-    top: 4.5rem;
     padding: 0.75rem;
   }
 
@@ -328,11 +323,6 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  .cv-works-toolbar {
-    background-color: color-mix(in srgb, var(--color-bg) 88%, transparent);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
-  }
-
   .cv-works-facet-options,
   .citation-copy-menu {
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
