@@ -48,10 +48,11 @@ body {
 
 html {
   scroll-behavior: smooth;
+  /* Clear fixed header when jumping to in-page anchors */
+  scroll-padding-top: 4.5rem;
 }
 
-#App {
-  min-height: 200vh;
+.App {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -67,6 +68,7 @@ section {
 /* Shared hero layout */
 .hero {
   position: relative;
+  overflow: clip;
 }
 
 .hero-bg {
@@ -87,6 +89,61 @@ section {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+@keyframes hero-parallax {
+  from {
+    transform: translateY(-6%);
+  }
+  to {
+    transform: translateY(6%);
+  }
+}
+
+@keyframes section-rise-settle {
+  from {
+    opacity: 0.55;
+    transform: translateY(1.75rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@supports (animation-timeline: view()) {
+  .hero-bg {
+    inset: -8% 0;
+    height: 116%;
+    will-change: transform;
+    animation: hero-parallax linear both;
+    animation-timeline: view();
+    animation-range: entry 0% exit 100%;
+  }
+
+  .hero-content {
+    animation: section-rise-settle linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 40%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .hero-bg,
+  .hero-content {
+    animation: none !important;
+    opacity: 1;
+    transform: none;
+  }
+
+  .hero-bg {
+    inset: 0;
+    height: 100%;
+  }
 }
 
 .hero-text-area {

@@ -1,13 +1,37 @@
 #down-arrow {
     position: relative;
     z-index: 1;
+    animation: down-arrow-bob 2.4s ease-in-out infinite;
 }
 
 .clickable-icon {
     height: 3rem;
     width: 3rem;
+    transition: transform 160ms ease;
 }
 
 .clickable-icon:hover {
     transform: scale(1.1);
+}
+
+@keyframes down-arrow-bob {
+    0%,
+    100% {
+        transform: translateY(0);
+        opacity: 0.85;
+    }
+    50% {
+        transform: translateY(0.45rem);
+        opacity: 1;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #down-arrow {
+        animation: none;
+    }
+
+    .clickable-icon {
+        transition: none;
+    }
 }

@@ -109,16 +109,18 @@ test.describe('Navigation Links', () => {
     // Find the header/nav element
     const header = page.locator('#header');
     await expect(header).toBeVisible();
+    await expect(header.locator('.header-brand')).toBeVisible();
 
-    // Get all links in the header
-    const navLinks = await header.locator('a').all();
+    // Primary destinations live in the nav landmark (brand is separate)
+    const nav = header.locator('#primary-nav');
+    const navLinks = await nav.locator('a').all();
 
     // Should have all expected nav items
     expect(navLinks.length).toBe(expectedNavItems.length);
 
     // Verify each expected link exists
     for (const expected of expectedNavItems) {
-      const link = header.locator(`a:has-text("${expected.text}")`);
+      const link = nav.locator(`a:has-text("${expected.text}")`);
       await expect(link).toBeVisible();
       await expect(link).toHaveAttribute('href', expected.href);
     }
@@ -130,7 +132,7 @@ test.describe('Navigation Links', () => {
       await page.goto('/');
 
       // Find and click the nav link
-      const link = page.locator('#header').locator(`a:has-text("${navItem.text}")`);
+      const link = page.locator('#primary-nav').locator(`a:has-text("${navItem.text}")`);
       await expect(link).toBeVisible();
 
       // Click the link
@@ -169,7 +171,7 @@ test.describe('Navigation Links', () => {
       await page.goto('/blog');
 
       // Click the nav link
-      const link = page.locator('#header').locator(`a:has-text("${navItem.text}")`);
+      const link = page.locator('#primary-nav').locator(`a:has-text("${navItem.text}")`);
       await expect(link).toBeVisible();
       await link.click();
 
@@ -203,7 +205,7 @@ test.describe('Navigation Links', () => {
       await page.goto('/cv');
 
       // Click the nav link
-      const link = page.locator('#header').locator(`a:has-text("${navItem.text}")`);
+      const link = page.locator('#primary-nav').locator(`a:has-text("${navItem.text}")`);
       await expect(link).toBeVisible();
       await link.click();
 
@@ -231,22 +233,24 @@ test.describe('Navigation Links', () => {
       await page.goto('/');
 
       // Navigate to the section/page
-      const link = page.locator('#header').locator(`a:has-text("${navItem.text}")`);
+      const link = page.locator('#primary-nav').locator(`a:has-text("${navItem.text}")`);
       await link.click();
       await page.waitForLoadState('networkidle');
 
       // Verify header is still visible
       const header = page.locator('#header');
       await expect(header).toBeVisible();
+      await expect(header.locator('.header-brand')).toBeVisible();
+      await expect(header.locator('.header-progress')).toBeAttached();
 
-      // Verify all nav links are still present and visible
+      // Verify all nav links are still present and visible (desktop viewport)
+      const nav = header.locator('#primary-nav');
       for (const expectedItem of expectedNavItems) {
-        const navLink = header.locator(`a:has-text("${expectedItem.text}")`);
+        const navLink = nav.locator(`a:has-text("${expectedItem.text}")`);
         await expect(navLink).toBeVisible();
       }
 
       // Check that the header has proper ARIA structure
-      // Note: This is optional but good for accessibility
       const headerLinks = await header.locator('a').all();
       for (const link of headerLinks) {
         // Each link should be keyboard accessible
@@ -265,13 +269,40 @@ test.describe('Navigation Links', () => {
     // Test that the blog link has active styling when on blog page
     await page.goto('/blog');
 
-    const blogLink = page.locator('#header').locator('a:has-text("Blog")');
+    const blogLink = page.locator('#primary-nav').locator('a:has-text("Blog")');
 
     // Check if it has an active class
     const classes = await blogLink.getAttribute('class');
     if (classes) {
       expect(classes).toContain('active');
     }
+    await expect(blogLink).toHaveAttribute('aria-current', 'page');
+  });
+
+  test('should collapse navigation behind a menu toggle on small screens', async ({ page }) => {
+    await page.setViewportSize({ width: 320, height: 568 });
+    await page.goto('/');
+
+    const header = page.locator('#header');
+    const toggle = header.locator('.header-toggle');
+    const nav = header.locator('#primary-nav');
+    const aboutLink = nav.locator('a:has-text("About")');
+
+    await expect(toggle).toBeVisible();
+    await expect(aboutLink).toBeHidden();
+
+    // Single-row bar should not dwarf the viewport
+    const headerBox = await header.boundingBox();
+    expect(headerBox).not.toBeNull();
+    expect(headerBox!.height).toBeLessThan(80);
+
+    await toggle.click();
+    await expect(header).toHaveClass(/is-open/);
+    await expect(aboutLink).toBeVisible();
+
+    await aboutLink.click();
+    await expect(header).not.toHaveClass(/is-open/);
+    await expect(page.locator('#about')).toBeInViewport();
   });
 
   test('should support keyboard navigation', async ({ page }) => {
