@@ -1,6 +1,6 @@
 import type { GithubRepoMeta, Project, ProjectGithubMetaFile } from '../types/data';
 
-export interface ProjectIndexEntry extends Project {
+export interface ProjectIndexEntry extends Omit<Project, 'language' | 'tags'> {
   tags: string[];
   language: string | null;
   stars: number | null;

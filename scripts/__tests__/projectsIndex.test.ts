@@ -4,8 +4,8 @@ import {
   formatStars,
   loadProjectIndex,
   uniqueSorted,
-} from '../projectsIndex';
-import type { Project, ProjectGithubMetaFile } from '../../types/data';
+} from '../../src/utils/projectsIndex';
+import type { Project, ProjectGithubMetaFile } from '../../src/types/data';
 
 const projects: Project[] = [
   {

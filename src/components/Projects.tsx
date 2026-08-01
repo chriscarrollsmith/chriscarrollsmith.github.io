@@ -1,4 +1,4 @@
-import { startTransition, useMemo, useState } from 'react';
+import { startTransition, useEffect, useMemo, useRef, useState } from 'react';
 import './Projects.css';
 import heroData from '../data/heroimages.json';
 import projectsData from '../data/projects.json';
@@ -26,6 +26,7 @@ const Projects: React.FC = () => {
   const hero = typedHeroData.find((h) => h.name === 'projects');
   const [selectedLanguages, setSelectedLanguages] = useState<string[]>([]);
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  const tagsFacetRef = useRef<HTMLDetailsElement>(null);
 
   const languages = useMemo(
     () => uniqueSorted(ALL_PROJECTS.map((project) => project.language)),
@@ -35,6 +36,18 @@ const Projects: React.FC = () => {
     () => uniqueSorted(ALL_PROJECTS.flatMap((project) => project.tags)),
     [],
   );
+
+  useEffect(() => {
+    const onPointerDown = (event: PointerEvent) => {
+      const details = tagsFacetRef.current;
+      if (!details?.open) return;
+      const target = event.target;
+      if (!(target instanceof Node) || details.contains(target)) return;
+      details.open = false;
+    };
+    document.addEventListener('pointerdown', onPointerDown, true);
+    return () => document.removeEventListener('pointerdown', onPointerDown, true);
+  }, []);
 
   const filtered = useMemo(() => {
     return ALL_PROJECTS.filter((project) => {
@@ -84,14 +97,11 @@ const Projects: React.FC = () => {
           </header>
 
           <div className="projects-filters" role="group" aria-label="Filter projects">
-            <div className="projects-filter-row">
-              <span className="projects-filter-label" id="projects-language-label">
-                Language
-              </span>
+            <div className="projects-filter-toolbar">
               <div
                 className="projects-filter-options"
                 role="group"
-                aria-labelledby="projects-language-label"
+                aria-label="Filter by language"
               >
                 {languages.map((language) => {
                   const pressed = selectedLanguages.includes(language);
@@ -112,47 +122,44 @@ const Projects: React.FC = () => {
                   );
                 })}
               </div>
-            </div>
 
-            <div className="projects-filter-row">
-              <span className="projects-filter-label" id="projects-tag-label">
-                Tag
-              </span>
-              <div
-                className="projects-filter-options"
-                role="group"
-                aria-labelledby="projects-tag-label"
-              >
-                {tags.map((tag) => {
-                  const pressed = selectedTags.includes(tag);
-                  return (
-                    <button
-                      key={tag}
-                      type="button"
-                      className="projects-filter-chip"
-                      aria-pressed={pressed}
-                      onClick={() =>
-                        startTransition(() => {
-                          setSelectedTags((prev) => toggleValue(prev, tag));
-                        })
-                      }
-                    >
-                      {tag}
-                    </button>
-                  );
-                })}
+              <details ref={tagsFacetRef} className="projects-tag-facet">
+                <summary>
+                  Tag
+                  {selectedTags.length > 0 ? ` (${selectedTags.length})` : ''}
+                </summary>
+                <div
+                  className="projects-tag-options"
+                  role="group"
+                  aria-label="Filter by tag"
+                >
+                  {tags.map((tag) => (
+                    <label key={tag} className="projects-tag-option">
+                      <input
+                        type="checkbox"
+                        checked={selectedTags.includes(tag)}
+                        onChange={() =>
+                          startTransition(() => {
+                            setSelectedTags((prev) => toggleValue(prev, tag));
+                          })
+                        }
+                      />
+                      <span>{tag}</span>
+                    </label>
+                  ))}
+                </div>
+              </details>
+
+              <div className="projects-filter-meta">
+                <p className="projects-count" aria-live="polite">
+                  Showing {filtered.length} of {ALL_PROJECTS.length}
+                </p>
+                {hasActiveFilters && (
+                  <button type="button" className="projects-clear" onClick={clearFilters}>
+                    Clear filters
+                  </button>
+                )}
               </div>
-            </div>
-
-            <div className="projects-filter-meta">
-              <p className="projects-count" aria-live="polite">
-                Showing {filtered.length} of {ALL_PROJECTS.length}
-              </p>
-              {hasActiveFilters && (
-                <button type="button" className="projects-clear" onClick={clearFilters}>
-                  Clear filters
-                </button>
-              )}
             </div>
           </div>
 

@@ -1,9 +1,17 @@
 #projects {
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
-  padding: 5rem 1rem 3rem;
+  /* Clear the fixed header; avoid vertical centering so a tall index cannot
+     overflow upward underneath the nav. */
+  padding: 5.5rem 1rem 3rem;
   box-sizing: border-box;
+  scroll-margin-top: 4.5rem;
+}
+
+#projects > .hero-content {
+  justify-content: flex-start;
 }
 
 .projects-index {
@@ -20,7 +28,7 @@
 
 @media screen and (min-width: 640px) {
   #projects {
-    padding: 5.5rem 2rem 3.5rem;
+    padding: 6rem 2rem 3.5rem;
   }
 
   .projects-index {
@@ -47,33 +55,79 @@
 }
 
 .projects-filters {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
   margin-bottom: 1.25rem;
   padding-bottom: 1rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 
-.projects-filter-row {
-  display: grid;
-  grid-template-columns: 5.5rem 1fr;
+.projects-filter-toolbar {
+  display: flex;
+  flex-wrap: wrap;
   gap: 0.65rem 0.85rem;
-  align-items: start;
-}
-
-.projects-filter-label {
-  font-size: 0.8rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: rgba(242, 242, 244, 0.55);
-  padding-top: 0.35rem;
+  align-items: center;
 }
 
 .projects-filter-options {
   display: flex;
   flex-wrap: wrap;
   gap: 0.4rem;
+}
+
+.projects-tag-facet {
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.projects-tag-facet > summary {
+  list-style: none;
+  cursor: pointer;
+  user-select: none;
+  display: inline-block;
+  padding: 0.28rem 0.65rem;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 0.25rem;
+  color: rgba(242, 242, 244, 0.88);
+  font-size: 0.85rem;
+}
+
+.projects-tag-facet > summary::-webkit-details-marker {
+  display: none;
+}
+
+.projects-tag-facet[open] > summary,
+.projects-tag-facet > summary:hover {
+  border-color: rgba(255, 255, 255, 0.45);
+  color: #fff;
+}
+
+.projects-tag-options {
+  position: absolute;
+  top: calc(100% + 0.35rem);
+  left: 0;
+  z-index: 5;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(7rem, 1fr));
+  gap: 0.25rem 0.75rem;
+  min-width: 16rem;
+  max-height: 14rem;
+  overflow: auto;
+  padding: 0.65rem 0.75rem;
+  background: rgba(12, 12, 16, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+}
+
+.projects-tag-option {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: rgba(242, 242, 244, 0.88);
+  cursor: pointer;
+}
+
+.projects-tag-option input {
+  margin: 0;
 }
 
 .projects-filter-chip {
@@ -110,6 +164,7 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 0.75rem;
+  margin-left: auto;
   min-height: 1.5rem;
 }
 
@@ -230,13 +285,16 @@
 }
 
 @media screen and (max-width: 639px) {
-  .projects-filter-row {
-    grid-template-columns: 1fr;
-    gap: 0.35rem;
+  .projects-filter-meta {
+    margin-left: 0;
+    width: 100%;
   }
 
-  .projects-filter-label {
-    padding-top: 0;
+  .projects-tag-options {
+    left: auto;
+    right: 0;
+    grid-template-columns: 1fr;
+    min-width: 11rem;
   }
 
   .projects-row-main {

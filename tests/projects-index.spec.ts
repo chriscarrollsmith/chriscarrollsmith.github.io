@@ -18,8 +18,10 @@ test.describe('Projects work index', () => {
   });
 
   test('filters by language and tag', async ({ page }) => {
-    await page.getByRole('button', { name: 'TypeScript', exact: true }).click();
-    await expect(page.locator('.projects-count')).toContainText('Showing');
+    const typescriptChip = page.getByRole('button', { name: 'TypeScript', exact: true });
+    await typescriptChip.click();
+    await expect(typescriptChip).toHaveAttribute('aria-pressed', 'true');
+    await expect(page.locator('.projects-count')).toHaveText(/Showing [1-6] of 7/);
 
     const afterLanguage = await page.locator('.projects-row').count();
     expect(afterLanguage).toBeGreaterThan(0);
@@ -30,11 +32,16 @@ test.describe('Projects work index', () => {
     }
 
     await page.getByRole('button', { name: 'Clear filters' }).click();
+    await expect(page.locator('.projects-count')).toHaveText('Showing 7 of 7');
     await expect(page.locator('.projects-row')).toHaveCount(7);
 
-    await page.getByRole('button', { name: 'mcp', exact: true }).click();
+    const tagFacet = page.locator('details.projects-tag-facet');
+    await tagFacet.locator('summary').click();
+    await expect(tagFacet).toHaveAttribute('open', '');
+    await page.locator('label.projects-tag-option', { hasText: 'mcp' }).click();
     await expect(page.locator('.projects-row')).toHaveCount(1);
     await expect(page.locator('.projects-row')).toContainText('taskqueue-mcp');
+    await expect(tagFacet.locator('summary')).toContainText('Tag (1)');
   });
 
   test('section title clears the fixed header', async ({ page }) => {

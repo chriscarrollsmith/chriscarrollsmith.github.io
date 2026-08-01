@@ -13,7 +13,7 @@
     "sync:github-projects": "bun scripts/sync-github-projects.ts",
     "backfill:substack-alts": "bun scripts/backfill-substack-img-alts.ts",
     "render:mermaid": "bun scripts/render-mermaid-images.ts",
-    "test:unit": "bun test scripts/blog-mdx/__tests__ scripts/seo/__tests__ scripts/__tests__ src/utils/__tests__",
+    "test:unit": "bun test scripts/blog-mdx/__tests__ scripts/seo/__tests__ scripts/__tests__",
     "build": "bun run sync:substack && bun run sync:youtube && bun run sync:github-projects && bun run generate:pdf && bun run render:mermaid && astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
