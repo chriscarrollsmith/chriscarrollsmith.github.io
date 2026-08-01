@@ -17,6 +17,7 @@ const typedProjectsData = projectsData as Project[];
 const typedGithubMeta = githubMeta as ProjectGithubMetaFile;
 
 const ALL_PROJECTS = loadProjectIndex(typedProjectsData, typedGithubMeta);
+const DEFAULT_TAGS = ['highlight'] as const;
 
 function toggleValue(values: string[], value: string): string[] {
   return values.includes(value) ? values.filter((item) => item !== value) : [...values, value];
@@ -24,14 +25,9 @@ function toggleValue(values: string[], value: string): string[] {
 
 const Projects: React.FC = () => {
   const hero = typedHeroData.find((h) => h.name === 'projects');
-  const [selectedLanguages, setSelectedLanguages] = useState<string[]>([]);
-  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  const [selectedTags, setSelectedTags] = useState<string[]>([...DEFAULT_TAGS]);
   const tagsFacetRef = useRef<HTMLDetailsElement>(null);
 
-  const languages = useMemo(
-    () => uniqueSorted(ALL_PROJECTS.map((project) => project.language)),
-    [],
-  );
   const tags = useMemo(
     () => uniqueSorted(ALL_PROJECTS.flatMap((project) => project.tags)),
     [],
@@ -50,29 +46,19 @@ const Projects: React.FC = () => {
   }, []);
 
   const filtered = useMemo(() => {
-    return ALL_PROJECTS.filter((project) => {
-      if (
-        selectedLanguages.length > 0 &&
-        (!project.language || !selectedLanguages.includes(project.language))
-      ) {
-        return false;
-      }
-      if (
-        selectedTags.length > 0 &&
-        !selectedTags.some((tag) => project.tags.includes(tag))
-      ) {
-        return false;
-      }
-      return true;
-    });
-  }, [selectedLanguages, selectedTags]);
+    if (selectedTags.length === 0) return ALL_PROJECTS;
+    return ALL_PROJECTS.filter((project) =>
+      selectedTags.some((tag) => project.tags.includes(tag)),
+    );
+  }, [selectedTags]);
 
-  const hasActiveFilters = selectedLanguages.length > 0 || selectedTags.length > 0;
+  const isDefaultFilter =
+    selectedTags.length === DEFAULT_TAGS.length &&
+    DEFAULT_TAGS.every((tag) => selectedTags.includes(tag));
 
   const clearFilters = () => {
     startTransition(() => {
-      setSelectedLanguages([]);
-      setSelectedTags([]);
+      setSelectedTags([...DEFAULT_TAGS]);
     });
   };
 
@@ -90,39 +76,14 @@ const Projects: React.FC = () => {
       <div className="hero-content">
         <div className="projects-index">
           <header className="projects-index-header">
-            <h2 className="category-title">Open-Source Projects</h2>
+            <h2 className="category-title">Featured Open-Source Projects</h2>
             <p className="projects-index-subhead">
-              Libraries, templates, and tools — filter by language or tag.
+              Highlighted libraries, templates, and tools — filter by tag.
             </p>
           </header>
 
           <div className="projects-filters" role="group" aria-label="Filter projects">
             <div className="projects-filter-toolbar">
-              <div
-                className="projects-filter-options"
-                role="group"
-                aria-label="Filter by language"
-              >
-                {languages.map((language) => {
-                  const pressed = selectedLanguages.includes(language);
-                  return (
-                    <button
-                      key={language}
-                      type="button"
-                      className="projects-filter-chip"
-                      aria-pressed={pressed}
-                      onClick={() =>
-                        startTransition(() => {
-                          setSelectedLanguages((prev) => toggleValue(prev, language));
-                        })
-                      }
-                    >
-                      {language}
-                    </button>
-                  );
-                })}
-              </div>
-
               <details ref={tagsFacetRef} className="projects-tag-facet">
                 <summary>
                   Tag
@@ -154,9 +115,9 @@ const Projects: React.FC = () => {
                 <p className="projects-count" aria-live="polite">
                   Showing {filtered.length} of {ALL_PROJECTS.length}
                 </p>
-                {hasActiveFilters && (
+                {!isDefaultFilter && (
                   <button type="button" className="projects-clear" onClick={clearFilters}>
-                    Clear filters
+                    Reset to highlights
                   </button>
                 )}
               </div>
@@ -185,6 +146,7 @@ type ProjectRowProps = {
 const ProjectRow: React.FC<ProjectRowProps> = ({ project }) => {
   const external = /^https?:\/\//i.test(project.url);
   const pushedLabel = project.pushedAt ? formatPushedAt(project.pushedAt) : null;
+  const displayTags = project.tags.filter((tag) => tag !== 'highlight');
 
   return (
     <li className="projects-row">
@@ -214,9 +176,9 @@ const ProjectRow: React.FC<ProjectRowProps> = ({ project }) => {
         </div>
       </div>
       <p className="projects-row-description">{project.description}</p>
-      {project.tags.length > 0 && (
+      {displayTags.length > 0 && (
         <ul className="projects-row-tags">
-          {project.tags.map((tag) => (
+          {displayTags.map((tag) => (
             <li key={tag}>{tag}</li>
           ))}
         </ul>

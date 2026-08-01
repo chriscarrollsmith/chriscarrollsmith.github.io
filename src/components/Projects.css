@@ -130,35 +130,6 @@
   margin: 0;
 }
 
-.projects-filter-chip {
-  margin: 0;
-  padding: 0.28rem 0.65rem;
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  border-radius: 0.25rem;
-  background: transparent;
-  color: rgba(242, 242, 244, 0.88);
-  font: inherit;
-  font-size: 0.85rem;
-  cursor: pointer;
-  transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease;
-}
-
-.projects-filter-chip:hover {
-  border-color: rgba(255, 255, 255, 0.45);
-  color: #fff;
-}
-
-.projects-filter-chip[aria-pressed='true'] {
-  background: rgba(255, 255, 255, 0.14);
-  border-color: rgba(255, 255, 255, 0.55);
-  color: #fff;
-}
-
-.projects-filter-chip:focus-visible {
-  outline: 2px solid #c8d0ff;
-  outline-offset: 2px;
-}
-
 .projects-filter-meta {
   display: flex;
   flex-wrap: wrap;

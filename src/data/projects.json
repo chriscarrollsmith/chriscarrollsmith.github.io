@@ -3,43 +3,48 @@
     "title": "imfp / imfapi",
     "url": "https://github.com/Promptly-Technologies-LLC/imfp",
     "description": "Python and R SDKs for the IMF Data API, part of the R Consortium-funded econdataverse project",
-    "tags": ["api", "economics", "sdk"]
+    "tags": ["highlight", "python", "api", "economics", "sdk"]
   },
   {
     "title": "etielle",
     "url": "https://github.com/Promptly-Technologies-LLC/etielle",
     "description": "Map nested JSON to relational database tables with a declarative, type-safe Python framework",
-    "tags": ["etl", "data", "framework"]
-  },
-  {
-    "title": "Promptly Technologies",
-    "url": "https://promptlytechnologies.com",
-    "description": "Eye-catching comic book-style React website showcasing my consulting business",
-    "language": "TypeScript",
-    "tags": ["web", "react"]
+    "tags": ["highlight", "python", "etl", "data", "framework"]
   },
   {
     "title": "pyzotero-cli",
     "url": "https://github.com/chriscarrollsmith/pyzotero-cli",
     "description": "Command-line interface for Zotero reference management, enabling AI-assisted academic citation workflows",
-    "tags": ["cli", "academic", "citations"]
+    "tags": ["highlight", "python", "cli", "academic", "citations"]
   },
   {
     "title": "openai-responses-python-quickstart",
     "url": "https://github.com/Promptly-Technologies-LLC/openai-responses-python-quickstart",
     "description": "Build a tool-calling AI chatbot in minutes with this Python + FastAPI + HTMX starter template",
-    "tags": ["ai", "template", "fastapi"]
-  },
-  {
-    "title": "taskqueue-mcp",
-    "url": "https://github.com/chriscarrollsmith/taskqueue-mcp",
-    "description": "MCP tool for exposing a structured task queue to guide AI agent workflows. Great for taming an over-enthusiastic Claude.",
-    "tags": ["mcp", "ai", "agents"]
+    "tags": ["python", "ai", "template", "fastapi"]
   },
   {
     "title": "fastapi-jinja2-postgres-webapp",
     "url": "https://github.com/Promptly-Technologies-LLC/fastapi-jinja2-postgres-webapp",
     "description": "Production-ready FastAPI + Jinja2 + Postgres template with user authentication built in",
-    "tags": ["template", "fastapi", "web"]
+    "tags": ["highlight", "python", "template", "fastapi", "web"]
+  },
+  {
+    "title": "excel-grapher",
+    "url": "https://github.com/Teal-Insights/excel-grapher",
+    "description": "Python library for generating Excel formula dependency graphs",
+    "tags": ["python", "excel", "data"]
+  },
+  {
+    "title": "capital-region-feed",
+    "url": "https://github.com/chriscarrollsmith/capital-region-feed",
+    "description": "BlueSky custom feed aggregating posts relevant to New York's Capital Region",
+    "tags": ["python", "bluesky", "feed"]
+  },
+  {
+    "title": "birdapp",
+    "url": "https://github.com/Promptly-Technologies-LLC/birdapp",
+    "description": "CLI tool for posting tweets on X / Twitter",
+    "tags": ["python", "cli", "twitter"]
   }
 ]
