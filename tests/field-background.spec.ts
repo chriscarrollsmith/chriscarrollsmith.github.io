@@ -108,24 +108,84 @@ test.describe('Field background', () => {
     await page.goto('/', { waitUntil: 'domcontentloaded' });
 
     for (const section of FIELD_SECTIONS) {
-      const { scrim, text } = await page.locator(section).evaluate((el) => {
+      const { image, color, text } = await page.locator(section).evaluate((el) => {
         const style = getComputedStyle(el);
-        return { scrim: style.backgroundColor, text: style.color };
+        return { image: style.backgroundImage, color: style.backgroundColor, text: style.color };
       });
 
-      const scrimColor = parseCssColor(scrim);
+      // Sections at a shade boundary paint their scrim as a cross-fade. The
+      // final stop is the one that covers everything below the band, which is
+      // where all the copy lives — the band itself is guarded by the test below.
+      const stops = (image && image !== 'none' ? image.match(/rgba?\([^)]*\)/g) : null) ?? [color];
+      const settled = parseCssColor(stops[stops.length - 1]);
       const textColor = parseCssColor(text).slice(0, 3) as Rgb;
 
       // A fully opaque scrim would mean the field is not visible here at all,
       // which would silently undo the whole point of the change.
-      expect(scrimColor[3], `${section} scrim should be translucent`).toBeLessThan(1);
+      expect(settled[3], `${section} scrim should be translucent`).toBeLessThan(1);
 
-      const ratio = worstCaseContrast(scrimColor, textColor);
+      const ratio = worstCaseContrast(settled, textColor);
       expect(
         ratio,
         `${section}: worst-case contrast over field band ` +
           `[${FIELD_CHANNEL_MIN}, ${FIELD_CHANNEL_MAX}] was ${ratio.toFixed(2)}:1`,
       ).toBeGreaterThanOrEqual(4.5);
     }
+  });
+
+  test('no copy sits inside a scrim cross-fade band', async ({ page }) => {
+    await page.goto('/', { waitUntil: 'domcontentloaded' });
+    await page.waitForTimeout(2000);
+
+    // Inside a cross-fade the background is partway to the neighbouring shade,
+    // so the section's text colour is by construction wrong for part of it.
+    // That is safe only while the band stays clear of anything readable — which
+    // is a property of the page's layout, not of the CSS, so it needs asserting.
+    const offenders = await page.evaluate((sections) => {
+      const found: { section: string; text: string; offset: number; band: number }[] = [];
+
+      for (const selector of sections) {
+        const section = document.querySelector<HTMLElement>(selector);
+        if (!section) continue;
+        if (!/field-from-/.test(section.className)) continue;
+
+        const band = parseFloat(
+          getComputedStyle(section).getPropertyValue('--field-scrim-fade') || '0',
+        );
+        const sectionTop = section.getBoundingClientRect().top;
+
+        for (const el of Array.from(section.querySelectorAll<HTMLElement>('*'))) {
+          const own = Array.from(el.childNodes)
+            .filter((node) => node.nodeType === Node.TEXT_NODE)
+            .map((node) => (node.textContent ?? '').trim())
+            .join('');
+          if (!own) continue;
+
+          const box = el.getBoundingClientRect();
+          if (box.width === 0 || box.height === 0) continue;
+
+          // Copy on an opaque card is unaffected by whatever the scrim is doing.
+          let node: HTMLElement | null = el;
+          let shielded = false;
+          while (node && node !== section) {
+            const parts = getComputedStyle(node).backgroundColor.match(/-?[\d.]+/g);
+            if (parts && (parts.length < 4 || Number(parts[3]) >= 0.95)) {
+              shielded = true;
+              break;
+            }
+            node = node.parentElement;
+          }
+          if (shielded) continue;
+
+          const offset = box.top - sectionTop;
+          if (offset < band) {
+            found.push({ section: selector, text: own.slice(0, 40), offset, band });
+          }
+        }
+      }
+      return found;
+    }, FIELD_SECTIONS);
+
+    expect(offenders, 'copy overlapping a scrim cross-fade band').toEqual([]);
   });
 });

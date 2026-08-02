@@ -16,6 +16,12 @@
   --color-link-hover: rgba(0, 0, 0, 0.25);
   --color-button-bg: #4e567e;
   --color-button-hover: #3c415c;
+
+  /* Scrims over the shared noise field. Both alphas are chosen against the
+     shader's clamped luminance band; see tests/field-background.spec.ts. */
+  --field-scrim-dark: rgba(0, 0, 0, 0.62);
+  --field-scrim-light: rgba(255, 255, 255, 0.68);
+  --field-scrim-fade: 180px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -257,11 +263,39 @@ section.white {
  * an automated audit happens to sample.
  */
 .hero.field.dark {
-  background: rgba(0, 0, 0, 0.62);
+  background: var(--field-scrim-dark);
 }
 
 .hero.field.light {
-  background: rgba(255, 255, 255, 0.68);
+  background: var(--field-scrim-light);
+}
+
+/**
+ * Where the shade changes, cross-fade the two scrims down the top of the lower
+ * section instead of cutting. The gradient replaces both scrims inside the band
+ * — it starts on exactly the neighbour's scrim, so the seam is continuous — and
+ * extends the lower section's own scrim over everything below it.
+ *
+ * The band length is bounded by the nearest text that sits directly on a scrim
+ * rather than on an opaque card. Measured on the built page: 216px into
+ * #projects, 131px above #about, 879px above #events. Nothing in the light
+ * sections is exposed at all. Lengthening this past ~200px would start dragging
+ * white headings into the light end of a fade.
+ */
+.hero.field.field-from-light {
+  background: linear-gradient(
+    180deg,
+    var(--field-scrim-light) 0,
+    var(--field-scrim-dark) var(--field-scrim-fade)
+  );
+}
+
+.hero.field.field-from-dark {
+  background: linear-gradient(
+    180deg,
+    var(--field-scrim-dark) 0,
+    var(--field-scrim-light) var(--field-scrim-fade)
+  );
 }
 
 .visually-hidden {

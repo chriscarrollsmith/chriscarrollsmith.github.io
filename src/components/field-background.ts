@@ -4,13 +4,22 @@
  * A single full-screen quad is drawn by a fragment shader doing domain-warped
  * fractal noise. Scroll position picks a palette along a five-stop ramp, so each
  * section reads as a different temperature of the same object rather than as a
- * different picture. Nothing here is random at runtime — the same scroll offset
- * always yields the same field.
+ * different picture.
+ *
+ * The field is a pure function of scroll position: no clock, no pointer, no
+ * easing. That is a deliberate constraint rather than a simplification. An
+ * earlier version eased toward the scroll target and ran a clock-driven warp,
+ * which meant the background kept moving after the page had stopped and drifted
+ * behind it while scrolling — three uncorrelated motions at once, which reads as
+ * seasickness rather than atmosphere. Tying every moving part to the one thing
+ * the reader controls makes the field feel attached to the page instead of
+ * floating over it, and means a still page is a still image.
  *
  * Cost control, in order of importance:
+ *   - nothing renders unless the scroll position actually changed, so an idle
+ *     page costs nothing at all and there is no loop to pause.
  *   - the backing store renders at half CSS resolution and is upscaled by the
  *     browser. The field is deliberately soft, so nothing is lost.
- *   - frames are capped to 30fps, and paused entirely when the tab is hidden.
  *   - machines with no usable GPU keep the static CSS gradient instead of
  *     burning CPU on a decoration. `failIfMajorPerformanceCaveat` alone does
  *     not achieve this — Chrome hands back a SwiftShader context regardless —
@@ -30,12 +39,6 @@ const SECTION_IDS = ['home', 'about', 'projects', 'writing', 'events'] as const;
 const RESOLUTION_SCALE = 0.5;
 const MAX_BACKING_WIDTH = 1280;
 const MAX_BACKING_HEIGHT = 800;
-const FRAME_INTERVAL_MS = 1000 / 30;
-/** Ignore deltas larger than this (tab was backgrounded) so the field never jumps. */
-const MAX_FRAME_DELTA_MS = 250;
-/** Per-frame easing toward the measured scroll/pointer targets. */
-const SCROLL_EASING = 0.08;
-const POINTER_EASING = 0.05;
 
 const VERTEX_SHADER = `
 attribute vec2 a_pos;
@@ -51,9 +54,7 @@ precision mediump float;
 #define FIELD_MAX ${FIELD_CHANNEL_MAX.toFixed(4)}
 
 uniform vec2  u_resolution;
-uniform float u_time;
 uniform float u_scroll;
-uniform vec2  u_pointer;
 
 // Simplex noise, Ashima Arts / Stefan Gustavson (MIT).
 vec3 mod289(vec3 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
@@ -122,7 +123,12 @@ void main() {
   // Scrolling translates the field rather than swapping it: you travel along
   // one continuous object instead of cutting between five backgrounds.
   vec2 p = st * 0.45 + vec2(0.0, u_scroll * 2.6);
-  float t = u_time * 0.045;
+
+  // The warp is driven by the same scroll value rather than a clock, so the
+  // liquid motion happens only while the reader is moving and stops dead when
+  // they do. Scrolling one section end to end advances it by roughly one
+  // full turn of the noise.
+  float t = u_scroll * 1.7;
 
   // Domain warping: noise displaced by noise displaced by noise. The two
   // intermediate lookups are what make this marble instead of clouds.
@@ -130,7 +136,6 @@ void main() {
                 fbm(p + vec2(5.2, 1.3) - vec2(t, 0.0)));
   vec2 r = vec2(fbm(p + 1.8 * q + vec2(1.7, 9.2) + 0.15 * t),
                 fbm(p + 1.8 * q + vec2(8.3, 2.8) - 0.12 * t));
-  r += u_pointer * 0.20;
 
   float f = fbm(p + 1.6 * r);
   float v = clamp(0.5 + f * 0.325, 0.0, 1.0);
@@ -155,9 +160,7 @@ void main() {
 
 type Uniforms = {
   resolution: WebGLUniformLocation | null;
-  time: WebGLUniformLocation | null;
   scroll: WebGLUniformLocation | null;
-  pointer: WebGLUniformLocation | null;
 };
 
 const compile = (gl: WebGLRenderingContext, type: number, source: string): WebGLShader | null => {
@@ -262,9 +265,7 @@ const start = (): void => {
 
   const uniforms: Uniforms = {
     resolution: gl.getUniformLocation(program, 'u_resolution'),
-    time: gl.getUniformLocation(program, 'u_time'),
     scroll: gl.getUniformLocation(program, 'u_scroll'),
-    pointer: gl.getUniformLocation(program, 'u_pointer'),
   };
 
   let width = 0;
@@ -335,36 +336,21 @@ const start = (): void => {
     return focus < stops[0].top ? stops[0].index * span : 1;
   };
 
-  let scroll = 0;
-  let scrollTarget = 0;
-  let pointerX = 0;
-  let pointerY = 0;
-  let pointerTargetX = 0;
-  let pointerTargetY = 0;
-  let elapsed = 0;
-  let previous = 0;
-  let sinceFrame = FRAME_INTERVAL_MS;
-  let frame = 0;
+  let drawn = Number.NaN;
+  let pending = 0;
+  let lost = false;
   let live = false;
-  let running = false;
 
-  const render = (now: number) => {
-    frame = window.requestAnimationFrame(render);
+  const draw = () => {
+    pending = 0;
+    if (lost) return;
 
-    const delta = previous === 0 ? FRAME_INTERVAL_MS : Math.min(now - previous, MAX_FRAME_DELTA_MS);
-    previous = now;
-    sinceFrame += delta;
-    if (sinceFrame < FRAME_INTERVAL_MS) return;
-    sinceFrame = 0;
+    const next = readScroll();
+    // No easing: the field is wherever the scroll says it is, this frame.
+    if (next === drawn) return;
+    drawn = next;
 
-    elapsed += delta / 1000;
-    scroll += (scrollTarget - scroll) * SCROLL_EASING;
-    pointerX += (pointerTargetX - pointerX) * POINTER_EASING;
-    pointerY += (pointerTargetY - pointerY) * POINTER_EASING;
-
-    gl.uniform1f(uniforms.time, elapsed);
-    gl.uniform1f(uniforms.scroll, scroll);
-    gl.uniform2f(uniforms.pointer, pointerX, pointerY);
+    gl.uniform1f(uniforms.scroll, next);
     gl.drawArrays(gl.TRIANGLES, 0, 3);
 
     if (!live) {
@@ -373,27 +359,21 @@ const start = (): void => {
     }
   };
 
-  const play = () => {
-    if (running) return;
-    running = true;
-    previous = 0;
-    frame = window.requestAnimationFrame(render);
+  /** Coalesce every trigger into at most one draw per animation frame. */
+  const schedule = () => {
+    if (pending || lost) return;
+    pending = window.requestAnimationFrame(draw);
   };
 
-  const pause = () => {
-    if (!running) return;
-    running = false;
-    window.cancelAnimationFrame(frame);
-  };
-
-  const onScroll = () => {
-    scrollTarget = readScroll();
+  const invalidate = () => {
+    drawn = Number.NaN;
+    schedule();
   };
 
   const onResize = () => {
     resize();
     measure();
-    onScroll();
+    invalidate();
   };
 
   canvas.addEventListener(
@@ -402,7 +382,9 @@ const start = (): void => {
       // Keep the browser from spilling a console error, and let the CSS
       // gradient underneath stand in for the rest of the visit.
       event.preventDefault();
-      pause();
+      lost = true;
+      if (pending) window.cancelAnimationFrame(pending);
+      pending = 0;
       canvas.classList.remove('is-live');
     },
     { passive: false }
@@ -410,28 +392,9 @@ const start = (): void => {
 
   resize();
   measure();
-  scrollTarget = readScroll();
-  scroll = scrollTarget;
 
-  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('scroll', schedule, { passive: true });
   window.addEventListener('resize', onResize, { passive: true });
-
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) pause();
-    else play();
-  });
-
-  if (window.matchMedia('(pointer: fine)').matches) {
-    window.addEventListener(
-      'pointermove',
-      (event) => {
-        pointerTargetX = (event.clientX / window.innerWidth) * 2 - 1;
-        pointerTargetY = 1 - (event.clientY / window.innerHeight) * 2;
-      },
-      { passive: true }
-    );
-  }
-
   window.addEventListener('load', onResize);
 
   // Writing and Events hydrate with client:only, so the first layout is missing
@@ -446,12 +409,12 @@ const start = (): void => {
       documentEnd !== Math.max(document.documentElement.scrollHeight, window.innerHeight)
     ) {
       measure();
-      onScroll();
+      invalidate();
     }
   }, 200);
   window.setTimeout(() => window.clearInterval(settle), 10000);
 
-  play();
+  schedule();
 };
 
 start();
