@@ -1,6 +1,7 @@
 import './About.css';
 import heroData from '../data/heroimages.json';
 import ContactForm from './ContactForm';
+import { heroSectionClass } from '../utils/heroSection';
 import type { HeroImage } from '../types/data';
 
 const typedHeroData = heroData as HeroImage[];
@@ -25,8 +26,8 @@ const About: React.FC = () => {
   ];
 
   return (
-    <section className={`hero ${hero?.src ? hero.shade : hero?.shade === 'dark' ? 'black' : 'white'}`} id="about">
-      {hero && (
+    <section className={heroSectionClass(hero)} id="about">
+      {hero?.src && (
         <>
           <img className="hero-bg" src={hero.src} alt={hero.alt} />
           <div className="hero-overlay" />

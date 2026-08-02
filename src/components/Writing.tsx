@@ -2,6 +2,7 @@ import Card from './Card';
 import './Writing.css';
 import heroData from '../data/heroimages.json';
 import SubscribeForm from './SubscribeForm';
+import { heroSectionClass } from '../utils/heroSection';
 import type { HeroImage } from '../types/data';
 
 const typedHeroData = heroData as HeroImage[];
@@ -45,8 +46,8 @@ const Writing: React.FC = () => {
   ];
 
   return (
-    <section className={`hero ${hero?.src ? hero.shade : hero?.shade === 'dark' ? 'black' : 'white'}`} id="writing">
-      {hero && (
+    <section className={heroSectionClass(hero)} id="writing">
+      {hero?.src && (
         <>
           <img className="hero-bg" src={hero.src} alt={hero.alt} />
           <div className="hero-overlay" />

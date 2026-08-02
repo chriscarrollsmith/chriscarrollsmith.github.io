@@ -1,0 +1,40 @@
+/**
+ * Host for the persistent noise field. The gradient below is the whole
+ * experience when WebGL is unavailable or motion is reduced, so it carries the
+ * same five palette stops the shader ramps through rather than being a
+ * placeholder color.
+ */
+
+.site-field {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background:
+    radial-gradient(60% 45% at 18% 6%, rgba(74, 47, 94, 0.55), transparent 70%),
+    radial-gradient(55% 40% at 82% 30%, rgba(67, 86, 110, 0.45), transparent 72%),
+    radial-gradient(65% 45% at 26% 58%, rgba(91, 47, 128, 0.45), transparent 70%),
+    radial-gradient(60% 42% at 78% 80%, rgba(75, 58, 134, 0.45), transparent 72%),
+    radial-gradient(55% 40% at 32% 98%, rgba(107, 97, 87, 0.40), transparent 72%),
+    linear-gradient(180deg, #150d1f 0%, #171d26 26%, #160d24 50%, #120f26 74%, #1d1a17 100%);
+}
+
+.site-field-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 900ms ease;
+}
+
+/* Set once the first frame has actually landed, so the gradient never blinks. */
+.site-field-canvas.is-live {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-field-canvas {
+    transition: none;
+  }
+}

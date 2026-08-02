@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import eventsJSON from '../data/events.json';
 import heroData from '../data/heroimages.json';
+import { heroSectionClass } from '../utils/heroSection';
 import type { EventItem, HeroImage } from '../types/data';
 import './Events.css';
 import { compareAsc, format, isBefore, isSameDay, parseISO } from 'date-fns';
@@ -110,8 +111,8 @@ const Events: React.FC = () => {
   };
 
   return (
-    <section className={`hero ${hero?.src ? hero.shade : hero?.shade === 'dark' ? 'black' : 'white'}`} id="events">
-      {hero && (
+    <section className={heroSectionClass(hero)} id="events">
+      {hero?.src && (
         <>
           <img
             className="hero-bg"

@@ -45,6 +45,8 @@ export interface HeroImage {
   shade: 'light' | 'dark';
   adjustment?: string;
   alt: string;
+  /** Show the shared noise field through this section instead of an image. */
+  field?: boolean;
 }
 
 export type EventFormat = 'in-person' | 'remote' | 'hybrid';

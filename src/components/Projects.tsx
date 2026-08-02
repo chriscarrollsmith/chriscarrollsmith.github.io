@@ -2,6 +2,7 @@ import './Projects.css';
 import heroData from '../data/heroimages.json';
 import projectsData from '../data/projects.json';
 import Card from './Card';
+import { heroSectionClass } from '../utils/heroSection';
 import type { HeroImage, Project } from '../types/data';
 
 const typedHeroData = heroData as HeroImage[];
@@ -11,8 +12,8 @@ const Projects: React.FC = () => {
   const hero = typedHeroData.find(h => h.name === 'projects');
 
   return (
-    <section className={`hero ${hero?.src ? hero.shade : hero?.shade === 'dark' ? 'black' : 'white'}`} id="projects">
-      {hero && (
+    <section className={heroSectionClass(hero)} id="projects">
+      {hero?.src && (
         <>
           <img className="hero-bg" src={hero.src} alt={hero.alt} />
           <div className="hero-overlay" />

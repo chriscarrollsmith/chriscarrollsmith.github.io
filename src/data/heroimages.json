@@ -8,32 +8,37 @@
   },
   {
     "name": "about",
-    "src": "/images/motion-background.jpg",
+    "src": "",
+    "field": true,
     "shade": "light",
-    "alt": "Gray abstract background"
+    "alt": ""
   },
   {
     "name": "projects",
-    "src": "/images/violetflowers1-q80.webp",
+    "src": "",
+    "field": true,
     "shade": "dark",
-    "alt": "Violet flowers against a black backdrop"
+    "alt": ""
   },
   {
     "name": "project-feature",
     "src": "",
+    "field": true,
     "shade": "dark",
     "alt": ""
   },
   {
     "name": "writing",
-    "src": "/images/cityscape-q95.webp",
+    "src": "",
+    "field": true,
     "shade": "dark",
-    "alt": "Cityscape seen from above through a purple haze"
+    "alt": ""
   },
   {
     "name": "events",
-    "src": "/images/putty-q95.webp",
+    "src": "",
+    "field": true,
     "shade": "light",
-    "alt": "Light gray putty applied to a wall with artful wavy strokes"
+    "alt": ""
   }
 ]

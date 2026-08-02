@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HeaderAstro from '../components/HeaderAstro.astro';
+import FieldBackground from '../components/FieldBackground.astro';
 import HomeClient from '../components/HomeClient.tsx';
 import About from '../components/About.tsx';
 import Projects from '../components/Projects.tsx';
@@ -20,6 +21,7 @@ import '../App.css';
   <Fragment slot="head">
     <script is:inline type="application/ld+json" set:html={JSON.stringify(buildHomeJsonLd())} />
   </Fragment>
+  <FieldBackground />
   <div class="App">
     <HeaderAstro />
     <main>

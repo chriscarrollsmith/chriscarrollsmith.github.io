@@ -1,5 +1,6 @@
 import './ProjectFeature.css';
 import heroData from '../data/heroimages.json';
+import { heroSectionClass } from '../utils/heroSection';
 import type { HeroImage } from '../types/data';
 
 const typedHeroData = heroData as HeroImage[];
@@ -13,7 +14,7 @@ const ProjectFeature: React.FC = () => {
   const buttonUrl = "https://www.scribert.com/signin/signup";
 
   return (
-    <section className={hero?.src ? hero?.shade : hero?.shade === "dark" ? "black" : "white"} id="project-feature">
+    <section className={heroSectionClass(hero)} id="project-feature">
       <div className="project-feature-section">
         <div className="callout">
           <p>

@@ -57,6 +57,9 @@ html {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  /* Sits above the fixed noise field, which paints at z-index 0. */
+  position: relative;
+  z-index: 1;
 }
 
 section {
@@ -244,6 +247,21 @@ section.white {
   color: black;
   background: white;
   min-height: 100vh;
+}
+
+/**
+ * Field-backed sections carry no image of their own: the scrim below is the
+ * only thing between the shared noise field and the copy. Both alphas are
+ * chosen against the shader's clamped luminance band (0.05–0.52), so the
+ * worst-case contrast ratio holds on every frame rather than on whichever one
+ * an automated audit happens to sample.
+ */
+.hero.field.dark {
+  background: rgba(0, 0, 0, 0.62);
+}
+
+.hero.field.light {
+  background: rgba(255, 255, 255, 0.68);
 }
 
 .visually-hidden {

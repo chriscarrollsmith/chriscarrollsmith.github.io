@@ -44,6 +44,11 @@
 ### Keep site URLs in sync
 - Canonical URL defined in: `astro.config.ts` (`site` field) AND `src/layouts/BaseLayout.astro` (`siteURL` constant)
 
+### Preserve the home page's shared background field
+- One fixed WebGL canvas (`src/components/FieldBackground.astro`) paints behind every home section at `z-index: 0`; `.App` sits above it at `z-index: 1`
+- Sections opt in with `"field": true` in `src/data/heroimages.json` and get their scrim from `.hero.field.dark` / `.hero.field.light` — do not give them an opaque background
+- Text contrast depends on the shader's clamped luminance band; change `App.css` scrim alphas and `field-background.ts` clamp together
+
 ---
 
 ## Before You Start

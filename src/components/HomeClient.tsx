@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import './Home.css';
 import siteProperties from '../data/siteproperties.json';
 import heroData from '../data/heroimages.json';
+import { heroSectionClass } from '../utils/heroSection';
 import type { SiteProperties, HeroImage } from '../types/data';
 
 const typedSiteProperties = siteProperties as SiteProperties;
@@ -27,7 +28,7 @@ const HomeClient: React.FC = () => {
   }
 
   return (
-    <section className={`hero ${hero.src ? hero.shade : hero.shade === 'dark' ? 'black' : 'white'}`} id="home">
+    <section className={heroSectionClass(hero)} id="home">
       {hero && (
         <>
           <img
