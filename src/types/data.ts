@@ -2,9 +2,24 @@ export interface Project {
   title: string;
   url: string;
   description: string;
+  tags?: string[];
+  /** Manual language for non-GitHub projects (GitHub language comes from sync). */
+  language?: string;
   img?: string;
   iconOverlay?: string;
   buttonText?: string;
+}
+
+export interface GithubRepoMeta {
+  fullName: string;
+  language: string | null;
+  stars: number;
+  pushedAt: string;
+}
+
+export interface ProjectGithubMetaFile {
+  fetchedAt: string;
+  repos: Record<string, GithubRepoMeta>;
 }
 
 export interface SocialProfiles {

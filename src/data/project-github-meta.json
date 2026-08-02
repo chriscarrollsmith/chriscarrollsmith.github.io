@@ -1,0 +1,53 @@
+{
+  "fetchedAt": "2026-08-01T15:17:18.668Z",
+  "repos": {
+    "https://github.com/Promptly-Technologies-LLC/imfp": {
+      "fullName": "Promptly-Technologies-LLC/imfp",
+      "language": "Python",
+      "stars": 16,
+      "pushedAt": "2026-03-26T13:40:16Z"
+    },
+    "https://github.com/Promptly-Technologies-LLC/etielle": {
+      "fullName": "Promptly-Technologies-LLC/etielle",
+      "language": "Python",
+      "stars": 1,
+      "pushedAt": "2026-07-02T00:08:55Z"
+    },
+    "https://github.com/chriscarrollsmith/pyzotero-cli": {
+      "fullName": "chriscarrollsmith/pyzotero-cli",
+      "language": "Python",
+      "stars": 30,
+      "pushedAt": "2026-04-08T18:56:31Z"
+    },
+    "https://github.com/Promptly-Technologies-LLC/openai-responses-python-quickstart": {
+      "fullName": "Promptly-Technologies-LLC/openai-responses-python-quickstart",
+      "language": "Python",
+      "stars": 1,
+      "pushedAt": "2026-03-15T20:15:52Z"
+    },
+    "https://github.com/Promptly-Technologies-LLC/fastapi-jinja2-postgres-webapp": {
+      "fullName": "Promptly-Technologies-LLC/fastapi-jinja2-postgres-webapp",
+      "language": "Python",
+      "stars": 10,
+      "pushedAt": "2026-07-30T05:00:43Z"
+    },
+    "https://github.com/Teal-Insights/excel-grapher": {
+      "fullName": "Teal-Insights/excel-grapher",
+      "language": "Python",
+      "stars": 2,
+      "pushedAt": "2026-07-27T17:18:48Z"
+    },
+    "https://github.com/chriscarrollsmith/capital-region-feed": {
+      "fullName": "chriscarrollsmith/capital-region-feed",
+      "language": "Python",
+      "stars": 0,
+      "pushedAt": "2026-08-01T09:08:36Z"
+    },
+    "https://github.com/Promptly-Technologies-LLC/birdapp": {
+      "fullName": "Promptly-Technologies-LLC/birdapp",
+      "language": "Python",
+      "stars": 5,
+      "pushedAt": "2026-03-18T21:42:36Z"
+    }
+  }
+}
