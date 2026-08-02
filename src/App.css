@@ -2,13 +2,11 @@
 * CSS file to hold styles that apply across the application
 */
 
-@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Montserrat:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&display=swap");
 
 :root {
-  /* Typefaces: Cormorant is a display face and is used only at display sizes.
-     Montserrat carries everything under ~1.5rem, on every page. */
+  /* Site face: Cormorant Garamond for UI and prose; mono for code. */
   --font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
-  --font-sans: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
   --font-mono: "Consolas", "Monaco", "Courier New", monospace;
 
   /* Type scale. The display steps (hero, hero-sub, h1, h2) are re-declared in
@@ -20,14 +18,15 @@
   --text-h3: 1.25rem;
   --text-lg: 1.375rem;
   --text-body: 1.125rem;
+  --text-nav: 1.15rem;
   --text-sm: 1rem;
   --text-xs: 0.875rem;
 
-  /* Weights: Cormorant is drawn light, Montserrat needs more body. */
+  /* Weights: Cormorant reads light; keep body and UI in the 300–400 range. */
   --weight-display: 300;
   --weight-display-sub: 400;
-  --weight-body: 400;
-  --weight-medium: 500;
+  --weight-body: 300;
+  --weight-medium: 400;
   --weight-bold: 600;
 
   --leading-tight: 1.15;
@@ -96,7 +95,7 @@ body {
   padding: 0;
   height: 100%;
   width: 100%;
-  font-family: var(--font-sans);
+  font-family: var(--font-display);
   background-color: var(--color-bg);
   color: var(--color-text);
   font-size: var(--text-body);
@@ -311,10 +310,13 @@ section.white {
   border-radius: 15px;
 }
 
-/* Reasonable defaults for headings site-wide.
-   h1/h2 are display sizes and keep Cormorant; h3 and below are sans. */
+/* Reasonable defaults for headings site-wide. */
 h1,
-h2 {
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-display);
 }
 
@@ -336,8 +338,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-sans);
-  font-weight: var(--weight-bold);
+  font-weight: var(--weight-display-sub);
   line-height: var(--leading-snug);
 }
 
@@ -408,7 +409,7 @@ div.center-flex {
   border: none;
   opacity: 1;
   visibility: visible;
-  font-family: var(--font-sans);
+  font-family: var(--font-display);
   font-size: var(--text-sm);
   font-weight: var(--weight-medium);
 }

@@ -2,7 +2,7 @@
   max-width: 50rem;
   margin: 0 auto;
   padding: 3rem 1.25rem;
-  font-family: var(--font-sans);
+  font-family: var(--font-display);
 }
 
 .blog-container h1 {

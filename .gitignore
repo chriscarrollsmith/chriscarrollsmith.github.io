@@ -34,3 +34,6 @@ playwright-report/
 test-results/
 tests/screenshots/
 tests/temp-optimized/
+
+# Secrets
+.env

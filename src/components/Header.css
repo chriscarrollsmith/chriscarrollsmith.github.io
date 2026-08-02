@@ -191,10 +191,9 @@
 #primary-nav a {
   text-decoration: none;
   color: var(--header-fg);
-  font-family: var(--font-sans);
+  font-family: var(--font-display);
   font-weight: var(--weight-medium);
-  font-size: var(--text-sm);
-  letter-spacing: 0.01em;
+  font-size: var(--text-nav);
   padding: 0.55rem 0.35rem;
   border-radius: 0.25rem;
   transition: color 150ms ease, background-color 150ms ease;
