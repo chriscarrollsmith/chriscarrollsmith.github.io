@@ -11,9 +11,11 @@
  *   - the backing store renders at half CSS resolution and is upscaled by the
  *     browser. The field is deliberately soft, so nothing is lost.
  *   - frames are capped to 30fps, and paused entirely when the tab is hidden.
- *   - `failIfMajorPerformanceCaveat` declines a software-rasterized context, so
- *     machines with no usable GPU keep the static CSS gradient instead of
- *     burning CPU on a decoration.
+ *   - machines with no usable GPU keep the static CSS gradient instead of
+ *     burning CPU on a decoration. `failIfMajorPerformanceCaveat` alone does
+ *     not achieve this — Chrome hands back a SwiftShader context regardless —
+ *     so the renderer string is checked and the context dropped if it is
+ *     software.
  *
  * Accessibility: the host element is `aria-hidden` and unfocusable, and
  * `prefers-reduced-motion` skips WebGL entirely. Output luminance is clamped to
@@ -170,6 +172,29 @@ const compile = (gl: WebGLRenderingContext, type: number, source: string): WebGL
   return shader;
 };
 
+/**
+ * True when the context is backed by a CPU rasterizer rather than a GPU.
+ *
+ * `failIfMajorPerformanceCaveat` is documented to prevent this, but Chrome
+ * still returns a SwiftShader context, so the renderer has to be inspected
+ * after the fact. Browsers that withhold `WEBGL_debug_renderer_info` (Safari,
+ * Firefox with resistFingerprinting) report nothing conclusive; those are
+ * treated as hardware, since guessing the other way would disable the field
+ * for people who can perfectly well run it.
+ */
+const isSoftwareRenderer = (gl: WebGLRenderingContext): boolean => {
+  let renderer = '';
+  try {
+    const info = gl.getExtension('WEBGL_debug_renderer_info');
+    renderer = String(
+      (info && gl.getParameter(info.UNMASKED_RENDERER_WEBGL)) || gl.getParameter(gl.RENDERER) || '',
+    );
+  } catch {
+    return false;
+  }
+  return /swiftshader|llvmpipe|lavapipe|softpipe|software|basic render/i.test(renderer);
+};
+
 const buildProgram = (gl: WebGLRenderingContext): WebGLProgram | null => {
   const vertex = compile(gl, gl.VERTEX_SHADER, VERTEX_SHADER);
   const fragment = compile(gl, gl.FRAGMENT_SHADER, FRAGMENT_SHADER);
@@ -207,13 +232,20 @@ const start = (): void => {
       depth: false,
       stencil: false,
       powerPreference: 'low-power',
-      // Decline software rasterization: a decorative field is not worth a CPU.
+      // Asks for the same thing isSoftwareRenderer enforces; honored by some
+      // browsers, ignored by Chrome, harmless where it is respected.
       failIfMajorPerformanceCaveat: true,
     }) as WebGLRenderingContext | null;
   } catch {
     gl = null;
   }
   if (!gl) return;
+
+  if (isSoftwareRenderer(gl)) {
+    // Hand the context straight back; the CSS gradient is the better trade.
+    gl.getExtension('WEBGL_lose_context')?.loseContext();
+    return;
+  }
 
   const program = buildProgram(gl);
   if (!program) return;
@@ -400,16 +432,24 @@ const start = (): void => {
     );
   }
 
-  // Late-hydrating sections move every measurement below them, so re-measure
-  // for a few seconds instead of trusting the first layout.
-  if (typeof ResizeObserver !== 'undefined') {
-    const observer = new ResizeObserver(() => {
+  window.addEventListener('load', onResize);
+
+  // Writing and Events hydrate with client:only, so the first layout is missing
+  // two of the five sections and the document is far shorter than it will be.
+  // A ResizeObserver is the obvious tool and the wrong one here: App.css pins
+  // `html, body { height: 100% }`, so body's box stays viewport-sized no matter
+  // how much content lands inside it, and the callback never fires. Poll the
+  // document height instead until it settles with every section accounted for.
+  const settle = window.setInterval(() => {
+    if (
+      stops.length < SECTION_IDS.length ||
+      documentEnd !== Math.max(document.documentElement.scrollHeight, window.innerHeight)
+    ) {
       measure();
       onScroll();
-    });
-    observer.observe(document.body);
-    window.setTimeout(() => observer.disconnect(), 10000);
-  }
+    }
+  }, 200);
+  window.setTimeout(() => window.clearInterval(settle), 10000);
 
   play();
 };

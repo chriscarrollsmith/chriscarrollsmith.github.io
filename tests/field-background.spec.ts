@@ -76,6 +76,32 @@ test.describe('Field background', () => {
     expect(background).toContain('gradient');
   });
 
+  test('does not run the shader on a software rasterizer', async ({ page }) => {
+    await page.goto('/', { waitUntil: 'domcontentloaded' });
+
+    const renderer = await page.evaluate(() => {
+      const gl = document.createElement('canvas').getContext('webgl');
+      if (!gl) return null;
+      const info = gl.getExtension('WEBGL_debug_renderer_info');
+      return String(
+        (info && gl.getParameter(info.UNMASKED_RENDERER_WEBGL)) || gl.getParameter(gl.RENDERER) || '',
+      );
+    });
+
+    test.skip(
+      !renderer || !/swiftshader|llvmpipe|lavapipe|softpipe|software|basic render/i.test(renderer),
+      `needs a software renderer to be meaningful (saw: ${renderer ?? 'no webgl'})`,
+    );
+
+    await page.waitForTimeout(2000);
+
+    // Chrome hands back a SwiftShader context even with
+    // failIfMajorPerformanceCaveat set, so the renderer is checked explicitly.
+    // Without that check this burns CPU on a decoration and Chrome logs a
+    // software-WebGL warning that trips the console-errors suite.
+    await expect(page.locator(`${CANVAS}.is-live`)).toHaveCount(0);
+  });
+
   test('section scrims hold AA contrast across the whole field brightness band', async ({
     page,
   }) => {
