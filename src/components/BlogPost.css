@@ -45,9 +45,16 @@
   border-bottom: 1px solid var(--color-border);
 }
 
-.blog-post p {
-  font-size: 1rem;
-  font-weight: 400;
+/* Prose is held to a readable measure; figures, code and embeds keep the
+   full container width. */
+.blog-post p,
+.blog-post ul,
+.blog-post ol,
+.blog-post .post-abstract {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-body);
+  line-height: var(--leading-body);
+  max-width: var(--measure);
 }
 
 /* Live WebGL shader demos (embedded HTML) */
@@ -170,7 +177,7 @@
 }
 
 .blog-post code[class*="language-"] {
-  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-family: var(--font-mono);
 }
 
 /* Fallback for code blocks without language class */
@@ -205,7 +212,7 @@
   color: #ccc;
   padding: 1rem;
   border-radius: 0.5rem;
-  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-family: var(--font-mono);
   font-size: 1.05rem;
   margin: 0;
   position: relative;

@@ -22,7 +22,7 @@
   max-width: 36rem;
   width: 100%;
   margin: 0 auto;
-  font-family: "Montserrat", sans-serif;
+  font-family: var(--font-sans);
   text-align: center;
 }
 
