@@ -2,9 +2,40 @@
 * CSS file to hold styles that apply across the application
 */
 
-@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Montserrat:wght@200;400;600;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&display=swap");
 
 :root {
+  /* Site face: Cormorant Garamond for UI and prose; mono for code. */
+  --font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --font-mono: "Consolas", "Monaco", "Courier New", monospace;
+
+  /* Type scale. The display steps (hero, hero-sub, h1, h2) are re-declared in
+     the breakpoint blocks below; everything from --text-h3 down is fixed. */
+  --text-hero: 3.5rem;
+  --text-hero-sub: 1.5rem;
+  --text-h1: 2.5rem;
+  --text-h2: 1.75rem;
+  --text-h3: 1.25rem;
+  --text-lg: 1.375rem;
+  --text-body: 1.125rem;
+  --text-nav: 1.15rem;
+  --text-sm: 1rem;
+  --text-xs: 0.875rem;
+
+  /* Weights: Cormorant reads light; keep body and UI in the 300–400 range. */
+  --weight-display: 300;
+  --weight-display-sub: 400;
+  --weight-body: 300;
+  --weight-medium: 400;
+  --weight-bold: 600;
+
+  --leading-tight: 1.15;
+  --leading-snug: 1.3;
+  --leading-body: 1.6;
+
+  /* Comfortable line length for running text */
+  --measure: 65ch;
+
   /* Light mode colors (default) */
   --color-text: #333;
   --color-text-muted: #666;
@@ -34,22 +65,56 @@
   }
 }
 
+@media screen and (min-width: 640px) {
+  :root {
+    --text-hero: 5rem;
+    --text-hero-sub: 2.5rem;
+    --text-h1: 3rem;
+    --text-h2: 2rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  :root {
+    --text-hero: 6rem;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  :root {
+    --text-hero: 6.5rem;
+    --text-hero-sub: 2.75rem;
+    --text-h1: 3.5rem;
+    --text-h2: 2.25rem;
+  }
+}
+
 html,
 body {
   margin: 0;
   padding: 0;
   height: 100%;
   width: 100%;
-  font-family: "Cormorant Garamond", serif;
+  font-family: var(--font-display);
   background-color: var(--color-bg);
   color: var(--color-text);
-  font-size: 1.125rem;
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
 }
 
 html {
   scroll-behavior: smooth;
   /* Clear fixed header when jumping to in-page anchors */
   scroll-padding-top: 4.5rem;
+}
+
+/* Form controls don't inherit type by default, which is how the site ended up
+   with raw-sans inputs sitting next to styled copy. */
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
 }
 
 .App {
@@ -180,46 +245,18 @@ section {
 
 /* Large hero text (home page) */
 .hero-heading h1 {
-  font-weight: 300;
-  font-size: 3.5rem;
+  font-weight: var(--weight-display);
+  font-size: var(--text-hero);
+  line-height: var(--leading-tight);
   margin: 0;
 }
 
 .hero-heading h2 {
-  font-weight: 400;
-  font-size: 1.5rem;
+  font-weight: var(--weight-display-sub);
+  font-size: var(--text-hero-sub);
+  line-height: var(--leading-snug);
   margin: 0;
   text-align: center;
-}
-
-@media screen and (min-width: 640px) {
-  .hero-heading h1 {
-    font-size: 5rem;
-  }
-
-  .hero-heading h2 {
-    font-size: 2.5rem;
-  }
-}
-
-@media screen and (min-width: 1024px) {
-  .hero-heading h1 {
-    font-size: 6rem;
-  }
-
-  .hero-heading h2 {
-    font-size: 2.5rem;
-  }
-}
-
-@media screen and (min-width: 1280px) {
-  .hero-heading h1 {
-    font-size: 6.5rem;
-  }
-
-  .hero-heading h2 {
-    font-size: 2.75rem;
-  }
 }
 
 section.dark {
@@ -273,62 +310,59 @@ section.white {
   border-radius: 15px;
 }
 
-/* Reasonable defaults for headings site-wide */
+/* Reasonable defaults for headings site-wide. */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+}
+
 h1 {
-  font-weight: 300;
-  font-size: 2.5rem;
+  font-weight: var(--weight-display);
+  font-size: var(--text-h1);
+  line-height: var(--leading-tight);
   margin: 0;
 }
 
 h2 {
-  font-weight: 400;
-  font-size: 1.75rem;
+  font-weight: var(--weight-display-sub);
+  font-size: var(--text-h2);
+  line-height: var(--leading-snug);
   margin: 0;
-  text-align: center;
 }
 
-@media screen and (min-width: 640px) {
-  h1 {
-    font-size: 3rem;
-  }
-
-  h2 {
-    font-size: 2rem;
-  }
-}
-
-@media screen and (min-width: 1280px) {
-  h1 {
-    font-size: 3.5rem;
-  }
-
-  h2 {
-    font-size: 2.25rem;
-  }
+h3,
+h4,
+h5,
+h6 {
+  font-weight: var(--weight-display-sub);
+  line-height: var(--leading-snug);
 }
 
 h3 {
-  font-weight: 400;
-  font-size: 1.25rem;
+  font-size: var(--text-h3);
   margin: 0;
 }
 
 p {
-  line-height: 1.5;
+  line-height: var(--leading-body);
   margin-bottom: 0;
-  font-weight: 300;
+  font-weight: var(--weight-body);
 }
 
 p.large {
-  font-size: 1.375rem;
+  font-size: var(--text-lg);
 }
 
 p.small {
-  font-size: 1rem;
+  font-size: var(--text-sm);
 }
 
 p.bold {
-  font-weight: 600;
+  font-weight: var(--weight-bold);
 }
 
 hr {
@@ -375,7 +409,9 @@ div.center-flex {
   border: none;
   opacity: 1;
   visibility: visible;
-  font-weight: 400;
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
 }
 
 .button:hover {

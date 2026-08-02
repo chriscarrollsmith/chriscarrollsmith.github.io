@@ -74,7 +74,7 @@
   align-items: baseline;
   text-decoration: none;
   color: var(--header-fg);
-  font-family: "Cormorant Garamond", serif;
+  font-family: var(--font-display);
   line-height: 1.2;
   z-index: 1;
   flex-shrink: 1;
@@ -191,9 +191,9 @@
 #primary-nav a {
   text-decoration: none;
   color: var(--header-fg);
-  font-family: "Cormorant Garamond", serif;
-  font-weight: 400;
-  font-size: 1.15rem;
+  font-family: var(--font-display);
+  font-weight: var(--weight-medium);
+  font-size: var(--text-nav);
   padding: 0.55rem 0.35rem;
   border-radius: 0.25rem;
   transition: color 150ms ease, background-color 150ms ease;

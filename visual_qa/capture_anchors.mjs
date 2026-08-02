@@ -32,6 +32,7 @@
 
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
 import { chromium } from 'playwright';
 import { spawn } from 'child_process';
 import { compareDirectories } from './compare_images.mjs';
@@ -315,7 +316,11 @@ async function waitForServer(url, timeoutMs = 60000, intervalMs = 1000) {
   }
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+const isMain =
+  Boolean(process.argv[1]) &&
+  fileURLToPath(import.meta.url) === path.resolve(process.argv[1]);
+
+if (isMain) {
   const options = parseArgs(process.argv);
   let dev = null;
 

@@ -35,7 +35,7 @@
 
 .events-subhead {
     color: var(--color-text-muted);
-    font-size: 1rem;
+    font-size: var(--text-sm);
     margin-top: 0.75rem;
 }
 
@@ -88,13 +88,13 @@
 }
 
 .events-item-date {
-    font-size: 1rem;
-    font-weight: 600;
+    font-size: var(--text-sm);
+    font-weight: var(--weight-bold);
     margin: 0;
 }
 
 .events-item-time {
-    font-size: 0.95rem;
+    font-size: var(--text-xs);
     color: var(--color-text-muted);
     margin: 0.15rem 0 0;
 }
@@ -102,11 +102,11 @@
 .events-item-title {
     font-size: 1.15rem;
     margin: 0.25rem 0 0;
-    font-weight: 500;
+    font-weight: var(--weight-medium);
 }
 
 .events-item-location {
-    font-size: 0.9rem;
+    font-size: var(--text-xs);
     color: var(--color-text-muted);
     margin: 0.25rem 0 0;
 }
@@ -127,7 +127,7 @@
 
 .events-link {
     text-decoration: none;
-    font-weight: 600;
+    font-weight: var(--weight-bold);
     color: var(--color-link);
 }
 
@@ -198,7 +198,7 @@
     color: var(--color-text);
     border-radius: 999px;
     padding: 0.4rem 1rem;
-    font-size: 0.9rem;
+    font-size: var(--text-xs);
     cursor: pointer;
     transition: background-color 150ms ease, color 150ms ease;
 }
@@ -214,7 +214,7 @@
 }
 
 .events-count {
-    font-size: 0.9rem;
+    font-size: var(--text-xs);
     color: var(--color-text-muted);
     margin: 0;
 }
