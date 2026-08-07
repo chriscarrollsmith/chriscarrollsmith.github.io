@@ -314,10 +314,11 @@ section.white {
  * extends the lower section's own scrim over everything below it.
  *
  * The band length is bounded by the nearest text that sits directly on a scrim
- * rather than on an opaque card. Measured on the built page: 216px into
- * #projects, 131px above #about, 879px above #events. Nothing in the light
- * sections is exposed at all. Lengthening this past ~200px would start dragging
- * white headings into the light end of a fade.
+ * rather than on an opaque card. Measured on the built page: 219px into
+ * #projects, 135px above #about, 897px above #events. Nothing in the light
+ * sections is exposed at all, since their copy sits on opaque cards.
+ * Lengthening this past ~200px would start dragging white headings into the
+ * light end of a fade; `tests/field-background.spec.ts` asserts the clearance.
  */
 .hero.field.field-from-light {
   background: linear-gradient(
