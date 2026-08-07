@@ -2,7 +2,7 @@
   max-width: 50rem;
   margin: 0 auto;
   padding: 3rem 1.25rem;
-  font-family: "Montserrat", sans-serif;
+  font-family: var(--font-display);
 }
 
 .blog-container h1 {
@@ -91,8 +91,10 @@
 }
 
 .blog-post-summary p {
-  font-size: 1rem;
-  font-weight: 400;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-body);
+  line-height: var(--leading-body);
+  max-width: var(--measure);
 }
 
 .blog-post-summary .post-meta {

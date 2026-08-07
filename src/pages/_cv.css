@@ -2,7 +2,7 @@
   max-width: 50rem;
   margin: 0 auto;
   padding: 3rem 1.25rem;
-  font-family: "Montserrat", sans-serif;
+  font-family: var(--font-display);
 }
 
 .cv-header {

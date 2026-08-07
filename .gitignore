@@ -37,3 +37,6 @@ tests/screenshots/
 # deliberately in 7dba451; the anchor screenshots beside them stay tracked.
 visual_qa/screenshots/*/fullpage/
 tests/temp-optimized/
+
+# Secrets
+.env

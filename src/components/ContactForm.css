@@ -1,9 +1,9 @@
 .formspree-form {
   display: flex;
   flex-direction: column;
-  text-align: center;
+  text-align: left;
   color: black;
-  margin: 1rem;
+  margin: 1rem 0;
   gap: 1rem;
 }
 
@@ -15,7 +15,8 @@
   box-sizing: border-box; /* Add this line */
   -webkit-transition: border-color ease-out 300ms;
   transition: border-color ease-out 300ms;
-  font-family: "Garamond Cormorant", sans-serif;
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
 }
 
 .formspree-form input:focus, textarea:focus {
@@ -26,7 +27,7 @@
 }
 
 .formspree-form textarea::placeholder {
-  font-family: "Garamond Cormorant", sans-serif;
+  font-family: var(--font-display);
   font-style: inherit;
   color: inherit;
   font-weight: inherit;

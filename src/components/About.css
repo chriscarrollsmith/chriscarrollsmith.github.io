@@ -5,12 +5,12 @@
     max-width: 700px;
     padding: 2rem;
     margin: 2rem auto;
-    text-align: center;
+    text-align: left;
 }
 
 .bio {
-    text-align: center;
-    font-size: 1.125rem;
+    max-width: var(--measure);
+    font-size: var(--text-body);
     line-height: 1.7;
 }
 
