@@ -12,6 +12,7 @@ import { uniqueSlug } from './blog-mdx/slug';
 import { normalizeImagePath, renderMdx, writeFileEnsuringDir } from './blog-mdx/writeMdx';
 import { decodeHtmlEntities } from './blog-mdx/htmlEntities';
 import { ensureImgAlts } from './blog-mdx/ensureImgAlts';
+import { stripSubstackImageChrome } from './blog-mdx/stripSubstackImageChrome';
 
 interface RSSItem {
   title: string;
@@ -113,7 +114,8 @@ function cleanContent(html: string, title: string): string {
     /<div class="subscription-widget-wrap-editor"[\s\S]*?<\/form>\s*<\/div>\s*<\/div>/g,
     '',
   );
-  return ensureImgAlts(withoutWidgets, { title });
+  const withoutImageChrome = stripSubstackImageChrome(withoutWidgets);
+  return ensureImgAlts(withoutImageChrome, { title });
 }
 
 /**

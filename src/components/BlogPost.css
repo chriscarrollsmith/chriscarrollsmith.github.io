@@ -45,8 +45,6 @@
   border-bottom: 1px solid var(--color-border);
 }
 
-/* Prose is held to a readable measure; figures, code and embeds keep the
-   full container width. */
 .blog-post p,
 .blog-post ul,
 .blog-post ol,
@@ -54,7 +52,6 @@
   font-size: var(--text-sm);
   font-weight: var(--weight-body);
   line-height: var(--leading-body);
-  max-width: var(--measure);
 }
 
 /* Live WebGL shader demos (embedded HTML) */
@@ -119,7 +116,7 @@
 }
 
 .blog-post pre {
-  display: inline-block;
+  display: block;
   width: 100%;
   white-space: pre-wrap;
   overflow-wrap: break-word;

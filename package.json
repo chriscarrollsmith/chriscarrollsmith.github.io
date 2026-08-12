@@ -11,6 +11,7 @@
     "sync:substack": "bun scripts/sync-substack.ts",
     "sync:youtube": "bun scripts/sync-youtube.ts",
     "backfill:substack-alts": "bun scripts/backfill-substack-img-alts.ts",
+    "backfill:substack-image-chrome": "bun scripts/backfill-substack-image-chrome.ts",
     "render:mermaid": "bun scripts/render-mermaid-images.ts",
     "test:unit": "bun test scripts/blog-mdx/__tests__ scripts/seo/__tests__",
     "build": "bun run sync:substack && bun run sync:youtube && bun run generate:pdf && bun run render:mermaid && astro check && astro build",

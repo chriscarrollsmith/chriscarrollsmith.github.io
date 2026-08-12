@@ -1,35 +1,26 @@
 ---
-description: Use a vision model to verify that UI changes visually enhance the website
-alwaysApply: false
+name: visual-qa
+description: Use when making UI/styling changes and need to verify no visual regressions - provides screenshot capture, comparison, vision model scoring, and video recording for animations
 ---
-Before making any code or content changes, capture baseline screenshots for all breakpoints.
 
-```bash
-bun visual_qa/capture_anchors.mjs \
-  --base-url http://localhost:4321 \
-  --start-dev \
-  --label baseline \
-  "#home" "#about" "#projects" "#writing" "#events"
+# Visual QA
+
+## Overview
+
+Capture screenshots before/after changes at relevant responsive breakpoints, compare pixel diffs, QA with vision models. Use video capture for animations.
+
+## Animation Workflow
+
+**Use video capture when:** Testing animations, transitions, or interactive UI state changes.
+**Do NOT use for routine testing** - video burns tokens. Screenshots suffice for static content.
+
+```javascript
+// In Playwright test or script:
+const context = await browser.newContext({
+  recordVideo: { dir: 'visual_qa/videos/' }
+});
+const page = await context.newPage();
+await page.goto('http://localhost:4321/#about');
+await page.waitForTimeout(5000); // Capture full animation cycle
+await context.close(); // Video saved on close
 ```
-
-After making changes, capture candidate screenshots:
-
-```bash
-bun visual_qa/capture_anchors.mjs \
-  --base-url http://localhost:4321 \
-    --start-dev \
-    --label candidate \
-  "#home" "#about" "#projects" "#writing" "#events"
-```
-
-The script will automatically compare candidate screenshots against baseline and report changes.
-
-Review images that show differences. Flag both functional and aesthetic visual regressions. Consider, for example,
-
-1. **Color cohesion & contrast**
-2. **Text readability**
-3. **Layout & spacing**
-4. **Responsiveness / hierarchy preservation**
-5. **Cohesion & wow factor**
-
-Once you are satisfied, it is recommended to seek a second opinion from Google Gemini. If a GEMINI_API_KEY is available in either .env or as an environment variable, you may use it to call the latest Gemini Flash model with the SDK or command-line tool of your choice.
