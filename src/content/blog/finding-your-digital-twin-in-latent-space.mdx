@@ -9,11 +9,11 @@ I spent a good chunk of the last week doing something I have no business doing: 
 
 Now, let me clarify that I write all my own tweets, and I have little interest in automating my Twitter presence. But I've fantasized about automating my *business's* presence, so maybe that's what I thought I was doing. That, and playing with a tech stack I think is cool.
 
-If you've been on Twitter lately—and let's be honest; we all have, it's a sickness—you've probably noticed the platform filling up with toaster-writing. "100% AI-written" Pangram scores as far as the eye can see. It's like waking up in a city populated by by animatronics from Disney's "Small World" ride and wondering who sinned, you or or your parents, that you should find yourself here.
+If you've been on Twitter lately—and let's be honest; we all have, it's a sickness—you've probably noticed the platform filling up with toaster-writing. "100% AI-written" Pangram scores as far as the eye can see. It's like waking up in a city populated by animatronics from Disney's "Small World" ride and wondering who sinned, you or your parents, that you should find yourself here.
 
 I have a little trepidation about sharing this, because I don't *really* want to contribute to that.
 
-But I'm sure I'm not the only one who'd like to automate a business account so he can focus that are higher value. Plus, I think the experiment was instructive. So, here's my [fine-tuning recipe](https://github.com/chriscarrollsmith/ca-fine-tune-recipe); please use it responsibly.
+But I'm sure I'm not the only one who'd like to automate a business account so he can focus on things that are higher value. Plus, I think the experiment was instructive. So, here's my [fine-tuning recipe](https://github.com/chriscarrollsmith/ca-fine-tune-recipe); please use it responsibly.
 
 I also want to shill the technologies I used, because I find the motivations behind them inspiring. So I talk about those below.
 
@@ -37,7 +37,7 @@ The idea behind supervised fine-tuning is that I have a set of "prompt" and "out
 
 In contrast, reinforcement learning makes small adjustments to the model and has it generate a bunch of different answers, then asks, "which of these answers is *better*". The advantage of this approach is that performance doesn't stop improving when the model learns to approximate some predetermined set of "right" answers. As long as we remain able to decide which of any two given model outputs is better, there's no theoretical ceiling on how good the model can get. This is how you build a "superintelligent" AI—one that's better than human.
 
-The thing is, I didn't *want* a superintelligent Twitter robot. I wanted one that was *aligned* with *me*. I wanted one that could write in my voice, reflect my values, and draft tweets promote my business in just the way I would promote it. I wanted to encode *my* voice in the model weights—the *right* voice, not some infinitely scalable *better* voice than mine.
+The thing is, I didn't *want* a superintelligent Twitter robot. I wanted one that was *aligned* with *me*. I wanted one that could write in my voice, reflect my values, and draft tweets that promote my business in just the way I would promote it. I wanted to encode *my* voice in the model weights—the *right* voice, not some infinitely scalable *better* voice than mine.
 
 ## Thinking Machines: Customizable AI for the "little people" like me
 
@@ -63,7 +63,7 @@ Enter the [Community Archive](https://www.community-archive.org/).
 
 ![Community Archive dashboard showing tweets archived, community members, live stream, and featured research](/images/CA.jpg)
 
-Francisco Carvalho built this thing—a crowdsourced, open database of voluntarily user-provided Twitter data that's pushing 17 million tweets. It's the Library of Alexandria for social media. Google Trends for The Discourse. A microscope for memes. An epidemiology of verbal contagion. It's beautiful and weird and the kind of project that reminds how cool open-source software can really be.
+Francisco Carvalho built this thing—a crowdsourced, open database of voluntarily user-provided Twitter data that's pushing 17 million tweets. It's the Library of Alexandria for social media. Google Trends for The Discourse. A microscope for memes. An epidemiology of verbal contagion. It's beautiful and weird and the kind of project that reminds you how cool open-source software can really be.
 
 You can read more about the vision at Epistemic Garden (https://www.epistemic.garden/), Alexandre Variengien's site (https://alexandrevariengien.com/exoskeleton-for-communities), Francisco's newsletter (https://xiqo.substack.com/archive), and the Community Archive website (https://www.community-archive.org/).
 
@@ -75,6 +75,6 @@ Because writing isn't a monologue. No great tweet is written in a vacuum. It's a
 
 So anyway, I wanted to try out fine-tuning, but I'd never done a fine-tune before. So I did what any reasonable person would do: I opened up Cursor and told an AI agent to get to work. They call it "vibe-coding." It's a technical term. It means you bully the computer into doing your homework for you and then claim credit for its work.
 
-The result is my [Community Archive fine-tuning recipe](github.com/chriscarrollsmith/ca-fine-tune-recipe), which I've open-sourced on GitHub: a pipeline that takes someone's tweets, ranks them by engagement, then recursively walks the reply chains backward and forward to reconstruct the full conversation. It also fetches the tweets they liked in the 24 hours before each post, plus grabs images, expands links, resolves linked tweets, and pulls news context from the Internet Archive when the tweet is about a current event. (I also recorded voice anecdotes for the tweets that concerned my lived experience.) All of this is packed into the prompt for the fine-tuning run.
+The result is my [Community Archive fine-tuning recipe](https://github.com/chriscarrollsmith/ca-fine-tune-recipe), which I've open-sourced on GitHub: a pipeline that takes someone's tweets, ranks them by engagement, then recursively walks the reply chains backward and forward to reconstruct the full conversation. It also fetches the tweets they liked in the 24 hours before each post, plus grabs images, expands links, resolves linked tweets, and pulls news context from the Internet Archive when the tweet is about a current event. (I also recorded voice anecdotes for the tweets that concerned my lived experience.) All of this is packed into the prompt for the fine-tuning run.
 
 glhf.
