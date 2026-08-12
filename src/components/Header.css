@@ -86,7 +86,7 @@
   text-decoration: none;
 }
 
-/* Compact mark on small screens; full name from sm up — never both */
+/* Compact mark through md; full name from lg up — never both */
 .header-brand-short {
   font-weight: 400;
   font-size: 1.35rem;
@@ -212,14 +212,6 @@
 }
 
 @media screen and (min-width: 640px) {
-  .header-brand-short {
-    display: none;
-  }
-
-  .header-brand-full {
-    display: inline;
-  }
-
   .header-toggle {
     display: none;
   }
@@ -262,6 +254,16 @@
 @media screen and (min-width: 768px) {
   .header-bar {
     padding: 0.55rem 1.5rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .header-brand-short {
+    display: none;
+  }
+
+  .header-brand-full {
+    display: inline;
   }
 }
 

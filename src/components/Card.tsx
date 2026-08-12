@@ -24,7 +24,7 @@ const Card: React.FC<CardProps> = ({ project }) => {
           </div>
         )}
         <div className={`body-section ${project.img ? 'with-image' : ''}`}>
-          <p>{project.description}</p>
+          <p className="small">{project.description}</p>
           <a
             href={project.url}
             className="button"

@@ -17,9 +17,9 @@
   --text-h2: 1.75rem;
   --text-h3: 1.25rem;
   --text-lg: 1.375rem;
-  --text-body: 1.125rem;
+  --text-body: 1.25rem;
   --text-nav: 1.15rem;
-  --text-sm: 1rem;
+  --text-sm: 1.125rem;
   --text-xs: 0.875rem;
 
   /* Weights: Cormorant reads light; keep body and UI in the 300–400 range. */

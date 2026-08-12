@@ -91,7 +91,7 @@
 }
 
 .blog-post-summary p {
-  font-size: var(--text-sm);
+  font-size: var(--text-body);
   font-weight: var(--weight-body);
   line-height: var(--leading-body);
 }

@@ -49,7 +49,7 @@
 .blog-post ul,
 .blog-post ol,
 .blog-post .post-abstract {
-  font-size: var(--text-sm);
+  font-size: var(--text-body);
   font-weight: var(--weight-body);
   line-height: var(--leading-body);
 }
