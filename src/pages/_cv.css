@@ -1,8 +1,12 @@
 .cv-container {
+  box-sizing: border-box;
+  width: 100%;
   max-width: 50rem;
+  min-width: 0;
   margin: 0 auto;
   padding: 3rem 1.25rem;
   font-family: var(--font-display);
+  overflow-wrap: break-word;
 }
 
 .cv-header {
