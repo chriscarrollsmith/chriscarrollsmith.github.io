@@ -1,7 +1,10 @@
 .blog-post {
+  min-width: 0;
+  max-width: 100%;
   margin-bottom: 2.5rem;
   border-bottom: 0.0625rem solid var(--color-border);
   padding-bottom: 1.25rem;
+  overflow-wrap: break-word;
 }
 
 .blog-post:last-child {
@@ -17,6 +20,7 @@
 
 .blog-post .post-meta {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 1rem;
   margin-bottom: 0.9375rem;
@@ -54,6 +58,10 @@
   line-height: var(--leading-body);
 }
 
+.blog-post a {
+  overflow-wrap: anywhere;
+}
+
 /* Live WebGL shader demos (embedded HTML) */
 .blog-post .shader-art-embed {
   position: relative;
@@ -77,6 +85,9 @@
 
 /* Mermaid diagrams: full-width with side padding */
 .blog-post .mermaid-diagram {
+  box-sizing: border-box;
+  max-width: 100%;
+  min-width: 0;
   margin: 2rem 0;
   padding: 0 2rem;
 }
@@ -100,6 +111,8 @@
   flex-direction: column;
   align-items: center;
   margin: 1.5rem 0;
+  max-width: 100%;
+  min-width: 0;
 }
 
 .blog-post .captioned-image-container figure {
@@ -117,9 +130,19 @@
 
 .blog-post pre {
   display: block;
+  box-sizing: border-box;
   width: 100%;
+  max-width: 100%;
+  min-width: 0;
   white-space: pre-wrap;
-  overflow-wrap: break-word;
+  overflow-wrap: anywhere;
+  overflow-x: auto;
+}
+
+.blog-post pre code,
+.blog-post .astro-code .line {
+  white-space: inherit;
+  overflow-wrap: inherit;
 }
 
 .blog-post pre[class*="language-"] {
@@ -179,8 +202,9 @@
 
 /* Fallback for code blocks without language class */
 .blog-post pre > code:not([class*="language-"]) {
-  display: inline-block;
+  display: block;
   width: 100%;
+  max-width: 100%;
   box-sizing: border-box;
   background-color: #2d2d2d;
   color: #fff;
