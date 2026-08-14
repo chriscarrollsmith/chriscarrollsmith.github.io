@@ -7,7 +7,7 @@ image: "/images/berman-arc-agi.jpg"
 
 # Generalizing Jeremy Berman's ARC-AGI result
 
-AI researcher Jeremy Berman [has just announced](https://x.com/jeremyberman/status/2087633198822117446) that he used Claude Opus 5 in Claude Code with a custom prompt and a couple custom command and achieved over 96% on ARC-AGI-3 in a single pass. ARC-AGI-3 is considered one of the world's hardest AI capabilities benchmarks (you can play the ARC-AGI-3 games yourself [here](https://arcprize.org/arc-agi/3)). Without Berman's custom prompt and commands, Opus 5 scores just over 30%.
+AI researcher Jeremy Berman [has just announced](https://x.com/jeremyberman/status/2087633198822117446) that he used Claude Opus 5 in Claude Code with a custom prompt and a couple of custom commands and achieved over 96% on ARC-AGI-3 in a single pass. ARC-AGI-3 is considered one of the world's hardest AI capabilities benchmarks (you can play the ARC-AGI-3 games yourself [here](https://arcprize.org/arc-agi/3)). Without Berman's custom prompt and commands, Opus 5 scores just over 30%.
 
 ![Featured image for “Generalizing Jeremy Berman's ARC-AGI result”](/images/berman-arc-agi.jpg)
 
@@ -19,7 +19,7 @@ ARC-AGI-3 mastermind François Chollet [commented on Jeremy's work](https://x.co
 
 > Jeremy's excellent work here is a great illustration of a very powerful type of approach: LLM-guided on-the-fly synthesis of a symbolic world model, i.e. making sense of the world by writing executable code that encodes your understanding of the causal mechanics of the world. So far, all of the top-performing harnesses on ARC-AGI-3 use this style of approach. This is not an approach that will only shine on ARC 3. This is where most of AI is headed in the long run.
 
-I agree with Chollet that AI is headed in something like this direction, but I want explore the limitations of that, because I think the real world's a lot harder than ARC-AGI in specific ways that make the approach hard to generalize.
+I agree with Chollet that AI is headed in something like this direction, but I want to explore the limitations of that, because I think the real world's a lot harder than ARC-AGI in specific ways that make the approach hard to generalize.
 
 ## A quick crash course on Jeremy's approach
 
@@ -27,14 +27,14 @@ ARC-AGI presents the agent with a gameboard. The agent takes actions to manipula
 
 The most important [instruction Jeremy gave the model](https://github.com/jerber/arc-code/blob/main/PROMPT.md) was to "diff" successive board states with a mechanical difference-checking tool. This is basically a correction to the model's epistemology. Opus has poor "vision" capabilities and also isn't great at parsing ASCII representations of game boards. But it doesn't really "know" this about itself, so it's helpful to point it out and to give the model a strategy for working around this limitation. This is a super useful insight if you're doing visual work with agents, like frontend web design, but I don't know that it generalizes much beyond that.
 
-Jeremy also gave his agents an `/act` command for taking actions and `/status` and '/board` commands for checking game state. Actions and resulting board states got auto-logged to the file system in `logs.txt`. Honestly, the motivation here was probably as much to support human observability as anything else.
+Jeremy also gave his agents an `/act` command for taking actions and `/status` and `/board` commands for checking game state. Actions and resulting board states got auto-logged to the file system in `logs.txt`. Honestly, the motivation here was probably as much to support human observability as anything else.
 
 As for methodology, Jeremy told the agent to:
 
 - Log durable findings (confirmed mechanics, level solutions, disconfirmed hypotheses) in `notes.md`.
 - Build reusable parser and simulator software tools.
 - Form a hypothesis, then run the smallest/cheapest possible experiment to verify, then compare predicted with observed board state.
-- Nail down game mechanics first, and game strategies only afterward
+- Nail down game mechanics first, and game strategies only afterward.
 - Batch actions to conserve tokens.
 
 He also included instructions to prevent the model from giving up early or stopping to ask questions.
@@ -60,7 +60,7 @@ Pre-registering hypotheses, testing them, comparing them to observed outcomes, t
 1. The model tries one experiment, draws a hard conclusion from it, then never revisits that conclusion, so it ends up "learning" things that are simply incorrect.
 2. The model over-uses its learning log, recording a lot of really basic world-knowledge stuff that isn't actually of any use.
 
-Models have bad epistemological hygiene, if you will. And to some extent, that's because the game worlds the models are trained in are very predictable/deterministic, and a N-of-1 experiment is usually sufficient to learn a new game mechanic. But in the real world, you're sampling experimental outcomes from a non-stationary probability distribution, and you need to have a real sense of humility about the things you "learn" from experiments.
+Models have bad epistemological hygiene, if you will. And to some extent, that's because the game worlds the models are trained in are very predictable/deterministic, and an N-of-1 experiment is usually sufficient to learn a new game mechanic. But in the real world, you're sampling experimental outcomes from a non-stationary probability distribution, and you need to have a real sense of humility about the things you "learn" from experiments.
 
 Real AI-powered learning over real-world problem spaces is going to require large numbers of humans and AI agents coordinating to run many experiments, in much the same way that large institutions already do.
 
@@ -74,7 +74,7 @@ ARC-AGI-3 *does* have a budgeting mechanic (in that it limits the model to 2,500
 
 ### Real-world "board state" and "win condition" aren't always clear
 
-In ARC-AGI-3, the model always has perfect information about the board state and can clearly causally state changes to actions taken. The games also have a straightforward "win" signal: the board resets, the level clears. All of this happens pretty quickly, so you get a fast and clear reward signal.
+In ARC-AGI-3, the model always has perfect information about the board state and can clearly causally attribute state changes to actions taken. The games also have a straightforward "win" signal: the board resets, the level clears. All of this happens pretty quickly, so you get a fast and clear reward signal.
 
 In contrast, in the real world, you often have only limited knowledge of the board state and struggle to causally attribute wins or losses to any action you took. Reward signals may appear only after unpredictable lag times. You may have a general idea of your goals, but you almost certainly haven't quantified and probably can't measure or verify everything you care about, so it's hard to say if you've "won".
 
@@ -99,6 +99,6 @@ Broadly, here's the transferable methodology:
 - Monitor the difference between the model and reality.
 - Exercise intellectual humility and reason about outcomes probabilistically.
 - Re-derive from scratch when stuck.
-- **Keep everything human-observable so we can identify when automated hill-climbing has lost the plot.
+- **Keep everything human-observable so we can identify when automated hill-climbing has lost the plot.**
 
 *If* you can do all that, then you can use the Jeremy Berman method to solve your real-world human or institutional problems with an automated learning system.
