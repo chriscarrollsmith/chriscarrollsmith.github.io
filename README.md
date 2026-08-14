@@ -29,7 +29,7 @@ See the site live [here](https://christophercarrollsmith.com).
 
 ## Prerequisites
 
-You will need to have `bun` installed in your development environment. You will also need:
+You will need Node.js 22+ and npm installed in your development environment. You will also need:
 - A [Formspree](https://formspree.io/) account to use the `ContactForm` component
 - A [Kit](https://convertkit.com/?lmref=R3jWSQ) account to use the `SubscribeForm` component
 
@@ -38,7 +38,7 @@ You will need to have `bun` installed in your development environment. You will 
 To preview the site during development:
 
 ```bash
-bun run dev
+npm run dev
 ```
 
 This starts the Astro dev server with hot module replacement (HMR).
@@ -52,7 +52,7 @@ git clone https://github.com/chriscarrollsmith/chriscarrollsmith.github.io.git
 
 To install dependencies:
 ```bash
-bun install
+npm install
 ```
 
 To edit the site, you can use GitHub Codespaces or clone the repo locally to work in the editor of your choice.
@@ -99,7 +99,7 @@ Deployment is **automatic** via GitHub Actions. When you push to the `main` bran
 To build locally for testing:
 
 ```bash
-bun run build
+npm run build
 ```
 
 Built files appear in the `dist/` directory.
@@ -107,7 +107,7 @@ Built files appear in the `dist/` directory.
 To preview the production build:
 
 ```bash
-bun run preview
+npm run preview
 ```
 
 ### GitHub Pages Setup
@@ -174,11 +174,11 @@ Alternatively, to regenerate locally (requires ImageMagick):
 
 ```bash
 # Build and start preview server
-bun run build
-bun run preview &
+npm run build
+npm run preview &
 
 # Capture frames
-bun visual_qa/generate_preview_gif.mjs --base-url http://localhost:4321
+node visual_qa/generate_preview_gif.mjs --base-url http://localhost:4321
 
 # Create GIF
 convert -delay 200 -loop 0 .temp_gif_frames/frame-*.png site-preview-new.gif

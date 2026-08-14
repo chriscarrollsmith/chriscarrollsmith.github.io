@@ -16,32 +16,33 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v5
 
-      - name: Setup Bun
-        uses: oven-sh/setup-bun@v2
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
-          bun-version: latest
+          node-version: 22
+          cache: npm
 
       - name: Install dependencies
-        run: bun install
+        run: npm ci
 
       - name: Install Playwright browsers
-        run: bunx playwright install --with-deps chromium
+        run: npx playwright install --with-deps chromium
 
       - name: Install ImageMagick
         run: sudo apt-get update && sudo apt-get install -y imagemagick
 
       - name: Build site
-        run: bun run build
+        run: npm run build
 
       - name: Start preview server in background
         run: |
-          bun run preview &
+          npm run preview &
           echo "PREVIEW_PID=$!" >> $GITHUB_ENV
           # Wait for server to be ready
           timeout 60 bash -c 'until curl -s http://localhost:4321 > /dev/null; do sleep 1; done'
 
       - name: Capture frames
-        run: bun visual_qa/generate_preview_gif.mjs --base-url http://localhost:4321
+        run: node visual_qa/generate_preview_gif.mjs --base-url http://localhost:4321
 
       - name: Create animated GIF
         run: |

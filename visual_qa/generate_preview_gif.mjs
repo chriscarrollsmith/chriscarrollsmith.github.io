@@ -7,14 +7,14 @@
  * The GIF shows each section in sequence with a delay between frames.
  *
  * Usage:
- *   bun visual_qa/generate_preview_gif.mjs --base-url http://localhost:4321
- *   bun visual_qa/generate_preview_gif.mjs --base-url http://localhost:4321 --start-dev
+ *   node visual_qa/generate_preview_gif.mjs --base-url http://localhost:4321
+ *   node visual_qa/generate_preview_gif.mjs --base-url http://localhost:4321 --start-dev
  *
  * Options:
  *   --base-url <url>       Base URL of the site (required)
  *   --output <path>        Output GIF path (default: site-preview.gif)
  *   --start-dev            Start dev server automatically
- *   --dev-cmd <cmd>        Dev server command (default: "bun run preview")
+ *   --dev-cmd <cmd>        Dev server command (default: "npm run preview")
  */
 
 import fs from 'fs';
@@ -44,7 +44,7 @@ function parseArgs(argv) {
   let baseUrl = null;
   let output = 'site-preview.gif';
   let startDev = false;
-  let devCmd = 'bun run preview';
+  let devCmd = 'npm run preview';
 
   for (let i = 0; i < args.length; i += 1) {
     const arg = args[i];
@@ -236,6 +236,7 @@ function startDevServer(devCmd) {
 
   const child = spawn(cmd, cmdArgs, {
     stdio: 'inherit',
+    shell: true,
   });
 
   let exited = false;

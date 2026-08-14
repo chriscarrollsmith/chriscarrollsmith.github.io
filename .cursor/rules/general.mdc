@@ -3,7 +3,7 @@ alwaysApply: true
 ---
 ## Tech Stack
 
-- **Runtime**: Bun (use `bun run dev`, `bun run build`, `bun run preview`)
+- **Runtime**: Node.js 22+ with npm (use `npm run dev`, `npm run build`, `npm run preview`)
 - **Framework**: Astro 5 + React 18 (static site generation, file-based routing)
 - **Language**: TypeScript with ES6 imports
 - **Styling**: CSS with custom properties (no framework)

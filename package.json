@@ -7,14 +7,14 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "generate:pdf": "bun scripts/generate-cv-pdf.ts",
-    "sync:substack": "bun scripts/sync-substack.ts",
-    "sync:youtube": "bun scripts/sync-youtube.ts",
-    "backfill:substack-alts": "bun scripts/backfill-substack-img-alts.ts",
-    "backfill:substack-image-chrome": "bun scripts/backfill-substack-image-chrome.ts",
-    "render:mermaid": "bun scripts/render-mermaid-images.ts",
-    "test:unit": "bun test scripts/blog-mdx/__tests__ scripts/seo/__tests__",
-    "build": "bun run sync:substack && bun run sync:youtube && bun run generate:pdf && bun run render:mermaid && astro check && astro build",
+    "generate:pdf": "tsx scripts/generate-cv-pdf.ts",
+    "sync:substack": "tsx scripts/sync-substack.ts",
+    "sync:youtube": "tsx scripts/sync-youtube.ts",
+    "backfill:substack-alts": "tsx scripts/backfill-substack-img-alts.ts",
+    "backfill:substack-image-chrome": "tsx scripts/backfill-substack-image-chrome.ts",
+    "render:mermaid": "tsx scripts/render-mermaid-images.ts",
+    "test:unit": "vitest run",
+    "build": "npm run sync:substack && npm run sync:youtube && npm run generate:pdf && npm run render:mermaid && astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx,.astro",
@@ -23,9 +23,9 @@
     "test:a11y": "playwright test tests/cv-a11y.spec.ts",
     "test:headed": "playwright test --headed",
     "test:ui": "playwright test --ui",
-    "test:e2e": "bun run test && bun run test:a11y",
-    "check": "bun run lint && astro check && astro build && bun run test:e2e",
-    "lighthouse": "bun run build && lhci autorun --config=./lighthouserc.json"
+    "test:e2e": "npm run test && npm run test:a11y",
+    "check": "npm run lint && astro check && astro build && npm run test:e2e",
+    "lighthouse": "npm run build && lhci autorun --config=./lighthouserc.json"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.5",
@@ -68,6 +68,15 @@
     "pixelmatch": "^7.1.0",
     "playwright": "^1.56.1",
     "pngjs": "^7.0.0",
-    "typescript": "^5.9.3"
+    "tsx": "^4.20.0",
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.0"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "allowScripts": {
+    "esbuild": true,
+    "sharp": true
   }
 }

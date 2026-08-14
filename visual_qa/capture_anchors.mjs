@@ -14,15 +14,15 @@
  *   - Saved to: visual_qa/screenshots/{label}/fullpage/{page}-{scheme}.png
  *
  * Usage:
- *   bun visual_qa/capture_anchors.mjs --base-url http://localhost:4321 --label baseline "#home" "#about"
- *   bun visual_qa/capture_anchors.mjs --base-url http://localhost:4321 --label baseline "/cv" "/blog" "/blog/1"
- *   bun visual_qa/capture_anchors.mjs --base-url http://localhost:4321 --label baseline "#home" "/cv"
+ *   node visual_qa/capture_anchors.mjs --base-url http://localhost:4321 --label baseline "#home" "#about"
+ *   node visual_qa/capture_anchors.mjs --base-url http://localhost:4321 --label baseline "/cv" "/blog" "/blog/1"
+ *   node visual_qa/capture_anchors.mjs --base-url http://localhost:4321 --label baseline "#home" "/cv"
  *
  * Options:
  *   --base-url <url>       Base URL of the site (required)
  *   --label <label>        Label for screenshot folder (default: "run")
  *   --start-dev            Start dev server automatically
- *   --dev-cmd <cmd>        Dev server command (default: "bun run dev")
+ *   --dev-cmd <cmd>        Dev server command (default: "npm run dev")
  *   --annotate             Add CSS selector labels to screenshots
  *
  * Requirements:
@@ -53,7 +53,7 @@ function parseArgs(argv) {
   let label = 'run';
   const targets = []; // can be anchors (#home) or paths (/cv)
   let startDev = false;
-  let devCmd = 'bun run dev';
+  let devCmd = 'npm run dev';
   let annotate = false;
 
   for (let i = 0; i < args.length; i += 1) {
@@ -271,6 +271,7 @@ function startDevServer(devCmd) {
 
   const child = spawn(cmd, cmdArgs, {
     stdio: 'inherit',
+    shell: true,
   });
 
   let exited = false;

@@ -1,4 +1,4 @@
-import { describe, expect, test } from 'bun:test';
+import { describe, expect, test } from 'vitest';
 import { stripSubstackImageChrome } from '../stripSubstackImageChrome';
 
 const ARTIFACT = `<div class="image-link-expand">

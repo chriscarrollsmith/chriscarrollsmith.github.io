@@ -6,7 +6,7 @@
  * Compares two PNG images and returns the number and percentage of different pixels.
  *
  * Usage:
- *   bun visual_qa/compare_images.mjs baseline.png candidate.png
+ *   node visual_qa/compare_images.mjs baseline.png candidate.png
  *
  * Returns:
  *   - Exit code 0 if images are identical
@@ -183,8 +183,8 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     }
   } else if (args.includes('--help')) {
     console.log('Usage:');
-    console.log('  bun visual_qa/compare_images.mjs baseline.png candidate.png');
-    console.log('  bun visual_qa/compare_images.mjs  (compares visual_qa/screenshots/{baseline,candidate})');
+    console.log('  node visual_qa/compare_images.mjs baseline.png candidate.png');
+    console.log('  node visual_qa/compare_images.mjs  (compares visual_qa/screenshots/{baseline,candidate})');
     process.exit(0);
   } else {
     // Directory comparison (default baseline vs candidate)

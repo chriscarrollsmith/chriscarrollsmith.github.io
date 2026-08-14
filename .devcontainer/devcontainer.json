@@ -1,8 +1,7 @@
 {
-  "name": "Astro + Bun Dev Environment",
+  "name": "Astro + Node Dev Environment",
   "image": "mcr.microsoft.com/devcontainers/javascript-node:22",
   "features": {
-    "ghcr.io/shyim/devcontainers-features/bun:0": {},
     "ghcr.io/devcontainers/features/github-cli:1": {}
   },
   "postCreateCommand": ".devcontainer/postCreate.sh",
@@ -39,7 +38,7 @@
           "astro"
         ],
         "typescript.tsdk": "node_modules/typescript/lib",
-        "npm.packageManager": "bun"
+        "npm.packageManager": "npm"
       }
     }
   },

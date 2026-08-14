@@ -1,7 +1,7 @@
 /**
  * CV PDF Generator
  * Generates a PDF version of the CV from JSON data files using pdfmake and citation-js.
- * Run with: bun scripts/generate-cv-pdf.ts
+ * Run with: npm run generate:pdf
  */
 
 import PdfPrinter from 'pdfmake';

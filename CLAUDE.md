@@ -2,7 +2,7 @@
 
 ## Tech Stack
 
-- **Runtime**: Bun (use `bun run dev`, `bun run build`, `bun run preview`)
+- **Runtime**: Node.js 22+ with npm (use `npm run dev`, `npm run build`, `npm run preview`)
 - **Framework**: Astro 5 + React 18 (static site generation, file-based routing)
 - **Language**: TypeScript with ES6 imports
 - **Styling**: CSS with custom properties (no framework)
@@ -52,7 +52,7 @@ Before making any code or content changes, you should *always* capture baseline 
 
 **Capture baseline screenshots:**
 ```bash
-bun visual_qa/capture_anchors.mjs \
+node visual_qa/capture_anchors.mjs \
   --base-url http://localhost:4321 \
   --start-dev \
   --label baseline \
@@ -70,23 +70,23 @@ The screenshot workflow takes 60-70 seconds to complete. Set `run_in_background`
 
 ```bash
 # Must succeed
-bun run build
+npm run build
 
 # Run tests
-bun run test:e2e
+npm run test:e2e
 ```
 
 ### 2. Lint (if code changed)
 
 ```bash
-bun run lint
+npm run lint
 ```
 
 ### 3. Run visual QA (if any UI/styling changed)
 
 **After making changes, capture candidate screenshots:**
 ```bash
-bun visual_qa/capture_anchors.mjs \
+node visual_qa/capture_anchors.mjs \
   --base-url http://localhost:4321 \
   --start-dev \
   --label candidate \
