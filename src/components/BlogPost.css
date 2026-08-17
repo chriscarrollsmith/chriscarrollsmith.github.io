@@ -49,6 +49,11 @@
   border-bottom: 1px solid var(--color-border);
 }
 
+.blog-post h3 {
+  margin-top: 2rem;
+  margin-bottom: 0.4rem;
+}
+
 .blog-post p,
 .blog-post ul,
 .blog-post ol,
@@ -56,6 +61,12 @@
   font-size: var(--text-body);
   font-weight: var(--weight-body);
   line-height: var(--leading-body);
+}
+
+.blog-post p:not(.post-abstract),
+.blog-post ul,
+.blog-post ol {
+  font-weight: var(--weight-medium);
 }
 
 .blog-post a {
