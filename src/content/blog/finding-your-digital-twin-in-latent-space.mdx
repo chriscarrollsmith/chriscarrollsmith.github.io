@@ -78,3 +78,43 @@ So anyway, I wanted to try out fine-tuning, but I'd never done a fine-tune befor
 The result is my [Community Archive fine-tuning recipe](https://github.com/chriscarrollsmith/ca-fine-tune-recipe), which I've open-sourced on GitHub: a pipeline that takes someone's tweets, ranks them by engagement, then recursively walks the reply chains backward and forward to reconstruct the full conversation. It also fetches the tweets they liked in the 24 hours before each post, plus grabs images, expands links, resolves linked tweets, and pulls news context from the Internet Archive when the tweet is about a current event. (I also recorded voice anecdotes for the tweets that concerned my lived experience.) All of this is packed into the prompt for the fine-tuning run.
 
 glhf.
+
+## So, did it work?
+
+Several people asked for numbers. Fair enough.
+
+I evaluated a holdout set by flipping through a series of tweets—some from the fine-tune and some from the base model—and voting on two questions: *does it sound like me*, and *would it bang*. I also scored whether the draft stayed on-topic.
+
+The fine-tune didn't meaningfully move the model's ability to write bangers, which suggests that's mostly a function of model capability.
+
+But it did meaningfully shift the "voice" of the model from "generic AI slop" to "something I could see myself writing." Pass rate for "does it sound like me" improved by about 35%.
+
+<figure>
+<img src="/images/lora-vs-base.png" alt="Bar chart of holdout pass rates for LoRA versus base Inkling-Small. On-topic is high for both. Sounds like me rises from 19% to 54%. Banger is unchanged at 35%." />
+</figure>
+
+I didn't always agree with the substance of the LoRA-generated tweets. An N of 100 wasn't enough for the model to *think* like me.
+
+But it did more or less learn to *write my voice*.
+
+Here's a typical pair.
+
+<figure class="eval-example">
+<figcaption class="eval-kicker">Example · Oliver Sacks / Pinker</figcaption>
+<p class="eval-prompt">Steven Pinker posted that Oliver Sacks invented details in his famous neurological case studies. You are quote-tweeting that, attaching a screenshot of a comment that Sacks's patients all sounded like literature PhDs.</p>
+<div class="eval-pair">
+<div class="eval-draft">
+<p class="eval-meta"><span class="eval-model">Base</span> <span class="eval-verdict">not me</span></p>
+<blockquote>
+<p>The new Sacks scandal isn't just "he embellished"—it's that whole patient voices were too polished to be real. This screenshot says it all: "I'm sorry, there's just no way that all of Oliver Sacks's patients talked like literature PhDs." We built narratives on fiction. We need to talk about this.</p>
+</blockquote>
+</div>
+<div class="eval-draft eval-draft-lora">
+<p class="eval-meta"><span class="eval-model">LoRA</span> <span class="eval-verdict">sounds like me</span></p>
+<blockquote>
+<p>@sapinker I think the point of a case study is to make a specific point, not to provide an accurate account of a particular person's life. Case studies are as much illustrations as evidence, and Sacks's illustrations were exceptionally vivid and engaging.</p>
+</blockquote>
+</div>
+</div>
+</figure>
+
